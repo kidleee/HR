@@ -1,0 +1,191 @@
+<!DOCTYPE html> 
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>专属模板定制</title>
+<link rel="stylesheet" href="layui-v2.2.6/layui-v2.2.6/layui/css/layui.css" type="text/css">
+<link rel="stylesheet" href="mademodel.css" type="text/css">
+<script src="layer-v3.1.1/layer-v3.1.1/layer/layer.js" type="text/javascript" charset="utf-8"></script>
+<script src="layui-v2.2.6/layui-v2.2.6/layui/layui.js" type="text/javascript" charset="utf-8"></script>
+<script src="jquery.js" type="text/javascript"></script>
+<script src="jqui/jqui/jquery-ui.js"></script>
+<script src="vue.js"></script>
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+  <div class="layui-header">
+    <div class="layui-logo">开启您的专属模板定制之旅</div>
+    <ul class="layui-nav layui-layout-right">
+      <li class="layui-nav-item"><a href="user.html">在线制作</a></li>
+      <li class="layui-nav-item"><a href="viewmodel.html">模板商城</a></li>
+      <li class="layui-nav-item"><a href="howtohr.html">HR之旅</a></li>
+      <li class="layui-nav-item"><a href="mademodelindex.html">模板定制</a></li>
+      <li class="layui-nav-item"><a href="aboutus.html">关于我们</a></li>
+      <li class="layui-nav-item"><a href=""></a></li>
+    </ul> 
+  </div>
+  
+  <div class="layui-side layui-bg-black">
+    <div class="layui-side-scroll">
+      <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+      <p style="margin:10px">1.我为什么要留下联系方式？<br><br>平台将会在24小时内根据您的预留联系方式稍后联系您；您完全不用担心隐私方面的问题。</p>
+      <p style="margin:10px">2.我的隐私如何得到保护？<br><br>润简历完全理解您的担心，也明白在互联网时代保护用户隐私的重要性，我们尊重并珍惜润简历的每一位用户。如果您仍存在顾虑，也可以选择和平台客服匿名进行沟通哦~</p>
+      <p style="margin:10px">3.我的服务能得到保障吗？<br><br>我们的服务以您的满意为成功和结束的标准，通常情况下按照一次标准专业的流程走下来，您的问题都会得到满意解决；当然如果在服务过程中您感到不满意（如模板不满意，交付时间超期），可随时通过网站在线客服提出反馈意见，客服将主动接入沟通，待意见达成一致后，您拥有重新定制或退款的权利。</p>
+    </div>
+  </div>
+
+  
+  
+  
+<div class="layui-body container-body">
+    <!-- 内容主体区域 -->
+      <div class="modelmade-top head-font">请填写有关专属模板的需求</div>    
+<div class="modelmade-top">
+<form class="layui-form" id="tf">
+
+  <div class="layui-form-item">
+    <label class="layui-form-label">定制类型</label>
+    <div class="layui-input-block">
+      <input type="radio" lay-filter="modelclass" name="model_id" value="1" title="初级模板定制" checked>
+      <input type="radio" lay-filter="modelclass" name="model_id" value="2" title="中级模板定制">
+      <input type="radio" lay-filter="modelclass" name="model_id" value="3" title="专业模板定制">
+      <textarea id="details" placeholder="满足您的基本需求，由平台签约专业设计师进行简历模板的私人定制。" name="details" class="layui-textarea" disabled></textarea>
+     </div>
+     
+  </div>  
+  <div class="layui-form-item">
+    <label class="layui-form-label">微信号</label>
+    <div class="layui-input-block">
+      <input type="text" name="wx_n" required  lay-verify="required" placeholder="请输入微信号" autocomplete="off" class="layui-input">
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">手机号</label>
+    <div class="layui-input-block">
+      <input type="text" name="iphone" required  lay-verify="required" placeholder="请输入手机号" autocomplete="off" class="layui-input">
+    </div>
+  </div> 
+  <div class="layui-form-item">
+    <label class="layui-form-label">相关领域</label>
+    <div class="layui-input-block">
+      <select name="field" lay-verify="required">
+        <option value=""></option>
+        <option value="计算机">计算机</option>
+        <option value="饮食">饮食</option>
+        <option value="金融">金融</option>
+        <option value="搬砖">搬砖</option>
+        <option value="演艺">演艺</option>
+      </select>
+    </div>
+  </div>
+  <div class="layui-form-item layui-form-text">
+    <label class="layui-form-label">具体需求</label>
+    <div class="layui-input-block">
+      <textarea name="demand" placeholder="请输入内容" class="layui-textarea"></textarea>
+  </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">完成时间</label>
+    <div class="layui-input-block">
+      <select name="time" lay-verify="required">
+        <option value=""></option>
+        <option value="二到三日">二到三日</option>
+        <option value="三到五日">三到五日</option>
+        <option value="五到七日">五日七日</option>
+        <option value="七到九日">七到九日</option>
+      </select>
+    </div>
+  </div>
+  
+  <div class="layui-form-item">
+    <div class="layui-input-block">
+      <button type="button" class="layui-btn" onclick="javascript:a()">立即提交</button>
+      <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+    </div>
+  </div>
+</form>
+</div>
+</div>
+  
+  <div class="layui-footer">
+			<p class="copyright">南京博晓信息科技有限公司备案号  苏 ICP备 18029764号-1Copyright © 2016-2018 runjianli. All Rights Reserved. <a href="aboutus.html" target="_blank" title="关于我们">关于我们</a> - about <a href="viewmodel.html" title="简历模板" target="_blank">简历模板</a></p>
+			<div class="clearfix">    
+  </div>
+</div>
+</div>
+<script>
+    
+    
+    
+function a(){
+  //监听提交
+    var otn = document.getElementById("out_trade_no");
+	$.ajax({  
+            type: "get",  
+            url: "http://www.runjianli.com/index.php/modelmade/model_made/made",
+	        dataType: "text",
+	        data:$('#tf').serialize(),			
+            success: function(data){  
+               var str = "http://www.runjianli.com/index.php/modelmade/model_made/made_pay?out_trade_no="+data;
+               window.open(str);
+            },  
+	error: function(jqXHR, textStatus, errorThrown){  
+              alert(jqXHR.responseText);
+		      alert(jqXHR.status);
+		      alert(jqXHR.readyState);
+		      alert(jqXHR.statusText);
+		      alert(textStatus);
+		      alert(errorThrown); 
+        }
+    })
+    layer.confirm('是否完成支付?', {
+  btn: ['支付完成', '遇到问题'] //可以无限个按钮
+  ,btn2: function(index, layero){
+      alert("123");
+  }
+}, function(index, layero){
+    window.open("http://www.runjianli.com/index.php/pay/wx_lp/modelpay");
+    layer.closeAll(); //疯狂模式，关闭所有层
+    layer.closeAll('dialog'); //关闭信息框
+    layer.closeAll('page'); //关闭所有页面层
+    layer.closeAll('iframe'); //关闭所有的iframe层
+    layer.closeAll('loading'); //关闭加载层
+    layer.closeAll('tips'); //关闭所有的tips层 
+});
+}
+   
+layui.use('form', function(){
+  var form = layui.form;
+  form.on('radio(modelclass)', function(data){
+      if(data.value == 1)
+      {
+          var details = document.getElementById("details");
+          details.value = "满足您的基本需求，由平台签约专业设计师进行简历模板的私人定制。";
+      }
+      else if(data.value == 2)
+      {
+          var details = document.getElementById("details");
+          details.value = "满足您的需求，并提供平台特色服务进行简历的优化，与求职者进行洽谈。";
+      }
+      else if(data.value == 3)
+      {
+          var details = document.getElementById("details");
+          details.value = "由润简历平台为您寻找知名企业求职规划师、多年招聘老鸟为您量身定做一份独一无二的模板。";
+      }
+  });  
+});
+
+
+
+</script> 
+
+</body>
+
+</html>
+
+
+
+
+

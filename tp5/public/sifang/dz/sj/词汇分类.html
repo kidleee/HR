@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>海词词典</title>
+<link rel="stylesheet" href="css/style.css" type="text/css">
+</head>
+<body>
+<div class="neck5">
+    <div class="hd2"><a href="javascript:back();"><img class="hd-left" src="img/left.png"></a></div>
+    <div class="hd1">词汇分类</div>
+</div>
+<div class="box5">
+    <div class="shadow">
+        <span class="first" onclick="contentchange('tuijian');">推荐</span>
+        <span onclick="contentchange('kaoshixuexi');">考试学习</span>
+        <span onclick="contentchange('shenghuogongzuo');">生活工作</span>
+        <span onclick="contentchange('chuguoliuxue');">出国留学</span>
+    </div>
+    <div class="bx-middle">
+        <ul id="ul">
+            <li><div><img src="img/audit.png"/></div><div class="img-bottom">高中</div></li>
+            <li><div><img src="img/audit.png"/></div><div class="img-bottom">四级</div></li>
+            <li><div><img src="img/audit.png"/></div><div class="img-bottom">六级</div></li>
+            <li><div><img src="img/audit.png"/></div><div class="img-bottom">考验</div></li>
+            <li><div><img src="img/audit.png"/></div><div class="img-bottom">职场</div></li>
+            <li><div><img src="img/audit.png"/></div><div class="img-bottom">商务</div></li>
+            <li><div><img src="img/audit.png"/></div><div class="img-bottom">购物</div></li>
+            <li><div><img src="img/audit.png"/></div><div class="img-bottom">旅游</div></li>
+            <li><div><img src="img/audit.png"/></div><div class="img-bottom">看美剧</div></li>
+            <li><div><img src="img/audit.png"/></div><div class="img-bottom">自考</div></li>
+            <li><div><img src="img/audit.png"/></div><div class="img-bottom">托福</div></li>
+            <li><div><img src="img/audit.png"/></div><div class="img-bottom">雅思</div></li>
+        </ul>
+    </div>
+</div> 
+<script>
+var json1 = {"高中":"<div><img src=\"img/audit.png\"/></div><div class=\"img-bottom\">高中</div>","四级":"<div><img src=\"img/audit.png\"/></div><div class=\"img-bottom\">四级</div>","六级":"<div><img src=\"img/audit.png\"/></div><div class=\"img-bottom\">六级</div>","考验":"<div><img src=\"img/audit.png\"/></div><div class=\"img-bottom\">考验</div>","职场":"<div><img src=\"img/audit.png\"/></div><div class=\"img-bottom\">职场</div>","商务":"<div><img src=\"img/audit.png\"/></div><div class=\"img-bottom\">商务</div>","购物":"<div><img src=\"img/audit.png\"/></div><div class=\"img-bottom\">购物</div>","旅游":"<div><img src=\"img/audit.png\"/></div><div class=\"img-bottom\">旅游</div>","看美剧":"<div><img src=\"img/audit.png\"/></div><div class=\"img-bottom\">看美剧</div>","自考":"<div><img src=\"img/audit.png\"/></div><div class=\"img-bottom\">自考</div>","托福":"<div><img src=\"img/audit.png\"/></div><div class=\"img-bottom\">托福</div>","雅思":"<div><img src=\"img/audit.png\"/></div><div class=\"img-bottom\">雅思</div>"};
+var json2 = {"小学":"<div><img src=\"img/audit.png\"/></div><div class=\"img-bottom\">小学</div>","中考":"<div><img src=\"img/audit.png\"/></div><div class=\"img-bottom\">中考</div>","高中":"<div><img src=\"img/audit.png\"/></div><div class=\"img-bottom\">高中</div>","四级":"<div><img src=\"img/audit.png\"/></div><div class=\"img-bottom\">四级</div>","六级":"<div><img src=\"img/audit.png\"/></div><div class=\"img-bottom\">六级</div>","考研":"<div><img src=\"img/audit.png\"/></div><div class=\"img-bottom\">考研</div>","考博":"<div><img src=\"img/audit.png\"/></div><div class=\"img-bottom\">考博</div>","专八":"<div><img src=\"img/audit.png\"/></div><div class=\"img-bottom\">专八</div>","专四":"<div><img src=\"img/audit.png\"/></div><div class=\"img-bottom\">专四</div>","MBA":"<div><img src=\"img/audit.png\"/></div><div class=\"img-bottom\">MBA</div>","职称":"<div><img src=\"img/audit.png\"/></div><div class=\"img-bottom\">职称</div>","自考":"<div><img src=\"img/audit.png\"/></div><div class=\"img-bottom\">自考</div>","专升本":"<div><img src=\"img/audit.png\"/></div><div class=\"img-bottom\">专升本</div>","学位":"<div><img src=\"img/audit.png\"/></div><div class=\"img-bottom\">学位</div>"};
+var json3 = {"旅游":"<div><img src=\"img/audit.png\"/></div><div class=\"img-bottom\">旅游</div>","职场":"<div><img src=\"img/audit.png\"/></div><div class=\"img-bottom\">职场</div>","购物":"<div><img src=\"img/audit.png\"/></div><div class=\"img-bottom\">购物</div>","商务":"<div><img src=\"img/audit.png\"/></div><div class=\"img-bottom\">商务</div>","办公室":"<div><img src=\"img/audit.png\"/></div><div class=\"img-bottom\">办公室</div>","看美剧":"<div><img src=\"img/audit.png\"/></div><div class=\"img-bottom\">看美剧</div>","VOA":"<div><img src=\"img/audit.png\"/></div><div class=\"img-bottom\">VOA</div>"};      
+var json4 = {"托福":"<div><img src=\"img/audit.png\"/></div><div class=\"img-bottom\">托福</div>","雅思":"<div><img src=\"img/audit.png\"/></div><div class=\"img-bottom\">雅思</div>","GRE":"<div><img src=\"img/audit.png\"/></div><div class=\"img-bottom\">GRE</div>"};     
+function back()
+{   
+    window.location.href = "主页.html";
+} 
+function contentchange(content)
+{   
+    if(content == "tuijian")
+    {   
+        var remove1 = document.getElementsByTagName("li");
+        for(var i=0;i<remove1.length;)
+        {    
+            remove1[0].remove();
+        }
+        for(var key in json1)
+        {   
+            var li = document.createElement("li");
+            li.innerHTML = json1[key];
+            var ul = document.getElementById("ul");
+            ul.insertBefore(li,ul.lastChild);
+        }
+    }
+    else if(content == "kaoshixuexi")
+    {   
+        var remove1 = document.getElementsByTagName("li");
+        for(var i=0;i<remove1.length;)
+        {    
+            remove1[0].remove();
+        }
+        for(var key in json2)
+        {   
+            var li = document.createElement("li");
+            li.innerHTML = json2[key];
+            var ul = document.getElementById("ul");
+            ul.insertBefore(li,ul.lastChild);
+        }
+    }
+    else if(content == "shenghuogongzuo")
+    {   
+        var remove1 = document.getElementsByTagName("li");
+        for(var i=0;i<remove1.length;)
+        {    
+            remove1[0].remove();
+        }
+        for(var key in json3)
+        {   
+            var li = document.createElement("li");
+            li.innerHTML = json3[key];
+            var ul = document.getElementById("ul");
+            ul.insertBefore(li,ul.lastChild);
+        }
+    }
+    else if(content == "chuguoliuxue")
+    {   
+        var remove1 = document.getElementsByTagName("li");
+        for(var i=0;i<remove1.length;)
+        {    
+            remove1[0].remove();
+        }
+        for(var key in json4)
+        {   
+            var li = document.createElement("li");
+            li.innerHTML = json4[key];
+            var ul = document.getElementById("ul");
+            ul.insertBefore(li,ul.lastChild);
+        }
+    }
+}
+</script>    
+</body>
+</html>

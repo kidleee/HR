@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8"/>
+<title>模板商城</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link rel="shortcut icon" href="favicon.ico" />
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
+<link rel="stylesheet" type="text/css" href="css/style.css"/>
+<link rel="stylesheet" href="css/swiper.min.css" />
+<script type="text/javascript" src="js/jquery1.42.min.js" ></script>
+<script type="text/javascript" src="js/jquery.SuperSlide.2.1.1.js"></script>
+<script type="text/javascript" src="js/sifang.js" ></script>
+</head>
+<body>
+<!--div class="top">
+	<div class="cont">
+		<img src="img/i_tz.png" alt="" /><span>网站公告：</span>公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容
+		<a href="#" id="close"><img src="img/i_close.png"/></a>
+	</div>
+</div-->
+<!--neck-->
+<div class="neck">
+	<div class="cont">
+		<div class="logo">
+			<a href="http:\\www.runjianli.com"><img src="img/logo.png"/></a>
+		</div>
+		<div class="nav">
+			<ul>
+				<li><a href="cvedit.html">简历制作</a></li>
+				<li class="on"><a href="viewmodel.html">模板商城</a></li>
+				<li><a href="headhunter.html">名企导师</a></li>
+				<li><a href="howtohr.html">加入我们</a></li>
+				<li><a href="#"><img src="img/i_dhs.png" alt="" /></a>
+					<div class="nav_down">
+					<dl>
+						<dd><a href="aboutus.html">关于我们1</a></dd>
+						<dd><a href="aboutus.html">关于我们2</a></dd>
+						<dd><a href="aboutus.html">关于我们3</a></dd>
+					</dl>
+					</div>
+				</li>
+				<div id="img" class="hyzx" style="display:none">
+					<div class="tx">
+					<img id="imgurl" src="?"/>
+					<div class="hy_down">
+					<dl>
+						<dd><a href="gerenzhongxin1.html">个人中心</a></dd>
+						<dd><a href="gerenzhongxin2.html">我的简历</a></dd>
+						<dd><a href="javascript:signout();">退出</a></dd>
+					</dl>
+					</div>
+					</div>
+				</div>
+				<span id="login" class="reg">
+					<a href="login.html">登陆</a><img src="img/xt1.png"/>
+					<a href="login.html">注册</a>
+				</span>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="banner_mb">
+	<img src="img/banner_mb.jpg" width="100%"/>
+</div>
+<div class="banner_sou">
+	<div class="cont">
+		<div class="soubox">
+			<select name="">
+				<option value="">WORD模板</option>
+			</select>
+			<input type="text" placeholder="搜索关键词"/>
+			<button onclick="modelsearch();">
+				<img src="img/i_so.png" />搜索全站
+			</button>
+		</div>
+	</div>
+</div>
+<div class="shop_sai">
+	<div class="cont">
+		<ul>
+			<li>
+				<span>分类：</span>
+				<a href="#">Word模板</a>
+				<!--a href="#">PPT模板</a>
+				<a href="#">Excel表格</a>
+				<a href="#">PPT图表</a-->
+			</li>
+			<li>
+				<span>应用场景：</span>
+				<a href="javascript:modelchange('http://www.runjianli.com/index.php/cv/model/GetModel1')">全部</a>
+				<a href="javascript:modelchange('http://www.runjianli.com/index.php/cv/model_find/Chinese')">中文</a>
+				<a href="javascript:modelchange('http://www.runjianli.com/index.php/cv/model_find/English')">英文</a>
+				<a href="javascript:modelchange('http://www.runjianli.com/index.php/cv/model_find/form')">表格</a>
+				<a href="#">创意</a>
+				<a href="javascript:modelchange('http://www.runjianli.com/index.php/cv/model_find/school')">院校</a>
+				<a href="javascript:modelchange('http://www.runjianli.com/index.php/cv/model_find/enterprise')">企业</a>
+				<a href="javascript:modelchange('http://www.runjianli.com/index.php/cv/model_find/xiaoshengchu')">小升初</a>
+				<a href="javascript:modelchange('http://www.runjianli.com/index.php/cv/model_find/coverletter')">求职信</a>
+				<a href="javascript:modelchange('http://www.runjianli.com/index.php/cv/model_find/frontcover')">封面</a>
+			</li>
+		</ul>
+	</div>
+</div>
+<div class="cont">
+<div class="shop_sort">
+	<b>模板商城</b><font>更合适的模板能大大提高你的求职成功率</font>
+	<span class="fr"><font style="color:#999">排序</font>：<a href="#" class="on">热门推荐</a><a href="#">销售最多</a><a href="#">人气最旺</a></span>
+</div>
+<div class="zybox scbox" >
+<div class="jy3" style="background:none;margin-top:0;padding-top:0;">
+<div class="list_shop">
+			<ul id="ul">
+	
+			</ul>
+</div>
+</div>
+</div>	
+
+<!--div class="pages">
+	<a href="#">上一页</a>
+	<a href="#" class="on">1</a>
+	<a href="#">2</a>
+	<a href="#">3</a>
+	<a href="#">4</a>
+	<a href="#">5</a>
+	<a href="#">6</a>
+	<a href="#">7</a>
+	<a href="#">下一页</a>
+</div-->
+		
+</div>
+<div class="dfoot" style="padding-top:0;margin-top:0;"></div>
+<!--footer-->
+<div class="footer">
+	<div class="cont">
+		<div class="ft1">
+			<img src="img/flogo.png"/><br />
+			<img src="img/ewm.png" width="120"/>
+		</div>
+		<div class="ft2">
+			<dl>
+				<dt>联系我们</dt>
+<dd><a href="#">在线客服</a></dd>
+<dd><a href="#">微信</a></dd>
+<dd><a href="#">微博</a></dd>
+<dd><a href="#">知乎</a></dd>
+			</dl>
+			
+			<dl>
+				<dt>关于我们</dt>
+<dd><a href="#">首页</a></dd>
+<dd><a href="#">使用条款</a></dd>
+<dd><a href="#">隐私协议</a></dd>
+<dd><a href="#">加入我们</a></dd>
+			</dl>
+			
+			<dl>
+				<dt>快速进入</dt>
+<dd><a href="#">我的简历</a></dd>
+<dd><a href="#">简历攻略</a></dd>
+<dd><a href="#">导师辅导</a></dd>
+<dd><a href="#">职位列表</a></dd>
+<dd><a href="#">使用帮助</a></dd>
+			</dl>
+			
+			<dl>
+				<dt>简历模板</dt>
+<dd><a href="#">经典工作简历</a></dd>
+<dd><a href="#">秋招礼包</a></dd>
+<dd><a href="#">程序员简历模板</a></dd>
+			</dl>
+			
+			<dl>
+				<dt>合作伙伴</dt>
+<dd><a href="#">Linkedln</a></dd>
+<dd><a href="#">智联招聘</a></dd>
+<dd><a href="#">前程无忧</a></dd>
+<dd><a href="#">猎聘</a></dd>
+			</dl>
+			
+			<dl>
+				<dt>友情链接</dt>
+<dd><a href="#">爱思益</a></dd>
+<dd><a href="#">无界空间</a></dd>
+<dd><a href="#">inDeco</a></dd>
+<dd><a href="#">ViaX</a></dd>
+<dd><a href="#">站长之家</a></dd>
+			</dl>
+		</div>
+		<div class="copyright">
+			©2018 润简历 runjianli.com | 京ICP备17055181号
+		</div>
+	</div>
+</div>
+<script>
+  
+function getJsonLength(jsonData){
+ var jsonLength = 0;
+ for(var item in jsonData){
+  jsonLength++;
+ }
+ return jsonLength;
+}    
+$(function(){
+    //http://www.runjianli.com/index.php/cv/model/GetModel
+    $.ajax({  
+            type: "post",  
+            url: "http://www.runjianli.com/index.php/cv/model/GetModel1",
+			dataType: "json", 			
+            success: function(data){
+            for(var i=0;i<getJsonLength(data);i++)
+            {   
+                var li = document.createElement('li');
+                li.innerHTML = '<div class="mb_img"><img src="'+data[i].imgurl+'" width="100%"/></div><div class="mb_txt">使用次数：<span class="blue">'+data[i].usedtimes+'</span><a href="javascript:collect(\''+data[i].modelid+'\');" class="fr"><img id="'+data[i].modelid+'" src="img/i_star2.png"/>收藏</a></div><div class="fdc"><h3>'+data[i].name+'</h3><div class="txt">'+data[i].brief+'</div><a href="'+data[i].notailsweb+'" class="golink">点击进入</a></div>';
+                li.setAttribute("class","shadow");
+                var ul = document.getElementById("ul");//获取body对象.
+                ul.insertBefore(li,ul.lastChild);
+            }
+            $.ajax({
+                type:"post",
+                url:"http://www.runjianli.com/index.php/user/file/get_collection1",
+                dataType:"json",
+                success:function(data){
+                    if(data == "请先登陆")
+                    {
+                       //window.open("sifang/login.html");
+                    }
+                    else
+                    {   
+                        collection = JSON.parse(data.collection);
+                        for(var key in collection)
+                        {   
+                            var modelid = document.getElementById(key);
+                            if(collection[key] == "true")
+                            {   
+                                modelid.src = "img/i_star1.png";
+                            }
+                            else
+                            {   
+                                modelid.src = "img/i_star2.png";
+                            }
+                        }
+                    }
+                },
+                error:function(jqXHR, textStatus, errorThrown){  
+                    alert(jqXHR.responseText);
+                    alert(jqXHR.status);
+                    alert(jqXHR.readyState);
+                    alert(jqXHR.statusText);
+                    alert(textStatus);
+                    alert(errorThrown); 
+                }
+            })          
+            },
+			error: function(jqXHR, textStatus, errorThrown){  
+                alert(jqXHR.responseText);
+				alert(jqXHR.status);
+				alert(jqXHR.readyState);
+				alert(jqXHR.statusText);
+				alert(textStatus);
+				alert(errorThrown); 
+			}
+        })  
+        //var divx = _parentWin.document.createElement('div');
+		//divx.setAttribute("class","layui-row left-move top-move m_title");
+		//设置div的属性
+		//divx.innerHTML = '<h1>工作经验</h1><input style="display:inline-block" id="abc1" type="button" class="bor"><input //style="display:inline-block"  id="abc2"  type="text" class="bor2"  value="填写公司名称"><input  id="abc3"  style="display:inline-block" type="text" class="bor2"  value="填写职位名称">'; //设置显示的数据，可以是标签．
+		//divx.style.background = "blue";//设置css样式,s设置背景颜色
+		//var div1 = _parentWin.document.getElementById("div1");
+		//动态插入到body中
+})
+ 	/*
+function search()
+{   
+        var searchvalue = document.getElementById("searchvalue");
+        var ul = document.getElementById("ul");
+        ul.innerHTML = "";
+        $.ajax({  
+            type: "post",  
+            url: "http://www.runjianli.com/index.php/cv/model_find/insert",
+			dataType: "json",
+            data: {"searchvalue":searchvalue.value},
+            success: function(data){
+            for(var i=0;i<getJsonLength(data);i++)
+            {   
+                var li = document.createElement('li');
+                li.innerHTML = '<div class="mb_img"><img src="'+data[i].imgurl+'" width="100%"/></div><div class="mb_txt">使用次数：<span class="blue">'+data[i].usedtimes+'</span><a href="javascript:collect(\''+data[i].modelid+'\');" class="fr"><img id="'+data[i].modelid+'" src="img/i_star2.png"/>收藏</a></div><div class="fdc"><h3>'+data[i].name+'</h3><div class="txt">'+data[i].brief+'</div><a href="'+data[i].notailsweb+'" class="golink">点击进入</a></div>';
+                li.setAttribute("class","shadow");
+                var ul = document.getElementById("ul");//获取body对象.
+                ul.insertBefore(li,ul.lastChild);
+            }
+            $.ajax({
+                type:"post",
+                url:"http://www.runjianli.com/index.php/user/file/get_collection1",
+                dataType:"json",
+                success:function(data){
+                    if(data == "请先登陆")
+                    {
+                       //window.open("sifang/login.html");
+                    }
+                    else
+                    {   
+                        collection = JSON.parse(data.collection);
+                        for(var key in collection)
+                        {   
+                            var modelid = document.getElementById(key);
+                            if(collection[key] == "true")
+                            {   
+                                modelid.src = "img/i_star1.png";
+                            }
+                            else
+                            {   
+                                modelid.src = "img/i_star2.png";
+                            }
+                        }
+                    }
+                },
+                error:function(jqXHR, textStatus, errorThrown){  
+                    alert(jqXHR.responseText);
+                    alert(jqXHR.status);
+                    alert(jqXHR.readyState);
+                    alert(jqXHR.statusText);
+                    alert(textStatus);
+                    alert(errorThrown); 
+                }
+            })          
+            },
+			error: function(jqXHR, textStatus, errorThrown){  
+                alert(jqXHR.responseText);
+				alert(jqXHR.status);
+				alert(jqXHR.readyState);
+				alert(jqXHR.statusText);
+				alert(textStatus);
+				alert(errorThrown); 
+			}
+        })
+}*/
+function modelchange(url)
+{   
+        var ul = document.getElementById("ul");
+        ul.innerHTML = "";
+        $.ajax({  
+            type: "post",  
+            url: url,
+			dataType: "json", 			
+            success: function(data){  
+            if(getJsonLength(data) != 0)
+            {    
+            for(var i=0;i<getJsonLength(data);i++)
+            {   
+                var li = document.createElement('li');
+                li.innerHTML = '<div class="mb_img"><img src="'+data[i].imgurl+'" width="100%"/></div><div class="mb_txt">使用次数：<span class="blue">'+data[i].usedtimes+'</span><a href="javascript:collect(\''+data[i].modelid+'\');" class="fr"><img id="'+data[i].modelid+'" src="img/i_star2.png"/>收藏</a></div><div class="fdc"><h3>'+data[i].name+'</h3><div class="txt">'+data[i].brief+'</div><a href="'+data[i].notailsweb+'" class="golink">点击进入</a></div>';
+                li.setAttribute("class","shadow");
+                var ul = document.getElementById("ul");//获取body对象.
+                ul.insertBefore(li,ul.lastChild);
+            }
+            $.ajax({
+                type:"post",
+                url:"http://www.runjianli.com/index.php/user/file/get_collection1",
+                dataType:"json",
+                success:function(data){
+                    if(data == "请先登陆")
+                    {
+                       //window.open("sifang/login.html");
+                    }
+                    else
+                    {   
+                        collection = JSON.parse(data.collection);
+                        for(var key in collection)
+                        {   
+                            var modelid = document.getElementById(key);
+                            if(collection[key] == "true")
+                            {   
+                                modelid.src = "img/i_star1.png";
+                            }
+                            else
+                            {   
+                                modelid.src = "img/i_star2.png";
+                            }
+                        }
+                    }
+                },
+                error:function(jqXHR, textStatus, errorThrown){  
+                    alert(jqXHR.responseText);
+                    alert(jqXHR.status);
+                    alert(jqXHR.readyState);
+                    alert(jqXHR.statusText);
+                    alert(textStatus);
+                    alert(errorThrown); 
+                }
+            })        
+            }
+            else
+            {   
+                var ul = document.getElementById("ul");
+                ul.innerHTML = "没有找到相关简历";
+            }
+            },
+			error: function(jqXHR, textStatus, errorThrown){  
+                alert(jqXHR.responseText);
+				alert(jqXHR.status);
+				alert(jqXHR.readyState);
+				alert(jqXHR.statusText);
+				alert(textStatus);
+				alert(errorThrown); 
+			}
+        })
+}
+
+function collect(modelid)
+{   
+    //var changestar = document.getElementById(modelid);
+    
+    $.ajax({  
+            type: "post",  
+            url: "http://www.runjianli.com/index.php/user/file/lisen_collection1",
+			dataType: "text", 
+            data:{"modelid":modelid},
+            success: function(data){
+                var changestar = document.getElementById(modelid);
+                if(data == "添加收藏")
+                {   
+                    changestar.src = "img/i_star1.png";
+                }
+                else if(data == "取消收藏")
+                {
+                    changestar.src = "img/i_star2.png"; 
+                }    
+                else if(data == "请先登陆")
+                {
+                    window.open("login.html");
+                }    
+            },
+			error: function(jqXHR, textStatus, errorThrown){  
+                alert(jqXHR.responseText);
+				alert(jqXHR.status);
+				alert(jqXHR.readyState);
+				alert(jqXHR.statusText);
+				alert(textStatus);
+				alert(errorThrown); 
+			}
+        }) 
+}    
+    
+//模板搜索
+function modelsearch()
+{   
+    $.ajax({
+        type:"post",
+        url:"http://www.runjianli.com/index.php/cv/model_find/modelsearch",
+        dataType:"json",
+        data:{"word":$("#word").val()},
+        success:function(data){
+            if(data == "没有找到相关简历")
+            {
+                
+            }
+            else
+            {
+                
+            }    
+        }
+    })
+}
+</script>  
+</body>
+</html>

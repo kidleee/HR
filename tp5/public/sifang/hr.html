@@ -1,0 +1,696 @@
+<!Doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>HR在线制作</title>
+  <link rel="stylesheet" href="layui-v2.2.6/layui-v2.2.6/layui/css/layui.css" type="text/css">
+  <link href="LXXUploadPic-master/LXXUploadNeeded/LXXUploadPic.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="mycss.css" type="text/css">
+  
+  <script src="jquery.js"></script> <!-- 你必须先引入jQuery1.8或以上版本 -->
+  <script src="layer-v3.1.1/layer-v3.1.1/layer/layer.js" type="text/javascript" charset="utf-8"></script>
+  <script src="layui-v2.2.6/layui-v2.2.6/layui/layui.js" type="text/javascript" charset="utf-8"></script>
+  <script src="Sortable-master/Sortable-master/Sortable.js"></script>
+  <script src="jquery-ui.js" type="text/javascript" charset="utf-8"></script>
+  <script src="LXXUploadPic-master/LXXUploadNeeded/LXXUploadPic.js" type="text/javascript" charset="utf-8"></script>
+  <script>
+  
+  
+  </script>  
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+  <div class="layui-header">
+    <div class="layui-logo">简历在线制作</div>
+    <!-- 头部区域（可配合layui已有的水平导航） -->
+    <ul class="layui-nav layui-layout-left">
+      <li class="layui-nav-item"><a href="">我的简历</a></li>
+      <li class="layui-nav-item"><a href="">更换模板</a></li>
+      <li class="layui-nav-item"><a href="">风格设置</a></li>
+      <li class="layui-nav-item"><a href="javascript:mymodel();">模板管理</a>
+        <dl class="layui-nav-child">
+          <dd><a href="javascript:wxpay();">李林飞</a></dd>
+          <dd><a href="">消息管理</a></dd>
+          <dd><a href="">授权管理</a></dd>
+        </dl>
+      </li>
+    </ul>
+    <ul class="layui-nav layui-layout-right">
+      <li class="layui-nav-item">
+        <a href="javascript:func1();">
+          <img src="?" class="layui-nav-img" id="img">
+        </a>
+        <dl class="layui-nav-child">
+          <dd><a href=""id="nickname"></a></dd>
+          <dd><a href="javascript:base();">基本信息</a></dd>
+          <dd><a href="javascript:hrcheck();">补充信息</a></dd>
+        </dl>
+      </li>
+      <li class="layui-nav-item"><a href="javascript:signout();">退出</a></li>
+    </ul>
+  </div>
+  
+  <div class="layui-side layui-bg-black">
+    <div class="layui-side-scroll">
+      <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+      <ul class="layui-nav layui-nav-tree"  lay-filter="test">
+        <li class="layui-nav-item layui-nav-itemed">
+          <a class="" href="javascript:viewnotice();">公告</a>
+        </li>
+        <li class="layui-nav-item">
+          <a href="javascript:cvinput();">简历导出</a>
+        </li>
+        <li class="layui-nav-item"><a href="mademodel.html">专属模板定制</a></li>
+        <li class="layui-nav-item"><a href="javascript:hrweb();">个人主页面</a></li>
+      </ul>
+    </div>
+  </div>
+  <!--弹窗信息部分-->
+  
+  
+  
+  <div class="layui-body container-body" id="module_list">
+    <!-- 内容主体区域 -->
+  <div class="container-ct">	
+  <div class="layui-row" id="drag_div">
+	<!--简历左边-->
+	<div class="layui-col-md5 layui-col-sm5 container-left">
+		<!--简历头像-->
+		<div class="layui-row left-move top-move" id="LXXUploadPic" LXXCol="1" LXXRow="1" LXXWidth="150" LXXHeight="175">
+		</div>
+		<!--基本信息-->
+		<div class="layui-row left-move top-move"> 
+		<input style="display:block" type="button" class="bor" id="bt6" value="生日">
+		<input style="display:block" type="button" class="bor" id="bt7" value="所在城市">
+		<input style="display:block" type="button" class="bor" id="bt8" value="联系电话">
+		<input style="display:block" type="button" class="bor" id="bt9" value="电子邮箱">
+		</div>
+		<!--三个信息栏（最大三个）-->
+		<div class="layui-row left-move top-move m_title" id="div">
+		<h1>求职意向1</h1>
+		</div>
+		<div class="layui-row left-move top-move m_title" id="div1">
+		<h1>求职意向2</h1>
+		</div>
+	</div>
+	
+	<!--简历右边-->
+	<div class="layui-col-md6 layui-col-sm6 container-right">
+		<!--你的名字-->
+		<div class="layui-row left-move top-move">
+		
+		<input style="display:block;font-size:40px" type="text" class="bor1" id="bt10" value="你的名字" onclick="javascript:lalala1()">
+		<input style="display:block;width:458px" type="text" class="bor" id="bt11" value="一句话介绍自己，告诉HR选择你而不是别人" onclick="javascript:lalala1()">
+	
+		</div>
+		<!--多个信息栏-->
+		<!--求职意向-->
+		<div class="layui-row left-move top-move m_title" style="dispaly:block" id="div2">
+		<h1>求职意向</h1>
+		<input style="display:inline-block" type="button" class="bor" id="bt1" value="意向岗位" onclick="javascript:lalala()">
+		<input style="display:inline-block" type="button" class="bor" id="bt2" value="职业类型" onclick="javascript:lalala()">
+		<input style="display:inline-block" type="button" class="bor" id="bt3" value="意向城市" onclick="javascript:lalala()">
+		<input style="display:inline-block" type="button" class="bor" id="bt4" value="薪资要求" onclick="javascript:lalala()">
+		<input style="display:inline-block" type="button" class="bor" id="bt5" value="入职时间" onclick="javascript:lalala()">
+		</div>
+		
+		<div class="layui-row left-move top-move m_title" id="div3">
+		<h1>教育背景</h1>
+		<input style="display:inline-block" type="button" class="bor"  value="设置时间" onclick="javascript:lalala()">
+		<input style="display:inline-block" type="text" class="bor2"  value="填写学校名称" onclick="javascript:lalala()">
+		<input style="display:inline-block" type="text" class="bor2"  value="填写专业名称" onclick="javascript:lalala()">
+		</div>
+		
+		<div class="layui-row left-move top-move m_title" id="div4">
+		<h1>工作经验</h1>
+		<input style="display:inline-block" type="button" class="bor"  value="设置时间" onclick="javascript:lalala()">
+		<input style="display:inline-block" type="text" class="bor2"  value="填写公司名称" onclick="javascript:lalala()">
+		<input style="display:inline-block" type="text" class="bor2"  value="填写职位名称" onclick="javascript:lalala()">
+		</div>
+	</div>
+
+  </div>
+  </div>
+    <!--创建新的div-->
+	<div class="layui-row left-move top-move">
+		<a href="javascript:create();">
+		<i class="layui-icon" style="font-size: 30px;position:relative;left:150px;top:30px">&#xe608;</i>
+		</a>
+	</div>
+  </div>
+  
+  <div class="layui-footer">
+    <!-- 底部固定区域 -->
+  <div><input type="hidden" style="display:none" id="login"></div>
+  </div>
+</div>
+
+
+	<!--登陆注册区-->
+	<div class="htmleaf-container" id="box1">
+    <div id="wrapper" class="login-page">
+      <div id="login_form" class="form">
+        <form class="register-form" id="register1" style="display:none">
+          <input type="text" placeholder="用户名" id="r_user_name"/>
+          <input type="password" placeholder="密码" id="r_password" />
+          <input type="text" placeholder="电子邮件" id="r_emial"/>
+          <button id="create">创建账户</button>
+          <p class="message">已经有了一个账户? <a href="#" class="a1">立刻登录</a></p>
+        </form>
+		<form class="register-weixin" id="register2" style="display:none">
+		  	 <span id="login_container"></span>
+          <script src="http://res.wx.qq.com/connect/zh_CN/htmledition/js/wxLogin.js"></script>
+          <script>
+             var obj = new WxLogin({
+               //true：手机点击确认登录后可以在 iframe 内跳转到 redirect_uri，false：手机点击确认登录后可以在 top window 跳转到 redirect_uri。默认为 false。  
+               self_redirect:false,
+               //第三方页面显示二维码的容器id
+               id: "login_container",
+               //应用唯一标识，在微信开放平台提交应用审核通过后获得
+               appid: "wxeafbca61ac265143",
+               //应用授权作用域，拥有多个作用域用逗号（,）分隔，网页应用目前仅填写snsapi_login即可
+               scope: "snsapi_login",
+               //重定向地址，需要进行UrlEncode
+               redirect_uri: encodeURIComponent("http://www.runjianli.com/index.php/index/wx_login/index"),
+               //用于保持请求和回调的状态，授权请求后原样带回给第三方。该参数可用于防止csrf攻击（跨站请求伪造攻击），建议第三方带上该参数，可设置为简单的随机数加session进行校验
+               state: Math.ceil(Math.random()*1000),
+               //提供"black"、"white"可选，默认为黑色文字描述
+               style: "",
+               //自定义样式链接，第三方可根据实际需求覆盖默认样式
+               href: ""});
+         </script>
+		  <p class="message">已经有了一个账户? <a href="#" class="a2">立刻登录</a></p>
+        </form>
+		<form method="post" class="register-phone" id="register3" style="display:none"><!--onsubmit="return false;"-->
+		  <input type="hidden" id="code">
+		  <input type="text" placeholder="手机号" name="iphone" id="iphone"/>
+		  <div><input type="text" id="code1" placeholder="验证码" style="display:inline; width:160px;margin:0 15px 15px 0"/><input type="button" id="phone" style="display:inline; width:80px; font-size:10px;" value="发送验证码"></div>
+		  <button type="button" id="login1">登陆</button>
+		  <p class="message">已经有了一个账户? <a href="#" class="a3">立刻登录</a></p>
+        </form>
+        <form class="login-form" id="register4" style="display:block">
+          <input type="text" placeholder="用户名" id="user_name"/>
+          <input type="password" placeholder="密码" id="password"/>
+          <button id="login2">登　录</button>
+          <p class="message"><a href="#" class="a1">创建账户</a>/<a href="#" class="a2">微信扫码登陆</a>/ <a href="#" class="a3">短信验证登陆</a></p>
+        </form>
+      </div>
+    </div>
+	</div>
+	
+
+<div style="display:none;">
+<input type="hidden" id="hd1">
+<input type="hidden" id="hd2">
+<input type="hidden" id="hd3">
+<input type="hidden" id="hd4">
+<input type="hidden" id="hd5">
+</div>
+
+
+
+
+<script src="../src/layui.js"></script>
+<script>
+var login = document.getElementById("login");
+//JavaScript代码区域
+
+layui.use('element', function(){
+  var element = layui.element;
+});
+
+
+
+$(function(){
+if($(".container-left").height() > $(".container-right").height()){
+$(".container-right").css("height",$(".container-left").height()) 
+}else{
+$(".container-left").css("height",$(".container-right").height()) 
+}
+//div按数据库加载    
+var oldarr = new Array("div","div1","div2","div3","div4");
+var newarr = new Array(4,1,2,0,3);
+var arr = new Array();
+var i;
+var t;   
+for(i=0;i<newarr.length;i++)
+{
+   arr[i] = document.getElementById(oldarr[newarr[i]]).innerHTML;
+}
+for(i=0;i<arr.length;i++)
+{
+   document.getElementById(oldarr[i]).innerHTML = arr[i];
+}    
+//判断登陆状态
+$.ajax({  
+            type: "Get",  
+            url: "http://www.runjianli.com/index.php/session/session_use/check",
+			dataType: "text", 			
+            success: function(data){
+            login.value = data;
+            read();  
+            },
+			error: function(jqXHR, textStatus, errorThrown){  
+                alert(jqXHR.responseText);
+				alert(jqXHR.status);
+				alert(jqXHR.readyState);
+				alert(jqXHR.statusText);
+				alert(textStatus);
+				alert(errorThrown); 
+			}
+        })  
+
+//录入头像
+var img = document.getElementById("img");
+$.ajax({  
+            type: "Get",  
+            url: "http://www.runjianli.com/index.php/session/session_use/imgview",
+			dataType: "text", 			
+            success: function(data){
+           	if(data){
+	 img.src = data;
+	}else{img.src = "picture/wdg.jpg"}
+            },
+			error: function(jqXHR, textStatus, errorThrown){  
+                alert(jqXHR.responseText);
+				alert(jqXHR.status);
+				alert(jqXHR.readyState);
+				alert(jqXHR.statusText);
+				alert(textStatus);
+				alert(errorThrown); 
+			}
+        })  
+var nickname = document.getElementById("nickname");
+//录入登陆昵称
+$.ajax({  
+            type: "Get",  
+            url: "http://www.runjianli.com/index.php/session/session_use/nicknameview",
+			dataType: "text", 			
+            success: function(data){
+            nickname.innerHTML = data;  
+            },
+			error: function(jqXHR, textStatus, errorThrown){  
+                alert(jqXHR.responseText);
+				alert(jqXHR.status);
+				alert(jqXHR.readyState);
+				alert(jqXHR.statusText);
+				alert(textStatus);
+				alert(errorThrown); 
+			}
+        })  
+	
+
+//拖动	
+$(".m_title").bind('mouseover',function(){
+		$(this).css("cursor","move")
+	});
+	
+  
+	var $list = $('#module_list');
+	
+	$list.sortable({
+		opacity: 0.6, //设置拖动时候的透明度
+		revert: true, //缓冲效果
+		cursor: 'move', //拖动的时候鼠标样式
+		items: '.m_title',  //可以拖动的部位，模块的标题部分
+		update:function(){ 
+            alert("success");
+		}
+	});
+    
+    
+//插入简历信息
+$.ajax({  
+            type: "Get",  
+            url: "http://www.runjianli.com/index.php/cv/cv_write/check_cv",
+			dataType: "text", 			
+            success: function(data){
+            },
+			error: function(jqXHR, textStatus, errorThrown){  
+                alert(jqXHR.responseText);
+				alert(jqXHR.status);
+				alert(jqXHR.readyState);
+				alert(jqXHR.statusText);
+				alert(textStatus);
+				alert(errorThrown); 
+			}
+        })  
+
+
+})
+
+
+
+
+function read()
+{
+	if(login.value == 0){
+	alert(login.value);
+}else
+{
+	$.ajax({  
+            type: "Get",  
+            url: "http://www.runjianli.com/index.php/cv/cv_write/read",
+			dataType: "json", 			
+            success: function(data){
+	var name = document.getElementById("bt10");
+	var introduction = document.getElementById("bt11");
+	var intentionjob = document.getElementById("bt1");
+	var jobtype = document.getElementById("bt2");
+	var intentioncity = document.getElementById("bt3");
+	var entrytime = document.getElementById("bt4");
+	var salary = document.getElementById("bt5");
+	var birthday = document.getElementById("bt6");
+	var city = document.getElementById("bt7");
+	var phone =  document.getElementById("bt8");
+ 	var emali = document.getElementById("bt9");
+	name.value =  data.name;//结果是string
+	introduction.value = data.introduction;
+	intentionjob.value = data.intentionjob;
+	 jobtype.value = data. jobtype ;
+	intentioncity.value = data.intentioncity;
+	entrytime.value = data.entrytime;
+	salary.value = data.salary;
+	birthday.value = data.birthday;
+	city.value = data.city;
+	phone.value = data.phone;
+	emali.value = data.emali;	
+            },
+			error: function(jqXHR, textStatus, errorThrown){  
+                alert(jqXHR.responseText);
+				alert(jqXHR.status);
+				alert(jqXHR.readyState);
+				alert(jqXHR.statusText);
+				alert(textStatus);
+				alert(errorThrown); 
+			}
+        })  
+}
+
+}
+
+
+
+
+    function oneValues(){
+		var result;
+		var url=window.location.search; //获取url中"?"符后的字串  
+		if(url.indexOf("?")!=-1){
+			result = url.substr(url.indexOf("=")+1);
+		}
+	return result;
+	}
+		
+	function create()
+        {
+			layui.use('layer', function(){
+					var layer = layui.layer;
+					layer.open({
+						type: 2,
+						title: '添加自定义模块',
+						resize: false,
+						scrollbar: false,
+						skin: 'layui-layer-molv',
+						area: ['618px', '400px'],
+						shadeClose: true, //点击遮罩关闭
+						content: ['form3.html' , 'no'] 
+					});
+		        })
+		}
+
+
+//iframe 求职意向
+function lalala()
+{
+    layui.use('layer', function(){
+		var layer = layui.layer;
+		layer.open({
+			type: 2,
+			title: '编辑求职意向',
+			resize: false,
+			scrollbar: false,
+			skin: 'layui-layer-molv',
+			area: ['618px', '360px'],
+			shadeClose: true, //点击遮罩关闭
+			content: ['form1.html' , 'no'] 
+		});
+	})
+}
+
+//iframe 基本信息
+function lalala1()
+{
+    layui.use('layer', function(){
+		var layer = layui.layer;
+		layer.open({
+			type: 2,
+			title: '编辑基本信息',
+			resize: false,
+			scrollbar: false,
+			skin: 'layui-layer-molv',
+			area: ['618px', '400px'],
+			shadeClose: true, //点击遮罩关闭
+			content: ['form2.html' , 'no'] 
+		});
+	})
+}
+
+function signout()
+{
+    $.ajax({  
+            type: "Get",  
+            url: "http://www.runjianli.com/index.php/session/session_use/signout",
+			dataType: "text", 			
+            success: function(data){ 
+            img.src = "picture/wdg.jpg";
+            nickname.innerHTML = "";   
+            },
+			error: function(jqXHR, textStatus, errorThrown){  
+                alert(jqXHR.responseText);
+				alert(jqXHR.status);
+				alert(jqXHR.readyState);
+				alert(jqXHR.statusText);
+				alert(textStatus);
+				alert(errorThrown); 
+			}
+        })  
+        login.value = 0;	
+}
+
+
+function mymodel()
+{
+	layui.use('layer', function(){
+		var layer = layui.layer;
+		layer.open({	
+			type: 2,
+			anim: 3,
+			title: false,
+			shadeClose: true,
+			shade: false,
+			offset:'l',
+			maxmin: false, //显示最大化最小化按钮
+			closeBtn: 0, //不显示关闭按钮
+			area: ['200px', '600px'],
+			content: 'mymodel.html'
+		});
+	})
+}
+
+function viewnotice()
+{
+	/*if(login.value == 1){
+	layui.use('layer', function(){
+		var layer = layui.layer;
+		layer.open({	
+			type: 2,
+			title: '微信支付',
+			resize: false,
+			scrollbar: false,
+			skin: 'layui-layer-molv',
+			area: ['350px', '350px'],
+			shadeClose: true, //点击遮罩关闭
+			content: 'wxpay.html'
+		});
+	})}
+	else
+	{
+		alert("请先登陆");
+	}*/
+	window.open("http://www.runjianli.com/sifang/公告.html");
+
+}
+
+
+//登陆区
+$(function(){
+		$("#create").click(function(){ 
+			check_register();
+			return false;
+		})
+		$("#login").click(function(){
+			check_login();
+			return false;
+		})
+		$('.message .a1').click(function () {
+			$('#register1').animate({
+				height: 'toggle',
+				opacity: 'toggle'
+			}, 'slow');
+			$('#register4').animate({
+				height: 'toggle',
+				opacity: 'toggle'
+			}, 'slow');
+		});
+		$('.message .a2').click(function () {
+			$('#register2').animate({
+				height: 'toggle',
+				opacity: 'toggle'
+			}, 'slow');
+			$('#register4').animate({
+				height: 'toggle',
+				opacity: 'toggle'
+			}, 'slow');
+		});
+		$('.message .a3').click(function () {
+			$('#register3').animate({
+				height: 'toggle',
+				opacity: 'toggle'
+			}, 'slow');
+			$('#register4').animate({
+				height: 'toggle',
+				opacity: 'toggle'
+			}, 'slow');
+		});
+		$('#login1').click(function(){
+			var code = document.getElementById("code");
+			var code1 = document.getElementById("code1");	
+			if(code1.value == code.value)
+			{
+			var iphone = document.getElementById("iphone");
+			window.location.href="http://www.runjianli.com/sifang/编辑.html?values="+iphone.value; 
+			}
+			else
+			{
+				alert("请重新输入信息");
+			}
+		});
+		$('#phone').click(function () {
+			var my_data = document.getElementById("iphone");
+			var value = my_data.value;
+			var code = document.getElementById("code");
+			curCount = count;
+			$('#phone').attr("disabled",true);
+			$('#phone').val(curCount+"秒重新发送");
+			InterValObj = window.setInterval(SetRemainTime, 1000);
+			$.ajax({
+				url:"alidayu/api_demo/SmsDemo.php",
+				type:"GET",
+				data:{iphone:value},
+				error: function(){  
+                        alert('Error loading XML document');  
+                    },                   
+               
+                success: function(data,status){//如果调用php成功    
+                    code.value = data;
+		alert(code.value);
+					
+                }
+			});
+		});
+		
+	})
+		var InterValObj; //timer变量，控制时间
+	var count = 60; //间隔函数，1秒执行
+	var curCount;//当前剩余秒数
+		function SetRemainTime(){
+		if(curCount == 0){
+			window.clearInterval(InterValObj);
+			$("#phone").removeAttr("disabled");
+			$("#phone").val("重新发送验证码");
+		}
+		else{
+			curCount--;
+			$("#phone").val(curCount+"秒重新发送");
+		}
+	
+	}
+	
+	function func1()
+	{
+		if(login.value == 0){
+		 layer.open({
+                      	  type: 1,
+                      	  closeBtn: false,
+                  	  shift: 2,
+                     		   shadeClose: true,
+						title: false,
+						scrollbar: false,
+                        		content: $("#box1"),
+				});}
+		else
+		{
+			alert("不用重复登陆!");	
+		}
+	}
+	function base()
+	{
+		if(login.value == 0)
+		{
+			layer.open({
+                     			   type: 1,
+                    			    closeBtn: false,
+                      			  shift: 2,
+                       			 shadeClose: true,
+						title: false,
+						scrollbar: false,
+                     			   content: $("#box1"),
+				});
+		}
+		else
+		{
+			/*layer.open({
+                   		     type: 2,
+                      		  closeBtn: false,
+                     		   shift: 2,
+                     		   shadeClose: true,
+			title:'请填写个人资料',
+			scrollbar: false,
+			area: ['100%', '400px'],
+                    		    content:'form4.html' ,
+				});*/
+			window.open('form4.html');  
+		}
+
+	}
+function hrweb()
+{    
+    $.ajax({  
+            type: "get",  
+            url: "http://www.runjianli.com/index.php/cert/cert/HR",
+			dataType: "text", 			
+            success: function(data){
+                window.open(data);
+            },
+			error: function(jqXHR, textStatus, errorThrown){  
+                alert(jqXHR.responseText);
+				alert(jqXHR.status);
+				alert(jqXHR.readyState);
+				alert(jqXHR.statusText);
+				alert(textStatus);
+				alert(errorThrown); 
+			}
+        })  
+
+}
+// 关闭窗口时弹出确认提示
+$(window).bind('beforeunload', function(){
+    // 只有在标识变量is_confirm不为false时，才弹出确认提示
+    if(login.value == 0)
+    if(window.is_confirm !== false)
+        return '您是未登陆状态,数据没有保存';    
+});
+
+</script>
+</body>
+</html>

@@ -1,0 +1,1167 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>润简历后台管理</title>
+  <link rel="stylesheet" href="layui-v2.2.6/layui-v2.2.6/layui/css/layui.css" type="text/css">
+  <script src="layer-v3.1.1/layer-v3.1.1/layer/layer.js" type="text/javascript" charset="utf-8"></script>
+  <script src="layui-v2.2.6/layui-v2.2.6/layui/layui.js" type="text/javascript" charset="utf-8"></script>
+  <script src="jquery.js" type="text/javascript"></script>
+  <script src="jqui/jqui/jquery-ui.js"></script>
+  <script src="jquery-form.js"></script> <!-- 你必须先引入jQuery1.8或以上版本 -->
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+  <div class="layui-header">
+    <div class="layui-logo">刚刚起步的后台</div>
+    <!-- 头部区域（可配合layui已有的水平导航） -->
+    <ul class="layui-nav layui-layout-left">
+      <li class="layui-nav-item"><a href="">控制台</a></li>
+      <li class="layui-nav-item"><a href="">商品管理</a></li>
+      <li class="layui-nav-item"><a href="">用户</a></li>
+      <li class="layui-nav-item">
+        <a href="javascript:;">其它系统</a>
+        <dl class="layui-nav-child">
+          <dd><a href="">邮件管理</a></dd>
+          <dd><a href="">消息管理</a></dd>
+          <dd><a href="">授权管理</a></dd>
+        </dl>
+      </li>
+    </ul>
+    <ul class="layui-nav layui-layout-right">
+      <li class="layui-nav-item">
+        <a href="javascript:;">
+          <img src="http://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTL2bKb4V9XgAftmv8x3ozKDogwOsCNnHR85Tkiazia8LZf5Biaic0CsBer3f7y5ialdsLaM0EDGHhArz7g/132" class="layui-nav-img">
+          贤心
+        </a>
+        <dl class="layui-nav-child">
+          <dd><a href="">基本资料</a></dd>
+          <dd><a href="">安全设置</a></dd>
+        </dl>
+      </li>
+      <li class="layui-nav-item"><a href="">退了</a></li>
+    </ul>
+  </div>
+  
+  <div class="layui-side layui-bg-black">
+    <div class="layui-side-scroll">
+      <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+      <ul class="layui-nav layui-nav-tree"  lay-filter="test">
+        <li class="layui-nav-item layui-nav-itemed">
+          <a class="a1" href="javascript:">用户信息管理</a>
+          <dl class="layui-nav-child">
+            <dd><a href="javascript:viewuser();">用户登陆信息</a></dd>
+            <dd><a href="javascript:viewrefund();">用户退款处理</a></dd>
+            <dd><a href="javascript:viewtrade();">用户消费记录</a></dd>
+            <dd><a href="">超链接</a></dd>
+          </dl>
+        </li>
+        <li class="layui-nav-item">
+          <a class="a2" href="javascript:" >简历管理信息</a>
+          <dl class="layui-nav-child">
+            <dd><a href="javascript:insertcv();">简历信息录入</a></dd>
+            <dd><a href="javascript:insertchangecv();">可编辑简历录入</a></dd>
+            <dd><a href="">超链接</a></dd>
+          </dl>
+        </li>
+        <li class="layui-nav-item">
+            <a href="javascript:">HR信息管理</a>
+            <dl class="layui-nav-child">
+                <dd><a href="javascript:viewhr();">HR基本信息</a></dd>
+                <dd><a href="javascript:viewcompany();">企业管理员信息</a></dd>
+                <dd><a href="javascript:viewtrade();">用户消费记录</a></dd>
+                <dd><a href="">超链接</a></dd>
+            </dl>
+        </li>
+        <li class="layui-nav-item"><a href="javascript:createnotice();">添加公告</a></li>
+        <li class="layui-nav-item"><a href="javascript:deletenotice();">删除公告</a></li>
+      </ul>
+    </div>
+  </div>
+  
+  <div class="layui-body">
+    
+    <div id="user" style="display:block"><table id="user1" lay-filter="test"></table></div>
+    
+    
+    
+    
+    <div id="notice" style="display:none">
+    <table id="notice1" lay-filter="test1"></table>
+    <form class="layui-form" id="tf">
+    <div class="layui-form-item">
+    <label class="layui-form-label">删除公告</label>
+    <div class="layui-input-block">
+      <input type="text" name="nid" required  lay-verify="required" placeholder="请输入想删除公告的nid" autocomplete="off" class="layui-input">
+    </div>
+    </div>
+     <div class="layui-form-item">
+    <div class="layui-input-block">
+      <button type="button" class="layui-btn" onclick="javascript:a()">确定</button>
+      <button type="reset" class="layui-btn layui-btn-primary">取消</button>
+    </div>
+    </div>
+    </form>
+    </div>
+    
+    <div id="trade" style="display:none"><table id="trade1" lay-filter="test2"></table>
+    <form class="layui-form" id="tf1">
+    <div class="layui-form-item">
+    <label class="layui-form-label">查询订单</label>
+    <div class="layui-input-block">
+      <input type="text" name="unionid" required lay-verify="required" placeholder="请输入想查询的unionid" autocomplete="off" class="layui-input">
+    </div>
+    </div>
+     <div class="layui-form-item">
+    <div class="layui-input-block">
+      <button type="button" class="layui-btn" onclick="javascript:b()">确定</button>
+      <button type="reset" class="layui-btn layui-btn-primary">取消</button>
+    </div>
+    </div>
+    </form>
+    <form class="layui-form" id="tf2">
+    <div class="layui-form-item">
+    <label class="layui-form-label">查询订单</label>
+    <div class="layui-input-block">
+      <input type="text" name="time" required lay-verify="required" placeholder="请输入想查询的时间" autocomplete="off" class="layui-input">
+    </div>
+    </div>
+     <div class="layui-form-item">
+    <div class="layui-input-block">
+      <button type="button" class="layui-btn" onclick="javascript:b1()">确定</button>
+      <button type="reset" class="layui-btn layui-btn-primary">取消</button>
+    </div>
+    </div>
+    </form>
+    </div>
+    
+    <div id="hr" style="display:none"><table id="hr1" lay-filter="test3"></table>
+    <div>完成认证</div>
+    <div>您的认证材料有误，请重新提交材料</div>
+    <form class="layui-form" id="tf3">
+    <div class="layui-form-item">
+    <label class="layui-form-label">查询HR验证状态</label>
+    <div class="layui-input-block">
+      <input type="text" name="phone" required lay-verify="required" placeholder="请输入想查询的手机号" autocomplete="off" class="layui-input">
+    </div>
+    </div>
+    <div class="layui-form-item">
+    <div class="layui-input-block">
+      <button type="button" class="layui-btn" onclick="javascript:c()">确定</button>
+      <button type="reset" class="layui-btn layui-btn-primary">取消</button>
+    </div>
+    </div>
+    </form>
+    <div>图片验证区：</div>
+    <img id="headimgur" src="?" style="width:300px;height:400px">
+    </div>
+      
+    <div id="refund" style="display:none"><table id="refund1" lay-filter="test4"></table>
+    <form class="layui-form" id="tf4">
+    <div class="layui-form-item">
+    <label class="layui-form-label">请输入订单号</label>
+    <div class="layui-input-block">
+      <input type="text" name="out_trade_no" required  lay-verify="required" placeholder="请输入订单号" autocomplete="off" class="layui-input">
+    </div>
+    </div>          
+    <div class="layui-form-item">
+    <div class="layui-input-block">
+      <button type="button" class="layui-btn" onclick="javascript:d()">确定</button>
+      <button type="reset" class="layui-btn layui-btn-primary">取消</button>
+    </div>
+    </div>
+    </form>        
+    </div>
+    
+    
+    <div id="cv" style="display:none"><table id="cv1" lay-filter="test5"></table>
+    <form class="layui-form" id="tf5">
+    <div class="layui-form-item">
+    <label class="layui-form-label">简历ID</label>
+    <div class="layui-input-block">
+      <input type="text" name="modelid" required  lay-verify="required" placeholder="请输入简历ID" autocomplete="off" class="layui-input">
+    </div>
+    </div>
+    <div class="layui-form-item">
+    <label class="layui-form-label">简历名称</label>
+    <div class="layui-input-block">
+      <input type="text" name="name" required  lay-verify="required" placeholder="请输入简历名称" autocomplete="off" class="layui-input">
+    </div>
+    </div>
+    <div class="layui-form-item">
+    <label class="layui-form-label">简历尺寸</label>
+    <div class="layui-input-block">
+      <input type="text" name="size" required  lay-verify="required" placeholder="请输入简历尺寸" autocomplete="off" class="layui-input">
+    </div>
+    </div>
+    <div class="layui-form-item">
+    <label class="layui-form-label">简历颜色</label>
+    <div class="layui-input-block">
+      <input type="text" name="color" required  lay-verify="required" placeholder="请输入简历颜色" autocomplete="off" class="layui-input">
+    </div>
+    </div>
+    <div class="layui-form-item">
+    <label class="layui-form-label">简历语言</label>
+    <div class="layui-input-block">
+      <input type="radio" name="language" value="中文" title="中文" checked>
+      <input type="radio" name="language" value="英文" title="英文">
+    </div>
+    </div>
+    <div class="layui-form-item">
+    <label class="layui-form-label">简历格式</label>
+    <div class="layui-input-block">
+      <input type="text" name="format" required  lay-verify="required" placeholder="请输入简历格式" autocomplete="off" class="layui-input">
+    </div>
+    </div>
+    <div class="layui-form-item">
+    <label class="layui-form-label">简历价格</label>
+    <div class="layui-input-block">
+      <input type="text" name="price" required  lay-verify="required" placeholder="请输入简历价格" autocomplete="off" class="layui-input">
+    </div>
+    </div>
+    <div class="layui-form-item">
+    <label class="layui-form-label">简历设计师</label>
+    <div class="layui-input-block">
+      <input type="text" name="designer" required  lay-verify="required" placeholder="请输入简历设计师" autocomplete="off" class="layui-input">
+    </div>
+    </div>
+    <div class="layui-form-item">
+    <label class="layui-form-label">简历关键字</label>
+    <div class="layui-input-block">
+      <input type="text" name="class" required  lay-verify="required" placeholder="请输入简历关键字" autocomplete="off" class="layui-input">
+    </div>
+    </div>
+    <div class="layui-form-item">
+    <label class="layui-form-label">简历简介</label>
+    <div class="layui-input-block">
+      <input type="text" name="brief" required  lay-verify="required" placeholder="请输入简历简介" autocomplete="off" class="layui-input">
+    </div>
+    </div>  
+    <div class="layui-form-item">
+    <label class="layui-form-label">简历缩略图</label>
+    <div class="layui-input-block">
+      <input type="file" name="imgurl" />
+    </div>
+    </div>
+    <div class="layui-form-item">
+    <label class="layui-form-label">简历文档</label>
+    <div class="layui-input-block">
+      <input type="file" name="modeldownload" />
+    </div>
+    </div>
+    <div class="layui-form-item">
+    <label class="layui-form-label">简历展示图</label>
+    <div class="layui-input-block">
+      <input type="file" name="cssstyle" />
+    </div>
+    </div>            
+    <div class="layui-form-item">
+    <div class="layui-input-block">
+      <button type="button" class="layui-btn" onclick="javascript:e()">确定</button>
+      <button type="reset" class="layui-btn layui-btn-primary">取消</button>
+    </div>
+    </div>
+    </form>          
+    </div> 
+    
+    
+    
+    
+    <div id="changecv" style="display:none"><table id="changecv1" lay-filter="test7"></table>
+    <form class="layui-form" id="tf7">
+    <div class="layui-form-item">
+    <label class="layui-form-label">简历ID</label>
+    <div class="layui-input-block">
+      <input type="text" name="modelid" required  lay-verify="required" placeholder="请输入简历ID" autocomplete="off" class="layui-input">
+    </div>
+    </div>
+    <div class="layui-form-item">
+    <label class="layui-form-label">简历名称</label>
+    <div class="layui-input-block">
+      <input type="text" name="name" required  lay-verify="required" placeholder="请输入简历名称" autocomplete="off" class="layui-input">
+    </div>
+    </div>
+    <div class="layui-form-item">
+    <label class="layui-form-label">简历设计师</label>
+    <div class="layui-input-block">
+      <input type="text" name="designer" required  lay-verify="required" placeholder="请输入简历设计师" autocomplete="off" class="layui-input">
+    </div>
+    </div>
+    <div class="layui-form-item">
+    <label class="layui-form-label">简历缩略图</label>
+    <div class="layui-input-block">
+      <input type="file" name="imgurl" />
+    </div>
+    </div>
+    <div class="layui-form-item">
+    <label class="layui-form-label">简历css样式</label>
+    <div class="layui-input-block">
+      <input type="file" name="cssstyle" />
+    </div>
+    </div>            
+    <div class="layui-form-item">
+    <div class="layui-input-block">
+      <button type="button" class="layui-btn" onclick="javascript:g()">确定</button>
+      <button type="reset" class="layui-btn layui-btn-primary">取消</button>
+    </div>
+    </div>
+    </form>          
+    </div>
+    
+    
+    
+    <div id="company" style="display:none"><table id="company1" lay-filter="test6"></table>
+    <div>完成认证</div>
+    <div>您的认证材料有误，请重新提交材料</div>
+    <form class="layui-form" id="tf6">
+    <div class="layui-form-item">
+    <label class="layui-form-label">查询企业管理员验证状态</label>
+    <div class="layui-input-block">
+      <input type="text" name="phone" required lay-verify="required" placeholder="请输入想查询的手机号" autocomplete="off" class="layui-input">
+    </div>
+    </div>
+    <div class="layui-form-item">
+    <div class="layui-input-block">
+      <button type="button" class="layui-btn" onclick="javascript:f()">确定</button>
+      <button type="reset" class="layui-btn layui-btn-primary">取消</button>
+    </div>
+    </div>
+    </form>
+    <div>图片验证区：</div>
+    <img id="cert_company" src="?" style="width:300px;height:400px">
+    </div>              
+  </div>
+  
+  <div class="layui-footer">
+    <!-- 底部固定区域 -->
+    © layui.com - 底部固定区域
+  </div>
+</div>
+<script type="text/javascript" charset="utf-8">  
+var user = document.getElementById("user");
+var notice = document.getElementById("notice");
+var trade = document.getElementById("trade"); 
+var hr = document.getElementById("hr");    
+var refund = document.getElementById("refund");    
+var cv = document.getElementById("cv"); 
+var changecv = document.getElementById("changecv");
+var company = document.getElementById("company");
+    
+    
+var tablent;
+var tabletd;
+var tablerf;
+var tablehr;
+var tablecv;
+var tablecc;    
+var tablecp;    
+    
+layui.use('element', function(){
+  var element = layui.element;
+});
+layui.use('table', function(){
+  var table = layui.table;
+  var layer = layui.layer;
+  
+  //第一个实例
+  table.render({
+    elem: '#user1'
+    ,height: 315
+    ,url: 'http://www.runjianli.com/index.php/index/super_manager/viewuser' //数据接口
+    ,page: false //开启分页
+    ,cols: [[ //表头
+       {field: 'unionid', title: 'UNIONID', width:280, sort: true, fixed: 'left'}
+      ,{field: 'nickname', title: 'NICKNAME', width:135,event:'setnickname',style:'cursor:pointer;'}
+      ,{field: 'sex', title: 'SEX', width:80, event:'setsex',style:'cursor:pointer;',sort: true}
+      ,{field: 'city', title: 'CITY', width:80,event:'setcity',style:'cursor:pointer;'} 
+      ,{field: 'usertype', title: 'USERTYPE', width: 135,event:'setusertype',style:'cursor:pointer;',sort: true}
+      ,{field: 'valid', title: 'VALID', width: 100,event:'setvalid',style:'cursor:pointer;',sort: true}
+    ]]
+  });
+
+  table.on('tool(test)',function(obj){
+	var data = obj.data;
+	if(obj.event === 'setnickname'){
+		layer.prompt({
+			formType:2,
+			title:'修改UNIONID为['+data.unionid+']的NICKNAME',
+			value:data.nickname
+		},function(value,index){
+			layer.close(index);
+			obj.update({
+				nickname:value
+			});
+			$.ajax({  
+            type: "post",  
+            url: "http://www.runjianli.com/index.php/index/super_manager/nicknamechange",
+			dataType: "text",
+data:{"unionid":data.unionid,"nickname":value},			
+            success: function(data){  
+           alert("123"); 
+            },  
+			error: function(jqXHR, textStatus, errorThrown){  
+                         alert(jqXHR.responseText);
+		alert(jqXHR.status);
+		alert(jqXHR.readyState);
+		alert(jqXHR.statusText);
+		alert(textStatus);
+		alert(errorThrown); }
+        })  
+});
+	}
+
+
+	if(obj.event === 'setsex'){
+		layer.prompt({
+			formType:2,
+			title:'修改UNIONID为['+data.unionid+']的SEX',
+			value:data.sex
+		},function(value,index){
+			layer.close(index);
+			obj.update({
+				sex:value
+			});
+			$.ajax({  
+            type: "post",  
+            url: "http://www.runjianli.com/index.php/index/super_manager/sexchange",
+			dataType: "text",
+data:{"unionid":data.unionid,"sex":value},			
+            success: function(data){  
+           alert("123"); 
+            },  
+			error: function(jqXHR, textStatus, errorThrown){  
+                         alert(jqXHR.responseText);
+		alert(jqXHR.status);
+		alert(jqXHR.readyState);
+		alert(jqXHR.statusText);
+		alert(textStatus);
+		alert(errorThrown); }
+        })  
+});
+	}
+	
+if(obj.event === 'setcity'){
+		layer.prompt({
+			formType:2,
+			title:'修改UNIONID为['+data.unionid+']的CITY',
+			value:data.city
+		},function(value,index){
+			layer.close(index);
+			obj.update({
+				city:value
+			});
+			$.ajax({  
+            type: "post",  
+            url: "http://www.runjianli.com/index.php/index/super_manager/citychange",
+			dataType: "text",
+            data:{"unionid":data.unionid,"city":value},			
+            success: function(data){  
+           alert("123"); 
+            },  
+			error: function(jqXHR, textStatus, errorThrown){  
+                         alert(jqXHR.responseText);
+		alert(jqXHR.status);
+		alert(jqXHR.readyState);
+		alert(jqXHR.statusText);
+		alert(textStatus);
+		alert(errorThrown); }
+        })  
+});
+	}	
+
+	
+if(obj.event === 'setusertype'){
+		layer.prompt({
+			formType:2,
+			title:'修改UNIONID为['+data.unionid+']的USERTYPE',
+			value:data.usertype
+		},function(value,index){
+			layer.close(index);
+			obj.update({
+				usertype:value
+			});
+			$.ajax({  
+            type: "post",  
+            url: "http://www.runjianli.com/index.php/index/super_manager/usertypechange",
+			dataType: "text",
+            data:{"unionid":data.unionid,"usertype":value},			
+            success: function(data){  
+           alert("123"); 
+            },  
+			error: function(jqXHR, textStatus, errorThrown){  
+                         alert(jqXHR.responseText);
+        alert(jqXHR.status);
+		alert(jqXHR.readyState);
+		alert(jqXHR.statusText);
+		alert(textStatus);
+		alert(errorThrown); }
+        })  
+});
+	}
+
+if(obj.event === 'setvalid'){
+		layer.prompt({
+			formType:2,
+			title:'修改UNIONID为['+data.unionid+']的VALID',
+			value:data.valid
+		},function(value,index){
+			layer.close(index);
+			obj.update({
+				valid:value
+			});
+			$.ajax({  
+            type: "post",  
+            url: "http://www.runjianli.com/index.php/index/super_manager/validchange",
+			dataType: "text",
+            data:{"unionid":data.unionid,"valid":value},			
+            success: function(data){  
+            alert("123"); 
+            },  
+			error: function(jqXHR, textStatus, errorThrown){  
+                         alert(jqXHR.responseText);
+		alert(jqXHR.status);
+		alert(jqXHR.readyState);
+		alert(jqXHR.statusText);
+		alert(textStatus);
+		alert(errorThrown); }
+        })  
+});
+	}		
+		
+});	
+  
+});
+
+
+function createnotice()
+{	
+	layui.use('layer', function(){
+  	
+	layer.open({
+                   	type: 2,
+                    closeBtn: false,
+                    shift: 2,
+                    shadeClose: true,
+			        title:'请填写公告内容',
+			        scrollbar: false,
+			        area: ['900px', '500px'],
+                    content:'createnotice.html' ,	  	
+	           });
+	});
+}
+
+    
+
+function deletenotice()
+{
+hr.setAttribute("style","display:none");    
+user.setAttribute("style","display:none");
+trade.setAttribute("style","display:none");
+refund.setAttribute("style","display:none");
+cv.setAttribute("style","display:none");
+changecv.setAttribute("style","display:none");
+company.setAttribute("style","display:none");    
+notice.setAttribute("style","display:block");     
+layui.use('table', function(){
+    var table = layui.table;
+    var layer = layui.layer;    
+    tablent = table.render({
+    elem: '#notice1'
+    ,height: 315
+    ,url: 'http://www.runjianli.com/index.php/index/super_manager/viewnotice' //数据接口
+    ,page: false //开启分页
+    ,cols: [[ //表头
+       {field: 'nid', title: 'NID', width:80, sort: true, fixed: 'left'}
+      ,{field: 'date', title: '时间', width:135}
+      ,{field: 'title', title: '标题', width:80}
+      ,{field: 'brief', title: '简述', width:80}    
+      ,{field: 'content', title: '内容', width:80} 
+    ]]
+    });
+});        
+}
+
+function a()
+{
+    	$.ajax({  
+            type: "post",  
+            url: "http://www.runjianli.com/index.php/index/super_manager/noticede",
+			dataType: "text",
+            data:$('#tf').serialize(),		
+            success: function(data){  
+                alert("删除成功");
+                tablent.reload({
+                    page: {
+                        curr: 1 //重新从第 1 页开始
+                    }
+                });
+            },  
+			error: function(jqXHR, textStatus, errorThrown){  
+                  alert(jqXHR.responseText);
+		          alert(jqXHR.status);
+		          alert(jqXHR.readyState);
+		          alert(jqXHR.statusText);
+		          alert(textStatus);
+		          alert(errorThrown); }
+        })  
+}
+function b()
+{
+        $.ajax({  
+            type: "post",  
+            url: "http://www.runjianli.com/index.php/user/trade_run/unionidtrade",
+			dataType: "json",
+            data:$('#tf1').serialize(),		
+            success: function(data){  
+                layui.use('table', function(){
+                var table = layui.table;
+                var layer = layui.layer;    
+                table.render({
+                elem: '#trade1'
+                ,height: 315
+                ,data: data//数据接口
+                ,page: false //开启分页
+                ,cols: [[ //表头
+                {field: 'unionid', title: '用户标识', width:280, fixed: 'left'}  
+                ,{field: 'out_trade_no', title: '订单号', width:280}
+                ,{field: 'total_fee', title: '金额', width:135}
+                ,{field: 'body', title: '产品', width:80}
+                ,{field: 'time', title: '时间', width:180}
+                ,{field: 'pay_id', title: '支付状态', width:180}
+                ]]
+                });  
+                });  
+            },  
+			error: function(jqXHR, textStatus, errorThrown){  
+                  alert(jqXHR.responseText);
+		          alert(jqXHR.status);
+		          alert(jqXHR.readyState);
+		          alert(jqXHR.statusText);
+		          alert(textStatus);
+		          alert(errorThrown); }
+        })
+}
+function b1()
+{
+     $.ajax({  
+            type: "post",  
+            url: "http://www.runjianli.com/index.php/user/trade_run/timetrade",
+			dataType: "json",
+            data:$('#tf2').serialize(),		
+            success: function(data){  
+                layui.use('table', function(){
+                var table = layui.table;
+                var layer = layui.layer;    
+                table.render({
+                elem: '#trade1'
+                ,height: 315
+                ,data: data//数据接口
+                ,page: false //开启分页
+                ,cols: [[ //表头
+                {field: 'unionid', title: '用户标识', width:280, fixed: 'left'}  
+                ,{field: 'out_trade_no', title: '订单号', width:280}
+                ,{field: 'total_fee', title: '金额', width:135}
+                ,{field: 'body', title: '产品', width:80}
+                ,{field: 'time', title: '时间', width:180}
+                ,{field: 'pay_id', title: '支付状态', width:180}
+                ]]
+                });  
+                });  
+            },  
+			error: function(jqXHR, textStatus, errorThrown){  
+                  alert(jqXHR.responseText);
+		          alert(jqXHR.status);
+		          alert(jqXHR.readyState);
+		          alert(jqXHR.statusText);
+		          alert(textStatus);
+		          alert(errorThrown); }
+        })
+}    
+function c()
+{    
+     $.ajax({  
+            type: "post",  
+            url: "http://www.runjianli.com/index.php/index/super_manager/view_HR_phone",
+			dataType: "json",
+            data:$('#tf3').serialize(),		
+            success: function(data){  
+                layui.use('table', function(){
+                var table = layui.table;
+                var layer = layui.layer;    
+                table.render({
+                elem: '#hr1'
+                ,height: 315
+                ,data: data//数据接口
+                ,page: false //开启分页
+                ,cols: [[ //表头
+                      {field: 'phone', title: '手机号', width:180}  
+                      ,{field: 'status', title: '平台认证状态', width:180, event:'setstatus',style:'cursor:pointer;'}
+                      ,{field: 'headimgur', title: 'HR个人头像', width:180, event:'viewheadimgur',style:'cursor:pointer;'}
+                      ,{field: 'R_id', title: 'HR身份证', width:180, event:'viewR_id',style:'cursor:pointer;'}
+                      ,{field: 'c_cert', title: '公司证明', width:180, event:'viewc_cert',style:'cursor:pointer;'}
+                ]]
+                });
+                table.on('tool(test3)',function(obj){
+	var data1 = obj.data;
+	if(obj.event === 'setstatus'){
+		layer.prompt({
+			formType:2,
+			title:'修改UNIONID为['+data1.phone+']的NICKNAME',
+			value:data1.status
+		},function(value,index){
+			layer.close(index);
+			obj.update({
+				status:value
+			});
+			$.ajax({  
+            type: "post",  
+            url: "http://www.runjianli.com/index.php/cert/cert/cert_o",
+			dataType: "text",
+            data:{"phone":data1.phone,"status":value},			
+            success: function(data){  
+            alert(data); 
+            },  
+			error: function(jqXHR, textStatus, errorThrown){  
+                  alert(jqXHR.responseText);
+		          alert(jqXHR.status);
+		          alert(jqXHR.readyState);
+		  alert(jqXHR.statusText);
+		alert(textStatus);
+		alert(errorThrown); }
+        })  
+        });
+	}
+	if(obj.event === 'viewheadimgur'){
+        var data = obj.data;
+		var headimgur = document.getElementById("headimgur");
+        var str = "../photo/" + data.headimgur;
+        headimgur.src = str;
+	}
+    if(obj.event === 'viewR_id'){
+        var data = obj.data;
+		var headimgur = document.getElementById("headimgur");
+        var str = "../photo/" + data.R_id;
+        headimgur.src = str;
+	}
+    if(obj.event === 'viewc_cert'){
+        var data = obj.data;
+		var headimgur = document.getElementById("headimgur");
+        var str = "../photo/" + data.c_cert;
+        headimgur.src = str;
+	}                   
+        });    
+                    
+                    
+                    
+                    
+                });
+               
+            },  
+			error: function(jqXHR, textStatus, errorThrown){  
+                  alert(jqXHR.responseText);
+		          alert(jqXHR.status);
+		          alert(jqXHR.readyState);
+		          alert(jqXHR.statusText);
+		          alert(textStatus);
+		          alert(errorThrown); }
+        })
+}
+function d()
+{    
+    $.ajax({  
+            type: "post",  
+            url: "http://www.runjianli.com/index.php/user/user_info/refund",
+			dataType: "text",
+            data:$('#tf4').serialize(),		
+            success: function(data){  
+                alert("退款成功");
+                tablerf.reload({
+                    page: {
+                        curr: 1 //重新从第 1 页开始
+                    }
+                });
+            },  
+			error: function(jqXHR, textStatus, errorThrown){  
+                  alert(jqXHR.responseText);
+		          alert(jqXHR.status);
+		          alert(jqXHR.readyState);
+		          alert(jqXHR.statusText);
+		          alert(textStatus);
+		          alert(errorThrown); }
+        })
+
+}
+var index;//用来关闭load层
+layui.use('layer', function(){    
+    var layer = layui.layer;
+})    
+function e()
+{    
+    $.ajax({  
+            type: "post",  
+            url: "http://www.runjianli.com/index.php/cv/model/CreModel",
+			dataType: "text",
+            data:new FormData(document.getElementById("tf5")),
+            processData:false,
+            contentType:false,
+            beforeSend:function(){
+                index = layer.load();
+            },
+            success: function(data){  
+                tablecv.reload({
+                });
+                if(data == 0)
+                {    
+                    alert("该简历编号已存在，请检查后重试！");
+                    layer.close(index);
+                }
+                else
+                {    
+                    alert("插入成功");
+                    layer.close(index);
+                }
+            },  
+			error: function(jqXHR, textStatus, errorThrown){  
+                  alert(jqXHR.responseText);
+		          alert(jqXHR.status);
+		          alert(jqXHR.readyState);
+		          alert(jqXHR.statusText);
+		          alert(textStatus);
+		          alert(errorThrown); }
+        })
+}
+function g()
+{    
+    $.ajax({  
+            type: "post",  
+            url: "http://www.runjianli.com/index.php/cv/model/CreChangeModel",
+			dataType: "text",
+            data:new FormData(document.getElementById("tf7")),
+            processData:false,
+            contentType:false,
+            success: function(data){  
+                tablecc.reload({
+                });
+                if(data == 0)
+                {    
+                    alert("该简历编号已存在，请检查后重试！");
+                }
+                else
+                {    
+                    alert("插入成功");
+                }
+            },  
+			error: function(jqXHR, textStatus, errorThrown){  
+                  alert(jqXHR.responseText);
+		          alert(jqXHR.status);
+		          alert(jqXHR.readyState);
+		          alert(jqXHR.statusText);
+		          alert(textStatus);
+		          alert(errorThrown); }
+        })
+}    
+function f()
+{    
+     $.ajax({  
+            type: "post",  
+            url: "http://www.runjianli.com/index.php/index/super_manager/view_company_phone",
+			dataType: "json",
+            data:$('#tf6').serialize(),		
+            success: function(data){  
+                layui.use('table', function(){
+                var table = layui.table;
+                var layer = layui.layer;    
+                table.render({
+                elem: '#company1'
+                ,height: 315
+                ,data: data//数据接口
+                ,page: false //开启分页
+                ,cols: [[ //表头
+                      {field: 'phone', title: '手机号', width:180}  
+                      ,{field: 'status', title: '平台认证状态', width:180, event:'setstatus',style:'cursor:pointer;'}
+                      ,{field: 'cert_company', title: '公司营业执照', width:180, event:'viewcompany_cert',style:'cursor:pointer;'}
+                      ,{field: 'id_card_photo', title: '身份证正面', width:180, event:'viewid_card_photo',style:'cursor:pointer;'} 
+                      ,{field: 'id_card_photo_negative', title: '身份证背面', width:180, event:'viewid_card_photo_negative',style:'cursor:pointer;'}
+                ]]
+                });
+                table.on('tool(test6)',function(obj){
+	var data1 = obj.data;
+	if(obj.event === 'setstatus'){
+		layer.prompt({
+			formType:2,
+			title:'修改UNIONID为['+data1.phone+']的NICKNAME',
+			value:data1.status
+		},function(value,index){
+			layer.close(index);
+			obj.update({
+				status:value
+			});
+			$.ajax({  
+            type: "post",  
+            url: "http://www.runjianli.com/index.php/cert/company_cert/cert_companycert_op",
+			dataType: "text",
+            data:{"phone":data1.phone,"status":value},			
+            success: function(data){  
+                alert(data); 
+            },  
+			error: function(jqXHR, textStatus, errorThrown){  
+                  alert(jqXHR.responseText);
+		          alert(jqXHR.status);
+		          alert(jqXHR.readyState);
+		  alert(jqXHR.statusText);
+		alert(textStatus);
+		alert(errorThrown); }
+        })  
+        });
+	}
+	if(obj.event === 'viewcompany_cert'){
+        var data = obj.data;
+		var cert_company = document.getElementById("cert_company");
+        var str = "../photo/" + data.cert_company;
+        cert_company.src = str;
+	}
+    if(obj.event === 'viewid_card_photo'){
+        var data = obj.data;
+		var cert_company = document.getElementById("cert_company");
+        var str = "../photo/" + data.id_card_photo;
+        cert_company.src = str;
+	}
+    if(obj.event === 'viewid_card_photo_negative'){
+        var data = obj.data;
+		var cert_company = document.getElementById("cert_company");
+        var str = "../photo/" + data.id_card_photo_negative;
+        cert_company.src = str;
+	}                
+    });    
+                    
+                    
+                    
+                    
+                });
+               
+            },  
+			error: function(jqXHR, textStatus, errorThrown){  
+                  alert(jqXHR.responseText);
+		          alert(jqXHR.status);
+		          alert(jqXHR.readyState);
+		          alert(jqXHR.statusText);
+		          alert(textStatus);
+		          alert(errorThrown); }
+        })
+}    
+
+    
+    
+    
+
+function viewuser()
+{
+    hr.setAttribute("style","display:none");
+    trade.setAttribute("style","display:none");
+    notice.setAttribute("style","display:none");
+    refund.setAttribute("style","display:none");
+    cv.setAttribute("style","display:none");
+    changecv.setAttribute("style","display:none");
+    company.setAttribute("style","display:none");    
+    user.setAttribute("style","display:block"); 
+}
+
+function viewtrade()
+{
+    hr.setAttribute("style","display:none");
+    user.setAttribute("style","display:none");
+    notice.setAttribute("style","display:none");
+    refund.setAttribute("style","display:none");
+    cv.setAttribute("style","display:none");
+    changecv.setAttribute("style","display:none");
+    company.setAttribute("style","display:none");
+    trade.setAttribute("style","display:block");
+    layui.use('table', function(){
+    var table = layui.table;
+    var layer = layui.layer;    
+    tabletd = table.render({
+    elem: '#trade1'
+    ,height: 315
+    ,url: 'http://www.runjianli.com/index.php/user/trade_run/viewtrade' //数据接口
+    ,page: false //开启分页
+    ,cols: [[ //表头
+      {field: 'unionid', title: '用户标识', width:280, fixed: 'left'}  
+      ,{field: 'out_trade_no', title: '订单号', width:280}
+      ,{field: 'total_fee', title: '金额', width:135}
+      ,{field: 'body', title: '产品', width:80}
+      ,{field: 'time', title: '时间', width:180}
+      ,{field: 'pay_id', title: '支付状态', width:180}
+    ]]
+    });  
+    });        
+}
+    
+function viewhr()
+{    
+    trade.setAttribute("style","display:none");
+    user.setAttribute("style","display:none");
+    notice.setAttribute("style","display:none");
+    refund.setAttribute("style","display:none");
+    cv.setAttribute("style","display:none");
+    changecv.setAttribute("style","display:none");
+    company.setAttribute("style","display:none");
+    hr.setAttribute("style","display:block");
+    layui.use('table', function(){
+    var table = layui.table;
+    var layer = layui.layer;    
+    tablehr = table.render({
+    elem: '#hr1'
+    ,height: 315
+    ,url: 'http://www.runjianli.com/index.php/index/super_manager/view_HR' //数据接口
+    ,page: false //开启分页
+    ,cols: [[ //表头
+      {field: 'user_id', title: '用户标识', width:280, fixed: 'left'}  
+      ,{field: 'nickname', title: '昵称', width:180}
+      ,{field: 'career', title: '职业', width:135}
+      ,{field: 'service_type', title: '服务类型', width:80}
+      ,{field: 'service_direction', title: '服务方向', width:180}
+      ,{field: 'summary', title: '个人简介', width:180}
+      ,{field: 'phone', title: '手机号', width:180}
+      ,{field: 'evaluate', title: '评价星级', width:180}
+      ,{field: 'number_s', title: '服务人数', width:180}
+      ,{field: 'email', title: '邮箱', width:180} 
+      ,{field: 'wx_n', title: '微信号', width:180}
+      ,{field: 'name', title: '真实姓名', width:180}
+      ,{field: 'status', title: '平台认证状态', width:180}
+      ,{field: 'out_trade_no', title: '订单号', width:180}     
+    ]]
+    });  
+    });     
+}
+function viewrefund()
+{    
+    trade.setAttribute("style","display:none");
+    user.setAttribute("style","display:none");
+    notice.setAttribute("style","display:none");
+    cv.setAttribute("style","display:none");
+    changecv.setAttribute("style","display:none");
+    hr.setAttribute("style","display:none");
+    company.setAttribute("style","display:none");
+    refund.setAttribute("style","display:block");
+    layui.use('table', function(){
+    var table = layui.table;
+    var layer = layui.layer;    
+    tablerf = table.render({
+    elem: '#refund1'
+    ,height: 315
+    ,url: 'http://www.runjianli.com/index.php/index/super_manager/viewrefund' //数据接口
+    ,page: false //开启分页
+    ,cols: [[ //表头
+      {field: 'user_id', title: '用户标识', width:280, fixed: 'left'}  
+      ,{field: 'out_trade_no', title: '订单号', width:280}
+      ,{field: 'total_fee', title: '金额', width:135}
+      ,{field: 'summary', title: '退款原由', width:180}
+      ,{field: 'status', title: '支付状态', width:180}
+    ]]
+    });  
+    });    
+}
+    
+    
+function insertcv()
+{    
+    trade.setAttribute("style","display:none");
+    user.setAttribute("style","display:none");
+    notice.setAttribute("style","display:none");
+    refund.setAttribute("style","display:none"); 
+    hr.setAttribute("style","display:none");
+    company.setAttribute("style","display:none");
+    changecv.setAttribute("style","display:none");
+    cv.setAttribute("style","display:block");
+    layui.use('table', function(){
+    var table = layui.table;
+    var layer = layui.layer;    
+    tablecv = table.render({
+    elem: '#cv1'
+    ,height: 315
+    ,url: 'http://www.runjianli.com/index.php/cv/model/GetModel' //数据接口
+    ,page: false //开启分页
+    ,cols: [[ //表头
+      {field: 'modelid', title: '简历标识', width:80, fixed: 'left'}  
+      ,{field: 'name', title: '简历名称', width:80}
+      ,{field: 'size', title: '简历尺寸', width:80}
+      ,{field: 'color', title: '简历颜色', width:80}
+      ,{field: 'language', title: '简历语言', width:80}
+      ,{field: 'cdate', title: '上传时间', width:80}
+      ,{field: 'format', title: '简历格式', width:80}
+      ,{field: 'price', title: '简历价格', width:80}
+      ,{field: 'usedtimes', title: '使用次数', width:80}
+      ,{field: 'notailsweb', title: '简历详情网址', width:180}    
+    ]]
+    });  
+    });    
+}
+    
+function insertchangecv()
+{    
+    trade.setAttribute("style","display:none");
+    user.setAttribute("style","display:none");
+    notice.setAttribute("style","display:none");
+    refund.setAttribute("style","display:none"); 
+    hr.setAttribute("style","display:none");
+    company.setAttribute("style","display:none");
+    cv.setAttribute("style","display:none");
+    changecv.setAttribute("style","display:block");
+    layui.use('table', function(){
+    var table = layui.table;
+    var layer = layui.layer;    
+    tablecc = table.render({
+    elem: '#changecv1'
+    ,height: 315
+    ,url: 'http://www.runjianli.com/index.php/cv/model/GetChangeModel' //数据接口
+    ,page: false //开启分页
+    ,cols: [[ //表头
+      {field: 'modelid', title: '简历标识', width:80, fixed: 'left'}  
+      ,{field: 'name', title: '简历名称', width:80}
+    ]]
+    });  
+    });    
+}    
+    
+function viewcompany()
+{    
+    trade.setAttribute("style","display:none");
+    user.setAttribute("style","display:none");
+    notice.setAttribute("style","display:none");
+    refund.setAttribute("style","display:none");
+    cv.setAttribute("style","display:none");
+    hr.setAttribute("style","display:none");
+    changecv.setAttribute("style","display:none");
+    company.setAttribute("style","display:block");
+    layui.use('table', function(){
+    var table = layui.table;
+    var layer = layui.layer;    
+    tablehr = table.render({
+    elem: '#company1'
+    ,height: 315
+    ,url: 'http://www.runjianli.com/index.php/index/super_manager/viewcompany' //数据接口
+    ,page: false //开启分页
+    ,cols: [[ //表头
+      {field: 'user_id', title: '企业管理员标识', width:280, fixed: 'left'}  
+      ,{field: 'company', title: '公司名', width:180}
+      ,{field: 'name', title: '公司法人代表', width:135}
+      ,{field: 'id_card', title: '法人身份证号', width:80}
+      ,{field: 'address', title: '公司所在地', width:180}
+      ,{field: 'credit_code', title: '公司社会统一信用代码', width:180}
+      ,{field: 'phone', title: '客服电话', width:180}
+      ,{field: 'email', title: '公司邮箱', width:180}
+      ,{field: 'cert_company', title: '公司营业执照', width:180}
+      ,{field: 'id_card_photo', title: '身份证正面', width:180} 
+      ,{field: 'id_card_photo_negative', title: '身份证背面', width:180}
+      ,{field: 'pay_id', title: '支付状态', width:180}
+      ,{field: 'status', title: '平台认证状态', width:180}
+      ,{field: 'out_trade_no', title: '订单号', width:180}     
+    ]]
+    });  
+    });     
+}    
+    
+</script>
+</body>
+</html>

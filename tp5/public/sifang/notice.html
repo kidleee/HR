@@ -1,0 +1,100 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<title>公告</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="imagetoolbar" content="no" />
+<link rel="stylesheet" href="styles/layout.css" type="text/css" />
+<script src="layer-v3.1.1/layer-v3.1.1/layer/layer.js" type="text/javascript" charset="utf-8"></script>
+<script src="layui-v2.2.6/layui-v2.2.6/layui/layui.js" type="text/javascript" charset="utf-8"></script>
+<script src="jquery.js" type="text/javascript"></script>
+<script src="jqui/jqui/jquery-ui.js"></script>    
+</head>
+<body id="toWp">
+<div class="wrapper col2">
+  <div id="header">
+    <div id="logo">
+      <h1><a href="#">润简历</a></h1>
+      <p>全国领先的简历创意服务平台</p>
+    </div>
+    <div id="topnav">
+      <ul>
+        <li class="active"><a href="user.html">在线制作</a></li>
+        <li><a href="viewmodel.html">模板商城</a></li>
+        <li><a href="howtohr.html">HR之旅</a></li>
+        <li><a href="mademodelindex.html">模板定制</a></li>
+        <li class="last"><a href="aboutus.html">关于我们</a></li>
+      </ul>
+    </div>
+    <br class="clear" />
+  </div>
+</div>
+<div class="wrapper col3">
+  <div id="breadcrumb">
+    <ul>
+      <li class="first">公告历史浏览</li>
+      <li>&#187;</li>
+    </ul>
+  </div>
+</div>
+<div class="wrapper col4">
+  <div id="container">
+    <div id="services">
+      <ul>
+        <li class="last">
+          <h2><span>公告标题：</span><span id="title"></span></h2>
+          <p><span>发布日期：</span><span id="time"></span></p> 
+          <div class="imgholder" id="content"></div>    
+          <p class="more"><a href="http://www.runjianli.com/sifang/noticeindex.html">返回上层 &raquo;</a></p>
+        </li>
+      </ul>
+      <br class="clear"/>     
+    </div>
+  </div>  
+</div>
+<div class="wrapper col6">
+  <div id="copyright">
+    <p class="fl_left">Copyright © 2016-2018 runjianli. - All Rights Reserved - <a href="#">备案号  苏 ICP备 18029764号-1</a></p>
+    <p class="fl_right">南京博晓信息科技有限公司 <a href="aboutus.html">关于我们</a></p>
+    <br class="clear" />
+  </div>
+</div>
+<script>
+var nid = oneValues();    
+    function oneValues(){
+		var result;
+		var url=window.location.search; //获取url中"?"符后的字串  
+		if(url.indexOf("?")!=-1){
+			result = url.substr(url.indexOf("=")+1);
+		}
+	    return result;
+	}    
+$.ajax({  
+            type: "post",  
+            url: "http://www.runjianli.com/index.php/index/super_manager/viewnotice2",
+			dataType: "json",
+            data:{"nid":nid},
+            success:function(data){
+                $("#content").html(data[0].content);
+				$("#time").text(data[0].date);
+                $("#title").html(data[0].title);
+            },
+			error: function(jqXHR, textStatus, errorThrown){  
+                alert(jqXHR.responseText);
+				alert(jqXHR.status);
+				alert(jqXHR.readyState);
+				alert(jqXHR.statusText);
+				alert(textStatus);
+				alert(errorThrown); 
+			}
+}) 
+</script>
+</body>
+</html>
+
+
+
+
+
+
+

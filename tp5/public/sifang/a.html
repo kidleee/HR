@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>test page</title>
+<meta charset="utf-8">
+<script src="layui-v2.2.6/layui-v2.2.6/layui/layui.js" charset="utf-8"></script>
+<link rel="stylesheet" href="layui-v2.2.6/layui-v2.2.6/layui/css/layui.css" type="text/css">
+</head>
+<body>
+<table id="demo" lay-filter="test"></table>
+</body>
+
+<script src="jquery.js" charset="utf-8"></script>
+<script type="text/javascript">  
+layui.use('table', function(){
+  var table = layui.table;
+  
+  //第一个实例
+  table.render({
+    elem: '#demo'
+    ,height: 315
+    ,url: 'http://www.runjianli.com/index.php/index/super_manager/viewall' //数据接口
+    ,page: true //开启分页
+    ,cols: [[ //表头
+       {field: 'unionid', title: 'ID', width:280, sort: true, fixed: 'left'}
+      ,{field: 'nickname', title: 'NICKNAME', width:135}
+      ,{field: 'sex', title: 'SEX', width:80, sort: true}
+      ,{field: 'city', title: 'CITY', width:80} 
+      ,{field: 'usertype', title: 'USERTYPE', width: 135, sort: true}
+      ,{field: 'valid', title: 'VALID', width: 100, sort: true}
+    ]]
+  });
+  
+});
+</script>
+</html>

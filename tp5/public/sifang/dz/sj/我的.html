@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>海词词典</title>
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+</head>
+<body>
+<div class="neck3">
+    <div class="hd1"><div class="hd-top">个人中心</div><div onclick="login();" class="hd-bottom">未登录</div></div>
+    <div class="hd2">
+        <div><img id="img6" onclick="gift()" class="hd-tr" src="img/gift.png" alt="a"/><img id="img5" onclick="dianzan()" class="hd-tr" src="img/like.png" alt="t"/></div>
+    </div>
+    <div class="hd3"><img class="hd-tr" src="img/right.png"/></div>
+</div>
+<div class="box3">
+    <div class="fb">
+        <div class="fb1">
+            <div class="bx1">
+                <img class="bx-img" src="img/smile.png"/>
+                <span class="bx-txt">偏好：通用</span>
+            </div>
+            <div class="bx">
+                <img class="bx-img" src="img/book.png"/>
+                <span class="bx-txt">词典权限</span>
+            </div>
+        </div>
+        <div>
+            <div class="bx1">
+                <img class="bx-img" src="img/read.png"/>
+                <span class="bx-txt">学习任务</span>
+            </div>
+            <div class="bx">
+                <img class="bx-img" src="img/message.png"/>
+                <span class="bx-txt">我的消息</span>
+            </div>
+        </div>
+    </div>
+    <div class="shadow">
+        <div class="box-middle">
+            <div class="bx1" onclick="viewon();"><p class="box-p">海词悬浮查词助手</p><img id="img4" class="bx1-right" src="img/right-circle.png"></div>
+            <div class="bx2"><p class="box-p">开启助手可实现：</p></div>
+            <div class="bx1" onclick="imgchange('img1');"><p class="box-p">1.通知栏快捷查词</p><img class="bx1-right" id="img1" src="img/check-circle-fill1.png" alt="a"></div>
+            <div class="bx1" onclick="imgchange('img2');"><p class="box-p">2.跨软件复制查词</p><img class="bx1-right" id="img2" src="img/check-circle-fill1.png" alt="b"></div>
+            <div class="bx1" onclick="imgchange('img3');"><p class="box-p">3.跨软件屏幕取词(英文)</p><img class="bx1-right" id="img3" src="img/check-circle-fill1.png" alt="c"></div>
+        </div>
+        <div class="box-middle1">
+            <div class="bx1"><p class="box-p">词典离线包下载</p><img class="bx1-right" src="img/right.png"></div>
+        </div>
+        <div class="box-middle1">
+            <div class="bx1"><p class="box-p">设置</p><img class="bx1-right" src="img/right.png"></div>
+        </div>
+    </div>
+    <div class="bottom"></div>
+</div> 
+<div class="footer">
+    <div class="box-middle">
+        <div class="box-four"><div><img class="img-four" src="img/tags.png"/></div><div><a class="on" href="主页.html">词典</a></div></div>
+        <div class="box-four"><div><img class="img-four" src="img/compass.png"/></div><div><a class="on" href="发现.html">发现</a></div></div>
+        <div class="box-four"><div><img class="img-four" src="img/audit.png"/></div><div><a class="on" href="生词本.html">生词本</a></div></div>
+        <div class="box-four"><div><img class="img-four" src="img/user.png"/></div><div><a class="on" href="我的.html">我的</a></div></div>
+    </div>
+</div>
+<script>
+    /*
+    $("img[name='img']").click(function(){
+        if($(this).attr('src') == "img/check-circle-fill1.png")
+        {
+            $(this).attr('src','img/check-circle-fill.png');
+        }
+        else
+        {   
+            $(this).attr('src','img/check-circle-fill1.png');
+        }
+    })*/
+    function imgchange(img)
+    {
+        var a = document.getElementById(img);
+        if(a.alt == "a")
+        {   
+            a.alt="q";
+            a.src="img/check-circle-fill.png";
+        }
+        else if(a.alt == "b")
+        {
+            a.alt="q";
+            a.src="img/check-circle-fill.png";            
+        } 
+        else if(a.alt == "c")
+        {
+            a.alt="q";
+            a.src="img/check-circle-fill.png";            
+        } 
+        else
+        {
+            if(img == "img1")
+            {
+                a.alt="a";
+                a.src="img/check-circle-fill1.png"; 
+            }
+            else if(img == "img2")
+            {
+                a.alt="b";
+                a.src="img/check-circle-fill1.png"; 
+            }
+            else if(img == "img3")
+            {
+                a.alt="c";
+                a.src="img/check-circle-fill1.png"; 
+            }
+        }
+    }
+function viewon()
+{   
+    var r=confirm("是否开启悬浮窗");
+    var a = document.getElementById("img4");
+    if (r==true)
+    {
+        a.src = "img/right-circle.png";
+        alert("悬浮窗已经开启");
+    }
+    else
+    {
+        a.src = "img/warning-circle-fill.png";
+        alert("已禁用悬浮窗");
+    }
+}
+function dianzan()
+{    
+    var a = document.getElementById("img5");
+    if(a.alt == "t")
+    {
+        a.alt = "g";
+        a.src = "img/like1.png";
+        alert("谢谢你的点赞，放心不会让你取消的");
+    }
+    else
+    {   
+        alert("说了不会让你取消的");
+    }
+}
+function gift()
+{
+    var a = document.getElementById("img6");
+    if(a.alt == "a")
+    {   
+        a.alt = "b";
+        alert("这里不会有什么礼物的，别点");
+    }
+    else if(a.alt == "b")
+    {   
+        a.alt = "c"
+        alert("说了没有！");
+    }
+    else if(a.alt == "c")
+    {   
+        a.alt = "d";
+        alert("真的没有");
+    }
+    else if(a.alt == "d")
+    {
+        a.alt = "e";
+        alert("好吧你赢了!给你啦!");
+        a.setAttribute("style","width:60%;transition: width 6s;-moz-transition: width 6s;-webkit-transition: width 6s;-o-transition: width 6s;");
+        setTimeout(function(){
+            var a = document.getElementById("img6");
+            a.setAttribute("style","width:25%;transition: width 6s;-moz-transition: width 6s;-webkit-transition: width 6s;-o-transition: width 6s;");
+        },6000);
+    }
+}
+function login()
+{   
+    alert("登陆系统还在开发中......");
+}
+</script>    
+</body>
+</html>

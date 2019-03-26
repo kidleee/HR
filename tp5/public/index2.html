@@ -1,0 +1,835 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>润简历</title>
+  <link rel="stylesheet" href="sifang/layui-v2.2.6/layui-v2.2.6/layui/css/layui.css">
+  
+  <script src="http://res.wx.qq.com/connect/zh_CN/htmledition/js/wxLogin.js"></script>
+  <script src="sifang/jquery.js"></script> <!-- 你必须先引入jQuery1.8或以上版本 -->
+  <script src="sifang/jquery-form.js"></script> <!-- 你必须先引入jQuery1.8或以上版本 -->
+  <script src="sifang/layer-v3.1.1/layer-v3.1.1/layer/layer.js"></script>
+  <script src="sifang/layui-v2.2.6/layui-v2.2.6/layui/layui.js"></script>
+  
+  <style type="text/css">
+    .center{text-align: center;}
+    .login-page {
+      width: 360px;
+      margin: auto;
+    }
+    .form {
+      position: relative;
+      z-index: 1;
+      background: #FFFFFF;
+      max-width: 360px;
+
+      padding: 45px;
+      text-align: center;
+      box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    }
+    .form input {
+      font-family: "Roboto", sans-serif;
+      outline: 0;
+      background: #f2f2f2;
+      width: 100%;
+      border: 0;
+      margin: 0 0 15px;
+      padding: 15px;
+      box-sizing: border-box;
+      font-size: 14px;
+    }
+	.form div {
+      outline: 0;
+      width: 100%;
+      border: 0;
+      padding: 0 0 15px;
+	  display: inline;
+    }
+    .form button {
+      font-family: "Microsoft YaHei","Roboto", sans-serif;
+      text-transform: uppercase;
+      outline: 0;
+      background: #4CAF50;
+      width: 100%;
+      border: 0;
+      padding: 15px;
+      color: #FFFFFF;
+      font-size: 14px;
+      -webkit-transition: all 0.3 ease;
+      transition: all 0.3 ease;
+      cursor: pointer;
+	  margin:0 15px 15px 0; 
+    }
+    .form button:hover,.form button:active,.form button:focus {
+      background: #43A047;
+    }
+	#phone:hover,#phone:active,#phone:focus {
+      background: #43A047;
+    }
+	#phone{
+      font-family: "Microsoft YaHei","Roboto", sans-serif;
+      text-transform: uppercase;
+      outline: 0;
+      background: #4CAF50;
+      width: 100%;
+      border: 0;
+      padding: 15px;
+      color: #FFFFFF;
+      font-size: 8px;
+      -webkit-transition: all 0.3 ease;
+      transition: all 0.3 ease;
+      cursor: pointer;
+    }
+	
+    .form .message {
+      margin: 15px 0 0;
+      color: #b3b3b3;
+      font-size: 12px;
+    }
+    .form .message a {
+      color: #4CAF50;
+      text-decoration: none;
+    }
+    .form .register-form {
+      display: none;
+    }
+	.form .register-phone {
+      display: none;
+    }
+	.form .register-weixin {
+      display: none;
+    }
+    .container {
+      position: relative;
+      z-index: 1;
+      max-width: 300px;
+      margin: 0 auto;
+    }
+    .container:before, .container:after {
+      content: "";
+      display: block;
+      clear: both;
+    }
+    .container .info {
+      margin: 50px auto;
+      text-align: center;
+    }
+    .container .info h1 {
+      margin: 0 0 15px;
+      padding: 0;
+      font-size: 36px;
+      font-weight: 300;
+      color: #1a1a1a;
+    }
+    .container .info span {
+      color: #4d4d4d;
+      font-size: 12px;
+    }
+    .container .info span a {
+      color: #000000;
+      text-decoration: none;
+    }
+    .container .info span .fa {
+      color: #EF3B3A;
+    }	
+    .shake_effect{
+        -webkit-animation-name: shake;
+        animation-name: shake;
+        -webkit-animation-duration: 1s;
+        animation-duration: 1s;
+    }
+	.htmleaf-container{
+		display:none;
+	}
+	
+    @-webkit-keyframes shake {
+      from, to {
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+      }
+
+      10%, 30%, 50%, 70%, 90% {
+        -webkit-transform: translate3d(-10px, 0, 0);
+        transform: translate3d(-10px, 0, 0);
+      }
+
+      20%, 40%, 60%, 80% {
+        -webkit-transform: translate3d(10px, 0, 0);
+        transform: translate3d(10px, 0, 0);
+      }
+    }
+
+    @keyframes shake {
+      from, to {
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+      }
+
+      10%, 30%, 50%, 70%, 90% {
+        -webkit-transform: translate3d(-10px, 0, 0);
+        transform: translate3d(-10px, 0, 0);
+      }
+
+      20%, 40%, 60%, 80% {
+        -webkit-transform: translate3d(10px, 0, 0);
+        transform: translate3d(10px, 0, 0);
+      }
+    }
+    p.center{
+        color: #fff;font-family: "Microsoft YaHei";
+    }
+    .box{
+    width:760px;
+    background:#fff;
+    margin:30px auto;
+    padding:20px;
+    overflow: auto;
+}
+.box .head span{
+    font-size:18px;
+    color:#333;
+}
+.box .head{
+    margin-bottom:20px;
+}
+.box .head a{
+    text-decoration:none;
+    float:right;
+    font-size:15px;
+    color:#333; 
+}
+.box .head a:hover{
+    color:#F00;
+}
+.box ul li{
+    width:160px;
+    height:240px;
+    list-style:none;
+    position:relative;
+    float:left;
+    margin-left:20px;
+    margin-bottom:20px;
+    overflow:hidden;
+}
+.box ul li .deatil{
+    width:160px;
+    height:240px;
+    background:rgba(0,0,0,0.7);
+    position:absolute;
+    top:-240px;
+    -webkit-transition:all 0.3s ease;<!--适应ie，谷歌，苹果浏览器内核-->
+    -o-transition:all 0.3s ease;<!--适应Opera浏览器内核-->
+    -moz-transition:all 0.3s ease;<!--火狐浏览器-->
+    -ms-transition:all 0.3s ease;<!--微软-->
+}
+
+.box ul li .deatil h2{
+    font-size:18px;
+    color:#fff;
+    text-align:center;
+    padding-top:30px;
+    }
+.box ul li .deatil p{
+    font-size:16px;
+    text-align:center;
+    margin:10px;
+    color:#fff;
+}
+.box ul li .deatil a{
+    font-size:15px;
+    display:block;
+    color:#fff;
+    background-color:#F00;
+    text-decoration:none;
+    width:100px;
+    height:40px;
+    text-align:center;
+    line-height:40px;
+    margin:0 auto;
+}
+.box ul li:hover .deatil{
+    top:0;
+}
+.order {
+   width:100%;
+   padding:150px 0 0 20%;   
+}
+ .order .line {
+   display: inline-block;
+   width: 250px;
+   border-top: 1px solid #01AAED ;
+}
+.order .txt {
+   color:#01AAED;
+   vertical-align: middle;
+   font-size: 40px;
+}      
+    </style>
+  
+</head>
+<body class="layui-layout-body" style="overflow-y:auto;">
+<div id="notice" style="width:100%;height:30px;background:#FFF;display:none;"></div>
+<div class="layui-layout layui-layout-admin">
+  <div class="layui-header">
+    <div class="layui-logo">润简历</div>
+    <!-- 头部区域（可配合layui已有的水平导航） -->
+   
+    <!-- 登陆注册区 -->
+	<ul class="layui-nav layui-layout-right">
+      <li class="layui-nav-item"><a href="sifang/user.html">在线制作</a></li>
+      <li class="layui-nav-item"><a href="sifang/viewmodel.html">模板商城</a></li>
+      <li class="layui-nav-item"><a href="sifang/howtohr.html">HR之旅</a></li>
+      <li class="layui-nav-item"><a href="sifang/mademodelindex.html">模板定制</a></li>
+      <li class="layui-nav-item"><a href="sifang/aboutus.html">关于我们</a></li>
+      <li class="layui-nav-item"><a href=""></a></li>
+      <li class="layui-nav-item"><a href=""></a></li>
+      <li class="layui-nav-item" id="loginbutton">
+      <button id="func1" class="layui-btn layui-btn-radius" onclick="func1();"> 登陆 / 注册 </button> 
+      </li>
+      <li class="layui-nav-item" id="loginhead">
+        <a href="javascript:func1();">
+          <img src="?" class="layui-nav-img" id="img">
+        </a>
+        <dl class="layui-nav-child">
+          <dd><a href=""id="nickname"></a></dd>
+          <dd><a href="javascript:base();">基本信息</a></dd>
+          <dd><a href="javascript:hrcheck();">HR认证</a></dd>
+	      <dd><a href="javascript:companycheck();">企业认证</a></dd>
+          <dd><a href="javascript:signout();">退出</a></dd>
+        </dl>
+      </li>
+      <li class="layui-nav-item"><a href=""></a></li>
+    </ul> 
+  </div>
+  <div class="layui-fluid layui-bg-cyan">  
+  <div class="layui-row layui-col-space30">
+    <h1>在这里你可以轻松的制作一份简历</h1>
+	<div class="layui-col-md1">
+     
+    </div>
+    <div class="layui-col-md1">
+      <a class="layui-btn" href="sifang/user.html">简历在线制作</a>
+      <br><br><br>
+      <a id="func1"  class="layui-btn" href="sifang/viewmodel.html">浏览简历模板</a>
+    </div>
+	<div class="layui-col-md1">
+     
+    </div>
+    <div id="test1" class="layui-col-md6 layui-carousel">
+        <div carousel-item>
+			<div><img style="width:100%;height:100%" src="sifang/picture/RJL008-简洁英文.JPG" alt="RJL008-简洁英文.JPG" onclick="huya()"></div>
+			<div><img style="width:100%;height:100%" src="sifang/picture/RJL007-简约个性（无个人信息简介）.JPG" alt="RJL007-简约个性（无个人信息简介）.JPG" onclick="huya()"></div>
+			<div><img style="width:100%;height:100%" src="sifang/picture/RJL010-现代风格.JPG" alt="RJL010-现代风格.JPG" onclick="huya()"></div>
+		</div>
+    </div>
+  </div>
+  </div>
+  
+  <div class="layui-bg-cyan">
+    <div class="order">
+   	<span class="line"></span>
+   	<span class="txt">HR之旅</span>
+   	<span class="line"></span>
+    </div>
+      <p style="padding:0 0 0 40%;color:#01AAED;">选择合适的hr，使你的简历百投百中</p>
+      <div style="width:20%;height:250px;margin:2% 2% 2% 2%;display:inline-block;">
+      <ul>
+          <li><img style="width:100%;height:200px" src="sifang/picture/lijie.jpg"/></li>
+          <li><p>人力资源管理专业硕士，对企业招聘与人力资源管理有丰富经验。</p></li>
+          <li><a style="color:#01AAED;margin:10px 0 0 35%" href="sifang/HR/HR_%E6%9D%8E%E6%9E%97%E9%A3%9E18151688687.html">进入主页</a></li>
+      </ul>
+      </div>
+      <div style="width:20%;height:250px;margin:2% 2% 2% 2%;display:inline-block;">
+      <ul>
+          <li><img style="width:100%;height:200px" src="sifang/picture/lijie.jpg"/></li>
+          <li><p>人力资源管理专业硕士，对企业招聘与人力资源管理有丰富经验。</p></li>
+          <li><a style="color:#01AAED;margin:10px 0 0 35%" href="sifang/HR/HR_%E6%9D%8E%E6%9E%97%E9%A3%9E18151688687.html">进入主页</a></li>
+      </ul>
+      </div> 
+      <div style="width:20%;height:250px;margin:2% 2% 2% 2%;display:inline-block;">
+      <ul>
+          <li><img style="width:100%;height:200px" src="sifang/picture/lijie.jpg"/></li>
+          <li><p>人力资源管理专业硕士，对企业招聘与人力资源管理有丰富经验。</p></li>
+          <li><a style="color:#01AAED;margin:10px 0 0 35%" href="sifang/HR/HR_%E6%9D%8E%E6%9E%97%E9%A3%9E18151688687.html">进入主页</a></li>
+      </ul>
+      </div>
+      <div style="width:20%;height:250px;margin:2% 2% 2% 2%;display:inline-block;">
+      <ul>
+          <li><img style="width:100%;height:200px" src="sifang/picture/lijie.jpg"/></li>
+          <li><p>人力资源管理专业硕士，对企业招聘与人力资源管理有丰富经验。</p></li>
+          <li><a style="color:#01AAED;margin:10px 0 0 35%" href="sifang/HR/HR_%E6%9D%8E%E6%9E%97%E9%A3%9E18151688687.html">进入主页</a></li>
+      </ul>
+      </div>
+      <div style="width:20%;height:250px;margin:2% 2% 2% 2%;display:inline-block;">
+      <ul>
+          <li><img style="width:100%;height:200px" src="sifang/picture/lijie.jpg"/></li>
+          <li><p>人力资源管理专业硕士，对企业招聘与人力资源管理有丰富经验。</p></li>
+          <li><a style="color:#01AAED;margin:10px 0 0 35%" href="sifang/HR/HR_%E6%9D%8E%E6%9E%97%E9%A3%9E18151688687.html">进入主页</a></li>
+      </ul>
+      </div>   
+      <div style="width:20%;height:250px;margin:2% 2% 2% 2%;display:inline-block;">
+      <ul>
+          <li><img style="width:100%;height:200px" src="sifang/picture/lijie.jpg"/></li>
+          <li><p>人力资源管理专业硕士，对企业招聘与人力资源管理有丰富经验。</p></li>
+          <li><a style="color:#01AAED;margin:10px 0 0 35%" href="sifang/HR/HR_%E6%9D%8E%E6%9E%97%E9%A3%9E18151688687.html">进入主页</a></li>
+      </ul>
+      </div>   
+      <div style="width:20%;height:250px;margin:2% 2% 2% 2%;display:inline-block;">
+      <ul>
+          <li><img style="width:100%;height:200px" src="sifang/picture/lijie.jpg"/></li>
+          <li><p>人力资源管理专业硕士，对企业招聘与人力资源管理有丰富经验。</p></li>
+          <li><a style="color:#01AAED;margin:10px 0 0 35%" href="sifang/HR/HR_%E6%9D%8E%E6%9E%97%E9%A3%9E18151688687.html">进入主页</a></li>
+      </ul>
+      </div>   
+      <div style="width:20%;height:250px;margin:2% 2% 2% 2%;display:inline-block;">
+      <ul>
+          <li><img style="width:100%;height:200px" src="sifang/picture/lijie.jpg"/></li>
+          <li><p>人力资源管理专业硕士，对企业招聘与人力资源管理有丰富经验。</p></li>
+          <li><a style="color:#01AAED;margin:10px 0 0 35%" href="sifang/HR/HR_%E6%9D%8E%E6%9E%97%E9%A3%9E18151688687.html">进入主页</a></li>
+      </ul>
+      </div>
+      <a class="layui-btn layui-btn-lg layui-btn-radius layui-btn-normal" style="margin:20px 0 40px 45%;" href="sifang/howtohr.html">更多HR</a>
+  </div>
+                                                                     
+  <div style="background-color:#ddd;padding:0 0 20px 0">
+      <h1 style="padding:50px 0 0 45%;">简历模板</h1>
+      <p style="padding:0 0 0 40%;">这里有各类简历模板，快去进行挑选吧</p>
+      <div class="box">
+          <ul id="ul">
+          </ul>
+      <a class="layui-btn layui-btn-lg layui-btn-radius layui-btn-primary" style="margin:10px 0 10px 45%;" href="sifang/viewmodel.html">更多模板</a>    
+      </div>
+  </div>
+    
+  <div style="background:#2F4056;padding:10px 20px 10px 20px">
+      <h3 style="color:#FFFFFF">版权信息</h3>
+      <p style="color:#ddd;font-size:10px">润简历网站所发布展示的“简历模板”版权归润简历所有， 任何商业用途均须联系作者。<br>如未经授权用作他处，润简历将保留追究侵权者法律责任的权利。</p>
+      <p style="color:#ddd;font-size:12px">南京博晓信息科技有限公司<br>备案号  苏 ICP备 18029764号-1<br>Copyright © 2016-2018 runjianli. All Rights Reserved.</p>      
+  </div>      
+	<!--登陆注册区-->
+	<div class="htmleaf-container" id="box1">
+    <div id="wrapper" class="login-page">
+      <div id="login_form" class="form">
+        <form class="register-form" id="register1" style="display:none">
+          <input type="text" placeholder="用户名" id="r_user_name"/>
+          <input type="password" placeholder="密码" id="r_password" />
+          <input type="text" placeholder="电子邮件" id="r_emial"/>
+          <button id="create">创建账户</button>
+          <p class="message">已经有了一个账户? <a href="#" class="a1">立刻登录</a></p>
+        </form>
+		<form class="register-weixin" id="register2" style="display:none">
+		  	 <span id="login_container"></span>
+          <script src="http://res.wx.qq.com/connect/zh_CN/htmledition/js/wxLogin.js"></script>
+          <script>
+             var obj = new WxLogin({
+               //true：手机点击确认登录后可以在 iframe 内跳转到 redirect_uri，false：手机点击确认登录后可以在 top window 跳转到 redirect_uri。默认为 false。  
+               self_redirect:false,
+               //第三方页面显示二维码的容器id
+               id: "login_container",
+               //应用唯一标识，在微信开放平台提交应用审核通过后获得
+               appid: "wxeafbca61ac265143",
+               //应用授权作用域，拥有多个作用域用逗号（,）分隔，网页应用目前仅填写snsapi_login即可
+               scope: "snsapi_login",
+               //重定向地址，需要进行UrlEncode
+               redirect_uri: encodeURIComponent("http://www.runjianli.com/index.php/index/wx_login/index"),
+               //用于保持请求和回调的状态，授权请求后原样带回给第三方。该参数可用于防止csrf攻击（跨站请求伪造攻击），建议第三方带上该参数，可设置为简单的随机数加session进行校验
+               state: Math.ceil(Math.random()*1000),
+               //提供"black"、"white"可选，默认为黑色文字描述
+               style: "",
+               //自定义样式链接，第三方可根据实际需求覆盖默认样式
+               href: ""});
+         </script>
+		  <p class="message">已经有了一个账户? <a href="#" class="a2">立刻登录</a></p>
+        </form>
+		<form method="post" class="register-phone" id="register3" style="display:none"><!--onsubmit="return false;"-->
+		  <input type="hidden" id="code">
+		  <input type="text" placeholder="手机号" name="iphone" id="iphone"/>
+		  <div><input type="text" id="code1" placeholder="验证码" style="display:inline; width:160px;margin:0 15px 15px 0"/><input type="button" id="phone" style="display:inline; width:80px; font-size:10px;" value="发送验证码"></div>
+		  <button type="button" id="login1">登陆</button>
+		  <p class="message">已经有了一个账户? <a href="#" class="a3">立刻登录</a></p>
+        </form>
+        <form class="login-form" id="register4" style="display:block">
+          <input type="text" placeholder="用户名" id="user_name"/>
+          <input type="password" placeholder="密码" id="password"/>
+          <button id="login2">登　录</button>
+          <p class="message"><a href="#" class="a1">创建账户</a>/<a href="#" class="a2">微信扫码登陆</a>/ <a href="#" class="a3">短信验证登陆</a></p>
+        </form>
+      </div>
+    </div>
+        
+	</div>
+	
+	
+	
+	<script>
+var login;        
+        
+layui.use('element', function(){
+  var element = layui.element;
+  
+});        
+
+$(function(){
+    //http://www.runjianli.com/index.php/cv/model/GetModel
+    $.ajax({  
+            type: "post",  
+            url: "http://www.runjianli.com/index.php/cv/model/GetModel1",
+			dataType: "json", 			
+            success: function(data){
+            for(var i=0;i<8;i++)
+            {   
+                var li = document.createElement('li');
+                li.innerHTML = '<div class="deatil"><h2>名称:'+data[i].name+'</h2><p>尺寸:'+data[i].size+'</p><p>语言:'+data[i].language+'</p><p>格式:'+data[i].format+'</p><a href="'+data[i].notailsweb+'">点击进入</a></div><img src="'+data[i].imgurl+'" width="160px" height="240px" alt=""/>';
+                var ul = document.getElementById("ul");//获取body对象.
+                ul.insertBefore(li,ul.lastChild);
+            }              
+            },
+			error: function(jqXHR, textStatus, errorThrown){  
+                alert(jqXHR.responseText);
+				alert(jqXHR.status);
+				alert(jqXHR.readyState);
+				alert(jqXHR.statusText);
+				alert(textStatus);
+				alert(errorThrown); 
+			}
+        })  
+        //var divx = _parentWin.document.createElement('div');
+		//divx.setAttribute("class","layui-row left-move top-move m_title");
+		//设置div的属性
+		//divx.innerHTML = '<h1>工作经验</h1><input style="display:inline-block" id="abc1" type="button" class="bor"><input //style="display:inline-block"  id="abc2"  type="text" class="bor2"  value="填写公司名称"><input  id="abc3"  style="display:inline-block" type="text" class="bor2"  value="填写职位名称">'; //设置显示的数据，可以是标签．
+		//divx.style.background = "blue";//设置css样式,s设置背景颜色
+		//var div1 = _parentWin.document.getElementById("div1");
+		//动态插入到body中
+})
+
+        
+//公告层
+function getJsonLength(jsonData){
+ var jsonLength = 0;
+ for(var item in jsonData){
+  jsonLength++;
+ }
+ return jsonLength;
+}
+
+        var ncount;
+        var nid;
+        if(typeof(Storage) !== "undefined") {
+            if(!sessionStorage.alerted) {
+               $.ajax({
+				url:"http://www.runjianli.com/index.php/index/super_manager/viewnotice1",
+				type:"post",
+				dataType: "json",
+				error: function(jqXHR, textStatus, errorThrown){  
+                         alert(jqXHR.responseText);
+		alert(jqXHR.status);
+		alert(jqXHR.readyState);
+		alert(jqXHR.statusText);
+		alert(textStatus);
+		alert(errorThrown);
+                    },                   
+               
+                success: function(data,status){//如果调用php成功   
+         ncount = getJsonLength(data);
+         nid = data[ncount-1].nid;            
+         $("#notice").html('<a style="float:left;color:#01AAED;display:inline-block;padding:2px 2px 2px 8px;font-size:16px" href="javascript:viewnotice();">'+data[ncount-1].title+'（标题）：</a><span style="float:left;padding:2px 2px 2px 8px;display:inline-block;font-size:16px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;width:70%">'+data[ncount-1].brief+'（简述）</span><a class="layui-icon" style="float:right;display:inline-block;padding:2px 2px 2px 2px" href="javascript:cancel();">&#x1006;</a>');$("#notice").show();			
+                }
+	       });		
+                sessionStorage.alerted = true;
+            }
+        } else {
+            alert("Your browser does not support HTML5 storage");
+        }
+
+    function viewnotice()
+    {   
+        window.open('http://www.runjianli.com/sifang/notice.html?nid='+nid);
+    }
+	
+
+//这里是分界线
+	
+	
+	var InterValObj; //timer变量，控制时间
+	var count = 60; //间隔函数，1秒执行
+	var curCount;//当前剩余秒数
+
+	
+	function huya()
+	{	
+　　	window.open('sifang/user.html');  
+	}
+
+	
+	function SetRemainTime(){
+		if(curCount == 0){
+			window.clearInterval(InterValObj);
+			$("#phone").removeAttr("disabled");
+			$("#phone").val("重新发送验证码");
+		}
+		else{
+			curCount--;
+			$("#phone").val(curCount+"秒重新发送");
+		}
+	
+	}
+
+	function check_login()
+	{
+		var name=$("#user_name").val();
+		var pass=$("#password").val();
+		if(name=="sc.chinaz.com" && pass=="sc.chinaz.com")
+		{
+			alert("登录成功！");
+			$("#user_name").val("");
+			$("#password").val("");
+		
+		}
+		else
+		{
+			$("#login_form").removeClass('shake_effect');  
+			setTimeout(function()
+			{
+			$("#login_form").addClass('shake_effect')
+		    },1);  
+		}
+	}
+	
+	$(function(){        
+//判断登陆状态
+$.ajax({  
+            type: "post",  
+            url: "http://www.runjianli.com/index.php/session/session_use/check",
+			dataType: "text", 			
+            success: function(data){
+            login = data;
+            if(login == 1)
+            {   
+                $("#loginbutton").hide();
+                $("#loginhead").show();
+            }
+            else
+            {   
+                $("#loginhead").hide();
+                $("#loginbutton").show();
+            }
+            },
+			error: function(jqXHR, textStatus, errorThrown){  
+                alert(jqXHR.responseText);
+				alert(jqXHR.status);
+				alert(jqXHR.readyState);
+				alert(jqXHR.statusText);
+				alert(textStatus);
+				alert(errorThrown); 
+			}
+        })     
+//录入头像
+var img = document.getElementById("img");
+$.ajax({  
+            type: "post",  
+            url: "http://www.runjianli.com/index.php/session/session_use/imgview",
+			dataType: "text", 			
+            success: function(data){
+           	if(data){
+	 img.src = data;
+	}else{img.src = "sifang/picture/wdg.jpg"}
+            },
+			error: function(jqXHR, textStatus, errorThrown){  
+                alert(jqXHR.responseText);
+				alert(jqXHR.status);
+				alert(jqXHR.readyState);
+				alert(jqXHR.statusText);
+				alert(textStatus);
+				alert(errorThrown); 
+			}
+        })  
+var nickname = document.getElementById("nickname");
+//录入登陆昵称
+$.ajax({  
+            type: "post",  
+            url: "http://www.runjianli.com/index.php/session/session_use/nicknameview",
+			dataType: "text", 			
+            success: function(data){
+            nickname.innerHTML = data;  
+            },
+			error: function(jqXHR, textStatus, errorThrown){  
+                alert(jqXHR.responseText);
+				alert(jqXHR.status);
+				alert(jqXHR.readyState);
+				alert(jqXHR.statusText);
+				alert(textStatus);
+				alert(errorThrown); 
+			}
+        })        
+		$("#create").click(function(){ 
+			check_register();
+			return false;
+		})
+		$("#login").click(function(){
+			check_login();
+			return false;
+		})
+		$('.message .a1').click(function () {
+			$('#register1').animate({
+				height: 'toggle',
+				opacity: 'toggle'
+			}, 'slow');
+			$('#register4').animate({
+				height: 'toggle',
+				opacity: 'toggle'
+			}, 'slow');
+		});
+		$('.message .a2').click(function () {
+			$('#register2').animate({
+				height: 'toggle',
+				opacity: 'toggle'
+			}, 'slow');
+			$('#register4').animate({
+				height: 'toggle',
+				opacity: 'toggle'
+			}, 'slow');
+		});
+		$('.message .a3').click(function () {
+			$('#register3').animate({
+				height: 'toggle',
+				opacity: 'toggle'
+			}, 'slow');
+			$('#register4').animate({
+				height: 'toggle',
+				opacity: 'toggle'
+			}, 'slow');
+		});
+		$('#login1').click(function(){
+			var code = document.getElementById("code");
+			var code1 = document.getElementById("code1");	
+			if(code1.value == code.value)
+			{
+			var iphone = document.getElementById("iphone");
+			window.location.href="http://www.runjianli.com/sifang/编辑.html?values="+iphone.value; 
+			}
+			else
+			{
+				alert("请重新输入信息");
+			}
+		});
+		$('#phone').click(function () {
+			var my_data = document.getElementById("iphone");
+			var value = my_data.value;
+			var code = document.getElementById("code");
+			curCount = count;
+			$('#phone').attr("disabled",true);
+			$('#phone').val(curCount+"秒重新发送");
+			InterValObj = window.setInterval(SetRemainTime, 1000);
+			$.ajax({
+				url:"sifang/alidayu/api_demo/SmsDemo.php",
+				type:"GET",
+				data:{iphone:value},
+				error: function(){  
+                        alert('Error loading XML document');  
+                    },                   
+               
+                success: function(data,status){//如果调用php成功    
+                    code.value = data;
+		alert(code.value);
+					
+                }
+			});
+		});
+		
+	})
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	function cancel()
+	{ 	
+		layui.use('layer', function(){
+			var layer = layui.layer;
+			layer.closeAll(); //疯狂模式，关闭所有层
+			layer.closeAll('dialog'); //关闭信息框
+			layer.closeAll('page'); //关闭所有页面层
+			layer.closeAll('iframe'); //关闭所有的iframe层
+			layer.closeAll('loading'); //关闭加载层
+			layer.closeAll('tips'); //关闭所有的tips层 	
+		})
+        $("#notice").hide();
+	}
+	
+	layui.use('carousel', function(){
+		var carousel = layui.carousel;
+		//建造实例
+		carousel.render({
+			elem: '#test1'
+			,width: '495px' //设置容器宽度
+			,height: '642px'
+			,arrow: 'always' //始终显示箭头
+			,anim: 'fade' //切换动画方式
+		});
+	});
+//登陆退出    
+function signout()
+{
+    $.ajax({  
+            type: "post",  
+            url: "http://www.runjianli.com/index.php/session/session_use/signout",
+			dataType: "text", 			
+            success: function(data){ 
+            img.src = "sifang/picture/wdg.jpg";
+            nickname.innerHTML = "";   
+            },
+			error: function(jqXHR, textStatus, errorThrown){  
+                alert(jqXHR.responseText);
+				alert(jqXHR.status);
+				alert(jqXHR.readyState);
+				alert(jqXHR.statusText);
+				alert(textStatus);
+				alert(errorThrown); 
+			}
+        })  
+        login = 0;	
+}  
+	function func1()
+	{
+		if(login == 0)
+        {    
+        layer.open({
+                        type: 1,
+                        closeBtn: false,
+                        shift: 2,
+                        shadeClose: true,
+						title: false,
+						scrollbar: false,
+                        content: $("#box1"),
+				});
+        }
+        else
+        {
+			alert("不用重复登陆!");	
+		}    
+	}        
+</script>
+  </div> 
+  
+  
+<script> 
+</script>
+
+
+</body>
+</html>
+
+
+
+
+
+
+

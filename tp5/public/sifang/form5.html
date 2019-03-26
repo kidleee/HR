@@ -1,0 +1,463 @@
+<!DOCTYPE html> 
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HR(顾问认证)</title>
+<link rel="stylesheet" href="layui-v2.2.6/layui-v2.2.6/layui/css/layui.css" type="text/css">
+<link rel="stylesheet" href="mademodel.css" type="text/css">
+<script src="layer-v3.1.1/layer-v3.1.1/layer/layer.js" type="text/javascript" charset="utf-8"></script>
+<script src="layui-v2.2.6/layui-v2.2.6/layui/layui.js" type="text/javascript" charset="utf-8"></script>
+<script src="jquery.js" type="text/javascript"></script>
+<script src="jqui/jqui/jquery-ui.js"></script>
+<script src="jquery-form.js"></script> <!-- 你必须先引入jQuery1.8或以上版本 -->
+<script src="vue.js"></script>
+<script charset="utf-8" src="kindeditor/kindeditor-all.js"></script>
+<script charset="utf-8" src="kindeditor/lang/zh-CN.js"></script>
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+  <div class="layui-header">
+    <div class="layui-logo">HR(顾问认证)</div>
+    <ul class="layui-nav layui-layout-right">
+      <li class="layui-nav-item"><a href="user.html">在线制作</a></li>
+      <li class="layui-nav-item"><a href="viewmodel.html">模板商城</a></li>
+      <li class="layui-nav-item"><a href="howtohr.html">HR之旅</a></li>
+      <li class="layui-nav-item"><a href="mademodelindex.html">模板定制</a></li>
+      <li class="layui-nav-item"><a href="aboutus.html">关于我们</a></li>
+      <li class="layui-nav-item"><a href=""></a></li>
+    </ul>  
+  </div>
+  
+  <div class="layui-side layui-bg-black">
+    <div class="layui-side-scroll">
+      <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+      <p style="margin:10px">1.申请HR将会获得什么权益？<br><br>当您成为润简历平台HR时，将会拥有个人主页。可以对求职者的各种任务进行接取，并获得佣金。同时用户可以选择您提供的服务，您需要完成客户请求后，获得佣金。</p>
+      <p style="margin:10px">2.将会在多久内完成认证？<br><br>当您提交申请后72小时内，平台将给予回复。请您留意自己留下联系方式的短信（邮箱）。</p>
+      <p style="margin:10px">3.申请被驳回，是什么原因？<br><br>如果您的资料有误，平台将驳回您的申请，润简历致力于维护求职者以及HR高水准的服务，您可以重新提交资料，或联系客服询问详细解决方案。（并不会产生二次费用）</p>
+      <p style="margin:10px">3.隐私保护问题？<br><br>如果您的资料有误，平台将驳回您的申请，润简历致力于维护求职者以及HR高水准的服务，您可以重新提交资料，或联系客服询问详细解决方案。（并不会产生二次费用）</p>
+    </div>
+  </div>
+
+  
+  
+  
+  <div class="layui-body container-body">
+    <!-- 内容主体区域 -->
+<!--第一步-->       
+<form class="layui-form" id="tf" style="display:block">
+  <div class="modelmade-top head-font">请先填写您的基本信息</div>    
+  <div class="modelmade-top"></div>    
+  <div class="layui-form-item" id="nickname">
+    <label class="layui-form-label">昵称</label>
+    <div class="layui-input-block">
+      <input type="text" name="nickname" required  lay-verify="required" placeholder="请输入昵称" autocomplete="off" class="layui-input" v-bind:title="message">
+    </div>
+  </div>
+  <div class="layui-form-item" id="career">
+    <label class="layui-form-label">职业</label>
+    <div class="layui-input-block">
+      <input type="text" name="career" required  lay-verify="required" placeholder="请输入您的职业" autocomplete="off" class="layui-input" v-bind:title="message">
+    </div>
+  </div> 
+  <div class="layui-form-item" id="service_type">
+    <label class="layui-form-label">服务内容</label>
+    <div class="layui-input-block" v-bind:title="message">
+      <input type="checkbox" name="service_type[]" value="面试辅导" title="面试辅导">
+      <input type="checkbox" name="service_type[]" value="职业规划" title="职业规划">
+      <input type="checkbox" name="service_type[]" value="简历优化" title="简历优化">
+      <input type="checkbox" name="service_type[]" value="简历翻译" title="简历翻译">
+      <input type="checkbox" name="service_type[]" value="求职信写作" title="求职信写作">
+      <input type="checkbox" name="service_type[]" value="求职咨询" title="求职咨询">
+      <input type="checkbox" name="service_type[]" value="简历排版" title="简历排版">
+    </div>  
+  </div>
+  <div class="layui-form-item" id="name">
+    <label class="layui-form-label">姓名</label>
+    <div class="layui-input-block">
+      <input type="text" name="name" required  lay-verify="required" placeholder="请输入您的真实姓名" autocomplete="off" class="layui-input" v-bind:title="message">
+    </div>
+  </div> 
+  <div class="layui-form-item" id="id_card">
+    <label class="layui-form-label">身份证号码</label>
+    <div class="layui-input-block">
+      <input type="text" name="id_card" required  lay-verify="required" placeholder="请输入您的身份证号" autocomplete="off" class="layui-input" v-bind:title="message">
+    </div>
+  </div> 
+  <div class="layui-form-item" id="service_direction">
+    <label class="layui-form-label">服务方向</label>
+    <div class="layui-input-block">
+      <input type="checkbox" name="service_direction[]" value="互联网" title="互联网">
+      <input type="checkbox" name="service_direction[]" value="金融" title="金融">
+      <input type="checkbox" name="service_direction[]" value="消费" title="消费">
+      <input type="checkbox" name="service_direction[]" value="医疗" title="医疗">
+      <input type="checkbox" name="service_direction[]" value="媒体" title="媒体">
+      <input type="checkbox" name="service_direction[]" value="建筑" title="建筑">
+      <input type="checkbox" name="service_direction[]" value="教育" title="教育">
+      <input type="checkbox" name="service_direction[]" value="服务" title="服务">
+      <input type="checkbox" name="service_direction[]" value="运输" title="运输">
+      <input type="checkbox" name="service_direction[]" value="政府" title="政府">
+      <input type="checkbox" name="service_direction[]" value="其他" title="其他">
+    </div>  
+  </div> 
+  <div class="layui-form-item">
+    <label class="layui-form-label">微信号</label>
+    <div class="layui-input-block">
+      <input type="text" name="wx_n" required  lay-verify="required" placeholder="请输入微信号" autocomplete="off" class="layui-input">
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">邮箱</label>
+    <div class="layui-input-block">
+      <input type="text" name="email" required  lay-verify="required" placeholder="请输入邮箱" autocomplete="off" class="layui-input">
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">手机号</label>
+    <div class="layui-input-block">
+      <input id="iphone" type="text" name="phone" required  lay-verify="required" placeholder="请输入手机号" autocomplete="off" class="layui-input">
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">短信验证码</label>
+    <div class="layui-input-block">
+      <input type="hidden" id="code">
+      <input id="code1" type="text" required  lay-verify="required" placeholder="请输验证码" autocomplete="off" class="layui-input" style="width:50%;display:inline-block;">
+      <input id="phone" type="button" class="layui-btn layui-btn-primary" style="width:20%;display:inline-block;" value="获取验证码" >
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <div class="layui-input-block">
+      <button type="button" class="layui-btn" onclick="javascript:basesubmit()">立即提交</button>
+      <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+    </div>
+  </div>
+  <div class="layui-form-item" id="next_step" style="display:none">
+    <div class="layui-input-block">
+      <button type="button" class="layui-btn layui-btn-fluid" onclick="javascript:nextstep()">下一步</button>
+    </div>
+  </div>
+</form>
+<!--第二步-->    
+<form class="layui-form" id="tf1" style="display:none">
+  <div class="modelmade-top head-font">请上传您的相关证件</div>    
+  <div class="modelmade-top"></div>    
+  <div class="layui-form-item">
+  <div class="layui-upload">
+    <label class="layui-form-label">个人图像</label> 
+    <div class="layui-input-block"> 
+    <button type="button" class="layui-btn layui-bg-blue" id="test1">选择图片</button>
+        <blockquote class="layui-elem-quote layui-quote-nm" style="margin-top: 10px;">
+            预览图：
+            <div class="layui-upload-list" id="demo1"></div>
+        </blockquote>
+    </div>
+  </div>
+  </div>
+  <div class="layui-form-item">
+  <div class="layui-upload">
+    <label class="layui-form-label">身份证图像</label>  
+    <div class="layui-input-block">
+    <button type="button" class="layui-btn layui-bg-blue" id="test2">选择图片</button> 
+        <blockquote class="layui-elem-quote layui-quote-nm" style="margin-top: 10px;">
+            预览图：
+            <div class="layui-upload-list" id="demo2"></div>
+        </blockquote>
+    </div>
+  </div>
+  </div>
+  <div class="layui-form-item">
+  <div class="layui-upload">
+    <label class="layui-form-label">公司证明</label> 
+    <div class="layui-input-block">  
+    <button type="button" class="layui-btn layui-bg-blue" id="test3">选择图片</button>    
+        <blockquote class="layui-elem-quote layui-quote-nm" style="margin-top: 10px;">
+            预览图：
+            <div class="layui-upload-list" id="demo3"></div>
+        </blockquote>
+    </div>    
+  </div>
+  </div>    
+  <div class="layui-form-item">
+    <div class="layui-input-block">
+      <button type="button" class="layui-btn layui-btn-fluid" onclick="javascript:nextnextstep()">下一步</button>
+    </div>
+  </div>
+</form>      
+<input type="hidden" id="hd1">
+<input type="hidden" id="hd2">
+<input type="hidden" id="hd3">      
+<!--第三步-->  
+<form id="tf2" class="layui-form" style="display:none">
+<div class="modelmade-top head-font">请您支付第三方认证费用</div>    
+<div class="modelmade-top"></div>     
+<div class="layui-form-item">    
+    <label class="layui-form-label">微信支付</label>
+    <div class="layui-input-block">
+      <button type="button" class="layui-btn layui-bg-blue" onclick="javascript:wx_pay()">点击支付</button>
+    </div>
+</div>
+<div class="layui-form-item">
+    <div class="layui-input-block">
+      <button type="button" class="layui-btn layui-btn-fluid" onclick="javascript:nextnextnextstep()">下一步</button>
+    </div>
+</div>    
+</form>      
+
+<div id="tf3" style="display:none"><div class="modelmade-top head-font">请您根据您的特点按格式写个人简介</div>
+<form class="layui-form" action="http://www.runjianli.com/index.php/cert/cert/summary" method="post">
+  <div class="layui-form-item layui-form-text">
+    <label class="layui-form-label">个人简介</label>
+    <div class="layui-input-block">
+      <textarea id="editor_id" name="summary" placeholder="请输入内容" style="width:100%;"></textarea>
+    </div>
+  </div>
+  
+  <div class="layui-form-item">
+    <div class="layui-input-block">
+      <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
+      <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+    </div>
+  </div>
+</form>
+</div>      
+</div>
+  
+  <div class="layui-footer">
+    <!-- 底部固定区域 -->
+    © layui.com - 底部固定区域
+  </div>
+</div>
+<script>
+var hd1 = document.getElementById("hd1"); 
+var hd2 = document.getElementById("hd2");
+var hd3 = document.getElementById("hd3");     
+layui.use('upload', function(){
+  var upload = layui.upload;
+   
+  //多图片上传
+  var uploadInst1 = upload.render({
+    elem: '#test1'
+    ,url: 'http://www.runjianli.com/index.php/cert/cert/cert_imag1'
+    ,multiple: false
+    ,auto: true
+    //,bindAction: '#testListAction1'  
+    ,before: function(obj){
+      //预读本地文件示例，不支持ie8
+      obj.preview(function(index, file, result){
+        $('#demo1').append('<img src="'+ result +'" alt="'+ file.name +'" class="layui-upload-img">')
+      });
+    }
+    ,done: function(res){
+      hd1.value = "上传成功";
+      alert(hd1.value);
+    }
+  });
+  var uploadInst2 = upload.render({
+    elem: '#test2'
+    ,url: 'http://www.runjianli.com/index.php/cert/cert/cert_imag2'
+    ,multiple: false
+    ,auto: true
+    //,bindAction: '#testListAction2'  
+    ,before: function(obj){
+      //预读本地文件示例，不支持ie8
+      obj.preview(function(index, file, result){
+        $('#demo2').append('<img src="'+ result +'" alt="'+ file.name +'" class="layui-upload-img">')
+      });
+    }
+    ,done: function(){
+      hd2.value = "上传成功";
+      alert(hd2.value);
+    }
+  });
+  var uploadInst3 = upload.render({
+    elem: '#test3'
+    ,url: 'http://www.runjianli.com/index.php/cert/cert/cert_imag3'
+    ,multiple: false
+    ,auto: true
+    //,bindAction: '#testListAction3'  
+    ,before: function(obj){
+      //预读本地文件示例，不支持ie8
+      obj.preview(function(index, file, result){
+        $('#demo3').append('<img src="'+ result +'" alt="'+ file.name +'" class="layui-upload-img">')
+      });
+    }
+    ,done: function(){
+      hd3.value = "上传成功";
+      alert(hd3.value);
+    }
+  });    
+});    
+    
+    
+    
+function basesubmit(){
+  //监听提交
+            var code = document.getElementById("code");
+			var code1 = document.getElementById("code1");	
+			if(code1.value == code.value)
+			{
+                alert("登陆成功");
+                $.ajax({  
+                    type: "get",  
+                    url: "http://www.runjianli.com/index.php/cert/cert/cert_i",
+	                dataType: "text",
+	                data:$('#tf').serialize(),			
+                    success: function(data){  
+                        alert("请点击下一步");
+                    },  
+	                error: function(jqXHR, textStatus, errorThrown){  
+                        alert(jqXHR.responseText);
+		                alert(jqXHR.status);
+		                alert(jqXHR.readyState);
+		                alert(jqXHR.statusText);
+		                alert(textStatus);
+		                alert(errorThrown); 
+                    }
+                })
+				$('#next_step').show();
+			}
+			else
+			{
+				alert("验证码错误");
+			}
+    
+}
+   
+layui.use('form', function(){
+  var form = layui.form; 
+});
+
+var headimgur = new Vue({
+  el: '#career',
+  data: {
+    message: '用简洁的语言描述自己的职业'
+  }
+})
+var nickname = new Vue({
+  el: '#nickname',
+  data: {
+    message: '您的昵称会作为您的标签面向大众'
+  }
+})
+var service_type = new Vue({
+  el: '#service_type',
+  data: {
+    message: '请根据您擅长的职业内容来选择'
+  }
+})
+
+
+
+
+layui.use('form', function(){
+  var form = layui.form;
+
+  //监听提交
+ form.on('submit(formDemo)', function(data){
+  });
+});
+KindEditor.ready(function(K) {
+  window.editor = K.create('#editor_id');
+});
+
+    
+    
+function nextstep()
+{
+    $('#tf').hide();
+    $('#tf1').show();
+}
+    
+function nextnextstep()
+{
+    if(hd1.value == "上传成功"&&hd2.value == "上传成功"&&hd3.value == "上传成功")
+    {
+        $('#tf1').hide();
+        $('#tf2').show();
+    }
+    else
+    {
+        alert("请按要求上传!");
+    }
+}    
+function nextnextnextstep()
+{
+    $.ajax({  
+                    type: "get",  
+                    url: "http://www.runjianli.com/index.php/cert/cert/cert_judge",
+	                dataType: "text",			
+                    success: function(data){  
+                        if(data == "支付成功")
+                        {
+                            $('#tf2').hide();
+                            $('#tf3').show();
+                        }
+                        else if(data == "支付失败")
+                        {
+                            alert("支付失败");
+                        }
+                    },  
+	                error: function(jqXHR, textStatus, errorThrown){  
+                        alert(jqXHR.responseText);
+		                alert(jqXHR.status);
+		                alert(jqXHR.readyState);
+		                alert(jqXHR.statusText);
+		                alert(textStatus);
+		                alert(errorThrown); 
+                    }
+                })
+}
+    
+    
+function wx_pay()
+{
+    window.open("http://www.runjianli.com/index.php/cert/cert/cert_pay");
+}
+    
+    
+var InterValObj; //timer变量，控制时间
+var count = 60; //间隔函数，1秒执行
+var curCount;//当前剩余秒数
+function SetRemainTime(){
+		if(curCount == 0){
+			window.clearInterval(InterValObj);
+			$("#phone").removeAttr("disabled");
+			$("#phone").val("重新发送验证码");
+		}
+		else{
+			curCount--;
+			$("#phone").val(curCount+"秒重新发送");
+		}
+	
+	}
+$(function(){    
+        $('#phone').click(function(){
+			var my_data = document.getElementById("iphone");
+			var value = my_data.value;
+			var code = document.getElementById("code");
+			curCount = count;
+			$('#phone').attr("disabled",true);
+			$('#phone').val(curCount+"秒重新发送");
+			InterValObj = window.setInterval(SetRemainTime, 1000);
+			$.ajax({
+				url:"alidayu/api_demo/SmsDemo.php",
+				type:"GET",
+				data:{iphone:value},
+				error: function(){  
+                        alert('Error loading XML document');  
+                },                   
+               
+                success: function(data,status){//如果调用php成功    
+                    code.value = data;
+		            alert(code.value);
+                }
+			});
+		}); 
+})
+</script>>    
+
+</body>
+
+</html>

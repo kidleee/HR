@@ -1,0 +1,121 @@
+<!Doctype Html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="layui-v2.2.6/layui-v2.2.6/layui/css/layui.css">
+  <link rel="stylesheet" href="text.css">
+  <script src="jquery.js"></script> <!-- 你必须先引入jQuery1.8或以上版本 -->
+  <script src="layer-v3.1.1/layer-v3.1.1/layer/layer.js"></script>
+  <script src="layui-v2.2.6/layui-v2.2.6/layui/layui.js"></script>
+</head>
+<body>
+<form>
+
+<br><br>
+	<div class="layui-row layui-col-space5">
+		<div class="layui-col-xs1"></div>
+		<div class="layui-col-xs10">
+			<input type="text" class="mytxt" value="模板标题" id="message1"  style="width: 458px;">
+		</div>	
+	</div>
+<br>
+	<div class="layui-row layui-col-space5">
+		<div class="layui-col-xs1"></div>
+		<div class="layui-col-xs3">
+			<input type="text" class="mytxt" value="补充描述" id="message2"  style="width: 140px;">
+		</div>
+		<div class="layui-col-xs3">
+			<input type="text" class="mytxt" value="补充描述" id="message3"  style="width: 140px;">
+		</div>
+		<div class="layui-col-xs3">
+			<input type="text" class="mytxt" value="补充描述" id="message4"  style="width: 140px;">
+		</div>			
+		<div class="layui-col-xs1"></div>		
+	</div>
+<br>
+	<div class="layui-row layui-col-space5">
+		<div class="layui-col-xs1"></div>
+		<div class="layui-col-xs10">
+			<textarea class="mytxt" rows="7" warp="virtual" style="width: 458px;" id="message5" value="补充描述"></textarea>
+		</div>	
+	</div>	
+<br>
+	<div class="layui-row layui-col-space5">
+		<div class="layui-col-xs4"></div>
+		<div class="layui-col-xs1">
+			<input type="button" class="layui-btn layui-btn-normal layui-btn-lg" value="保存" onclick="lalala();">
+		</div>
+		<div class="layui-col-xs1"></div>
+		<div class="layui-col-xs2">
+			<Button class="layui-btn layui-btn-primary layui-btn-lg" onclick="cancel();">取消</Button>
+		</div>
+		<div class="layui-col-xs3"></div>
+    </div>	
+</form>   
+<script>
+	function lalala()	
+	{
+		var _parentWin = window.parent;  
+		var hd1=_parentWin.document.getElementById("hd1");
+		var hd2=_parentWin.document.getElementById("hd2");
+		var hd3=_parentWin.document.getElementById("hd3");
+		var hd4=_parentWin.document.getElementById("hd4");
+		var hd5=_parentWin.document.getElementById("hd5");
+		var message1=document.getElementById("message1");
+		var message2=document.getElementById("message2");
+		var message3=document.getElementById("message3");
+		var message4=document.getElementById("message4");
+		var message5=document.getElementById("message5");
+		//hd1.value = message1.value;
+		//hd2.value = message2.value;
+		//hd3.value = message3.value;
+		//hd4.value = message4.value;
+		//hd5.value = message5.value;
+        
+        //var str = 'lcdiv' + window.parent.left_count;
+        //parent.left_count++;
+        //window.parent.oldleft_order.push(str);
+		var divx = _parentWin.document.createElement('div');
+		divx.setAttribute("class","div-left m_title");
+        //divx.setAttribute("id",str);
+		//设置div的属性
+		divx.innerHTML = '<h1 class="handle">'+message1.value+'</h1><div class="changeable block-inline width-three fix-top" contenteditable="false">'+message2.value+'</div><div class="changeable block-inline width-three fix-top" contenteditable="false">'+message3.value+'</div><div class="changeable block-inline width-three fix-top" contenteditable="false">'+message4.value+'</div><div class="changeable width-all fix-bottom" contenteditable="false">'+message5.value+'</div>'; //设置显示的数据，可以是标签．
+		divx.style.background = "red";//设置css样式,s设置背景颜色
+		var div = _parentWin.document.getElementById("left_div");//获取body对象.
+		//var div1 = _parentWin.document.getElementById("div1");
+		//动态插入到body中
+		div.insertBefore(divx,div.lastChild);
+		//divx.insertBefore(input1,divx.lastChild);
+		
+		/*
+		$.ajax({  
+            type: "post",  
+            url: "http://www.runjianli.com/index.php/cv/cv_model/leftcreate_infomation",
+			dataType: "text",
+            data:{"div_id":str,"create_title":message1.value,"create_content1":message2.value,"create_content2":message3.value,"create_content3":message4.value,"create_textarea":message5.value},
+            success: function(data){
+                var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+		        parent.layer.close(index); //再执行关闭  
+            },
+			error: function(jqXHR, textStatus, errorThrown){  
+                alert(jqXHR.responseText);
+				alert(jqXHR.status);
+				alert(jqXHR.readyState);
+				alert(jqXHR.statusText);
+				alert(textStatus);
+				alert(errorThrown); 
+			}
+        }) */
+        var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+		parent.layer.close(index); //再执行关闭
+	}
+	
+	function cancel()
+	{
+		var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+		parent.layer.close(index); //再执行关闭   
+	}
+</script>	
+
+</body>
+</html>

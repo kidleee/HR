@@ -1,0 +1,96 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<link rel="stylesheet" href="layui-v2.2.6/layui-v2.2.6/layui/css/layui.css" type="text/css">
+<script src="layui-v2.2.6/layui-v2.2.6/layui/layui.js"></script>
+<script src="jquery.js"></script> <!-- 你必须先引入jQuery1.8或以上版本 -->
+<script src="jqui/jqui/jquery-ui.js"></script>
+<style>
+
+</style>
+</head>
+<body>
+<div class="layui-layout layui-layout-admin">
+<div class="layui-header">
+    <a class="layui-logo" href="http:\\www.runjianli.com">润简历</a>
+    <!-- 头部区域（可配合layui已有的水平导航） -->
+   
+    <!-- 登陆注册区 -->
+	<ul class="layui-nav layui-layout-right">
+      <li class="layui-nav-item"><a href="sifang/user.html">在线制作</a></li>
+      <li class="layui-nav-item"><a href="viewmodel.html">模板商城</a></li>
+      <li class="layui-nav-item"><a href="howtohr.html">HR之旅</a></li>
+      <li class="layui-nav-item"><a href="mademodelindex.html">模板定制</a></li>
+      <li class="layui-nav-item"><a href="aboutus.html">关于我们</a></li>
+      <li class="layui-nav-item"><a href=""></a></li>
+    </ul>
+    <!-- 头部区域（可配合layui已有的水平导航） -->
+</div>
+<div class="layui-side layui-bg-black">        
+ <ul class="layui-nav layui-nav-tree"  lay-filter="test">
+        <li class="layui-nav-item layui-nav-itemed">
+          <a href="javascript:viewbaseinformation();">修改基本信息</a>
+        </li>
+        <li class="layui-nav-item">
+          <a href="javascript:viewhistoryorder();">历史订单查询</a>
+        </li>
+        <li class="layui-nav-item"><a href="javascript:viewbaserecommend();">邀请奖励区</a></li>
+ </ul>
+</div>
+
+<!--基本信息修改-->
+<div class="layui-body">
+<!--历史订单查询-->
+<div style="display:block;">
+    <table id="demo" lay-filter="test"></table>
+</div>
+
+<!--推荐人user_id填写-->
+
+<!--历史订单查询-->
+</div>
+
+
+</div>
+
+
+<script>
+$(function(){
+layui.use('table', function(){
+  var table = layui.table;
+  var layer = layui.layer;
+  
+  //第一个实例
+  table.render({
+    elem: '#demo'
+    ,height: 315
+    ,url: 'http://www.runjianli.com/index.php/cert/cert/HR_order' //数据接口
+    ,page: false //开启分页
+    ,cols: [[ //表头
+      {field: 'A_user_id', title: '下单用户', width:135,fixed: 'left'}            
+      ,{field: 'out_trade_no', title: '订单号', width:180}
+      ,{field: 'total_fee', title: '金额', width:100}
+      ,{field: 'time', title: '要求时间', width:180}
+      ,{field: 'date', title: '时间', width:180}
+      ,{field: 'pay', title: '支付状态', width:180}
+      ,{field: 'phone', title: '联系方式', width:180}
+      ,{field: 'wx', title: '微信', width:180}    
+    ]]
+  });    
+})
+})
+
+//Demo
+layui.use('form', function(){
+  var form = layui.form;
+});
+layui.use('element', function(){
+  var element = layui.element;
+});
+
+//历史订单查询
+</script>
+</body>
+</html> 

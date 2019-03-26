@@ -1,0 +1,83 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>登陆页面</title>
+<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="js/jquery.min.js"></script>
+<!-- Custom Theme files -->
+<link href="css/style.css" rel='stylesheet' type='text/css' />
+<!-- Custom Theme files -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+</head>
+<body>
+	<!--- Header Starts Here --->
+	<div class="header">
+		<div class="container">
+			<div class="logo">
+				<a href="aboutus.html" style="color:#FFF;font-size:40px">润简历</a>
+			</div>
+			<div class="navigation">
+				<span class="menu"><img src="images/nav.png" alt="" /></span>
+				<ul class="nav">
+					<li><a href="user.html">在线制作</a></li> <lable>/</lable>
+					<li><a href="viewmodel.html">模板商城</a></li> <lable>/</lable>
+					<li><a href="howtohr.html">HR之旅</a></li> <lable>/</lable>
+					<li><a href="mademodelindex.html">模板定制</a></li> <lable>/</lable>					
+					<li><a href="aboutus.html">关于我们</a></li>
+				</ul>
+			</div>
+			<script>
+					$( "span.menu" ).click(function() {
+					  $( ".navigation ul.nav" ).slideToggle( "slow", function() {
+					    // Animation complete.
+					  });
+					});
+				</script>
+			<div class="clearfix"> </div>
+		</div>
+	</div>
+	<!--- Header Ends Her -->
+	<!--- 404 Starts Here --->
+	<div class="error">
+		<div class="container">
+			<div class="error-top">
+				<span class="line"></span><a href="#" class="line-anchor">微信扫描下方二维码登陆</a><span class="line"></span>
+							<div class="clearfix"></div>
+							<h1 id="login_container"></h1>
+							<script src="http://res.wx.qq.com/connect/zh_CN/htmledition/js/wxLogin.js"></script>
+          <script>
+             var obj = new WxLogin({
+               //true：手机点击确认登录后可以在 iframe 内跳转到 redirect_uri，false：手机点击确认登录后可以在 top window 跳转到 redirect_uri。默认为 false。  
+               self_redirect:false,
+               //第三方页面显示二维码的容器id
+               id: "login_container",
+               //应用唯一标识，在微信开放平台提交应用审核通过后获得
+               appid: "wxeafbca61ac265143",
+               //应用授权作用域，拥有多个作用域用逗号（,）分隔，网页应用目前仅填写snsapi_login即可
+               scope: "snsapi_login",
+               //重定向地址，需要进行UrlEncode
+               redirect_uri: encodeURIComponent("http://www.runjianli.com/index.php/index/wx_login/index"),
+               //用于保持请求和回调的状态，授权请求后原样带回给第三方。该参数可用于防止csrf攻击（跨站请求伪造攻击），建议第三方带上该参数，可设置为简单的随机数加session进行校验
+               state: Math.ceil(Math.random()*1000),
+               //提供"black"、"white"可选，默认为黑色文字描述
+               style: "",
+               //自定义样式链接，第三方可根据实际需求覆盖默认样式
+               href: ""});
+         </script>
+				</div>
+				<span class="line"></span><a href="#" class="line-anchor">微信扫描上方二维码登陆</a><span class="line"></span>
+							<div class="clearfix"></div>
+			</div>
+		</div>
+	<!--- 404 Ends Here --->
+	<div class="footer">
+		<div class="container">
+			<p class="copyright">南京博晓信息科技有限公司备案号  苏 ICP备 18029764号-1Copyright © 2016-2018 runjianli. All Rights Reserved. <a href="aboutus.html" target="_blank" title="关于我们">关于我们</a> - about <a href="viewmodel.html" title="简历模板" target="_blank">简历模板</a></p>
+			<div class="clearfix"></div>
+		</div>
+	</div>
+
+</body>
+</html>

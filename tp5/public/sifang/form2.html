@@ -1,0 +1,364 @@
+﻿<!Doctype Html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="layui-v2.2.6/layui-v2.2.6/layui/css/layui.css">
+  <link rel="stylesheet" href="text.css">
+  <script src="jquery.js"></script> <!-- 你必须先引入jQuery1.8或以上版本 -->
+  <script src="layer-v3.1.1/layer-v3.1.1/layer/layer.js"></script>
+  <script src="layui-v2.2.6/layui-v2.2.6/layui/layui.js"></script>
+</head>
+<body>
+<form>
+    <br>
+	<div class="layui-row layui-col-space5">
+		<div class="layui-col-xs1"></div>
+		<div class="layui-col-xs5">
+			<p class="myfont">你的名字: </p>
+			<input type="text" class="mytxt" placeholder="请输入你的名字" id="message1" name="message1" style="width: 198px;">
+		</div>
+		<div class="layui-col-xs5">
+		<div class="layui-row"><p class="myfont">生日: </p></div>
+		<div class="layui-row">
+		<div class="layui-col-xs6">
+			<select class="mytxt" id="message2" name="message2" style="width: 79px;">
+				<option value="0">年</option>
+				<option value="1960">1960</option>
+				<option value="1961">1961</option>
+				<option value="1962">1962</option>
+				<option value="1963">1963</option>
+				<option value="1964">1964</option>
+				<option value="1965">1965</option>
+				<option value="1966">1966</option>
+				<option value="1967">1967</option>
+				<option value="1968">1968</option>
+				<option value="1969">1969</option>
+				<option value="1970">1970</option>
+				<option value="1971">1971</option>
+				<option value="1972">1972</option>
+				<option value="1973">1973</option>
+				<option value="1974">1974</option>
+				<option value="1975">1975</option>
+				<option value="1976">1976</option>
+				<option value="1977">1977</option>
+				<option value="1978">1978</option>
+				<option value="1979">1979</option>
+				<option value="1980">1980</option>
+				<option value="1981">1981</option>
+				<option value="1982">1982</option>
+				<option value="1983">1983</option>
+				<option value="1984">1984</option>
+				<option value="1985">1985</option>
+				<option value="1986">1986</option>
+				<option value="1987">1987</option>
+				<option value="1988">1988</option>
+				<option value="1989">1989</option>
+				<option value="1990">1990</option>
+				<option value="1991">1991</option>
+				<option value="1992">1992</option>
+				<option value="1993">1993</option>
+				<option value="1994">1994</option>
+				<option value="1995">1995</option>
+				<option value="1996">1996</option>
+				<option value="1997">1997</option>
+				<option value="1998">1998</option>
+				<option value="1999">1999</option>
+				<option value="2000">2000</option>
+				<option value="2001">2001</option>
+				<option value="2002">2002</option>
+				<option value="2003">2003</option>
+				<option value="2004">2004</option>
+				<option value="2005">2005</option>
+				<option value="2006">2006</option>
+				<option value="2007">2007</option>
+				<option value="2008">2008</option>
+				<option value="2009">2009</option>
+				<option value="2010">2010</option>
+				<option value="2011">2011</option>
+				<option value="2012">2012</option>
+				<option value="2013">2013</option>
+				<option value="2014">2014</option>
+				<option value="2015">2015</option>
+				<option value="2016">2016</option>
+				<option value="2017">2017</option>
+				<option value="2018">2018</option>
+			</select>
+		</div>
+		<div class="layui-col-xs2">
+			<select class="mytxt" id="message3" name="message3" style="width: 79px;">
+				<option value="0">月</option>
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+				<option value="5">5</option>
+				<option value="6">6</option>
+				<option value="7">7</option>
+				<option value="8">8</option>
+				<option value="9">9</option>
+				<option value="10">10</option>
+				<option value="11">11</option>
+				<option value="12">12</option>
+			</select>
+		</div>
+		</div>
+        </div>    
+	</div>
+	<br>
+	<div class="layui-row layui-col-space5">
+		<div class="layui-col-xs1"></div>
+		<div class="layui-col-xs5">
+			<p class="myfont">省份: </p>
+			<select class="mytxt" id="message4" style="width: 208px;" name="province" onChange="set_city(this, this.form.city);">
+				<option value="0">请选择省份</option>
+				<option value="安徽">安徽</option>
+				<option value="湖南">湖南</option>
+				<option value="云南">云南</option>
+				<option value="河北">河北</option>
+				<option value="江苏">江苏</option>
+				<option value="吉林">吉林</option>
+				<option value="山东">山东</option>
+				<option value="甘肃">甘肃</option>
+				<option value="福建">福建</option>
+				<option value="广东">广东</option>
+				<option value="湖北">湖北</option>
+				<option value="浙江">浙江</option>
+				<option value="海南">海南</option>
+				<option value="贵州">贵州</option>
+				<option value="辽宁">辽宁</option>
+				<option value="青海">青海</option>
+				<option value="山西">山西</option>
+				<option value="江西">江西</option>
+				<option value="四川">四川</option>
+				<option value="河南">河南</option>
+				<option value="陕西">陕西</option>
+				<option value="广西">广西</option>
+				<option value="宁夏">宁夏</option>
+				<option value="新疆">新疆</option>
+				<option value="西藏">西藏</option>
+				<option value="黑龙江">黑龙江</option>
+				<option value="内蒙古">内蒙古</option>
+			</select>
+		</div>
+		<div class="layui-col-xs5">
+		<p class="myfont">城市: </p>
+			<select class="mytxt" id="message5" style="width: 208px;" name="city">
+				<option value="0">请选择城市</option>
+			</select>
+		</div>
+	</div>
+
+	<div class="layui-row layui-col-space5">
+		<div class="layui-col-xs1"></div>
+		<div class="layui-col-xs5">
+			<p class="myfont">联系电话: </p>
+			<input type="text" class="mytxt" placeholder="请输入你的电话号码" id="message6"  name="message6" style="width: 198px;">
+		</div>
+		<div class="layui-col-xs5">
+			<p class="myfont">邮箱地址: </p>
+			<input type="text" class="mytxt" placeholder="请输入正确的邮箱地址" id="message7"  name="message7" style="width: 198px;">
+		</div>
+	</div>
+	<div class="layui-row layui-col-space5">
+		<div class="layui-col-xs1"></div>
+		<div class="layui-col-xs10">
+		<p class="myfont">一句话介绍自己: </p>
+		<input type="text" class="mytxt" placeholder="尽量简洁明了" id="message8" name="message8"  style="width: 458px;">
+		</div>	
+	</div>
+	<br>
+	<div class="layui-row layui-col-space5">
+		<div class="layui-col-xs4"></div>
+		<div class="layui-col-xs1">
+			<Button class="layui-btn layui-btn-normal layui-btn-lg" onclick="lalala();">保存</Button>
+		</div>
+		<div class="layui-col-xs1"></div>
+		<div class="layui-col-xs2">
+			<Button class="layui-btn layui-btn-primary layui-btn-lg" onclick="cancel();">取消</Button>
+		</div>
+		<div class="layui-col-xs3"></div>
+	</div>
+	
+</form>   
+	<script>
+        $(function(){
+            var _parentWin = window.parent;   
+			var bt6=_parentWin.document.getElementById("bt6");
+			var bt7=_parentWin.document.getElementById("bt7");
+			var bt8=_parentWin.document.getElementById("bt8");
+			var bt9=_parentWin.document.getElementById("bt9");
+			var bt10=_parentWin.document.getElementById("bt10");
+			var bt11=_parentWin.document.getElementById("bt11");
+			var message1=document.getElementById("message1");
+			var message2=document.getElementById("message2");
+			var message3=document.getElementById("message3");
+			var message4=document.getElementById("message4");
+			var message5=document.getElementById("message5");
+			var message6=document.getElementById("message6");
+			var message7=document.getElementById("message7");
+			var message8=document.getElementById("message8");
+            if(bt10.innerHTML != '你的名字')
+            {    
+                message1.value = bt10.innerHTML;
+            }
+            if(bt8.innerHTML != '联系电话')
+            {    
+                message6.value = bt8.innerHTML;
+            }
+            if(bt9.innerHTML != '电子邮箱')
+            {    
+                message7.value = bt9.innerHTML;
+            }
+            if(bt11.innerHTML != '一句话介绍自己，告诉HR选择你而不是别人')
+            {    
+                message8.value = bt11.innerHTML;
+            }
+        })
+		function lalala()
+		{
+			var _parentWin = window.parent;   
+			var bt6=_parentWin.document.getElementById("bt6");
+			var bt7=_parentWin.document.getElementById("bt7");
+			var bt8=_parentWin.document.getElementById("bt8");
+			var bt9=_parentWin.document.getElementById("bt9");
+			var bt10=_parentWin.document.getElementById("bt10");
+			var bt11=_parentWin.document.getElementById("bt11");
+			var message1=document.getElementById("message1");
+			var message2=document.getElementById("message2");
+			var message3=document.getElementById("message3");
+			var message4=document.getElementById("message4");
+			var message5=document.getElementById("message5");
+			var message6=document.getElementById("message6");
+			var message7=document.getElementById("message7");
+			var message8=document.getElementById("message8");
+			
+			if(message1.value == '请输入你的名字'||message1.value == "")
+			{
+		
+			}
+			else
+			{
+				bt10.innerHTML = message1.value;
+			}
+			
+			if(message2.value == '0'&&message3.value == '0')
+			{
+				//bt6.setAttribute("style","display:none");
+			}
+			else if(message2.value != '0'&&message3.value == '0')
+			{
+				bt6.innerHTML = message2.value+'年';
+			}
+			else if(message2.value == '0'&&message3.value != '0')
+			{
+				bt6.innerHTML = message3.value+'月';
+			}
+			else if(message2.value != '0'&&message3.value != '0')
+			{
+				bt6.innerHTML = message2.value+'年'+message3.value+'月';
+			}
+	
+			if(message4.value == '0')
+			{
+				//bt7.setAttribute("style","display:none");
+			}
+			else
+			{
+				if(message5.value == '0')
+				{
+					bt7.innerHTML = message4.value;
+				}
+				else
+				{
+					bt7.innerHTML = message4.value + message5.value;
+				}
+			}
+			
+			if(message6.value == "")
+			{
+				//b8.setAttribute("style","display:none");
+			}
+			else
+			{
+				bt8.innerHTML = message6.value;
+			}
+			
+			if(message7.value == "")
+			{
+				//bt9.setAttribute("style","display:none");
+			}
+			else
+			{
+				bt9.innerHTML = message7.value;
+			}
+			
+			if(message8.value == "")
+			{
+		    
+			}
+			else
+			{
+				bt11.innerHTML = message8.value;
+			}
+			
+			var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+			parent.layer.close(index); //再执行关闭   
+		}
+	
+	
+	
+	
+		cities = new Object();
+		cities['安徽']=new Array('合肥市', '芜湖市', '蚌埠市', '淮南市', '马鞍山市', '淮北市', '铜陵市', '安庆市', '黄山市', '滁州市', '阜阳市', '宿州市', '六安市', '亳州市', '池州市', '宣城市');
+        cities['湖南']=new Array('长沙市', '株洲市', '湘潭市', '衡阳市', '邵阳市', '岳阳市', '常德市', '张家界市', '益阳市', '娄底市', '郴州市', '永州市', '怀化市');
+        cities['云南']=new Array('昆明市', '曲靖市', '玉溪市', '保山市', '昭通市', '丽江市', '普洱市', '临沧市', '安宁市', '宣威市', '腾冲市', '楚雄市');       
+		cities['河北']=new Array('石家庄', '张家口市', '承德市', '秦皇岛市', '唐山市', '廊坊市', '保定市', '沧州市', '衡水市', '邢台市', '邯郸市');
+        cities['江苏']=new Array('常州市', '徐州市', '南京市', '淮安市', '南通市', '宿迁市', '无锡市', '扬州市', '盐城市', '苏州市', '泰州市', '镇江市', '连云港市', '常熟市');
+        cities['吉林']=new Array('长春市', '吉林市', '四平市', '辽源市', '通化市', '白山市', '松原市', '白城市');
+        cities['山东']=new Array('济南市', '青岛市', '淄博市', '枣庄市', '东营市', '烟台市', '潍坊市', '济宁市', '泰安市', '威海市', '日照市', '滨州市', '德州市', '聊城市', '临沂市', '菏泽市', '莱芜市');   cities['甘肃']=new Array('兰州市', '嘉峪关市', '金昌市', '白银市', '天水市', '武威市', '张掖市', '平凉市', '酒泉市', '庆阳市', '定西市', '陇南市');
+        cities['福建']=new Array('福州市', '厦门市', '莆田市', '三明市', '泉州市', '漳州市', '南平市', '龙岩市', '宁德市', '福清市', '长乐市');
+        cities['广东']=new Array('珠海市', '汕头市', '佛山市', '韶关市', '湛江市', '肇庆市', '江门市', '茂名市', '惠州市', '梅州市', '汕尾市', '河源市', '阳江市', '清远市', '东莞市', '中山市', '潮州市', '揭阳市', '云浮市');
+        cities['湖北']=new Array('武汉市', '黄石市', '襄阳市', '荆州市', '宜昌市', '十堰市', '孝感市', '荆门市', '鄂州市', '黄冈市', '咸宁市', '随州市');
+        cities['浙江']=new Array('杭州市', '湖州市', '嘉兴市', '金华市', '丽水市', '宁波市', '衢州市', '绍兴市', '台州市', '温州市', '舟山市');
+        cities['海南']=new Array('海口市', '三亚市', '三沙市', '儋州市', '五指山市', '琼海市', '文昌市');
+        cities['贵州']=new Array('贵阳市', '六盘水市', '遵义市', '安顺市', '毕节市', '铜仁市');
+        cities['辽宁']=new Array('沈阳市', '大连市', '鞍山市', '抚顺市', '本溪市', '丹东市', '锦州市', '营口市', '阜新市', '辽阳市', '盘锦市', '铁岭市', '朝阳市', '葫芦岛市');
+        cities['青海']=new Array('西宁市', '海东市');
+		cities['山西']=new Array('太原市', '大同市', '朔州市', '阳泉市', '长治市', '晋城市', '忻州地区', '吕梁地区', '晋中市', '临汾地区', '运城地区');
+        cities['江西']=new Array('南昌市', '景德镇市', '萍乡市', '九江市', '新余市', '鹰潭市', '赣州市', '吉安市', '宜春市', '抚州市', '上饶市');
+        cities['四川']=new Array('成都市', '绵阳市', '自贡市', '攀枝花市', '泸州市', '德阳市', '广元市', '遂宁市', '内江市', '乐山市', '资阳市', '宜宾市', '南充市', '达州市');
+        cities['河南']=new Array('郑州市', '开封市', '洛阳市', '平顶山市', '安阳市', '鹤壁市', '新乡市', '焦作市', '濮阳市', '许昌市', '漯河市', '三门峡市', '南阳市', '商丘市');
+        cities['陕西']=new Array('西安市', '铜川市', '宝鸡市', '咸阳市', '渭南市', '延安市', '汉中市', '榆林市', '安康市', '商洛市');
+        cities['广西']=new Array('南宁市', '柳州市', '桂林市', '梧州市', '北海市', '防城港市', '钦州市', '贵港市', '玉林市', '百色市', '贺州市', '河池市', '来宾市', '崇左市');
+        cities['宁夏']=new Array('银川市', '石嘴山市', '吴忠市', '固原市', '中卫市');
+        cities['新疆']=new Array('乌鲁木齐市', '喀什市', '伊宁市');
+        cities['西藏']=new Array('拉萨市', '日喀则市', '昌都市', '林芝市', '山南市');
+        cities['黑龙江']=new Array('哈尔滨市', '齐齐哈尔市', '牡丹江市', '佳木斯市', '七台河市', '大庆市', '黑河市', '绥化市', '伊春市', '鹤岗市', '双鸭山市', '鸡西市');
+        cities['内蒙古']=new Array('呼和浩特市', '包头市', '乌海市', '赤峰市', '通辽市', '鄂尔多斯市', '呼伦贝尔市', '巴彦淖尔市', '乌兰察布市');
+		function set_city(province, city)
+		{
+			var pv, cv;
+			var i, ii;
+			pv = province.value;
+			cv = city.value;
+			city.length = 1;
+			if(pv == '0') return;
+			if(typeof(cities[pv]) == 'undefined') return;
+			for(i=0; i<cities[pv].length; i++)
+			{
+				ii = i+1;
+				city.options[ii] = new Option();
+				city.options[ii].text = cities[pv][i];
+				city.options[ii].value = cities[pv][i];
+			}
+		}
+	
+	    function cancel()
+		{
+			var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+			parent.layer.close(index); //再执行关闭   
+		}
+	</script>	
+
+</body>
+</html>

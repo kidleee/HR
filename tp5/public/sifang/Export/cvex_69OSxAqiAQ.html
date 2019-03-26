@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8"/>
+<title>在线简历</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link rel="shortcut icon" href="favicon.ico" />
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
+<link rel="stylesheet" type="text/css" href="S10004.css"/>
+<script src="../layui-v2.2.6/layui-v2.2.6/layui/layui.js" type="text/javascript" charset="utf-8"></script> 
+<link rel="stylesheet" href="layui-v2.2.6/layui-v2.2.6/layui/css/layui.css" type="text/css">   
+<script type="text/javascript" src="../js/jquery1.42.min.js" ></script>
+<script type="text/javascript" src="../js/jquery.SuperSlide.2.1.1.js"></script>
+<script type="text/javascript" src="../js/sifang.js" ></script> 
+<script src="jquery.js"></script>
+<script src="jquery-ui.js" type="text/javascript" charset="utf-8"></script>    
+<script src="../Sortable-master/Sortable-master/Sortable.js"></script>    
+<script type="text/javascript">
+function openShutManager(oSourceObj,oTargetObj,shutAble,oOpenTip,oShutTip){
+var sourceObj = typeof oSourceObj == "string" ? document.getElementById(oSourceObj) : oSourceObj;
+var targetObj = typeof oTargetObj == "string" ? document.getElementById(oTargetObj) : oTargetObj;
+var openTip = oOpenTip || "";
+var shutTip = oShutTip || "";
+if(targetObj.style.display!="none"){
+   if(shutAble) return;
+   targetObj.style.display="none";
+   if(openTip  &&  shutTip){
+    sourceObj.innerHTML = shutTip; 
+   }
+} else {
+   targetObj.style.display="block";
+   if(openTip  &&  shutTip){
+    sourceObj.innerHTML = openTip; 
+   }
+}
+}
+</script>
+</head>
+<body>
+<div class="top">
+	<div class="cont">
+		<img src="../img/i_tz.png" alt="" /><span>网站公告：</span>公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容
+		<a href="#" id="close"><img src="../img/i_close.png"/></a>
+	</div>
+</div>
+<!--neck-->
+<div class="neck">
+	<div class="cont">
+		<div class="logo">
+			<a href="http:\\www.runjianli.com"><img src="../img/logo.png"/></a>
+		</div>
+		<div class="nav">
+			<ul>
+				<li class="on"><a href="../cvedit.html">简历制作</a></li>
+				<li><a href="../viewmodel.html">模板商城</a></li>
+				<li><a href="../headhunter.html">名企导师</a></li>
+				<li><a href="../howtohr.html">加入我们</a></li>
+				<li><a href="#"><img src="../img/i_dhs.png" alt="" /></a>
+					<div class="nav_down">
+					<dl>
+						<dd><a href="../aboutus.html">关于我们1</a></dd>
+						<dd><a href="../aboutus.html">关于我们2</a></dd>
+						<dd><a href="../aboutus.html">关于我们3</a></dd>
+					</dl>
+					</div>
+				</li>
+				<div id="img" class="hyzx" style="display:none">
+					<div class="tx">
+					<img id="imgurl" src="?"/>
+					<div class="hy_down">
+					<dl>
+						<dd><a href="gerenzhongxin1.html">个人中心</a></dd>
+						<dd><a href="gerenzhongxin2.html">我的简历</a></dd>
+						<dd><a href="javascript:signout();">退出</a></dd>
+					</dl>
+					</div>
+					</div>
+				</div>
+				<span id="login" class="reg">
+					<a href="../login.html">登陆</a><img src="../img/xt1.png"/>
+					<a href="../login.html">注册</a>
+				</span>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="main">
+<div class="weizhi">
+	<div class="cont">
+	<a href="#">在线编辑</a> > 简历预览
+	</div>
+</div>
+<!--startprint-->
+<div class="main dcjl">    
+<div class="cont">
+<div class="jlbox">
+	<div class="shadow">
+	<div class="jl2_box">
+		<div class="jl2_cat" id="jl2_cat">简历预览 
+          <span>
+          <a class="layui-btn layui-btn-radius layui-btn-primary" href="javascript:c();" style="width:15%;margin:20px 20px 20px 30px">下载</a>
+          <a class="layui-btn layui-btn-radius layui-btn-normal" href="javascript:a();" style="width:15%;margin:20px 20px 20px 30px">二维码分享</a>
+          <a class="layui-btn layui-btn-radius layui-btn-normal" href="javascript:b();" style="width:15%;margin:20px 20px 20px 30px">链接分享</a>
+          <form style="width:25%;float:right;display:inline-block;margin-right:20px" class="layui-form" id="tf">
+          <div style="margin-bottom:10px;color:#333;font-size:16px;padding-left:20px;">请选择分享链接失效时间(默认不失效)</div>    
+          <div class="layui-form-item">
+              <label class="layui-form-label">天数</label>
+              <div class="layui-input-block">
+                   <select id="day" name="day" lay-verify="required">
+                        <option value="0"></option>
+                        <option value="1">一天</option>
+                        <option value="3">三天</option>
+                        <option value="5">五天</option>
+                        <option value="10">十天</option>
+                        <option value="30">三十天</option>
+                   </select>
+              </div>
+         </div> 
+         <div class="layui-form-item">  
+              <label class="layui-form-label">小时</label>
+              <div class="layui-input-block">
+                   <select id="hour" name="hour" lay-verify="required">
+                        <option value="0"></option>
+                        <option value="1">一小时</option>
+                        <option value="3">三小时</option>
+                        <option value="5">五小时</option>
+                        <option value="12">十二小时</option>
+                        <option value="24">二十四小时</option>
+                   </select>
+              </div>
+          </div>
+          </form>
+          </span>
+          </div>
+		<div class="jl2_right" id="module_list">
+			<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<link rel="stylesheet" href="../css/style.css" type="text/css">
+<div class="main dcjl">    
+<div class="cont">
+<div class="jlbox">
+	<div class="shadow">
+	<div class="jl2_box">
+		<div class="jl2_cat" id="jl2_cat" style="display: none;">在线编辑简历  <span>在线编辑简历</span></div>	
+		<div class="jl2_left" id="jl2_left" style="display: none;">
+			<div class="mk1"><img src="img/i_mb.png">模板管理 <a onclick="openShutManager(this,'fbox1',false,'<i></i>','<u></u>')"><i></i></a></div>
+			<div id="fbox1">
+			<div class="mk2">
+				<h3>已有模块</h3>
+				<!--div class="bt1">基本信息 <span>必填</span></div-->
+				<ul id="ulshow">
+					<li id="gerenjianjieshow" style="display:block;"><a href="javascript:hide('gerenjianjie')">个人简介</a><a href="javascript:hide('gerenjianjie')"><img src="img/i_jian.png"></a></li>
+					<li id="qiuzhiyixiangshow" style="display:block;"><a href="javascript:hide('qiuzhiyixiang')">求职意向</a><a href="javascript:hide('qiuzhiyixiang')"><img src="img/i_jian.png"></a></li>
+					<li id="gongzuojinglishow" style="display:block;"><a href="javascript:hide('gongzuojingli')">工作经历</a><a href="javascript:hide('gongzuojingli')"><img src="img/i_jian.png"></a></li>
+					<li id="jibenxinxishow" style="display:block;"><a href="javascript:hide('jibenxinxi')">基本信息</a><a href="javascript:hide('jibenxinxi')"><img src="img/i_jian.png"></a></li>
+					<li id="lianxifangshishow" style="display:block;"><a href="javascript:hide('lianxifangshi')">联系方式</a><a href="javascript:hide('lianxifangshi')"><img src="img/i_jian.png"></a></li>
+					<li id="jinengzhengshushow" style="display:block;"><a href="javascript:hide('jinengzhengshu')">技能证书</a><a href="javascript:hide('jinengzhengshu')"><img src="img/i_jian.png"></a></li>
+                    <li id="shixijingyanshow" style="display:none;"><a href="javascript:hide('shixijingyan')">实习经验</a><a href="javascript:hide('shixijingyan')"><img src="img/i_jian.png"></a></li>
+                    <li id="xiangmujingyanshow" style="display:none;"><a href="javascript:hide('xiangmujingyan')">项目经验</a><a href="javascript:hide('xiangmujingyan')"><img src="img/i_jian.png"></a></li>
+				</ul>
+			</div>
+			
+			<div class="mk2">
+				<h3>可添加模块</h3>
+				<div class="bt1">简历封面 <span><img src="img/i_suo.png"></span></div>
+				<div class="bt1">自荐信 <span><img src="img/i_suo.png"></span></div>
+				
+				<ul id="ulhide">
+                    <li style="display:block;"><a href="javascript:rightcreate()">模块添加</a><a href="javascript:rightcreate()"><img src="img/i_jia.png"></a></li>
+                    <li id="gerenjianjiehide" style="display:none;"><a href="javascript:show('gerenjianjie')">个人简介</a><a href="javascript:show('gerenjianjie')"><img src="img/i_jia.png"></a></li>
+                    <li id="qiuzhiyixianghide" style="display:none;"><a href="javascript:show('qiuzhiyixiang')">求职意向</a><a href="javascript:show('qiuzhiyixiang')"><img src="img/i_jia.png"></a></li>
+                    <li id="gongzuojinglihide" style="display:none;"><a href="javascript:show('gongzuojingli')">工作经历</a><a href="javascript:show('gongzuojingli')"><img src="img/i_jia.png"></a></li>
+                    <li id="jibenxinxihide" style="display:none;"><a href="javascript:show('jibenxinxi')">基本信息</a><a href="javascript:show('jibenxinxi')"><img src="img/i_jia.png"></a></li>
+                    <li id="lianxifangshihide" style="display:none;"><a href="javascript:show('lianxifangshi')">联系方式</a><a href="javascript:show('lianxifangshi')"><img src="img/i_jia.png"></a></li>
+                    <li id="jinengzhengshuhide" style="display:none;"><a href="javascript:show('jinengzhengshu')">技能证书</a><a href="javascript:show('jinengzhengshu')"><img src="img/i_jia.png"></a></li>
+					<li id="shixijingyanhide" style="display:block;"><a href="javascript:show('shixijingyan')">实习经验</a><a href="javascript:show('shixijingyan')"><img src="img/i_jia.png"></a></li>
+					<li id="xiangmujingyanhide" style="display:block;"><a href="javascript:show('xiangmujingyan')">项目经验</a><a href="javascript:show('xiangmujingyan')"><img src="img/i_jia.png"></a></li>
+				</ul>
+			</div>
+			</div>
+			
+			<div class="mk4"><a href="javascript:cv_save()" style="margin-bottom: 10px">简历保存</a></div>
+			
+			<!--div class="mk1"><img src="img/i_fg.png"/>风格设置 <a onclick="openShutManager(this,'fbox3',false,'<i></i>','<u></u>')"><i></i></a></div>
+			<div class="mk3" id="fbox3">
+			<ul>
+				<li><a href="#">风格名称</a></li>
+				<li><a href="#">风格名称</a></li>
+				<li><a href="#">风格名称</a></li>
+				<li><a href="#">风格名称</a></li>
+				<li><a href="#">风格名称</a></li>
+				<li><a href="#">风格名称</a></li>
+				<li><a href="#">风格名称</a></li>
+				<li><a href="#">风格名称</a></li>
+				<li><a href="#">风格名称</a></li>
+				<li><a href="#">风格名称</a></li>
+				<li><a href="#">风格名称</a></li>
+				<li><a href="#">风格名称</a></li>
+			</ul>
+			</div>
+            <div class="mk4">
+			<a href="javascript:cv_save()"><img src="img/i_dc.png"/>简历保存</a>
+			</div-->
+			<div class="mk4">
+			<a href="javascript:cv_input()"><img src="img/i_dc.png">简历导出</a>
+			</div>	
+		</div>
+		<div class="jl2_right ui-sortable" id="module_list">
+			<div class="jl2_main">
+				<div class="jl1">
+					<div class="jl1_name">
+                    <span id="cvname" onclick="jl1information()" class="placeholder" placeholder="润简历">润简历</span><br>
+					<p id="cvjob" onclick="jl1information()" class="placeholder" placeholder="项目经理/项目负责人">项目经理/项目负责人</p>
+					</div>
+					<div class="jl1_pic placeholder">
+					<form style="display:none;" id="tf">
+                        <input type="file" id="headimg" name="headimg" change="postheadimg();">
+                    </form>
+					<img id="headimg1" src="img/i_tx2.png" alt="" style="width:154px;height:154px" onclick="headimg.click()">
+					</div>
+					<div class="jl1_lx">
+                    <span id="cvdate" onclick="jl1information()" class="placeholder" placeholder="1991.11.06">1991.11.06</span><br>
+					<p id="cvphone" onclick="jl1information()" class="placeholder" placeholder="135 4656 4563">135 4656 4563</p>
+					</div>
+				</div>
+				<div class="jl2_wrap">
+				   <div class="zbox">
+				      <ul id="left_ul">
+				      	<li class="m_title" id="gerenjianjie" style="display:block;">
+						<h3 class="handle ui-sortable-handle" style="cursor: move;">个人简介</h3>
+						<div class="info changeable placeholder" placeholder="毕业于湖北武汉职业技术学院，4年平面设计工作，我不是什么牛人我只是菜鸟，已在成长中。从事网站的建设与分析，有美丽的幻想，从学习到工作一直从事设计。" contenteditable="false">毕业于湖北武汉职业技术学院，4年平面设计工作，我不是什么牛人我只是菜鸟，已在成长中。从事网站的建设与分析，有美丽的幻想，从学习到工作一直从事设计。</div>
+						</li>
+						
+						<li class="m_title" id="qiuzhiyixiang">
+						<h3 class="handle ui-sortable-handle" style="cursor: move;">求职意向<a class="addpartA" href="javascript:" style="display: none;"><img src="img/i_bj.png"></a></h3>
+						<div class="info">
+						<div class="jb1" id="qiuzhiyixiang1">
+                            <div class="m_part"><div class="inline changeable placeholder" placeholder="职位">职位</div>：<div class="inline changeable placeholder" placeholder="淘宝美工/平面设计">淘宝美工/平面设计</div><img class="deletepart" src="img/i_jian.png" style="display: none;"><br></div>
+                            <div class="m_part"><div class="inline changeable placeholder" placeholder="薪资">薪资</div>：<div class="inline changeable placeholder" placeholder="4000~5000元/月">4000~5000元/月</div><img class="deletepart" src="img/i_jian.png" style="display: none;"><br></div>
+                            <div class="m_part"><div class="inline changeable placeholder" placeholder="地点">地点</div>：<div class="inline changeable placeholder" placeholder="湖北武汉">湖北武汉</div><img class="deletepart" src="img/i_jian.png" style="display: none;"><br></div>
+						</div>
+						</div>
+						</li>
+						
+						<li class="m_title" id="gongzuojingli">
+						<h3 class="handle ui-sortable-handle" style="cursor: move;">工作经历<a class="addpartB" href="javascript:" style="display: none;"><img src="img/i_bj.png"></a></h3>
+						<dl class="d3" id="gongzuojingli1">
+							<dd class="addpart">
+							<div class="changeable placeholder h3" placeholder="湖北活动科技网络公司">湖北活动科技网络公司</div><img class="deletepart" src="img/i_jian.png" style="display: none;">
+							<div class="zhi">
+                            <div class="changeable placeholder inline" placeholder="高级网页设计师">高级网页设计师</div>
+                            <div class="changeable placeholder inline" placeholder="2003.04-2007.05">2003.04-2007.05</div>
+							</div>
+							<div class="txt changeable placeholder" placeholder="主要做设计主要做设计主要做设计主要做设计主要做设计主要做设计主要做设计主要做设计主要做设计主要做设计主要做设计主要做设计主要做设计主要做设计">主要做设计主要做设计主要做设计主要做设计主要做设计主要做设计主要做设计主要做设计主要做设计主要做设计主要做设计主要做设计主要做设计主要做设计</div>
+							</dd>
+							
+							<dd class="addpart">
+							<div class="changeable placeholder h3" placeholder="湖北活动科技网络公司">湖北活动科技网络公司</div><img class="deletepart" src="img/i_jian.png" style="display: none;">
+							<div class="zhi">
+                            <div class="changeable placeholder inline" placeholder="高级网页设计师">高级网页设计师</div>
+                            <div class="changeable placeholder inline" placeholder="2003.04-2007.05">2003.04-2007.05</div>
+							</div>
+							<div class="txt changeable placeholder" placeholder="主要做设计主要做设计主要做设计主要做设计主要做设计主要做设计主要做设计主要做设计主要做设计主要做设计主要做设计主要做设计主要做设计主要做设计">主要做设计主要做设计主要做设计主要做设计主要做设计主要做设计主要做设计主要做设计主要做设计主要做设计主要做设计主要做设计主要做设计主要做设计</div>
+							</dd>
+						</dl>
+						</li>
+                        <li class="m_title" id="xiangmujingyan" style="display: none;">
+						<h3 class="handle ui-sortable-handle">项目经验</h3>
+						<div class="info changeable placeholder" placeholder="这里是项目经验这里是项目经验这里是项目经验这里是项目经验这里是项目经验这里是项目经验这里是项目经验这里是项目经验这里是项目经验" contenteditable="false">这里是项目经验这里是项目经验这里是项目经验这里是项目经验这里是项目经验这里是项目经验这里是项目经验这里是项目经验这里是项目经验</div>
+						</li>    
+				      </ul>
+					  <div class="s01"></div>
+				   </div>
+				
+				 <div class="zbox fr">
+				      <ul id="right_ul">
+				      	<li class="d4 m_title" id="jibenxinxi">
+						<h3 class="handle ui-sortable-handle">基本信息<a class="addpartA" href="javascript:" style="display: none;"><img src="img/i_bj.png"></a></h3>
+						<div class="info">
+						<div class="jb1" id="jibenxinxi1">
+                            <div class="m_part"><div class="inline changeable placeholder" placeholder="生日">生日</div>：<div class="inline changeable placeholder" placeholder="1991年11月06日">1991年11月06日</div><img class="deletepart" src="img/i_jian.png" style="display: none;"><br></div>
+                            <div class="m_part"><div class="inline changeable placeholder" placeholder="院校">院校</div>：<div class="inline changeable placeholder" placeholder="武汉职业技术学院">武汉职业技术学院</div><img class="deletepart" src="img/i_jian.png" style="display: none;"><br></div>
+                            <div class="m_part"><div class="inline changeable placeholder" placeholder="籍贯">籍贯</div>：<div class="inline changeable placeholder" placeholder="湖北孝感">湖北孝感</div><img class="deletepart" src="img/i_jian.png" style="display: none;"><br></div>
+				            <div class="m_part"><div class="inline changeable placeholder" placeholder="专业">专业</div>：<div class="inline changeable placeholder" placeholder="平面设计">平面设计</div><img class="deletepart" src="img/i_jian.png" style="display: none;"><br></div>
+				            <div class="m_part"><div class="inline changeable placeholder" placeholder="现居">现居</div>：<div class="inline changeable placeholder" placeholder="湖北武汉">湖北武汉</div><img class="deletepart" src="img/i_jian.png" style="display: none;"><br></div>
+						</div>
+						</div>
+						</li>
+						
+						<li class="d4 m_title" id="lianxifangshi">
+						<h3 class="handle ui-sortable-handle">联系方式<a class="addpartA" href="javascript:" style="display: none;"><img src="img/i_bj.png"></a></h3>
+						<div class="info">
+						<div class="jb1" id="lianxifangshi1">
+                            <div class="m_part"><div class="inline changeable placeholder" placeholder="手机">手机</div>：<div class="inline changeable placeholder" placeholder="135 4656 4563">135 4656 4563</div><img class="deletepart" src="img/i_jian.png" style="display: none;"><br></div>
+                            <div class="m_part"><div class="inline changeable placeholder" placeholder="邮箱">邮箱</div>：<div class="inline changeable placeholder" placeholder="45441654@qq.com">45441654@qq.com</div><img class="deletepart" src="img/i_jian.png" style="display: none;"><br></div>
+                            <div class="m_part"><div class="inline changeable placeholder" placeholder="Q Q">Q Q</div>：<div class="inline changeable placeholder" placeholder="546365464">546365464</div><img class="deletepart" src="img/i_jian.png" style="display: none;"><br></div>
+							<div class="m_part"><div class="inline changeable placeholder" placeholder="地址">地址</div>：<div class="inline changeable placeholder" placeholder="湖北武汉市">湖北武汉市</div><img class="deletepart" src="img/i_jian.png" style="display: none;"><br></div>
+						</div>
+						<!--div class="set">
+							<a href="#"><img src="img/i_bj.png" /></a>
+							<a href="#"><img src="img/i_pf.png" /></a>
+							<a href="#"><img src="img/i_set.png" /></a>
+						</div-->
+						</div>
+						</li>
+						
+				        <li class="d4 d5 m_title" id="jinengzhengshu">
+						<h3 class="handle ui-sortable-handle">技能证书<a class="addpartC" href="javascript:" style="display: none;"><img src="img/i_bj.png"></a></h3>
+						<div class="info">
+						<div class="jb1" id="jinengzhengshu1">
+                            <div class="addpart"><img src="img/i_zs.png">
+                            <div class="inline changeable placeholder" placeholder="CET-6，优秀的听说写能力">CET-6，优秀的听说写能力</div><img class="deletepart" src="img/i_jian.png" style="display: none;"><br>
+                            </div>
+                            <div class="addpart"><img src="img/i_zs.png">
+                            <div class="inline changeable placeholder" placeholder="计算机二级，熟悉计算机各项操作">计算机二级，熟悉计算机各项操作</div><img class="deletepart" src="img/i_jian.png" style="display: none;"><br>
+                            </div>
+                            <div class="addpart"><img src="img/i_zs.png">
+                            <div class="inline changeable placeholder" placeholder="高级营销员，国家职业资格四级">高级营销员，国家职业资格四级</div><img class="deletepart" src="img/i_jian.png" style="display: none;"><br>
+                            </div>
+						</div>
+						</div>
+						</li>
+                        <li class="m_title" id="shixijingyan" style="display: none;">
+						<h3 class="handle ui-sortable-handle">实习经验</h3>
+						<div class="info changeable placeholder" placeholder="这里是实习经验这里是实习经验这里是实习经验这里是实习经验这里是实习经验这里是实习经验这里是实习经验这里是实习经验这里是实习经验这里是实习经验这里是实习经验" contenteditable="false">这里是实习经验这里是实习经验这里是实习经验这里是实习经验这里是实习经验这里是实习经验这里是实习经验这里是实习经验这里是实习经验这里是实习经验这里是实习经验</div>
+						</li>  
+				      </ul>
+				   </div>
+				
+				
+				</div>
+			</div>
+		</div>
+	</div>	
+	</div>
+    </div>    
+</div>   
+</div>
+
+		</div>
+	</div>	
+	</div>
+    </div>    
+</div>   
+</div>
+<!--endprint-->     
+</div>
+
+<!--当前简历id-->     
+<input type="hidden" id="modelid" value="s10004">    
+
+<div class="dfoot"></div>
+<!--footer-->
+<div class="footer">
+	<div class="cont">
+		<div class="ft1">
+			<img src="../img/flogo.png"/><br />
+			<img src="../img/ewm.png" width="120"/>
+		</div>
+		<div class="ft2">
+			<dl>
+				<dt>联系我们</dt>
+<dd><a href="#">在线客服</a></dd>
+<dd><a href="#">微信</a></dd>
+<dd><a href="#">微博</a></dd>
+<dd><a href="#">知乎</a></dd>
+			</dl>
+			
+			<dl>
+				<dt>关于我们</dt>
+<dd><a href="#">首页</a></dd>
+<dd><a href="#">使用条款</a></dd>
+<dd><a href="#">隐私协议</a></dd>
+<dd><a href="#">加入我们</a></dd>
+			</dl>
+			
+			<dl>
+				<dt>快速进入</dt>
+<dd><a href="#">我的简历</a></dd>
+<dd><a href="#">简历攻略</a></dd>
+<dd><a href="#">导师辅导</a></dd>
+<dd><a href="#">职位列表</a></dd>
+<dd><a href="#">使用帮助</a></dd>
+			</dl>
+			
+			<dl>
+				<dt>简历模板</dt>
+<dd><a href="#">经典工作简历</a></dd>
+<dd><a href="#">秋招礼包</a></dd>
+<dd><a href="#">程序员简历模板</a></dd>
+			</dl>
+			
+			<dl>
+				<dt>合作伙伴</dt>
+<dd><a href="#">Linkedln</a></dd>
+<dd><a href="#">智联招聘</a></dd>
+<dd><a href="#">前程无忧</a></dd>
+<dd><a href="#">猎聘</a></dd>
+			</dl>
+			
+			<dl>
+				<dt>友情链接</dt>
+<dd><a href="#">爱思益</a></dd>
+<dd><a href="#">无界空间</a></dd>
+<dd><a href="#">inDeco</a></dd>
+<dd><a href="#">ViaX</a></dd>
+<dd><a href="#">站长之家</a></dd>
+			</dl>
+		</div>
+		<div class="copyright">
+			©2018 润简历 runjianli.com | 京ICP备17055181号
+		</div>
+	</div>
+</div>
+<script>
+$('#close').click(function(){
+$('.top').css('display','none')
+});
+layui.use('form', function(){
+  var form = layui.form;
+});
+layui.use('element', function(){
+  var element = layui.element;
+});    
+//简历cvid加载
+var cv_id = oneValues();
+//获取地址？后的内容    
+function oneValues(){
+		var result;
+		var url=window.location.search; //获取url中"?"符后的字串  
+		if(url.indexOf("?")!=-1){
+			result = url.substr(url.indexOf("=")+1);
+		}
+	return result;
+	}    
+function a()
+{    
+    $.ajax({  
+            type: "post",  
+            url: "http://www.runjianli.com/index.php/cv/cv_spread/ShareCv",
+	        dataType: "text",
+	        data:$('#tf').serialize(),			
+            success: function(data){  
+               layui.use('layer', function(){
+		          var layer = layui.layer;
+		          layer.open({
+			         type: 2,
+			         title: '请复制下方二维码进行分享',
+			         resize: false,
+			         scrollbar: false,
+			         skin: 'layui-layer-molv',
+			         area: ['320px', '350px'],
+			         shadeClose: true, //点击遮罩关闭
+			         content: ['http://www.runjianli.com/index.php/cv/cv_spread/CreQr?code='+data,'no'] 
+		          });
+	           })
+            },  
+	error: function(jqXHR, textStatus, errorThrown){  
+              alert(jqXHR.responseText);
+		      alert(jqXHR.status);
+		      alert(jqXHR.readyState);
+		      alert(jqXHR.statusText);
+		      alert(textStatus);
+		      alert(errorThrown); 
+        }
+    })
+}
+function b()
+{    
+    $.ajax({  
+            type: "post",  
+            url: "http://www.runjianli.com/index.php/cv/cv_spread/ShareCv",
+	        dataType: "text",
+	        data:$('#tf').serialize(),			
+            success: function(data){  
+               layui.use('layer', function(){
+		          var layer = layui.layer;
+		          layer.open({
+			         type: 1,
+			         title: '请复制下方网址进行分享',
+			         resize: false,
+			         scrollbar: false,
+			         skin: 'layui-layer-molv',
+			         area: ['400px', '120px'],
+			         shadeClose: true, //点击遮罩关闭
+			         content: 'http://www.runjianli.com/index.php/cv/cv_spread/Timejudge?code='+data 
+		          });
+	           })
+            },  
+	error: function(jqXHR, textStatus, errorThrown){  
+              alert(jqXHR.responseText);
+		      alert(jqXHR.status);
+		      alert(jqXHR.readyState);
+		      alert(jqXHR.statusText);
+		      alert(textStatus);
+		      alert(errorThrown); 
+        }
+    })
+}
+function c()
+{   
+    window.open("http://www.runjianli.com/index.php/cv/cv_spread/DownLoadpdf");
+}
+</script>
+</body>
+</html>

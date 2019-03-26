@@ -1,0 +1,84 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>登陆页面</title>
+<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="js/jquery.min.js"></script>
+<!-- Custom Theme files -->
+<link href="css/style.css" rel='stylesheet' type='text/css' />
+<!-- Custom Theme files -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+</head>
+<body>
+	<!--- Header Starts Here --->
+	<div class="header">
+		<div class="container">
+			<div class="logo">
+				<a href="aboutus.html" style="color:#FFF;font-size:40px">润简历</a>
+			</div>
+			<div class="navigation">
+				<span class="menu"><img src="images/nav.png" alt="" /></span>
+				<ul class="nav">
+					<li><a href="user.html">在线制作</a></li> <lable>/</lable>
+					<li><a href="viewmodel.html">模板商城</a></li> <lable>/</lable>
+					<li><a href="howtohr.html">HR之旅</a></li> <lable>/</lable>
+					<li><a href="mademodelindex.html">模板定制</a></li> <lable>/</lable>					
+					<li><a href="aboutus.html">关于我们</a></li>
+				</ul>
+			</div>
+			<script>
+					$( "span.menu" ).click(function() {
+					  $( ".navigation ul.nav" ).slideToggle( "slow", function() {
+					    // Animation complete.
+					  });
+					});
+				</script>
+			<div class="clearfix"> </div>
+		</div>
+	</div>
+	<!--- Header Ends Her -->
+	<!--- 404 Starts Here --->
+	<div class="error">
+		<div class="container">
+			<div class="error-top">
+				<span class="line"></span><a href="#" class="line-anchor">恭喜您成为一名合格的HR</a><span class="line"></span>
+				<div class="clearfix"></div>
+				<h1>认证成功</h1>
+                <a id="web" class="back" href="form6.html">进入个人主页</a>
+            </div>
+				<span class="line"></span><a href="#" class="line-anchor">对于HR的工作疑惑请联系客服</a><span class="line"></span>
+							<div class="clearfix"></div>
+        </div>
+    </div>
+	<!--- 404 Ends Here --->
+	<div class="footer">
+		<div class="container">
+			<p class="copyright">南京博晓信息科技有限公司备案号  苏 ICP备 18029764号-1Copyright © 2016-2018 runjianli. All Rights Reserved. <a href="aboutus.html" target="_blank" title="关于我们">关于我们</a> - about <a href="viewmodel.html" title="简历模板" target="_blank">简历模板</a></p>
+			<div class="clearfix"></div>
+		</div>
+	</div>
+<script>
+var web = document.getElementById("web");   
+$(function(){
+    $.ajax({  
+            type: "post",  
+            url: "http://www.runjianli.com/index.php/cert/cert/viewweb",
+			dataType: "text", 			
+            success: function(data){
+             web.setAttribute("href","HR/"+data+".html");
+            },
+			error: function(jqXHR, textStatus, errorThrown){  
+                alert(jqXHR.responseText);
+				alert(jqXHR.status);
+				alert(jqXHR.readyState);
+				alert(jqXHR.statusText);
+				alert(textStatus);
+				alert(errorThrown); 
+			}
+        })
+})   
+</script>    
+</body>
+</html>

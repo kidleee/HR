@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>个人模板</title>
+    <script src="jquery.js"></script> <!-- 你必须先引入jQuery1.8或以上版本 -->
+<style>
+    @charset "utf-8";
+/* CSS Document */
+*{
+    margin:0;
+    padding:0;
+}
+body{
+    font-family:"微软雅黑";
+    background-color:#ddd;
+}
+.box{
+    width:760px;
+    background:#fff;
+    margin:30px auto;
+    padding:20px;
+    overflow: auto;
+}
+.box .head span{
+    font-size:18px;
+    color:#333;
+}
+.box .head{
+    margin-bottom:20px;
+}
+.box .head a{
+    text-decoration:none;
+    float:right;
+    font-size:15px;
+    color:#333; 
+}
+.box .head a:hover{
+    color:#F00;
+}
+.box ul li{
+    width:160px;
+    height:240px;
+    list-style:none;
+    position:relative;
+    float:left;
+    margin-left:20px;
+    margin-bottom:20px;
+    overflow:hidden;
+}
+.box ul li .deatil{
+    width:160px;
+    height:240px;
+    background:rgba(0,0,0,0.7);
+    position:absolute;
+    top:-240px;
+    -webkit-transition:all 0.3s ease;<!--适应ie，谷歌，苹果浏览器内核-->
+    -o-transition:all 0.3s ease;<!--适应Opera浏览器内核-->
+    -moz-transition:all 0.3s ease;<!--火狐浏览器-->
+    -ms-transition:all 0.3s ease;<!--微软-->
+}
+
+.box ul li .deatil h2{
+    font-size:18px;
+    color:#fff;
+    text-align:center;
+    padding-top:30px;
+    }
+.box ul li .deatil p{
+    font-size:16px;
+    text-align:center;
+    margin:10px;
+    color:#fff;
+}
+.box ul li .deatil a{
+    font-size:15px;
+    display:block;
+    color:#fff;
+    background-color:#F00;
+    text-decoration:none;
+    width:100px;
+    height:40px;
+    text-align:center;
+    line-height:40px;
+    margin:0 auto;
+}
+.box ul li:hover .deatil{
+    top:0;
+}
+</style>
+</head>
+<body>
+<!-- 上方内容 -->
+  <div class="box">
+      <div class="head">
+         <span>热门</span>
+         <a href="#">更多></a>
+      </div>
+  <!-- 图片内容 -->  
+  <ul id="ul">
+  </ul>  
+  </div>
+<script>
+function getJsonLength(jsonData){
+ var jsonLength = 0;
+ for(var item in jsonData){
+  jsonLength++;
+ }
+ return jsonLength;
+}    
+$(function(){
+    //http://www.runjianli.com/index.php/cv/model/GetModel
+    $.ajax({  
+            type: "post",  
+            url: "http://www.runjianli.com/index.php/cv/cv_model/cv_personal",
+			dataType: "json", 			
+            success: function(data){
+            for(var i=0;i<getJsonLength(data);i++)
+            {   
+                var li = document.createElement('li');
+                li.innerHTML = '<div class="deatil"><h2>标题:'+data[i].cv_title+'</h2><p>简历编号:'+data[i].model_id+'</p><p>时间:'+data[i].date+'</p><a href="http://www.runjianli.com/sifang/user.html?cv_id='+data[i].cv_id+'">点击进入</a></div><img src="picture/5.jpg" width="160px" height="240px" alt=""/>';
+                var ul = document.getElementById("ul");//获取body对象.
+                ul.insertBefore(li,ul.lastChild);
+            }              
+                alert(data[i].size);
+            },
+			error: function(jqXHR, textStatus, errorThrown){  
+                alert(jqXHR.responseText);
+				alert(jqXHR.status);
+				alert(jqXHR.readyState);
+				alert(jqXHR.statusText);
+				alert(textStatus);
+				alert(errorThrown); 
+			}
+        })  
+})
+ 		
+</script>    
+</body>
+</html>

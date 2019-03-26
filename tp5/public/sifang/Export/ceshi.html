@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>简历预览</title>
+    <link rel="stylesheet" href="layui-v2.2.6/layui-v2.2.6/layui/css/layui.css" type="text/css">
+    <link rel="stylesheet" href="../css/style.css" type="text/css">
+    <script src="layui-v2.2.6/layui-v2.2.6/layui/layui.js" type="text/javascript" charset="utf-8"></script>
+    <script src="jquery.js"></script> <!-- 你必须先引入jQuery1.8或以上版本 -->
+    <script src="jqui/jqui/jquery-ui.js"></script>
+</head>
+<body>
+  <div style="overflow: auto;border-style:groove;margin:25px 10px 25px 10px;">
+      <div id="pdfview" style="float:left;width:700px">
+          
+      </div>
+      <div style="float:left;width:37%;">
+          <a class="layui-btn layui-btn-primary" href="http://www.runjianli.com/index.php/cv/cv_spread/DownLoadpdf" style="width:60%;margin:20px 20px 20px 80px">下载</a>
+          <a class="layui-btn" href="javascript:a();" style="width:60%;margin:20px 20px 20px 80px">二维码分享</a>
+          <a class="layui-btn" href="javascript:b();" style="width:60%;margin:20px 20px 20px 80px">链接分享</a>
+          <form class="layui-form" id="tf">
+          <div style="font-size:28px;margin:10px 10px 10px 10px">请选择链接失效时间(默认不失效)</div>      
+          <div class="layui-form-item">
+              <label class="layui-form-label">天数</label>
+              <div class="layui-input-block">
+                   <select id="day" name="day" lay-verify="required">
+                        <option value="0"></option>
+                        <option value="1">一天</option>
+                        <option value="3">三天</option>
+                        <option value="5">五天</option>
+                        <option value="10">十天</option>
+                        <option value="30">三十天</option>
+                   </select>
+              </div>
+         </div> 
+         <div class="layui-form-item">  
+              <label class="layui-form-label">小时</label>
+              <div class="layui-input-block">
+                   <select id="hour" name="hour" lay-verify="required">
+                        <option value="0"></option>
+                        <option value="1">一小时</option>
+                        <option value="3">三小时</option>
+                        <option value="5">五小时</option>
+                        <option value="12">十二小时</option>
+                        <option value="24">二十四小时</option>
+                   </select>
+              </div>
+          </div>
+          </form> 
+      </div>
+  </div>
+<script>
+//Demo
+layui.use('form', function(){
+  var form = layui.form;
+});
+layui.use('element', function(){
+  var element = layui.element;
+});
+$.ajax({  
+            type: "post",  
+            url: "http://www.runjianli.com/index.php/cv/cv_model/inputinnerhtml_read",
+	        dataType: "json",			
+            success: function(data){  
+                $('#pdfview').html(data.innerhtml);
+            },  
+	        error: function(jqXHR, textStatus, errorThrown){  
+              alert(jqXHR.responseText);
+		      alert(jqXHR.status);
+		      alert(jqXHR.readyState);
+		      alert(jqXHR.statusText);
+		      alert(textStatus);
+		      alert(errorThrown); 
+        }
+    })    
+function a()
+{    
+    $.ajax({  
+            type: "post",  
+            url: "http://www.runjianli.com/index.php/cv/cv_spread/ShareCv",
+	        dataType: "text",
+	        data:$('#tf').serialize(),			
+            success: function(data){  
+               layui.use('layer', function(){
+		          var layer = layui.layer;
+		          layer.open({
+			         type: 2,
+			         title: '请复制下方二维码进行分享',
+			         resize: false,
+			         scrollbar: false,
+			         skin: 'layui-layer-molv',
+			         area: ['320px', '350px'],
+			         shadeClose: true, //点击遮罩关闭
+			         content: ['http://www.runjianli.com/index.php/cv/cv_spread/CreQr?code='+data,'no'] 
+		          });
+	           })
+            },  
+	error: function(jqXHR, textStatus, errorThrown){  
+              alert(jqXHR.responseText);
+		      alert(jqXHR.status);
+		      alert(jqXHR.readyState);
+		      alert(jqXHR.statusText);
+		      alert(textStatus);
+		      alert(errorThrown); 
+        }
+    })
+}
+function b()
+{    
+    $.ajax({  
+            type: "post",  
+            url: "http://www.runjianli.com/index.php/cv/cv_spread/ShareCv",
+	        dataType: "text",
+	        data:$('#tf').serialize(),			
+            success: function(data){  
+               layui.use('layer', function(){
+		          var layer = layui.layer;
+		          layer.open({
+			         type: 1,
+			         title: '请复制下方网址进行分享',
+			         resize: false,
+			         scrollbar: false,
+			         skin: 'layui-layer-molv',
+			         area: ['400px', '120px'],
+			         shadeClose: true, //点击遮罩关闭
+			         content: 'http://www.runjianli.com/index.php/cv/cv_spread/Timejudge?code='+data 
+		          });
+	           })
+            },  
+	error: function(jqXHR, textStatus, errorThrown){  
+              alert(jqXHR.responseText);
+		      alert(jqXHR.status);
+		      alert(jqXHR.readyState);
+		      alert(jqXHR.statusText);
+		      alert(textStatus);
+		      alert(errorThrown); 
+        }
+    })
+}    
+</script>
+</body>  
+</html>

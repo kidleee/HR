@@ -1,0 +1,153 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>专属模板定制</title>
+<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+<link rel="stylesheet" href="layui-v2.2.6/layui-v2.2.6/layui/css/layui.css">
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="js/jquery.min.js"></script>
+<script src="layui-v2.2.6/layui-v2.2.6/layui/layui.js"></script>
+<!-- Custom Theme files -->
+<link href="css/style.css" rel='stylesheet' type='text/css' />
+<!-- Custom Theme files -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+</head>
+<body>
+	<!--- Header Starts Here --->
+	<div class="header">
+		<div class="container">
+			<div class="logo">
+				<a href="aboutus.html" style="color:#FFF;font-size:40px">润简历</a>
+			</div>
+			<div class="navigation">
+				<span class="menu"><img src="images/nav.png" alt="" /></span>
+				<ul class="nav">
+					<li><a href="user.html">在线制作</a></li> <lable>/</lable>
+					<li><a href="viewmodel.html">模板商城</a></li> <lable>/</lable>
+					<li><a href="howtohr.html">HR之旅</a></li> <lable>/</lable>
+					<li><a href="mademodelindex.html">模板定制</a></li> <lable>/</lable>
+					<li><a href="aboutus.html">关于我们</a></li>
+				</ul>
+			</div>
+			<script>
+					$( "span.menu" ).click(function() {
+					  $( ".navigation ul.nav" ).slideToggle( "slow", function() {
+					    // Animation complete.
+					  });
+					});
+				</script>
+			<div class="clearfix"> </div>
+		</div>
+	</div>
+	<!--- Header Ends Her -->
+	<!-- Banner Starts Here --->
+	<div class="banner">
+		<div class="container">
+			<div class="banner-top">
+			<h1>开启专属模板定制之旅</h1>
+			<p>完成您的订单是我们的责任，<br>满足您的需求是我们的追求！</p>
+			<a href="javascript:openmademodel();">开始定制</a>
+			</div>
+		</div>
+	</div>
+	<!-- Banner Ends Here --->
+	<!-- Content starts Here --->
+	<div class="content">
+		<div class="container">
+			<div class="row content-row">
+				<div class="col-md-4 content-row-column">
+					<i class="icon1"></i>
+					<h3>我为什么要留下联系方式？</h3>
+					<p>平台将会在24小时内根据您的预留联系方式稍后联系您；您完全不用担心隐私方面的问题。</p>
+				</div>
+				<div class="col-md-4 content-row-column">
+					<i class="icon2"></i>
+					<h3>我的隐私如何得到保护？</h3>
+					<p>润简历完全理解您的担心，也明白在互联网时代保护用户隐私的重要性，我们尊重并珍惜润简历的每一位用户。 
+如果您仍存在顾虑，也可以选择和平台客服匿名进行沟通哦~</p>
+				</div>
+				<div class="col-md-4 content-row-column">
+					<i class="icon3"></i>
+					<h3>我的服务能得到保障吗？</h3>
+					<p>我们的服务以您的满意为成功和结束的标准，通常情况下按照一次标准专业的流程走下来，您的问题都会得到满意解决；
+当然如果在服务过程中您感到不满意（如模板不满意，交付时间超期），
+可随时通过网站在线客服提出反馈意见，客服将主动接入沟通，待意见达成一致后，您拥有重新定制或退款的权利。</p>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+        </div>	
+    </div>    
+	<!-- Content starts Here --->
+	<div class="footer">
+		<div class="container">
+			<p class="copyright">南京博晓信息科技有限公司备案号  苏 ICP备 18029764号-1Copyright © 2016-2018 runjianli. All Rights Reserved. <a href="aboutus.html" target="_blank" title="关于我们">关于我们</a> - about <a href="viewmodel.html" title="简历模板" target="_blank">简历模板</a></p>
+			<div class="clearfix"></div>
+		</div>
+	</div>
+<script>
+var login; 
+$(function(){
+$.ajax({  
+            type: "post",  
+            url: "http://www.runjianli.com/index.php/session/session_use/check",
+			dataType: "text", 			
+            success: function(data){
+            login = data;
+            read();  
+            },
+			error: function(jqXHR, textStatus, errorThrown){  
+                alert(jqXHR.responseText);
+				alert(jqXHR.status);
+				alert(jqXHR.readyState);
+				alert(jqXHR.statusText);
+				alert(textStatus);
+				alert(errorThrown); 
+			}
+        })  
+})
+function  openmademodel()
+	{
+		if(login == 0)
+		{
+            window.open('login.html');
+            layui.use('layer', function(){
+                var layer = layui.layer;
+                layer.confirm('是否完成登陆?',{btn: ['登陆完成', '遇到问题'] //可以无限个按钮
+        ,btn2: function(index, layero){
+        alert("请联系客服");
+        }
+}, function(index, layero){
+    $.ajax({  
+            type: "post",  
+            url: "http://www.runjianli.com/index.php/session/session_use/check",
+			dataType: "text", 			
+            success: function(data){
+            login = data;
+            },
+			error: function(jqXHR, textStatus, errorThrown){  
+                alert(jqXHR.responseText);
+				alert(jqXHR.status);
+				alert(jqXHR.readyState);
+				alert(jqXHR.statusText);
+				alert(textStatus);
+				alert(errorThrown); 
+			}
+        })                  
+    layer.closeAll(); //疯狂模式，关闭所有层
+    layer.closeAll('dialog'); //关闭信息框
+    layer.closeAll('page'); //关闭所有页面层
+    layer.closeAll('iframe'); //关闭所有的iframe层
+    layer.closeAll('loading'); //关闭加载层
+    layer.closeAll('tips'); //关闭所有的tips层 
+});
+    })
+		}
+		else
+		{
+            window.open('mademodel.html');
+		}
+	}
+</script>>    
+</body>
+</html>

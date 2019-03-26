@@ -1,0 +1,517 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<link rel="stylesheet" href="layui-v2.2.6/layui-v2.2.6/layui/css/layui.css" type="text/css">
+<script src="layui-v2.2.6/layui-v2.2.6/layui/layui.js"></script>
+<script src="jquery.js"></script> <!-- 你必须先引入jQuery1.8或以上版本 -->
+<script src="jqui/jqui/jquery-ui.js"></script>
+<style>
+#personalmodel{
+    font-family:"微软雅黑";
+    background-color:#ddd;
+}
+.box{
+    width:760px;
+    background:#fff;
+    margin:30px auto;
+    padding:20px;
+    overflow: auto;
+}
+.box .head span{
+    font-size:18px;
+    color:#333;
+}
+.box .head{
+    margin-bottom:20px;
+}
+.box .head a{
+    text-decoration:none;
+    float:right;
+    font-size:15px;
+    color:#333; 
+}
+.box .head a:hover{
+    color:#F00;
+}
+.box ul li{
+    width:160px;
+    height:240px;
+    list-style:none;
+    position:relative;
+    float:left;
+    margin-left:20px;
+    margin-bottom:20px;
+    overflow:hidden;
+}
+.box ul li .deatil{
+    width:160px;
+    height:240px;
+    background:rgba(0,0,0,0.7);
+    position:absolute;
+    top:-240px;
+    -webkit-transition:all 0.3s ease;<!--适应ie，谷歌，苹果浏览器内核-->
+    -o-transition:all 0.3s ease;<!--适应Opera浏览器内核-->
+    -moz-transition:all 0.3s ease;<!--火狐浏览器-->
+    -ms-transition:all 0.3s ease;<!--微软-->
+}
+
+.box ul li .deatil h2{
+    font-size:18px;
+    color:#fff;
+    text-align:center;
+    padding-top:30px;
+    }
+.box ul li .deatil p{
+    font-size:16px;
+    text-align:center;
+    margin:10px;
+    color:#fff;
+}
+.box ul li .deatil a{
+    font-size:15px;
+    display:block;
+    color:#fff;
+    background-color:#F00;
+    text-decoration:none;
+    width:100px;
+    height:40px;
+    text-align:center;
+    line-height:40px;
+    margin:0 auto;
+}
+.box ul li:hover .deatil{
+    top:0;
+}
+</style>
+</head>
+<body>
+<div class="layui-layout layui-layout-admin">
+<div class="layui-header">
+    <div class="layui-logo">基本信息</div>
+    <ul class="layui-nav layui-layout-right">
+      <li class="layui-nav-item"><a href="user.html">在线制作</a></li>
+      <li class="layui-nav-item"><a href="viewmodel.html">模板商城</a></li>
+      <li class="layui-nav-item"><a href="howtohr.html">HR之旅</a></li>
+      <li class="layui-nav-item"><a href="mademodelindex.html">模板定制</a></li>
+      <li class="layui-nav-item"><a href="aboutus.html">关于我们</a></li>
+      <li class="layui-nav-item"><a href=""></a></li>
+    </ul>
+    <!-- 头部区域（可配合layui已有的水平导航） -->
+</div>
+<div class="layui-side layui-bg-black">        
+ <ul class="layui-nav layui-nav-tree"  lay-filter="test">
+        <li class="layui-nav-item layui-nav-itemed">
+          <a href="javascript:viewbaseinformation();">修改基本信息</a>
+        </li>
+        <li class="layui-nav-item">
+          <a href="javascript:viewhistoryorder();">历史订单查询</a>
+        </li>
+        <li class="layui-nav-item"><a href="javascript:viewbaserecommend();">邀请奖励区</a></li>
+        <li class="layui-nav-item"><a href="javascript:viewpersonalmodel();">已编辑模板</a></li>
+      </ul>
+</div>
+
+<!--基本信息修改-->
+<div class="layui-body">
+<div id="baseinformation">
+<div style="font-size:28px;margin:10px 10px 10px 10px">请补充或修改您的个人信息</div>    
+<form class="layui-form" id="tf" style="display:block">
+  <div class="layui-form-item">
+    <label class="layui-form-label">姓名</label>
+    <div class="layui-input-block">
+      <input type="text" id="name" name="name" required  lay-verify="required" placeholder="请输入姓名" autocomplete="off" class="layui-input">
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">性别</label>
+    <div class="layui-input-block">
+      <input type="radio" name="sex" value="1" title="男" checked>
+      <input type="radio" name="sex" value="0" title="女">
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">所在城市</label>
+    <div class="layui-input-block">
+      <input type="text" id="city" name="city" required  lay-verify="required" autocomplete="off" class="layui-input">
+    </div>
+  </div>
+  <div class="layui-form-item layui-form-text">
+    <label class="layui-form-label">个人简介</label>
+    <div class="layui-input-block">
+      <textarea id="introduction" name="introduction" placeholder="请输入内容" class="layui-textarea"></textarea>
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <div class="layui-input-block">
+      <button type="button" class="layui-btn" onclick="javascript:a()">立即提交</button>
+      <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+    </div>
+  </div>
+</form>
+</div>
+<!--基本信息修改-->
+
+<!--历史订单查询-->
+<div id="historyorder" style="display:none;">
+    <table id="demo" lay-filter="test"></table>
+    <form class="layui-form" id="tf2" style="display:block">
+        <div style="font-size:28px;margin:30px 10px 10px 10px">请根据您的订单号退款</div>      
+        <div class="layui-form-item">
+        <label class="layui-form-label">订单号</label>
+        <div class="layui-input-block">
+            <input id="out_trade_no" name="out_trade_no" type="text" required  lay-verify="required" placeholder="请输入您需要退款的订单号" autocomplete="off" class="layui-input">
+        </div>
+        </div>
+        <div class="layui-form-item">
+        <label class="layui-form-label">退款理由</label>
+        <div class="layui-input-block">
+            <textarea id="summary" name="summary" placeholder="请输入内容" class="layui-textarea"></textarea>
+        </div>
+        </div>
+        <div class="layui-form-item">
+        <div class="layui-input-block">
+            <button type="button" class="layui-btn" onclick="javascript:c()">立即提交</button>
+            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+        </div>
+        </div>
+    </form>
+    <div id="reponse1" style="font-size:28px;margin:30px 10px 10px 10px"></div> 
+</div>
+
+<!--推荐人user_id填写-->
+<div id="baserecommend" style="display:none;">
+  
+<form class="layui-form" id="tf1" style="display:block">
+<div style="font-size:28px;margin:30px 10px 10px 10px">请输入您的邀请人的邀请码</div>      
+<div class="layui-form-item">
+    <label class="layui-form-label">邀请码</label>
+    <div class="layui-input-block">
+      <input id="recommend" name="recommend" type="text" required  lay-verify="required" placeholder="请输入您的邀请码" autocomplete="off" class="layui-input" style="width:50%;display:inline-block;">
+      <input type="button" class="layui-btn layui-btn-primary" style="width:20%;display:inline-block;" onclick="b()" value="确定" >
+    </div>
+</div>
+</form>      
+<div id="reponse" style="font-size:28px;margin:30px 10px 10px 10px"></div>    
+<div style="font-size:28px;margin:30px 10px 10px 10px">您的邀请码为：<span id="mrecommend"></span></div>         
+</div>
+<!--个人简历-->
+<div id="personalmodel" style="display:none;">
+  <div class="box">
+      <div class="head">
+         <span>已编辑模板</span>
+      </div>
+  <!-- 图片内容 -->  
+  <ul id="ul">
+  </ul>  
+  </div>    
+</div>    
+    
+    
+<!--历史订单查询-->
+  <div style="background:#2F4056;padding:10px 20px 10px 20px">
+      <h3 style="color:#FFFFFF">版权信息</h3>
+      <p style="color:#ddd;font-size:10px">润简历网站所发布展示的“简历模板”版权归润简历所有， 任何商业用途均须联系作者。<br>如未经授权用作他处，润简历将保留追究侵权者法律责任的权利。</p>
+      <p style="color:#ddd;font-size:12px">南京博晓信息科技有限公司<br>备案号  苏 ICP备 18029764号-1<br>Copyright © 2016-2018 runjianli. All Rights Reserved.</p>      
+  </div>    
+</div>
+
+
+</div>
+
+
+<script>
+//个人已编辑模板区域    
+function getJsonLength(jsonData){
+ var jsonLength = 0;
+ for(var item in jsonData){
+  jsonLength++;
+ }
+ return jsonLength;
+}    
+$(function(){
+    //http://www.runjianli.com/index.php/cv/model/GetModel
+    $.ajax({  
+            type: "post",  
+            url: "http://www.runjianli.com/index.php/cv/cv_model/cv_personal",
+			dataType: "json", 			
+            success: function(data){
+            for(var i=0;i<getJsonLength(data);i++)
+            {   
+                var li = document.createElement('li');
+                li.innerHTML = '<div class="deatil"><h2>标题:'+data[i].cv_title+'</h2><p>简历编号:'+data[i].model_id+'</p><p>时间:'+data[i].date+'</p><a href="http://www.runjianli.com/sifang/user.html?cv_id='+data[i].cv_id+'">点击进入</a></div><img src="picture/5.jpg" width="160px" height="240px" alt=""/>';
+                var ul = document.getElementById("ul");//获取body对象.
+                ul.insertBefore(li,ul.lastChild);
+            }              
+                alert(data[i].size);
+            },
+			error: function(jqXHR, textStatus, errorThrown){  
+                alert(jqXHR.responseText);
+				alert(jqXHR.status);
+				alert(jqXHR.readyState);
+				alert(jqXHR.statusText);
+				alert(textStatus);
+				alert(errorThrown); 
+			}
+        })
+    $.ajax({
+                type:"post",
+                url:"http://www.runjianli.com/index.php/user/user_info/getip",
+                dataType:"json",
+                success:function(data){
+                $("#city").attr("value",data.data.region+data.data.city);
+            },
+            error: function(jqXHR, textStatus, errorThrown){  
+                alert(jqXHR.responseText);
+                alert(jqXHR.status);
+                alert(jqXHR.readyState);
+                alert(jqXHR.statusText);
+                alert(textStatus);
+                alert(errorThrown); 
+            }
+            })                
+    $.ajax({
+        type:"post",
+        url:"http://www.runjianli.com/index.php/user/user_info/getbaseinformation",
+        dataType:"json",
+        success:function(data){
+            $("#name").attr("placeholder",data.name);
+            $("#city").attr("placeholder",data.city);
+            $("#introduction").attr("placeholder",data.introduction);
+        },
+        error: function(jqXHR, textStatus, errorThrown){  
+            alert(jqXHR.responseText);
+            alert(jqXHR.status);
+            alert(jqXHR.readyState);
+            alert(jqXHR.statusText);
+            alert(textStatus);
+            alert(errorThrown); 
+        }
+    })
+})
+//    
+$(function(){    
+/*    
+$.ajax({  
+            type: "get",  
+            url: "http://www.runjianli.com/index.php/user/user_info/getinfo",
+	        dataType: "json",			
+            success: function(data){  
+              // var name = document.getElementById("name");
+              // var city = document.getElementById("city");
+               //var introduction = document.getElementById("introduction");
+               name.value = data.name;
+               introduction.value = data.introduction;
+               alert(data.city);
+               alert("456");    
+            },  
+	error: function(jqXHR, textStatus, errorThrown){  
+              alert(jqXHR.responseText);
+		      alert(jqXHR.status);
+		      alert(jqXHR.readyState);
+		      alert(jqXHR.statusText);
+		      alert(textStatus);
+		      alert(errorThrown); 
+        }
+    }) 
+})*/
+$.ajax({  
+            type: "post",  
+            url: "http://www.runjianli.com/index.php/user/user_info/recommend_judge",
+	        dataType: "text",			
+            success: function(data){  
+               if(data == 1)
+               {  
+                   $("#reponse").html("您已经有了邀请人");
+                   $("#tf1").hide();
+               }   
+            },  
+	        error: function(jqXHR, textStatus, errorThrown){  
+              alert(jqXHR.responseText);
+		      alert(jqXHR.status);
+		      alert(jqXHR.readyState);
+		      alert(jqXHR.statusText);
+		      alert(textStatus);
+		      alert(errorThrown); 
+            }
+    }) 
+    
+$.ajax({  
+            type: "post",  
+            url: "http://www.runjianli.com/index.php/user/user_info/recommend",
+	        dataType: "text",			
+            success: function(data){    
+               $("#mrecommend").html(data);   
+            },  
+	        error: function(jqXHR, textStatus, errorThrown){  
+              alert(jqXHR.responseText);
+		      alert(jqXHR.status);
+		      alert(jqXHR.readyState);
+		      alert(jqXHR.statusText);
+		      alert(textStatus);
+		      alert(errorThrown); 
+            }
+    })
+    
+$.ajax({  
+            type: "post",  
+            url: "http://www.runjianli.com/index.php/user/user_info/refund_judge",
+	        dataType: "text",			
+            success: function(data){
+                if(data == "有订单正在申请退款")
+                {    
+                   $("#reponse1").html(data);
+                   $("#tf2").hide();
+                }
+            },  
+	        error: function(jqXHR, textStatus, errorThrown){  
+              alert(jqXHR.responseText);
+		      alert(jqXHR.status);
+		      alert(jqXHR.readyState);
+		      alert(jqXHR.statusText);
+		      alert(textStatus);
+		      alert(errorThrown); 
+            }
+    })     
+})    
+
+//Demo
+layui.use('form', function(){
+  var form = layui.form;
+});
+layui.use('element', function(){
+  var element = layui.element;
+});
+    
+
+function a(){
+  //监听提交
+	$.ajax({  
+            type: "post",  
+            url: "http://www.runjianli.com/index.php/user/user_info/submit",
+	        dataType: "text",
+	        data:$('#tf').serialize(),			
+            success: function(data){  
+               layer.msg("提交成功"); 
+            },  
+	error: function(jqXHR, textStatus, errorThrown){  
+              alert(jqXHR.responseText);
+		      alert(jqXHR.status);
+		      alert(jqXHR.readyState);
+		      alert(jqXHR.statusText);
+		      alert(textStatus);
+		      alert(errorThrown); 
+        }
+    })  
+}
+function b(){
+     $.ajax({  
+            type: "post",  
+            url: "http://www.runjianli.com/index.php/user/user_info/recommend_judge_repeat",
+	        dataType: "text",
+            data:$('#tf1').serialize(),
+            success: function(data){  
+               $("#reponse").html(data);
+               if(data == "验证成功")
+               {       
+                    $("#tf1").hide();
+               }
+            },  
+	        error: function(jqXHR, textStatus, errorThrown){  
+              alert(jqXHR.responseText);
+		      alert(jqXHR.status);
+		      alert(jqXHR.readyState);
+		      alert(jqXHR.statusText);
+		      alert(textStatus);
+		      alert(errorThrown); 
+            }
+    }) 
+}
+function c(){
+     alert("123");
+     $.ajax({  
+            type: "post",  
+            url: "http://www.runjianli.com/index.php/user/user_info/refund_get",
+	        dataType: "text",
+            data:$('#tf2').serialize(),
+            success: function(data){  
+               $("#reponse1").html(data);
+               if(data == "申请退款中耐心等待")
+               {       
+                    $("#tf2").hide();
+               }
+            },  
+	        error: function(jqXHR, textStatus, errorThrown){  
+              alert(jqXHR.responseText);
+		      alert(jqXHR.status);
+		      alert(jqXHR.readyState);
+		      alert(jqXHR.statusText);
+		      alert(textStatus);
+		      alert(errorThrown); 
+            }
+    }) 
+
+}    
+    
+//历史订单查询
+
+    
+var bi = document.getElementById("baseinformation");
+var ho = document.getElementById("historyorder");
+var br = document.getElementById("baserecommend");
+var pm = document.getElementById("personalmodel");    
+//切换基本信息    
+function viewbaseinformation()
+{   
+    ho.setAttribute("style","display:none");
+    br.setAttribute("style","display:none");
+    pm.setAttribute("style","display:none");
+    bi.setAttribute("style","display:block");
+}
+//切换历史订单
+function viewhistoryorder()
+{
+    bi.setAttribute("style","display:none");
+    br.setAttribute("style","display:none");
+    pm.setAttribute("style","display:none");
+    ho.setAttribute("style","display:block");
+  layui.use('table', function(){
+  var table = layui.table;
+  var layer = layui.layer;
+  
+  //第一个实例
+  table.render({
+    elem: '#demo'
+    ,height: 315
+    ,url: 'http://www.runjianli.com/index.php/user/trade_run/product_trade' //数据接口
+    ,page: false //开启分页
+    ,cols: [[ //表头
+       {field: 'out_trade_no', title: '订单号', width:280, fixed: 'left'}
+      ,{field: 'total_fee', title: '金额', width:135}
+      ,{field: 'body', title: '产品', width:80}
+      ,{field: 'time', title: '时间', width:180}
+      ,{field: 'pay_id', title: '支付状态', width:180}
+    ]]
+  });  
+})    
+
+}
+//切换邀请区
+function viewbaserecommend()
+{   
+    bi.setAttribute("style","display:none");
+    ho.setAttribute("style","display:none");
+    pm.setAttribute("style","display:none");
+    br.setAttribute("style","display:block");
+}
+function viewpersonalmodel()
+{   
+    bi.setAttribute("style","display:none");
+    ho.setAttribute("style","display:none");
+    br.setAttribute("style","display:none");
+    pm.setAttribute("style","display:block");
+}    
+</script>
+</body>
+</html> 

@@ -1,0 +1,122 @@
+<!Doctype Html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="layui-v2.2.6/layui-v2.2.6/layui/css/layui.css">
+  <link rel="stylesheet" href="text.css">
+  <script src="jquery.js"></script> <!-- 你必须先引入jQuery1.8或以上版本 -->
+  <script src="layer-v3.1.1/layer-v3.1.1/layer/layer.js"></script>
+  <script src="layui-v2.2.6/layui-v2.2.6/layui/layui.js"></script>
+</head>
+<body>
+<form>
+
+<br><br>
+	<div class="layui-row layui-col-space5">
+		<div class="layui-col-xs1"></div>
+		<div class="layui-col-xs10">
+			<input type="text" class="mytxt" placeholder="模板标题" id="message1"  style="width: 458px;">
+		</div>	
+	</div>
+<br>
+	<div class="layui-row layui-col-space5">
+		<div class="layui-col-xs1"></div>
+		<div class="layui-col-xs10">
+			<textarea class="mytxt" rows="7" warp="virtual" style="width: 458px;" id="message5" placeholder="补充描述"></textarea>
+		</div>	
+	</div>	
+<br>
+	<div class="layui-row layui-col-space5">
+		<div class="layui-col-xs4"></div>
+		<div class="layui-col-xs1">
+			<input type="button" class="layui-btn layui-btn-normal layui-btn-lg" value="保存" onclick="lalala();">
+		</div>
+		<div class="layui-col-xs1"></div>
+		<div class="layui-col-xs2">
+			<Button class="layui-btn layui-btn-primary layui-btn-lg" onclick="cancel();">取消</Button>
+		</div>
+		<div class="layui-col-xs3"></div>
+    </div>	
+</form>   
+<script>
+	function lalala()	
+	{
+		var _parentWin = window.parent;  
+		//var hd1=_parentWin.document.getElementById("hd1");
+		//var hd2=_parentWin.document.getElementById("hd2");
+		//var hd3=_parentWin.document.getElementById("hd3");
+		//var hd4=_parentWin.document.getElementById("hd4");
+		//var hd5=_parentWin.document.getElementById("hd5");
+		var message1=document.getElementById("message1");
+		//var message2=document.getElementById("message2");
+		//var message3=document.getElementById("message3");
+		//var message4=document.getElementById("message4");
+		var message5=document.getElementById("message5");
+		//hd1.value = message1.value;
+		//hd2.value = message2.value;
+		//hd3.value = message3.value;
+		//hd4.value = message4.value;
+		//hd5.value = message5.value;
+        var str = 'rcdiv' + window.parent.right_count;
+        var strshow = 'rcdiv' + window.parent.right_count + 'show';
+        var strhide = 'rcdiv' + window.parent.right_count + 'hide';
+        window.parent.right_count++;
+        //window.parent.oldright_order.push(str);
+		var li = _parentWin.document.createElement('li');
+		li.setAttribute("class","m_title");
+        li.setAttribute("id",str);
+        //divx.setAttribute("id",str);
+		//设置div的属性
+		li.innerHTML = '<div class="jl_title"><h3 class="handle">'+message1.value+'</h3></div><div class="info changeable placeholder" placeholder="在这里填写相关内容" contenteditable="false">'+message5.value+'</div>'; //设置显示的数据，可以是标签．
+		//divx.style.background = "blue";//设置css样式,s设置背景颜色
+		var ul = _parentWin.document.getElementById("right_ul");//获取body对象.
+		//var div1 = _parentWin.document.getElementById("div1");
+		//动态插入到body中
+		ul.insertBefore(li,ul.lastChild);
+        var li1 = _parentWin.document.createElement('li');
+        var li2 = _parentWin.document.createElement('li');
+        li1.setAttribute("id",strshow);
+        li2.setAttribute("id",strhide);
+        li2.setAttribute("style","display:none");
+        li1.innerHTML = '<a href="javascript:hide(\''+str+'\')">'+message1.value+'</a><a href="javascript:hide(\''+str+'\')"><img src="img/i_jian.png"/></a>';
+        li2.innerHTML = '<a href="javascript:show(\''+str+'\')">'+message1.value+'</a><a href="javascript:show(\''+str+'\')"><img src="img/i_jia.png"/></a>';
+        var ul1 = _parentWin.document.getElementById("ulshow");
+        var ul2 = _parentWin.document.getElementById("ulhide");
+        ul1.insertBefore(li1,ul1.lastChild);
+        ul2.insertBefore(li2,ul2.lastChild);
+        window.parent.showorhide[str] = "true";
+        window.parent.slideword[str] = message1.value;
+		//divx.insertBefore(input1,divx.lastChild);
+        /*
+        $.ajax({  
+            type: "post",  
+            url: "http://www.runjianli.com/index.php/cv/cv_model/rightcreate_infomation",
+			dataType: "text",
+            data:{"div_id":str,"create_title":message1.value,"create_content1":message2.value,"create_content2":message3.value,"create_content3":message4.value,"create_textarea":message5.value},
+            success: function(data){
+                var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+		        parent.layer.close(index); //再执行关闭  
+            },
+			error: function(jqXHR, textStatus, errorThrown){  
+                alert(jqXHR.responseText);
+				alert(jqXHR.status);
+				alert(jqXHR.readyState);
+				alert(jqXHR.statusText);
+				alert(textStatus);
+				alert(errorThrown); 
+			}
+        }) */
+        
+        var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+		parent.layer.close(index); //再执行关闭
+	}
+	
+	function cancel()
+	{
+		var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+		parent.layer.close(index); //再执行关闭   
+	}
+</script>	
+
+</body>
+</html>

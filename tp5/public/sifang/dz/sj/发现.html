@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>海词词典</title>
+<link rel="stylesheet" href="css/style.css" type="text/css">
+</head>
+<body>
+<div class="neck1">
+    <div class="hd1">发现</div>
+</div>
+<div class="box1">
+    <div class="bx1"><img class="box-one" src="img/mr.png"/><p class="box-p">翻译</p><img class="bx1-right" src="img/right-circle.png"></div>
+    <div class="box-another">海词正版数字应用服务</div>
+    <div class="bx1"><img class="box-one" src="img/fire-fill.png"/><p class="box-p">多国语言</p><a href="javascript:changebox('img1','hide1','content1');"><img id="img1" class="bx1-right" src="img/right-circle.png" alt="a"></a></div>
+    <div id="hide1" style="display:none;">
+    <div class="bx2"><img class="box-one" src="img/fire-fill.png"/><p class="box-p" name="content1">中国</p></div>
+    <div class="bx2"><img class="box-one" src="img/fire-fill.png"/><p class="box-p" name="content1">美国</p></div>
+    <div class="bx2"><img class="box-one" src="img/fire-fill.png"/><p class="box-p" name="content1">法国</p></div>
+    <div class="bx2"><img class="box-one" src="img/fire-fill.png"/><p class="box-p" name="content1">英国</p></div>    
+    </div>
+    <div class="bx1"><img class="box-one" src="img/USB-fill.png"/><p class="box-p">学习考试</p><a href="javascript:changebox('img2','hide2','content2');"><img id="img2" class="bx1-right" src="img/right-circle.png" alt="b"></a></div>
+    <div id="hide2" style="display:none;">
+    <div class="bx2"><img class="box-one" src="img/fire-fill.png"/><p class="box-p" name="content2">四级考试</p></div>
+    <div class="bx2"><img class="box-one" src="img/fire-fill.png"/><p class="box-p" name="content2">六级考试</p></div>
+    <div class="bx2"><img class="box-one" src="img/fire-fill.png"/><p class="box-p" name="content2">雅思</p></div>
+    <div class="bx2"><img class="box-one" src="img/fire-fill.png"/><p class="box-p" name="content2">托福</p></div>    
+    </div>
+    <div class="bx1"><img class="box-one" src="img/robot-fill.png"/><p class="box-p">各行各业</p><a href="javascript:changebox('img3','hide3','content3');"><img id="img3" class="bx1-right" src="img/right-circle.png" alt="c"></a></div>
+    <div id="hide3" style="display:none;">
+    <div class="bx2"><img class="box-one" src="img/fire-fill.png"/><p class="box-p" name="content3">计算机</p></div>
+    <div class="bx2"><img class="box-one" src="img/fire-fill.png"/><p class="box-p" name="content3">会计</p></div>
+    <div class="bx2"><img class="box-one" src="img/fire-fill.png"/><p class="box-p" name="content3">工程师</p></div>
+    <div class="bx2"><img class="box-one" src="img/fire-fill.png"/><p class="box-p" name="content3">翻译</p></div>    
+    </div>
+    <div class="bx1"><img class="box-one" src="img/slack.png"/><p class="box-p">汉语相关</p><a href="javascript:changebox('img4','hide4','content4');"><img id="img4" class="bx1-right" src="img/right-circle.png" alt="d"></a></div>
+    <div id="hide4" style="display:none;">
+    <div class="bx2"><img class="box-one" src="img/fire-fill.png"/><p class="box-p" name="content4">新华字典</p></div>
+    <div class="bx2"><img class="box-one" src="img/fire-fill.png"/><p class="box-p" name="content4">宋词鉴赏辞典</p></div>
+    <div class="bx2"><img class="box-one" src="img/fire-fill.png"/><p class="box-p" name="content4">成语词典</p></div>
+    <div class="bx2"><img class="box-one" src="img/fire-fill.png"/><p class="box-p" name="content4">新华字典商务国际版</p></div>    
+    </div>
+    <div class="bottom"></div>  
+</div>  
+<div class="footer">
+    <div class="box-middle">
+        <div class="box-four"><div><img class="img-four" src="img/tags.png"/></div><div><a class="on" href="主页.html">词典</a></div></div>
+        <div class="box-four"><div><img class="img-four" src="img/compass.png"/></div><div><a class="on" href="发现.html">发现</a></div></div>
+        <div class="box-four"><div><img class="img-four" src="img/audit.png"/></div><div><a class="on" href="生词本.html">生词本</a></div></div>
+        <div class="box-four"><div><img class="img-four" src="img/user.png"/></div><div><a class="on" href="我的.html">我的</a></div></div>
+    </div>
+</div>
+<script>
+function changebox(img,hide,content)
+{   
+    var a = document.getElementById(img);
+    var hide = document.getElementById(hide);
+    var items = document.getElementsByName(content);
+    if(a.alt == "a")
+    {   
+        var json = {"0":"美国","1":"中国","2":"日本","3":"法国"};
+        for(var i=0;i<items.length;i++)
+        {   
+            items[i].innerHTML = json[i];
+        }
+        a.alt = "q";
+        a.setAttribute("class","bx1-right romate");
+        hide.setAttribute("style","display:block");
+    }
+    else if(a.alt == "b")
+    {   
+        a.alt = "q";
+        a.setAttribute("class","bx1-right romate");
+        hide.setAttribute("style","display:block");
+    }
+    else if(a.alt == "c")
+    {   
+        var json = {"0":"翻译","1":"会计","2":"工程师","3":"计算机"};
+        for(var i=0;i<items.length;i++)
+        {   
+            items[i].innerHTML = json[i];
+        }
+        a.alt = "q";
+        a.setAttribute("class","bx1-right romate");
+        hide.setAttribute("style","display:block");
+    }
+    else if(a.alt == "d")
+    {   
+        a.alt = "q";
+        a.setAttribute("class","bx1-right romate");
+        hide.setAttribute("style","display:block");
+    }
+    else
+    {   
+        if(img = "img1")
+        {   
+            a.alt = "a"
+        }
+        else if(img = "img2")
+        {
+            a.alt = "b"
+        }
+        else if(img = "img3")
+        {
+            a.alt = "c"
+        }
+        else if(img = "img4")
+        {
+            a.alt = "d"
+        }
+        a.setAttribute("class","bx1-right");
+        hide.setAttribute("style","display:none");
+    }
+}
+</script>    
+</body>
+</html>

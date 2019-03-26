@@ -1,0 +1,66 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<link rel="stylesheet" href="layui-v2.2.6/layui-v2.2.6/layui/css/layui.css" type="text/css">
+<script src="layui-v2.2.6/layui-v2.2.6/layui/layui.js"></script>
+<script charset="utf-8" src="kindeditor/kindeditor-all.js"></script>
+<script charset="utf-8" src="kindeditor/lang/zh-CN.js"></script>
+<script src="jqui/jqui/jquery-ui.js"></script>
+<script src="sifang/jquery-form.js"></script> <!-- 你必须先引入jQuery1.8或以上版本 -->
+</head>
+<body>
+<form class="layui-form" action="http://www.runjianli.com/index.php/index/super_manager/noticein" method="post">
+  <div class="layui-form-item">
+    <label class="layui-form-label">标题</label>
+    <div class="layui-input-block">
+      <input type="text" name="title" required  lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
+	  <input type="hidden" id="date" name="date" placeholder="请输入标题" autocomplete="off" class="layui-input">
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">简述</label>
+    <div class="layui-input-block">
+      <textarea name="brief" placeholder="请输入内容" class="layui-textarea"></textarea>
+    </div>
+  </div>
+  <div class="layui-form-item layui-form-text">
+    <label class="layui-form-label">公告内容</label>
+    <div class="layui-input-block">
+      <textarea id="editor_id" name="content" placeholder="请输入内容" style="width:80%;height:400px;"></textarea>
+    </div>
+  </div>
+  
+  <div class="layui-form-item">
+    <div class="layui-input-block">
+      <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
+      <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+    </div>
+  </div>
+</form>
+ 
+<script>
+
+//Demo
+layui.use('form', function(){
+  var form = layui.form;
+
+  //监听提交
+ form.on('submit(formDemo)', function(data){
+	var odate = new Date();
+	var date = document.getElementById("date");
+	var year = odate.getFullYear();
+	var month = odate.getMonth()+1;
+	var day = odate.getDate();
+	date.value = year+'年'+month+'月'+day+'日';
+	var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+  	parent.layer.close(index); //再执行关闭   
+  });
+});
+KindEditor.ready(function(K) {
+  window.editor = K.create('#editor_id');
+});
+</script>
+</body>
+</html> 

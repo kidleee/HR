@@ -1,0 +1,430 @@
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+    <meta charset="UTF-8" />
+    <title>选他服务</title>
+<link rel="stylesheet" href="layui-v2.2.6/layui-v2.2.6/layui/css/layui.css" type="text/css">  
+<link rel="stylesheet" href="mademodel.css" type="text/css">
+<script src="layer-v3.1.1/layer-v3.1.1/layer/layer.js" type="text/javascript" charset="utf-8"></script>
+<script src="layui-v2.2.6/layui-v2.2.6/layui/layui.js" type="text/javascript" charset="utf-8"></script>
+<script src="jquery.js" type="text/javascript"></script>
+<script src="jqui/jqui/jquery-ui.js"></script>
+<script src="sifang/jquery-form.js"></script> <!-- 你必须先引入jQuery1.8或以上版本 -->
+<script src="vue.js"></script>
+ </head>
+ <body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+  <div class="layui-header">
+    <div class="layui-logo">选他(她)服务</div>
+  </div>
+  
+  <div class="layui-side layui-bg-black">
+    <div class="layui-side-scroll">
+      <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+      <p style="margin:10px">1.服务流程是怎样的，为什么加我的不是我选的老师？<br><br>下单后在“我的订单”扫码联系工作人员后，会尽快对接所选/推荐HR开始服务。（为了及时跟进每次服务，监督服务质量，工作人员会全程跟您及HR保持联系，在简单的核对订单信息后会立刻为您对接HR的）</p>
+      <p style="margin:10px">2.我为什么要留下联系方式？<br><br>若您没有主动同导师取得联系，导师会根据您的预留联系方式稍后联系您；您完全不用担心隐私方面的问题</p>
+      <p style="margin:10px">3.我的隐私如何得到保护？<br><br>润简历完全理解您的担心，也明白在互联网时代保护用户隐私的重要性，我们尊重并珍惜五百丁的每一位用户。如果您仍存在顾虑，也可以选择和导师匿名进行沟通哦~</p>
+      <p style="margin:10px">4.我的服务能得到保障吗？<br><br>我们的服务以您的满意为成功和结束的标准，通常情况下按照一次标准专业的流程走下来，您的问题都会得到满意解决；当然如果在服务过程中您感到不满意（如导师态度不积极、导师不能按时交付等），可随时通过网站在线客服提出反馈意见，客服将主动接入沟通，待三方意见达成一致后，您拥有重新申请导师或退款的权利。</p>        
+    </div>
+  </div>
+
+<!--基本信息修改-->
+<div class="layui-body">
+
+<form class="layui-form" id="tf" style="display:block">
+<div class="modelmade-top head-font">第一步：请选择服务内容</div> 
+  <div class="layui-form-item">
+    <label class="layui-form-label">面试辅导</label>
+    <div class="layui-input-block">
+      <input type="text" required  lay-verify="required" placeholder="一对一语音沟通，面试上千的HR老鸟传亲授面试技巧" autocomplete="off" class="layui-input" disabled style="display:inline-block">
+    </div>
+    <label class="layui-form-label">简历优化</label>
+    <div class="layui-input-block">
+      <input type="text" required  lay-verify="required" placeholder="资深HR帮你修改简历，打磨润色，有效提升面试邀约率" autocomplete="off" class="layui-input" disabled style="display:inline-block">
+    </div>
+    <label class="layui-form-label">简历翻译</label>
+    <div class="layui-input-block">
+      <input type="text" required  lay-verify="required" placeholder="擅长英语的招聘专家为你输出一份原汁原味的英文简历" autocomplete="off" class="layui-input" disabled style="display:inline-block">
+    </div>
+    <label class="layui-form-label">求职信写作</label>
+    <div class="layui-input-block">
+      <input type="text" required  lay-verify="required" placeholder="根据不同求职岗位撰写相应求职信，加强招聘官好感度" autocomplete="off" class="layui-input" disabled style="display:inline-block">
+    </div>
+    <label class="layui-form-label">求职咨询</label>
+    <div class="layui-input-block">
+      <input type="text" required  lay-verify="required" placeholder="职场中各方面的大小问题，我都想问怎么办？选这里！" autocomplete="off" class="layui-input" disabled style="display:inline-block">
+    </div>
+    <label class="layui-form-label">简历排版</label>
+    <div class="layui-input-block">
+      <input type="text" required  lay-verify="required" placeholder="为不擅长排版或时间宝贵的小伙伴提供专业排版服务" autocomplete="off" class="layui-input" disabled style="display:inline-block">
+    </div>
+  </div>
+  <div class="layui-form-item">
+  <label class="layui-form-label">请选择您需要的服务</label>
+    <div class="layui-input-block">
+      <input type="checkbox" lay-filter="service_type" name="service_type[]" value="面试辅导" title="面试辅导">
+      <input type="checkbox" lay-filter="service_type" name="service_type[]" value="职业规划" title="职业规划">
+      <input type="checkbox" lay-filter="service_type" name="service_type[]" value="简历优化" title="简历优化">
+      <input type="checkbox" lay-filter="service_type" name="service_type[]" value="简历翻译" title="简历翻译">
+      <input type="checkbox" lay-filter="service_type" name="service_type[]" value="求职信写作" title="求职信写作">
+      <input type="checkbox" lay-filter="service_type" name="service_type[]" value="求职咨询" title="求职咨询">
+      <input type="checkbox" lay-filter="service_type" name="service_type[]" value="简历排版" title="简历排版">
+    </div>  
+  </div>
+  <div class="modelmade-top head-font">第二步：补充服务条件</div>  
+  <div class="layui-form-item">
+    <label class="layui-form-label">目标行业领域</label>
+    <div class="layui-input-block">
+      <select name="field" lay-verify="required">
+        <option value=""></option>
+        <option value="互联网">互联网</option>
+        <option value="金融">金融</option>
+        <option value="消费">消费</option>
+        <option value="医疗">医疗</option>
+        <option value="媒体">媒体</option>
+        <option value="建筑">建筑</option>
+        <option value="教育">教育</option>
+        <option value="服务">服务</option>
+        <option value="运输">运输</option>
+        <option value="政府">政府</option>
+        <option value="其他">其他</option>
+      </select>
+    </div>
+  </div>
+  <div class="layui-form-item">
+  <label class="layui-form-label">工作经验</label>
+    <div class="layui-input-block">
+      <select name="work_experience" lay-filter="work_experience" lay-verify="required">
+        <option value=""></option>
+        <option value="应届生">应届生</option>
+        <option value="在校学生">在校学生</option>
+        <option value="1~3年">1~3年</option>
+        <option value="4~10年">4~10年</option>
+        <option value="10年以上">10年以上</option>
+      </select>
+    </div>
+  </div>
+  <div class="layui-form-item">
+  <label class="layui-form-label">简历字数</label>
+    <div class="layui-input-block">
+      <select name="resume_words" lay-filter="resume_words" lay-verify="required">
+        <option value=""></option>
+        <option value="1000字以内">1000字以内</option>
+        <option value="1000~3000字">1000~3000字</option>
+        <option value="3000字以上">3000字以上</option>
+      </select>
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">完成时间</label>
+    <div class="layui-input-block">
+      <input type="radio" lay-filter="time" name="time" value="2~4个工作日内完成" title="2~4个工作日内完成" checked>
+      <input type="radio" lay-filter="time" name="time" value="1天内完成(加急)" title="1天内完成(加急)">
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">原始简历语言</label>
+    <div class="layui-input-block">
+      <input type="radio" lay-filter="language" name="language" value="中文简历" title="中文简历" checked>
+      <input type="radio" lay-filter="language" name="language" value="英文简历" title="英文简历">
+    </div>
+  </div>
+  <div class="modelmade-top head-font">第三步：填联系方式</div> 
+  <div class="layui-form-item">
+    <label class="layui-form-label">姓名</label>
+    <div class="layui-input-block">
+      <input type="text" name="name" required  lay-verify="required" placeholder="请输入您的姓名" autocomplete="off" class="layui-input">
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">微信号</label>
+    <div class="layui-input-block">
+      <input type="text" name="wx" required  lay-verify="required" placeholder="请输入您的微信号" autocomplete="off" class="layui-input">
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">手机号</label>
+    <div class="layui-input-block">
+      <input id="iphone" type="text" name="phone" required  lay-verify="required" placeholder="请输入手机号" autocomplete="off" class="layui-input">
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">短信验证码</label>
+    <div class="layui-input-block">
+      <input type="hidden" id="code">
+      <input id="code1" type="text" required  lay-verify="required" placeholder="请输验证码" autocomplete="off" class="layui-input" style="width:50%;display:inline-block;">
+      <input id="phone" type="button" class="layui-btn layui-btn-primary" style="width:20%;display:inline-block;" value="获取验证码" >
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">备注</label>
+    <div class="layui-input-block">
+      <input type="text" name="summary" placeholder="补充说明自身情况或其他需求。如：求职机械行业QC岗，希望直接语音通话，沟通更高效" autocomplete="off" class="layui-input">
+    </div>
+  </div>
+  <input type="hidden" name="H_user_id" id="H_user_id">
+  <input type="hidden" name="total_fee" id="total_fee">     
+</form>
+  <div style="background:#2F4056;padding:10px 20px 10px 20px">
+      <h3 style="color:#FFFFFF">版权信息</h3>
+      <p style="color:#ddd;font-size:10px">润简历网站所发布展示的“简历模板”版权归润简历所有， 任何商业用途均须联系作者。<br>如未经授权用作他处，润简历将保留追究侵权者法律责任的权利。</p>
+      <p style="color:#ddd;font-size:12px">南京博晓信息科技有限公司<br>备案号  苏 ICP备 18029764号-1<br>Copyright © 2016-2018 runjianli. All Rights Reserved.</p>      
+  </div>     
+</div>    
+ <div class="layui-footer" style="height:58px;">
+    <!-- 底部固定区域 -->
+     <div style = "overflow: auto;margin:8px 8px 8px 8px;">
+         <button class="layui-btn layui-btn-lg" style="float:right;margin:0px 8px 8px 8px;" onclick="pay();">立即下单</button>
+         <span style="float:right;margin:0px 18px 8px 8px;font-size:20px;" id="app">{{ message }}</span>   
+         <span style="float:right;margin:0px 8px 8px 8px;font-size:20px;">费用总计：</span>
+     </div>
+ </div>   
+</div>
+<script>
+var fudao = 0;
+var guihua = 0;
+var youhua= 0;
+var fanyi = 0;
+var xiezuo = 0;
+var zixun = 0;
+var paiban = 0;
+var time = 0;
+var language = 0;
+var work_experience = 0;
+var resume_words = 0;
+var result = 0;
+var H_user_id = document.getElementById("H_user_id");
+var total_fee = document.getElementById("total_fee");    
+$(function(){
+    var url=window.location.search; //获取url中"?"符后的字串  
+    if(url.indexOf("?")!=-1){
+        result = url.substr(url.indexOf("=")+1);
+    }
+    H_user_id.value = result;
+})
+    
+    
+    
+    
+var app = new Vue({
+  el: '#app',
+  data: {
+    message: 0
+  }
+})    
+layui.use('form', function(){
+  var form = layui.form; 
+   form.on('checkbox(service_type)', function(data){
+      if(data.value == "面试辅导"){
+          if(data.elem.checked){
+              fudao = 1;
+          }
+          else
+          {    
+              fudao = 0;
+          }
+      }
+      if(data.value == "职业规划"){
+          if(data.elem.checked){
+              guihua = 2;
+          }
+          else
+          {    
+              guihua = 0;
+          }
+      }
+      if(data.value == "简历优化"){
+          if(data.elem.checked){
+              youhua = 3;
+          }
+          else
+          {    
+              youhua = 0;
+          }
+      }
+      if(data.value == "简历翻译"){
+          if(data.elem.checked){
+              fanyi = 4;
+          }
+          else
+          {    
+              fanyi = 0;
+          }
+      }
+      if(data.value == "求职信写作"){
+          if(data.elem.checked){
+              xiezuo = 5;
+          }
+          else
+          {    
+              xiezuo = 0;
+          }
+      }
+      if(data.value == "求职咨询"){
+          if(data.elem.checked){
+              zixun = 6;
+          }
+          else
+          {    
+              zixun = 0;
+          }
+      }
+      if(data.value == "简历排版"){
+          if(data.elem.checked){
+              paiban = 7;
+          }
+          else
+          {    
+              paiban = 0;
+          }
+      } 
+      app.message = fudao+guihua+youhua+fanyi+xiezuo+zixun+paiban+time+language+work_experience+resume_words;
+      total_fee.value = fudao+guihua+youhua+fanyi+xiezuo+zixun+paiban+time+language+work_experience+resume_words;   
+  });
+  form.on('radio(time)', function(data){
+      if(data.value == "1天内完成(加急)")
+      {
+          time = 1;
+      }
+      else
+      {
+          time = 0;
+      }
+      app.message = fudao+guihua+youhua+fanyi+xiezuo+zixun+paiban+time+language+work_experience+resume_words;
+      total_fee.value = fudao+guihua+youhua+fanyi+xiezuo+zixun+paiban+time+language+work_experience+resume_words;
+  });
+  form.on('radio(language)', function(data){
+      if(data.value == "英文简历")
+      {
+          language = 1;
+      }
+      else
+      {
+          language = 0;
+      }
+      app.message = fudao+guihua+youhua+fanyi+xiezuo+zixun+paiban+time+language+work_experience+resume_words;
+      total_fee.value = fudao+guihua+youhua+fanyi+xiezuo+zixun+paiban+time+language+work_experience+resume_words;
+  });
+  form.on('select(work_experience)', function(data){
+      if(data.value == "应届生")
+      {
+          work_experience = 1;
+      }
+      else if(data.value == "在校学生")
+      {
+          work_experience = 2;
+      }
+      else if(data.value == "1~3年")
+      {
+          work_experience = 3;
+      }
+      else if(data.value == "4~10年")
+      {
+          work_experience = 4;
+      }
+      else if(data.value == "10年以上")
+      {
+          work_experience = 5;
+      }
+      app.message = fudao+guihua+youhua+fanyi+xiezuo+zixun+paiban+time+language+work_experience+resume_words;
+      total_fee.value = fudao+guihua+youhua+fanyi+xiezuo+zixun+paiban+time+language+work_experience+resume_words;
+  });
+  form.on('select(resume_words)', function(data){
+      if(data.value == "1000字以内")
+      {
+          resume_words = 1;
+      }
+      else if(data.value == "1000~3000字")
+      {
+          resume_words = 2;
+      }
+      else if(data.value == "3000字以上")
+      {
+          resume_words = 3;
+      }
+      app.message = fudao+guihua+youhua+fanyi+xiezuo+zixun+paiban+time+language+work_experience+resume_words;
+      total_fee.value = fudao+guihua+youhua+fanyi+xiezuo+zixun+paiban+time+language+work_experience+resume_words;
+  });
+      
+});
+ 
+   
+function pay()
+{    
+    $.ajax({  
+            type: "get",  
+            url: "http://www.runjianli.com/index.php/cert/service/service_i",
+	        dataType: "text",
+	        data:$('#tf').serialize(),			
+            success: function(data){  
+               var str = "http://www.runjianli.com/index.php/cert/service/service_pay?out_trade_no="+data;
+               window.open(str);
+            },  
+	error: function(jqXHR, textStatus, errorThrown){  
+              alert(jqXHR.responseText);
+		      alert(jqXHR.status);
+		      alert(jqXHR.readyState);
+		      alert(jqXHR.statusText);
+		      alert(textStatus);
+		      alert(errorThrown); 
+        }
+    })
+    layer.confirm('是否完成支付?', {
+  btn: ['支付完成', '遇到问题'] //可以无限个按钮
+  ,btn2: function(index, layero){
+      alert("123");
+  }
+}, function(index, layero){
+    window.open("http://www.runjianli.com/index.php/cert/service/service_judge_pay");
+    layer.closeAll(); //疯狂模式，关闭所有层
+    layer.closeAll('dialog'); //关闭信息框
+    layer.closeAll('page'); //关闭所有页面层
+    layer.closeAll('iframe'); //关闭所有的iframe层
+    layer.closeAll('loading'); //关闭加载层
+    layer.closeAll('tips'); //关闭所有的tips层 
+});
+}
+
+var InterValObj; //timer变量，控制时间
+var count = 60; //间隔函数，1秒执行
+var curCount;//当前剩余秒数
+function SetRemainTime(){
+		if(curCount == 0){
+			window.clearInterval(InterValObj);
+			$("#phone").removeAttr("disabled");
+			$("#phone").val("重新发送验证码");
+		}
+		else{
+			curCount--;
+			$("#phone").val(curCount+"秒重新发送");
+		}
+	
+	}
+$(function(){    
+        $('#phone').click(function(){
+			var my_data = document.getElementById("iphone");
+			var value = my_data.value;
+			var code = document.getElementById("code");
+			curCount = count;
+			$('#phone').attr("disabled",true);
+			$('#phone').val(curCount+"秒重新发送");
+			InterValObj = window.setInterval(SetRemainTime, 1000);
+			$.ajax({
+				url:"alidayu/api_demo/SmsDemo.php",
+				type:"GET",
+				data:{iphone:value},
+				error: function(){  
+                        alert('Error loading XML document');  
+                },                   
+               
+                success: function(data,status){//如果调用php成功    
+                    code.value = data;
+		            alert(code.value);
+                }
+			});
+		}); 
+})    
+    
+</script>
+ </body>
+ </html>

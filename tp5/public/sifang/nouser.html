@@ -1,0 +1,1592 @@
+<!Doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>在线制作</title>
+  <link rel="stylesheet" href="layui-v2.2.6/layui-v2.2.6/layui/css/layui.css" type="text/css">
+  <link href="LXXUploadPic-master/LXXUploadNeeded/LXXUploadPic.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="mycss.css" type="text/css" id="modelcss">
+  
+  <script src="jquery.js"></script> <!-- 你必须先引入jQuery1.8或以上版本 -->
+  <script src="layer-v3.1.1/layer-v3.1.1/layer/layer.js" type="text/javascript" charset="utf-8"></script>
+  <script src="layui-v2.2.6/layui-v2.2.6/layui/layui.js" type="text/javascript" charset="utf-8"></script>
+  <script src="Sortable-master/Sortable-master/Sortable.js"></script>
+  <script src="jquery-ui.js" type="text/javascript" charset="utf-8"></script>
+  <script src="LXXUploadPic-master/LXXUploadNeeded/LXXUploadPic.js" type="text/javascript" charset="utf-8"></script>
+  <script>
+  
+  
+  </script>  
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+  <div class="layui-header">
+    <a class="layui-logo" href="http:\\www.runjianli.com">简历在线制作</a>
+    <!-- 头部区域（可配合layui已有的水平导航） -->
+    <ul class="layui-nav layui-layout-left">
+      <li class="layui-nav-item"><a href="user.html">在线制作</a></li>
+      <li class="layui-nav-item"><a href="viewmodel.html">模板商城</a></li>
+      <li class="layui-nav-item"><a href="howtohr.html">HR之旅</a></li>
+      <li class="layui-nav-item"><a href="mademodelindex.html">模板定制</a></li>
+      <li class="layui-nav-item"><a href="aboutus.html">关于我们</a></li>
+      <li class="layui-nav-item"><a href=""></a></li>
+      <li class="layui-nav-item"><a href=""></a></li>
+    </ul>
+    <ul class="layui-nav layui-layout-right">
+      <li class="layui-nav-item">
+        <a href="javascript:func1();">
+          <img src="?" class="layui-nav-img" id="img">
+        </a>
+        <dl class="layui-nav-child">
+          <dd><a href=""id="nickname"></a></dd>
+          <dd><a href="javascript:base();">基本信息</a></dd>
+          <dd><a href="javascript:hrcheck();">HR认证</a></dd>
+	      <dd><a href="javascript:companycheck();">企业认证</a></dd>
+        </dl>
+      </li>
+      <li class="layui-nav-item"><a href="javascript:signout();">退出</a></li>
+    </ul>
+  </div>
+  
+  <div class="layui-side layui-bg-black">
+    <div class="layui-side-scroll">
+      <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+      <ul class="layui-nav layui-nav-tree"  lay-filter="test">
+        <li class="layui-nav-item"><a href="javascript:cv_input();">简历导出</a></li>
+        <li class="layui-nav-item"><a href="javascript:mymodel();">模板管理</a></li>
+        <li class="layui-nav-item" id="allchild">
+          <a class="" href="javascript:modelchange();">更换模板</a>
+        </li>
+        <li class="layui-nav-item"><a href="javascript:rightcreate();">自定义模块</a></li>
+        <li class="layui-nav-item"><span id="membershiptime"></span></li>  
+      </ul>
+    </div>
+  </div>
+  <!--弹窗信息部分-->
+  
+  
+  
+  <div class="layui-body container-body">
+    <!-- 内容主体区域 -->
+  <form style="display:none;" id="tf">
+     <input type="file" id="headimg" name="headimg" change="postheadimg();"/>
+  </form>      
+    <!--startprint-->  
+  <div class="container-ct" id="module_list">	
+	<!--简历左边-->
+	<div class="container-left" id="left_div">
+		<!--简历头像
+		<div class="div-left" id="LXXUploadPic" LXXCol="1" LXXRow="1" LXXWidth="150" LXXHeight="175">
+		</div>-->
+        <div class="div-left">
+            <img id="headimg1" style="width:150px;height:200px;" src="picture/1.png" alt="图片名称" onclick="headimg.click()">
+        </div>    
+		<div class="div-left" id="information"> 
+            <div class="div-information"><span class="layui-icon block-inline">&#xe66f;</span><div class="block-inline information-padding placeholder" id="bt6" contenteditable="false" onclick="javascript:lalala1()">生日</div></div>
+            <div class="div-information"><span class="layui-icon block-inline">&#xe715;</span><div class="block-inline information-padding placeholder" id="bt7" contenteditable="false" onclick="javascript:lalala1()">所在城市</div></div>
+            <div class="div-information"><span class="layui-icon block-inline">&#xe678;</span><div class="block-inline information-padding placeholder" id="bt8" contenteditable="false" onclick="javascript:lalala1()">联系电话</div></div>
+            <div class="div-information"><span class="layui-icon block-inline">&#xe638;</span><div class="block-inline information-padding placeholder" id="bt9" contenteditable="false" onclick="javascript:lalala1()">电子邮箱</div></div>
+        </div>
+		<!--三个信息栏（最大三个）-->
+		<div class="div-left m_title" id="ziwopingjia">
+        <h1 class="handle">自我评价</h1>    
+        <div class="changeable width-all fix-bottom placeholder" contenteditable="false" placeholder="详细描述你的职责范围，工作任务即取得的成绩，工作经验的时间采用倒叙的形式，最近经历写在前面尽量简洁。"></div>       
+        </div>    
+		<div class="div-left m_title" id="xiangmujingyan">
+		<h1 class="handle">项目经验</h1>
+        <div class="changeable block-inline width-three fix-top placeholder" contenteditable="false" placeholder="设置时间"></div>
+        <div class="changeable block-inline width-three fix-top placeholder" contenteditable="false" placeholder="填写公司名称"></div>
+        <div class="changeable block-inline width-three fix-top placeholder" contenteditable="false" placeholder="填写职位名称"></div>         
+        <div class="changeable width-all fix-bottom placeholder" contenteditable="false" placeholder="篇幅不要太长，注意结合简历整体的美观度，如果真的有很多话要说，建议以求职信的形式附上。"></div>       
+		</div>
+	</div>
+	
+	<!--简历右边-->
+	<div class="container-right" id="right_div">
+		<!--你的名字-->
+		<div class="div-right">
+        <div id="bt10" style="display:block;font-size:40px" onclick="javascript:lalala1()">你的名字</div>
+        <div id="bt11" style="display:block;width:458px" onclick="javascript:lalala1()">一句话介绍自己，告诉HR选择你而不是别人</div>
+		</div>
+		<!--多个信息栏-->
+		<!--求职意向-->
+		<div class="div-right" style="display:block" id="qiuzhiyixiang">
+		<h1 class="handle">求职意向</h1>
+		<div id="bt1" class="block-inline" onclick="javascript:lalala()">意向岗位</div>
+		<div id="bt2" class="block-inline" onclick="javascript:lalala()">职业类型</div>
+		<div id="bt3" class="block-inline" onclick="javascript:lalala()">意向城市</div>
+        <div id="bt4" class="block-inline" onclick="javascript:lalala()">入职时间</div>
+        <div id="bt5" class="block-inline" onclick="javascript:lalala()">薪资要求</div>			
+		</div>
+		
+		<div class="div-right m_title" id="jiaoyubeijing">
+		<h1 class="handle">教育背景</h1>
+        <div class="changeable block-inline width-three fix-top placeholder" contenteditable="false" placeholder="设置时间"></div>
+        <div class="changeable block-inline width-three fix-top placeholder" contenteditable="false" placeholder="填写学校名称"></div>
+        <div class="changeable block-inline width-three fix-top placeholder" contenteditable="false" placeholder="填写专业名称"></div>         
+        <div class="changeable width-all fix-bottom placeholder" contenteditable="false" placeholder="尽量简洁，突出重点成绩优异的话建议写上GPA及排名等信息，主修课程只写与申请岗位相关的即可，相关性强的写在前面"></div>	
+		</div>
+		
+        <div class="div-right m_title" id="gongzuojingyan">
+		<h1 class="handle">工作经验</h1>
+        <div class="changeable block-inline width-three fix-top placeholder" contenteditable="false" placeholder="设置时间"></div>
+        <div class="changeable block-inline width-three fix-top placeholder" contenteditable="false" placeholder="填写公司名称"></div>
+        <div class="changeable block-inline width-three fix-top placeholder" contenteditable="false" placeholder="填写职位名称"></div>         
+        <div class="changeable width-all fix-bottom placeholder" contenteditable="false" placeholder="详细描述你的职责范围，工作任务即取得的成绩，工作经验的时间采用倒叙的形式，最近经历写在前面尽量简洁。"></div>       
+        </div> 
+	</div>
+  </div>
+  <!--endprint-->
+  <div style="background:#2F4056;padding:10px 20px 10px 20px;width:100%">
+      <h3 style="color:#FFFFFF">版权信息</h3>
+      <p style="color:#ddd;font-size:10px">润简历网站所发布展示的“简历模板”版权归润简历所有， 任何商业用途均须联系作者。<br>如未经授权用作他处，润简历将保留追究侵权者法律责任的权利。</p>
+      <p style="color:#ddd;font-size:12px">南京博晓信息科技有限公司<br>备案号  苏 ICP备 18029764号-1<br>Copyright © 2016-2018 runjianli. All Rights Reserved.</p>      
+  </div>       
+  </div>
+  
+  <div class="layui-footer">   
+  <input type="hidden" style="display:none" id="login">
+      <p style="display:inline-block;">对这个模板样式不太满意?</p><a style="display:inline-block;margin:0 4px 0 4px;color:#01AAED" href="mademodelindex.html">点击这里</a><p style="display:inline-block;">开启自己的专属模板定制之旅!</p>
+  </div>
+</div>
+
+
+	<!--登陆注册区-->
+	<div class="htmleaf-container" id="box1">
+    <div id="wrapper" class="login-page">
+      <div id="login_form" class="form">
+        <form class="register-form" id="register1" style="display:none">
+          <input type="text" placeholder="用户名" id="r_user_name"/>
+          <input type="password" placeholder="密码" id="r_password" />
+          <input type="text" placeholder="电子邮件" id="r_emial"/>
+          <button id="create">创建账户</button>
+          <p class="message">已经有了一个账户? <a href="#" class="a1">立刻登录</a></p>
+        </form>
+		<form class="register-weixin" id="register2" style="display:none">
+		  	 <span id="login_container"></span>
+          <script src="http://res.wx.qq.com/connect/zh_CN/htmledition/js/wxLogin.js"></script>
+          <script>
+             var obj = new WxLogin({
+               //true：手机点击确认登录后可以在 iframe 内跳转到 redirect_uri，false：手机点击确认登录后可以在 top window 跳转到 redirect_uri。默认为 false。  
+               self_redirect:false,
+               //第三方页面显示二维码的容器id
+               id: "login_container",
+               //应用唯一标识，在微信开放平台提交应用审核通过后获得
+               appid: "wxeafbca61ac265143",
+               //应用授权作用域，拥有多个作用域用逗号（,）分隔，网页应用目前仅填写snsapi_login即可
+               scope: "snsapi_login",
+               //重定向地址，需要进行UrlEncode
+               redirect_uri: encodeURIComponent("http://www.runjianli.com/index.php/index/wx_login/index"),
+               //用于保持请求和回调的状态，授权请求后原样带回给第三方。该参数可用于防止csrf攻击（跨站请求伪造攻击），建议第三方带上该参数，可设置为简单的随机数加session进行校验
+               state: Math.ceil(Math.random()*1000),
+               //提供"black"、"white"可选，默认为黑色文字描述
+               style: "",
+               //自定义样式链接，第三方可根据实际需求覆盖默认样式
+               href: ""});
+         </script>
+		  <p class="message">已经有了一个账户? <a href="#" class="a2">立刻登录</a></p>
+        </form>
+		<form method="post" class="register-phone" id="register3" style="display:none"><!--onsubmit="return false;"-->
+		  <input type="hidden" id="code">
+		  <input type="text" placeholder="手机号" name="iphone" id="iphone"/>
+		  <div><input type="text" id="code1" placeholder="验证码" style="display:inline; width:160px;margin:0 15px 15px 0"/><input type="button" id="phone" style="display:inline; width:80px; font-size:10px;" value="发送验证码"></div>
+		  <button type="button" id="login1">登陆</button>
+		  <p class="message">已经有了一个账户? <a href="#" class="a3">立刻登录</a></p>
+        </form>
+        <form class="login-form" id="register4" style="display:block">
+          <input type="text" placeholder="用户名" id="user_name"/>
+          <input type="password" placeholder="密码" id="password"/>
+          <button id="login2">登　录</button>
+          <p class="message"><a href="#" class="a1">创建账户</a>/<a href="#" class="a2">微信扫码登陆</a>/ <a href="#" class="a3">短信验证登陆</a></p>
+        </form>
+      </div>
+    </div>
+	</div>
+	
+
+<div style="display:none;">
+<input type="hidden" id="hd1">
+<input type="hidden" id="hd2">
+<input type="hidden" id="hd3">
+<input type="hidden" id="hd4">
+<input type="hidden" id="hd5">
+<input type="hidden" id="modelid" value="s10004">
+</div>
+
+
+<script>
+    
+var login = document.getElementById("login");
+/*
+var right_count = 1;
+var left_count = 1;
+var oldleft_order = [];
+var oldright_order = [];
+var newleft_order = [];
+var newright_order = [];*/
+var cv_id = oneValues();  
+//var old_order = [];//储存最初始的div排列顺序
+//var new_order = [];//最新的div排列顺序 
+/*    
+$("#left_div").children(".m_title").each(function(){
+    oldleft_order.push(this.id);
+})
+$("#right_div").children(".m_title").each(function(){
+    oldright_order.push(this.id);
+})*/   
+//JavaScript代码区域
+
+layui.use('element', function(){
+  var element = layui.element;
+});
+
+
+
+$(function(){
+if($(".left_div").height() > $(".right_div").height()){
+$(".right_div").css("height",$(".left_div").height()) 
+}else{
+$(".left_div").css("height",$(".right_div").height()) 
+}
+//div按数据库加载  
+//setCookie("username","Darren");           
+//alert(getCookie("username"));    
+//var oldorder = new Array("div","div1","div2","div3","div4");
+/*var neworder = new Array(4,1,2,0,3);
+var right = new Array("div2","div3","div4");*/
+//var right_order = document.getElementById("right_order");     
+//right_order.value = right.join(",");
+//alert(right_order.value);    
+/*    
+var i;
+var t;   
+for(i=0;i<neworder.length;i++)
+{
+   arr[i] = document.getElementById(oldorder[neworder[i]]).innerHTML;
+}
+for(i=0;i<arr.length;i++)
+{
+   document.getElementById(oldorder[i]).innerHTML = arr[i];
+}*/    
+//判断登陆状态
+var img = document.getElementById("img"); 
+var nickname = document.getElementById("nickname");    
+$.ajax({  
+            type: "post",  
+            url: "http://www.runjianli.com/index.php/session/session_use/check",
+			dataType: "text", 			
+            success: function(data){
+            login.value = data;
+                if(data == 1)
+                {   
+    $.ajax({  
+            type: "post",  
+            url: "http://www.runjianli.com/index.php/session/session_use/imgview",
+			dataType: "text", 			
+            success: function(data){
+           	if(data){
+	 img.src = data;
+	}else{img.src = "picture/wdg.jpg";}
+            },
+			error: function(jqXHR, textStatus, errorThrown){  
+                alert(jqXHR.responseText);
+				alert(jqXHR.status);
+				alert(jqXHR.readyState);
+				alert(jqXHR.statusText);
+				alert(textStatus);
+				alert(errorThrown); 
+			}
+        }) 
+
+//录入登陆昵称
+$.ajax({  
+            type: "post",  
+            url: "http://www.runjianli.com/index.php/session/session_use/nicknameview",
+			dataType: "text", 			
+            success: function(data){
+            nickname.innerHTML = data;  
+            },
+			error: function(jqXHR, textStatus, errorThrown){  
+                alert(jqXHR.responseText);
+				alert(jqXHR.status);
+				alert(jqXHR.readyState);
+				alert(jqXHR.statusText);
+				alert(textStatus);
+				alert(errorThrown); 
+			}
+        })                      
+                }
+            else{
+                img.src = "picture/wdg.jpg";
+            }    
+                
+            //read();  
+            },
+			error: function(jqXHR, textStatus, errorThrown){  
+                alert(jqXHR.responseText);
+				alert(jqXHR.status);
+				alert(jqXHR.readyState);
+				alert(jqXHR.statusText);
+				alert(textStatus);
+				alert(errorThrown); 
+			}
+        })  
+//输出会员时间
+$.ajax({  
+            type: "post",  
+            url: "http://www.runjianli.com/index.php/cv/model/membertime",
+			dataType: "text", 			
+            success: function(data){
+                $('#membershiptime').html(data);  
+            },
+			error: function(jqXHR, textStatus, errorThrown){  
+                alert(jqXHR.responseText);
+				alert(jqXHR.status);
+				alert(jqXHR.readyState);
+				alert(jqXHR.statusText);
+				alert(textStatus);
+				alert(errorThrown); 
+			}
+        })      
+//录入头像
+    
+//插入cv_id
+if(cv_id == null)
+{    
+    $.ajax({  
+            type: "post",  
+            url: "http://www.runjianli.com/index.php/cv/cv_model/cv_keep",
+			dataType: "text", 			
+            success: function(data){
+                layer.msg(data);
+            },
+			error: function(jqXHR, textStatus, errorThrown){  
+                alert(jqXHR.responseText);
+				alert(jqXHR.status);
+				alert(jqXHR.readyState);
+				alert(jqXHR.statusText);
+				alert(textStatus);
+				alert(errorThrown); 
+			}
+        })     
+}
+else
+{  
+        $.ajax({  
+            type: "post",  
+            url: "http://www.runjianli.com/index.php/cv/cv_model/viewmodelcss",
+			dataType: "json",
+            data:{"cv_id":cv_id},
+            success: function(data){
+                $('#modelcss').attr("href",data.cssstyle);
+                layer.msg('简历加载成功');
+            },
+			error: function(jqXHR, textStatus, errorThrown){  
+                alert(jqXHR.responseText);
+				alert(jqXHR.status);
+				alert(jqXHR.readyState);
+				alert(jqXHR.statusText);
+				alert(textStatus);
+				alert(errorThrown); 
+			}
+        })  
+    $.ajax({  
+            type: "post",  
+            url: "http://www.runjianli.com/index.php/cv/cv_model/innerhtml_read",
+			dataType: "json",
+            data:{"cv_id":cv_id},
+            success: function(data){
+                $('#module_list').html(data.innerhtml);
+                layer.msg('简历加载成功');
+            },
+			error: function(jqXHR, textStatus, errorThrown){  
+                alert(jqXHR.responseText);
+				alert(jqXHR.status);
+				alert(jqXHR.readyState);
+				alert(jqXHR.statusText);
+				alert(textStatus);
+				alert(errorThrown); 
+			}
+        })    
+/*    
+  $.ajax({  
+            type: "post",  
+            url: "http://www.runjianli.com/index.php/cv/cv_model/innerhtml_read",
+			dataType: "json",
+            data:{"cv_id":cv_id},
+            success: function(data){ 
+                alert(data.innerhtml);
+                $('innerhtml').html(data.innerhtml);
+            },
+			error: function(jqXHR, textStatus, errorThrown){  
+                alert(jqXHR.responseText);
+				alert(jqXHR.status);
+				alert(jqXHR.readyState);
+				alert(jqXHR.statusText);
+				alert(textStatus);
+				alert(errorThrown); 
+			}
+        }) */   
+  /*    
+    //you
+    $.ajax({  
+            type: "post",  
+            url: "http://www.runjianli.com/index.php/cv/cv_model/rightcreate_put",
+			dataType: "json",
+            data:{"cv_id":cv_id},
+            success: function(data){
+                for(var i=0;i<getJsonLength(data);i++)
+                {    
+                    var divx = document.createElement('div');
+		            divx.setAttribute("class","layui-row left-move top-move m_title");
+                    divx.setAttribute("id",data[i].div_id);
+		            //设置div的属性
+		            divx.innerHTML = '<h1>'+data[i].create_title+'</h1><input style="display:inline-block" type="button" class="bor" value="'+data[i].create_content1+'"><input style="display:inline-block" type="text" class="bor2"  value="'+data[i].create_content2+'"><input  id="abc3"  style="display:inline-block" type="text" class="bor2"  value="'+data[i].create_content3+'">'; //设置显示的数据，可以是标签．
+		            divx.style.background = "blue";//设置css样式,s设置背景颜色
+		            var div = document.getElementById("right_div");//获取body对象.
+		            //var div1 = _parentWin.document.getElementById("div1");
+		            //动态插入到body中
+		            div.insertBefore(divx,div.lastChild);
+                }
+                    //zuo
+    $.ajax({  
+            type: "post",  
+            url: "http://www.runjianli.com/index.php/cv/cv_model/leftcreate_put",
+			dataType: "json",
+            data:{"cv_id":cv_id},
+            success: function(data){
+                for(var i=0;i<getJsonLength(data);i++)
+                {    
+                    var divx = document.createElement('div');
+		            divx.setAttribute("class","layui-row left-move top-move m_title");
+                    divx.setAttribute("id",data[i].div_id);
+		            //设置div的属性
+		            divx.innerHTML = '<h1>'+data[i].create_title+'</h1><input style="display:inline-block" type="button" class="bor" value="'+data[i].create_content1+'"><input style="display:inline-block" type="text" class="bor2"  value="'+data[i].create_content2+'"><input  id="abc3"  style="display:inline-block" type="text" class="bor2"  value="'+data[i].create_content3+'">'; //设置显示的数据，可以是标签．
+		            divx.style.background = "red";//设置css样式,s设置背景颜色
+		            var div = document.getElementById("left_div");//获取body对象.
+		            //var div1 = _parentWin.document.getElementById("div1");
+		            //动态插入到body中
+		            div.insertBefore(divx,div.lastChild);
+                }
+                 //all
+    $.ajax({  
+            type: "post",  
+            url: "http://www.runjianli.com/index.php/cv/cv_model/cv_keep_div_out",
+			dataType: "json",
+            data:{"cv_id":cv_id},
+            success: function(data){
+                var newleftorder = [];
+                var newrightorder = [];
+                var oldleftorder = [];
+                var oldrightorder = [];
+                var arr = [];
+                newleftorder = data.new_leftorder.split(",");
+                newrightorder = data.new_rightorder.split(",");
+                oldleftorder = data.old_leftorder.split(",");
+                oldrightorder = data.old_rightorder.split(",");
+                //alert(newleftorder);
+                //alert(newrightorder);
+                //alert(oldleftorder);
+                //alert(oldrightorder);
+                //var oldorder = [];
+                //oldorder = data.old_order.split(",");
+                //alert(oldorder);
+                //alert(oldleftorder.length+oldrightorder.length);
+                //alert(oldleftorder.length);
+                //alert(oldrightorder.length);
+                for(var i=0;i<newleftorder.length+newrightorder.length;i++)
+                {
+                    if(i<newleftorder.length)
+                    {    
+                        arr.push(document.getElementById(newleftorder[i]).innerHTML);
+                    }
+                    else
+                    {    
+                        arr.push(document.getElementById(newrightorder[i-newleftorder.length]).innerHTML);
+                    }
+                }
+                $('.m_title').remove();
+                for(var i=0;i<newleftorder.length+newrightorder.length;i++)
+                {
+                    if(i<newleftorder.length)
+                    {    
+                        var divx = document.createElement('div');
+                        divx.setAttribute("class","layui-row left-move top-move m_title");
+                        divx.setAttribute("id",newleftorder[i]);
+                        //alert(newleftorder[i]);
+                        divx.innerHTML = arr[i];
+                        var div = document.getElementById("left_div");
+                        div.insertBefore(divx,div.lastChild);
+                    }
+                    else
+                    {    
+                        var divx = document.createElement('div');
+                        divx.setAttribute("class","layui-row left-move top-move m_title");
+                        divx.setAttribute("id",newrightorder[i-newleftorder.length]);
+                        //alert(newrightorder[i-newleftorder.length]);
+                        divx.innerHTML = arr[i];
+                        var div = document.getElementById("right_div");
+                        div.insertBefore(divx,div.lastChild);
+                    }
+                }
+            },
+			error: function(jqXHR, textStatus, errorThrown){  
+                alert(jqXHR.responseText);
+				alert(jqXHR.status);
+				alert(jqXHR.readyState);
+				alert(jqXHR.statusText);
+				alert(textStatus);
+				alert(errorThrown); 
+			}
+        }) 
+            },
+			error: function(jqXHR, textStatus, errorThrown){  
+                alert(jqXHR.responseText);
+				alert(jqXHR.status);
+				alert(jqXHR.readyState);
+				alert(jqXHR.statusText);
+				alert(textStatus);
+				alert(errorThrown); 
+			}
+        })
+            },
+			error: function(jqXHR, textStatus, errorThrown){  
+                alert(jqXHR.responseText);
+				alert(jqXHR.status);
+				alert(jqXHR.readyState);
+				alert(jqXHR.statusText);
+				alert(textStatus);
+				alert(errorThrown); 
+			}
+        })
+   */
+   
+}
+ 
+//拖动	
+    $(".handle").bind('mouseover',function(){
+		$(this).css("cursor","move")
+	});
+	
+  
+	var $list = $('#module_list');
+	
+	$list.sortable({
+		opacity: 0.6, //设置拖动时候的透明度
+		revert: true, //缓冲效果
+		cursor: 'move', //拖动的时候鼠标样式
+		items: '.m_title', 
+        handle: '.handle',
+        start:function(){
+           // var a =  $(this).position();
+           // layer.msg(a);
+        },
+        update:function(){
+            innerhtmlinput();
+            //innerhtmlinput1();////模板分区json传入
+          /*    
+            newleft_order = [];
+            newright_order = [];
+            $("#left_div").children(".m_title").each(function(){
+                newleft_order.push(this.id);
+            })
+            $("#right_div").children(".m_title").each(function(){
+                newright_order.push(this.id);
+            })
+            for(var i=0;i<newleft_order.length;i++)
+            {    
+                new_order[i],newleft_order[i];
+            }
+            for(var i=0;i<newright_order.length;i++)
+            {    
+                new_order[i+newleft_order.length] = newright_order[i];
+            }
+        var oldleft_order1 = oldleft_order.toString();
+        var oldright_order1 = oldright_order.toString();
+        var newleft_order1 = newleft_order.toString();
+        var newright_order1 = newright_order.toString();
+        //alert(oldleft_order1);
+        //alert(oldright_order1);
+        //alert(newleft_order1);
+        //alert(newright_order1);
+        if(cv_id == null)
+        {    
+            $.ajax({  
+            type: "post",  
+            url: "http://www.runjianli.com/index.php/cv/cv_model/cv_keep_div",
+			dataType: "text",
+            data:{"old_leftorder":oldleft_order1,"new_leftorder":newleft_order1,"old_rightorder":oldright_order1,"new_rightorder":newright_order1},
+            success: function(data){
+                //alert("success");
+            },
+			error: function(jqXHR, textStatus, errorThrown){  
+                alert(jqXHR.responseText);
+				alert(jqXHR.status);
+				alert(jqXHR.readyState);
+				alert(jqXHR.statusText);
+				alert(textStatus);
+				alert(errorThrown); 
+			}
+        })
+        }
+        else
+        {    
+            $.ajax({  
+            type: "post",  
+            url: "http://www.runjianli.com/index.php/cv/cv_model/cv_keep_div1",
+			dataType: "text",
+            data:{"old_leftorder":oldleft_order1,"new_leftorder":newleft_order1,"old_rightorder":oldright_order1,"new_rightorder":newright_order1,"cv_id":cv_id},
+            success: function(data){
+                //alert("success");
+            },
+			error: function(jqXHR, textStatus, errorThrown){  
+                alert(jqXHR.responseText);
+				alert(jqXHR.status);
+				alert(jqXHR.readyState);
+				alert(jqXHR.statusText);
+				alert(textStatus);
+				alert(errorThrown); 
+			}
+        })
+		}*/
+    } 
+	});
+    
+    
+//插入简历信息
+$.ajax({  
+            type: "post",  
+            url: "http://www.runjianli.com/index.php/cv/cv_write/check_cv",
+			dataType: "text", 			
+            success: function(data){
+            },
+			error: function(jqXHR, textStatus, errorThrown){  
+                alert(jqXHR.responseText);
+				alert(jqXHR.status);
+				alert(jqXHR.readyState);
+				alert(jqXHR.statusText);
+				alert(textStatus);
+				alert(errorThrown); 
+			}
+        })  
+
+
+})
+//innerHTML存入
+function innerhtmlinput()
+{   
+    
+    //整个模板录入
+    if(cv_id == null)
+    {    
+    $.ajax({  
+            type: "post",  
+            url: "http://www.runjianli.com/index.php/cv/cv_model/innerhtml_input",
+			dataType: "text",
+            data:{"innerhtml":$('#module_list').html(),"modelid":$('#modelid').val()},
+            success: function(data){
+                layer.msg('操作成功');
+            },
+			error: function(jqXHR, textStatus, errorThrown){  
+                alert(jqXHR.responseText);
+				alert(jqXHR.status);
+				alert(jqXHR.readyState);
+				alert(jqXHR.statusText);
+				alert(textStatus);
+				alert(errorThrown); 
+			}
+          })
+    }
+    else
+    {   
+        $.ajax({  
+            type: "post",  
+            url: "http://www.runjianli.com/index.php/cv/cv_model/innerhtml_input1",
+			dataType: "text",
+            data:{"innerhtml":$('#module_list').html(),"cv_id":cv_id,"modelid":$('#modelid').val()},
+            success: function(data){
+                layer.msg('操作成功');
+            },
+			error: function(jqXHR, textStatus, errorThrown){  
+                alert(jqXHR.responseText);
+				alert(jqXHR.status);
+				alert(jqXHR.readyState);
+				alert(jqXHR.statusText);
+				alert(textStatus);
+				alert(errorThrown); 
+			}
+          })
+    } 
+    
+}    
+    
+function innerhtmlinput1()
+{
+    
+}
+    
+    
+    
+    
+function getJsonLength(jsonData){
+ var jsonLength = 0;
+ for(var item in jsonData){
+  jsonLength++;
+ }
+ return jsonLength;
+}
+
+/*
+function read()
+{
+	if(login.value == 0){
+}else
+{
+	$.ajax({  
+            type: "post",  
+            url: "http://www.runjianli.com/index.php/cv/cv_write/read",
+			dataType: "json", 
+            data:{"cv_id":cv_id},
+            success: function(data){
+	var name = document.getElementById("bt10");
+	var introduction = document.getElementById("bt11");
+	var intentionjob = document.getElementById("bt1");
+	var jobtype = document.getElementById("bt2");
+	var intentioncity = document.getElementById("bt3");
+	var entrytime = document.getElementById("bt4");
+	var salary = document.getElementById("bt5");
+	var birthday = document.getElementById("bt6");
+	var city = document.getElementById("bt7");
+	var phone =  document.getElementById("bt8");
+ 	var emali = document.getElementById("bt9");
+	name.value =  data.name;//结果是string
+	introduction.value = data.introduction;
+	intentionjob.value = data.intentionjob;
+	 jobtype.value = data. jobtype ;
+	intentioncity.value = data.intentioncity;
+	entrytime.value = data.entrytime;
+	salary.value = data.salary;
+	birthday.value = data.birthday;
+	city.value = data.city;
+	phone.value = data.phone;
+	emali.value = data.emali;	
+            },
+			error: function(jqXHR, textStatus, errorThrown){  
+                alert(jqXHR.responseText);
+				alert(jqXHR.status);
+				alert(jqXHR.readyState);
+				alert(jqXHR.statusText);
+				alert(textStatus);
+				alert(errorThrown); 
+			}
+        })  
+}
+
+}
+
+*/
+
+
+    function oneValues(){
+		var result;
+		var url=window.location.search; //获取url中"?"符后的字串  
+		if(url.indexOf("?")!=-1){
+			result = url.substr(url.indexOf("=")+1);
+		}
+	return result;
+	}
+    
+    
+function memberjudge()
+{   
+
+
+}
+    
+//简历导出    
+function cv_input()
+{
+    var modelcss = document.getElementById("modelcss");
+    bdhtml=window.document.body.innerHTML; 
+    sprnstr="<!--startprint-->"; 
+    eprnstr="<!--endprint-->"; 
+    prnhtml=bdhtml.substr(bdhtml.indexOf(sprnstr)+17); 
+    prnhtml=prnhtml.substring(0,prnhtml.indexOf(eprnstr)); 
+    //将获取的html代码添加到隐藏域中传给php文件处理
+    if(cv_id == null)
+    {    
+    $.ajax({  
+            type: "post",  
+            url: "http://www.runjianli.com/index.php/cv/cv_model/cv_input",
+			dataType: "text",
+            data:{"html":prnhtml,"modelcss":modelcss.href},
+            success: function(data){
+                //window.open(data);
+                window.open("http://www.runjianli.com/index.php/cv/cv_spread/cvprint");
+            },
+			error: function(jqXHR, textStatus, errorThrown){  
+                alert(jqXHR.responseText);
+				alert(jqXHR.status);
+				alert(jqXHR.readyState);
+				alert(jqXHR.statusText);
+				alert(textStatus);
+				alert(errorThrown); 
+			}
+          })
+    }
+    else
+    {   
+        $.ajax({  
+            type: "post",  
+            url: "http://www.runjianli.com/index.php/cv/cv_model/cv_input1",
+			dataType: "text",
+            data:{"html":prnhtml,"cv_id":cv_id},
+            success: function(data){
+                //window.open(data);
+                window.open("http://www.runjianli.com/index.php/cv/cv_spread/cvprint");
+            },
+			error: function(jqXHR, textStatus, errorThrown){  
+                alert(jqXHR.responseText);
+				alert(jqXHR.status);
+				alert(jqXHR.readyState);
+				alert(jqXHR.statusText);
+				alert(textStatus);
+				alert(errorThrown); 
+			}
+          })
+    }
+}
+	    function rightcreate()
+        {
+			layui.use('layer', function(){
+					var layer = layui.layer;
+					layer.open({
+						type: 2,
+						title: '添加自定义模块',
+						resize: false,
+						scrollbar: false,
+						skin: 'layui-layer-molv',
+						area: ['618px', '400px'],
+						shadeClose: true, //点击遮罩关闭
+						content: ['form3r.html' , 'no'] 
+					});
+		        })
+		}
+function leftcreate()
+{
+    layui.use('layer', function(){
+        var layer = layui.layer;
+        layer.open({
+				type: 2,
+				title: '添加自定义模块',
+				resize: false,
+				scrollbar: false,
+				skin: 'layui-layer-molv',
+				area: ['618px', '400px'],
+				shadeClose: true, //点击遮罩关闭
+				content: ['form3l.html' , 'no'] 
+            });
+    })
+}    
+    /*
+    function readall()
+    {
+        $.ajax({  
+            type: "post",  
+            url: "http://www.runjianli.com/index.php/cv/cv_model/cv_keep_div_out",
+			dataType: "json",
+            data:{"cv_id":cv_id},
+            success: function(data){
+                var newleftorder = [];
+                var newrightorder = [];
+                var oldleftorder = [];
+                var oldrightorder = [];
+                var arr = [];
+                newleftorder = data.new_leftorder.split(",");
+                newrightorder = data.new_rightorder.split(",");
+                oldleftorder = data.old_leftorder.split(",");
+                oldrightorder = data.old_rightorder.split(",");
+                //alert(newleftorder);
+                //alert(newrightorder);
+                //alert(oldleftorder);
+                //alert(oldrightorder);
+                //var oldorder = [];
+                //oldorder = data.old_order.split(",");
+                //alert(oldorder);
+                //alert(oldleftorder.length+oldrightorder.length);
+                //alert(oldleftorder.length);
+                //alert(oldrightorder.length);
+                for(var i=0;i<newleftorder.length+newrightorder.length;i++)
+                {
+                    if(i<newleftorder.length)
+                    {    
+                        arr.push(document.getElementById(newleftorder[i]).innerHTML);
+                    }
+                    else
+                    {    
+                        arr.push(document.getElementById(newrightorder[i-newleftorder.length]).innerHTML);
+                    }
+                    alert(arr);
+                }
+                $('.m_title').empty()
+                for(var i=0;i<newleftorder.length+newrightorder.length;i++)
+                {
+                    if(i<newleftorder.length)
+                    {    
+                        var divx = document.createElement('div');
+                        divx.setAttribute("class","layui-row left-move top-move m_title");
+                        divx.setAttribute("id",newleftorder[i]);
+                        divx.innerHTML = arr[i];
+                        var div = document.getElementById("left_div");
+                        div.insertBefore(divx,div.lastChild);
+                    }
+                    else
+                    {    
+                        var divx = document.createElement('div');
+                        divx.setAttribute("class","layui-row left-move top-move m_title");
+                        divx.setAttribute("id",newrightorder[i-newleftorder.length]);
+                        divx.innerHTML = arr[i];
+                        var div = document.getElementById("right_div");
+                        div.insertBefore(divx,div.lastChild);
+                    }
+                }
+            },
+			error: function(jqXHR, textStatus, errorThrown){  
+                alert(jqXHR.responseText);
+				alert(jqXHR.status);
+				alert(jqXHR.readyState);
+				alert(jqXHR.statusText);
+				alert(textStatus);
+				alert(errorThrown); 
+			}
+        }) 
+    }   
+	    function rightcreate()
+        {
+			layui.use('layer', function(){
+					var layer = layui.layer;
+					layer.open({
+						type: 2,
+						title: '添加自定义模块',
+						resize: false,
+						scrollbar: false,
+						skin: 'layui-layer-molv',
+						area: ['618px', '400px'],
+						shadeClose: true, //点击遮罩关闭
+						content: ['form3r.html' , 'no'] 
+					});
+		        })
+		}
+function leftcreate()
+{
+    layui.use('layer', function(){
+        var layer = layui.layer;
+        layer.open({
+				type: 2,
+				title: '添加自定义模块',
+				resize: false,
+				scrollbar: false,
+				skin: 'layui-layer-molv',
+				area: ['618px', '400px'],
+				shadeClose: true, //点击遮罩关闭
+				content: ['form3l.html' , 'no'] 
+            });
+    })
+}
+function readrightcreate()
+{
+    $.ajax({  
+            type: "post",  
+            url: "http://www.runjianli.com/index.php/cv/cv_model/rightcreate_put",
+			dataType: "json",
+            data:{"cv_id":cv_id},
+            success: function(data){
+                for(var i=0;i<getJsonLength(data);i++)
+                {    
+                    var divx = document.createElement('div');
+		            divx.setAttribute("class","layui-row left-move top-move m_title");
+                    divx.setAttribute("id",data[i].div_id);
+		            //设置div的属性
+		            divx.innerHTML = '<h1>'+data[i].create_title+'</h1><input style="display:inline-block" type="button" class="bor" value="'+data[i].create_content1+'"><input style="display:inline-block" type="text" class="bor2"  value="'+data[i].create_content2+'"><input  id="abc3"  style="display:inline-block" type="text" class="bor2"  value="'+data[i].create_content3+'">'; //设置显示的数据，可以是标签．
+		            divx.style.background = "blue";//设置css样式,s设置背景颜色
+		            var div = document.getElementById("right_div");//获取body对象.
+		            //var div1 = _parentWin.document.getElementById("div1");
+		            //动态插入到body中
+		            div.insertBefore(divx,div.lastChild);
+                }
+            },
+			error: function(jqXHR, textStatus, errorThrown){  
+                alert(jqXHR.responseText);
+				alert(jqXHR.status);
+				alert(jqXHR.readyState);
+				alert(jqXHR.statusText);
+				alert(textStatus);
+				alert(errorThrown); 
+			}
+        })
+    return 1;
+}  
+function readleftcreate()
+{
+    $.ajax({  
+            type: "post",  
+            url: "http://www.runjianli.com/index.php/cv/cv_model/leftcreate_put",
+			dataType: "json",
+            data:{"cv_id":cv_id},
+            success: function(data){
+                for(var i=0;i<getJsonLength(data);i++)
+                {    
+                    var divx = document.createElement('div');
+		            divx.setAttribute("class","layui-row left-move top-move m_title");
+                    divx.setAttribute("id",data[i].div_id);
+		            //设置div的属性
+		            divx.innerHTML = '<h1>'+data[i].create_title+'</h1><input style="display:inline-block" type="button" class="bor" value="'+data[i].create_content1+'"><input style="display:inline-block" type="text" class="bor2"  value="'+data[i].create_content2+'"><input  id="abc3"  style="display:inline-block" type="text" class="bor2"  value="'+data[i].create_content3+'">'; //设置显示的数据，可以是标签．
+		            divx.style.background = "red";//设置css样式,s设置背景颜色
+		            var div = document.getElementById("left_div");//获取body对象.
+		            //var div1 = _parentWin.document.getElementById("div1");
+		            //动态插入到body中
+		            div.insertBefore(divx,div.lastChild);
+                }
+            },
+			error: function(jqXHR, textStatus, errorThrown){  
+                alert(jqXHR.responseText);
+				alert(jqXHR.status);
+				alert(jqXHR.readyState);
+				alert(jqXHR.statusText);
+				alert(textStatus);
+				alert(errorThrown); 
+			}
+        })
+    return 1;
+}    
+*/
+
+//iframe 求职意向
+function lalala()
+{
+    layui.use('layer', function(){
+		var layer = layui.layer;
+		layer.open({
+			type: 2,
+			title: '编辑求职意向',
+			resize: false,
+			scrollbar: false,
+			skin: 'layui-layer-molv',
+			area: ['618px', '360px'],
+			shadeClose: false, //点击遮罩关闭
+			content: ['form1.html' , 'no'] 
+		});
+	})
+}
+
+//iframe 基本信息
+function lalala1()
+{
+    layui.use('layer', function(){
+		var layer = layui.layer;
+		layer.open({
+			type: 2,
+			title: '编辑基本信息',
+			resize: false,
+			scrollbar: false,
+			skin: 'layui-layer-molv',
+			area: ['618px', '400px'],
+			shadeClose: false, //点击遮罩关闭
+			content: ['form2.html' , 'no'] 
+		});
+	})
+}
+
+function signout()
+{
+    $.ajax({  
+            type: "post",  
+            url: "http://www.runjianli.com/index.php/session/session_use/signout",
+			dataType: "text", 			
+            success: function(data){ 
+            img.src = "picture/wdg.jpg";
+            nickname.innerHTML = "";   
+            },
+			error: function(jqXHR, textStatus, errorThrown){  
+                alert(jqXHR.responseText);
+				alert(jqXHR.status);
+				alert(jqXHR.readyState);
+				alert(jqXHR.statusText);
+				alert(textStatus);
+				alert(errorThrown); 
+			}
+        })  
+        login.value = 0;	
+}
+
+
+function mymodel()
+{
+	layui.use('layer', function(){
+		var layer = layui.layer;
+		layer.open({	
+			type: 2,
+			anim: 3,
+			title: false,
+			shadeClose: true,
+			shade: false,
+			offset:'l',
+			maxmin: false, //显示最大化最小化按钮
+			closeBtn: 0, //不显示关闭按钮
+			area: ['200px', '600px'],
+			content: 'mymodel.html'
+		});
+	})
+}
+
+function wxpay()
+{
+	/*if(login.value == 1){
+	layui.use('layer', function(){
+		var layer = layui.layer;
+		layer.open({	
+			type: 2,
+			title: '微信支付',
+			resize: false,
+			scrollbar: false,
+			skin: 'layui-layer-molv',
+			area: ['350px', '350px'],
+			shadeClose: true, //点击遮罩关闭
+			content: 'wxpay.html'
+		});
+	})}
+	else
+	{
+		alert("请先登陆");
+	}*/
+	window.open("http://www.runjianli.com/photo.html");
+
+}
+
+
+//登陆区
+$(function(){
+/*    
+$(".div-left").hover(function () {
+    $(this).addClass("hoverboder");
+}).mouseout(function () {
+    $(this).removeClass("hoverboder");
+})
+$(".div-right").hover(function () {
+    $(this).addClass("hoverboder");
+}).mouseout(function () {
+    $(this).removeClass("hoverboder");
+})  */   
+$('#module_list').on('click','.changeable',function(){
+    $(this).attr("contenteditable","true");
+});
+$('#module_list').on('hover','.changeable',function(){
+    $(this).addClass("hoverboder");
+});    
+$('#module_list').on('blur','.changeable',function(){
+    $(this).attr("contenteditable","fasle");
+    $(this).removeClass("hoverboder");
+    $.ajax({  
+            type: "post",  
+            url: "http://www.runjianli.com/index.php/cv/cv_model/innerhtml_input",
+			dataType: "text",
+            data:{"innerhtml":$('#module_list').html(),"modelid":$('#modelid').val()},
+            success: function(data){ 
+                layer.msg('操作成功');
+            },
+			error: function(jqXHR, textStatus, errorThrown){  
+                alert(jqXHR.responseText);
+				alert(jqXHR.status);
+				alert(jqXHR.readyState);
+				alert(jqXHR.statusText);
+				alert(textStatus);
+				alert(errorThrown); 
+			}
+        })
+});    /*
+$('.changeable').blur(function(){
+    $(this).attr("contenteditable","fasle");
+    $.ajax({  
+            type: "post",  
+            url: "http://www.runjianli.com/index.php/cv/cv_model/innerhtml_input",
+			dataType: "text",
+            data:{"innerhtml":$('#module_list').html()},
+            success: function(data){ 
+                alert("success");
+            },
+			error: function(jqXHR, textStatus, errorThrown){  
+                alert(jqXHR.responseText);
+				alert(jqXHR.status);
+				alert(jqXHR.readyState);
+				alert(jqXHR.statusText);
+				alert(textStatus);
+				alert(errorThrown); 
+			}
+        })       
+});
+$('.changeable').click(function() {
+    $(this).attr("contenteditable","true");
+});   */      
+		$("#create").click(function(){ 
+			check_register();
+			return false;
+		})
+		$("#login").click(function(){
+			check_login();
+			return false;
+		})
+		$('.message .a1').click(function () {
+			$('#register1').animate({
+				height: 'toggle',
+				opacity: 'toggle'
+			}, 'slow');
+			$('#register4').animate({
+				height: 'toggle',
+				opacity: 'toggle'
+			}, 'slow');
+		});
+		$('.message .a2').click(function () {
+			$('#register2').animate({
+				height: 'toggle',
+				opacity: 'toggle'
+			}, 'slow');
+			$('#register4').animate({
+				height: 'toggle',
+				opacity: 'toggle'
+			}, 'slow');
+		});
+		$('.message .a3').click(function () {
+			$('#register3').animate({
+				height: 'toggle',
+				opacity: 'toggle'
+			}, 'slow');
+			$('#register4').animate({
+				height: 'toggle',
+				opacity: 'toggle'
+			}, 'slow');
+		});
+		$('#login1').click(function(){
+			var code = document.getElementById("code");
+			var code1 = document.getElementById("code1");	
+			if(code1.value == code.value)
+			{
+			var iphone = document.getElementById("iphone");
+			window.location.href="http://www.runjianli.com/sifang/编辑.html?values="+iphone.value; 
+			}
+			else
+			{
+				alert("请重新输入信息");
+			}
+		});
+		$('#phone').click(function () {
+			var my_data = document.getElementById("iphone");
+			var value = my_data.value;
+			var code = document.getElementById("code");
+			curCount = count;
+			$('#phone').attr("disabled",true);
+			$('#phone').val(curCount+"秒重新发送");
+			InterValObj = window.setInterval(SetRemainTime, 1000);
+			$.ajax({
+				url:"alidayu/api_demo/SmsDemo.php",
+				type:"GET",
+				data:{iphone:value},
+				error: function(){  
+                        alert('Error loading XML document');  
+                    },                   
+               
+                success: function(data,status){//如果调用php成功    
+                    code.value = data;
+                }
+			});
+		});
+		
+	})
+		var InterValObj; //timer变量，控制时间
+	var count = 60; //间隔函数，1秒执行
+	var curCount;//当前剩余秒数
+		function SetRemainTime(){
+		if(curCount == 0){
+			window.clearInterval(InterValObj);
+			$("#phone").removeAttr("disabled");
+			$("#phone").val("重新发送验证码");
+		}
+		else{
+			curCount--;
+			$("#phone").val(curCount+"秒重新发送");
+		}
+	
+	}
+	
+	function func1()
+	{
+		if(login.value == 0){
+		 layer.open({
+                      	  type: 1,
+                      	  closeBtn: false,
+                  	  shift: 2,
+                     		   shadeClose: true,
+						title: false,
+						scrollbar: false,
+                        		content: $("#box1"),
+				});}
+		else
+		{
+			alert("不用重复登陆!");	
+		}
+	}
+	function base()
+	{
+		if(login.value == 0)
+		{
+			layer.open({
+                     			   type: 1,
+                    			    closeBtn: false,
+                      			  shift: 2,
+                       			 shadeClose: true,
+						title: false,
+						scrollbar: false,
+                     			   content: $("#box1"),
+				});
+		}
+		else
+		{
+			/*layer.open({
+                   		     type: 2,
+                      		  closeBtn: false,
+                     		   shift: 2,
+                     		   shadeClose: true,
+			title:'请填写个人资料',
+			scrollbar: false,
+			area: ['100%', '400px'],
+                    		    content:'form4.html' ,
+				});*/
+			window.open('form4.html');  
+		}
+
+	}
+	function  hrcheck()
+	{
+		if(login.value == 0)
+		{
+			layer.open({
+                     			   type: 1,
+                    			    closeBtn: false,
+                      			  shift: 2,
+                       			 shadeClose: true,
+						title: false,
+						scrollbar: false,
+                     			   content: $("#box1"),
+				});
+		}
+		else
+		{
+           
+            $.ajax({  
+            type: "Get",  
+            url: "http://www.runjianli.com/index.php/cert/cert/cert_judge_HR",
+			dataType: "text", 			
+            success: function(data){ 
+            if(data == '从未认证'||data == '填写数据，尚未支付')
+            {
+                window.open("form5.html");
+            }
+            else if(data == '支付成功，等待认证')
+            {
+                window.open("wait.html");                
+            }
+            else if(data == '支付成功，完成认证')
+            {
+                window.open("success.html");
+            }
+            else if(data == '驳回重新提交')
+            {    
+                window.open("form6.html");
+            }
+            },
+			error: function(jqXHR, textStatus, errorThrown){  
+                alert(jqXHR.responseText);
+				alert(jqXHR.status);
+				alert(jqXHR.readyState);
+				alert(jqXHR.statusText);
+				alert(textStatus);
+				alert(errorThrown); 
+			}
+            })
+			
+		}
+		
+	}
+    function  companycheck()
+	{
+		if(login.value == 0)
+		{
+			layer.open({
+                     			   type: 1,
+                    			    closeBtn: false,
+                      			  shift: 2,
+                       			 shadeClose: true,
+						title: false,
+						scrollbar: false,
+                     			   content: $("#box1"),
+				});
+		}
+		else
+		{
+           
+            $.ajax({  
+            type: "post",  
+            url: "http://www.runjianli.com/index.php/cert/company_cert/cert_judge_companycert",
+			dataType: "text", 			
+            success: function(data){ 
+            if(data == '从未认证'||data == '填写数据，尚未支付')
+            {
+                window.open("form7.html");
+            }
+            else if(data == '支付成功，等待认证')
+            {
+                window.open("wait.html");                
+            }
+            else if(data == '支付成功，完成认证')
+            {
+                window.open("success.html");
+            }
+            else if(data == '驳回重新提交')
+            {    
+                window.open("form8.html");
+            }
+            },
+			error: function(jqXHR, textStatus, errorThrown){  
+                alert(jqXHR.responseText);
+				alert(jqXHR.status);
+				alert(jqXHR.readyState);
+				alert(jqXHR.statusText);
+				alert(textStatus);
+				alert(errorThrown); 
+			}
+            })	
+		}
+		
+	}
+
+function pay()
+{
+window.open("http://www.runjianli.com/index.php/pay/wx_lp/wxlpm");
+}
+
+//更换模板
+function modelchange()
+{    
+    $.ajax({  
+            type: "post",  
+            url: "http://www.runjianli.com/index.php/cv/model/GetChangeModel1",
+			dataType: "json", 			
+            success: function(data){
+                $('#modelcss').attr("href",data.cssstyle);
+                $('#module_list').html(data.modelhtml);
+                $('#modelid').val("s10003");
+                layer.msg("模板切换成功");
+            },
+			error: function(jqXHR, textStatus, errorThrown){  
+                alert(jqXHR.responseText);
+				alert(jqXHR.status);
+				alert(jqXHR.readyState);
+				alert(jqXHR.statusText);
+				alert(textStatus);
+				alert(errorThrown); 
+			}
+            })
+}
+    
+//会员购买
+function buymembership()
+{    
+        if(login.value == 0)
+		{
+			layer.open({
+                     			   type: 1,
+                    			    closeBtn: false,
+                      			  shift: 2,
+                       			 shadeClose: true,
+						title: false,
+						scrollbar: false,
+                     			   content: $("#box1"),
+				});
+		}
+		else
+		{
+			layer.open({
+                   		     type: 2,
+                      		 closeBtn: false,
+                     		 shift: 2,
+                     		 shadeClose: true,
+			                 title:'会员购买',
+			                 scrollbar: false,
+			                 area: ['400px', '200px'],
+                             content:'membership.html' ,
+				      }); 
+		}
+}
+
+function recharge()
+{   
+        if(login.value == 0)
+		{
+			layer.open({
+                     			   type: 1,
+                    			    closeBtn: false,
+                      			  shift: 2,
+                       			 shadeClose: true,
+						title: false,
+						scrollbar: false,
+                     			   content: $("#box1"),
+				});
+		}
+		else
+		{
+			layer.open({
+                   		     type: 2,
+                      		 closeBtn: false,
+                     		 shift: 2,
+                     		 shadeClose: true,
+			                 title:'金额充值',
+			                 scrollbar: false,
+			                 area: ['400px', '200px'],
+                             content:'recharge.html' ,
+				      }); 
+		}
+}
+    
+// 关闭窗口时弹出确认提示
+$(window).bind('beforeunload', function(){
+    // 只有在标识变量is_confirm不为false时，才弹出确认提示
+    if(login.value == 0)
+    if(window.is_confirm !== false)
+        return '您是未登陆状态,数据没有保存';    
+});
+
+//上传简历头像信息
+document.getElementById("headimg").addEventListener("change",function () {
+        $.ajax({  
+            type: "post",  
+            url: "http://www.runjianli.com/index.php/cv/cv_model/headimg",
+			dataType: "text",
+            data:new FormData(document.getElementById("tf")),
+            processData:false,
+            contentType:false,
+            success: function(data){  
+                var headimg1 = document.getElementById("headimg1"); 
+                headimg1.src = data;
+            },  
+			error: function(jqXHR, textStatus, errorThrown){  
+                  alert(jqXHR.responseText);
+		          alert(jqXHR.status);
+		          alert(jqXHR.readyState);
+		          alert(jqXHR.statusText);
+		          alert(textStatus);
+		          alert(errorThrown); }
+        })
+});    
+    
+</script>
+</body>
+</html>

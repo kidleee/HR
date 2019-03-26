@@ -1,0 +1,141 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>简历 {modelid} 详情界面</title>
+    <link rel="stylesheet" href="layui-v2.2.6/layui-v2.2.6/layui/css/layui.css" type="text/css">
+    <link rel="stylesheet" href="mycss.css" type="text/css">
+    <script src="layer-v3.1.1/layer-v3.1.1/layer/layer.js" type="text/javascript" charset="utf-8"></script>
+    <script src="layui-v2.2.6/layui-v2.2.6/layui/layui.js" type="text/javascript" charset="utf-8"></script>
+    <script src="jquery.js" type="text/javascript"></script>
+    <script src="jqui/jqui/jquery-ui.js"></script>
+    <script src="sifang/jquery-form.js"></script> <!-- 你必须先引入jQuery1.8或以上版本 -->
+</head>
+<body>
+ <div class="layui-layout layui-layout-admin">
+  <div class="layui-header">
+    <a class="layui-logo" href="http://www.runjianli.com">润简历</a>
+    <ul class="layui-nav layui-layout-right">
+      <li class="layui-nav-item"><a href="../user.html">在线制作</a></li>
+      <li class="layui-nav-item"><a href="../viewmodel.html">模板商城</a></li>
+      <li class="layui-nav-item"><a href="../howtohr.html">HR之旅</a></li>
+      <li class="layui-nav-item"><a href="../mademodelindex.html">模板定制</a></li>
+      <li class="layui-nav-item"><a href="../aboutus.html">关于我们</a></li>
+    </ul> 
+  </div>
+  <div style="overflow: auto;border-style:groove;margin:25px 10px 25px 10px;">
+      <div style="float:left;width:15%">
+          <ul>
+              <li><a href="#"><img src="?" style="width:80%;margin:10px 10px 10px 10px;"/></a></li>
+              <li><a href="#"><img src="?" style="width:80%;margin:10px 10px 10px 10px;"/></a></li>
+              <li><a href="#"><img src="?" style="width:80%;margin:10px 10px 10px 10px;"/></a></li>
+          </ul>
+      </div>
+      <div style="float:left;width:35%;">
+          <img src="{imgurl}" style="width:80%;margin:10px 10px 10px 10px;"/> 
+      </div>
+      <div style="float:right;width:45%;">
+          <h2>{name}</h2>
+          <ul>
+              <li>格式：{format}</li>
+              <li>尺寸：{size}</li>
+              <li>颜色：{color}</li>
+              <li>时间：{cdate}</li>
+          </ul>
+          <h3 style="display:inline-block">价格：{price}</h3><button class="layui-btn layui-btn-radius layui-btn-primary" onclick="javascript:pay();" style="display:inline-block;margin:10px 10px 10px 80px">支付</button>
+          <br>
+          <a class="layui-btn layui-btn-normal" href="javascript:download();">会员免费下载</a>
+          <a class="layui-btn" href="http://www.runjianli.com/sifang/编辑.html?modelid={modelid}">在线编辑</a>
+          <div style="margin:20px"><span>设计师：</span><span>{designer}</span><span>下载次数：</span><span id="usetimes"></span></div>
+      </div>
+  </div>
+  <input type="text" value="{modelid}" id="modelid"> 
+</div>   
+<script>
+$(function(){
+    $.ajax({  
+            type: "post",  
+            url: "http://www.runjianli.com/index.php/cv/model/DownLoadTimes?mid={modelid}",
+			dataType: "text", 			
+            success: function(data){
+                $("#usetimes").html(data);
+            },
+			error: function(jqXHR, textStatus, errorThrown){  
+                alert(jqXHR.responseText);
+				alert(jqXHR.status);
+				alert(jqXHR.readyState);
+				alert(jqXHR.statusText);
+				alert(textStatus);
+				alert(errorThrown); 
+			}
+        })
+})
+function pay()
+{    
+    var modelid = document.getElementById("modelid");
+    window.open("http://www.runjianli.com/sifang/modelpay.html?modelid="+modelid.value);
+    layui.use('layer', function(){
+    var layer = layui.layer;
+    layer.confirm('是否完成支付?',{btn: ['支付完成', '遇到问题'] //可以无限个按钮
+        ,btn2: function(index, layero){
+    }
+}, function(index, layero){
+    layer.closeAll(); //疯狂模式，关闭所有层
+    layer.closeAll('dialog'); //关闭信息框
+    layer.closeAll('page'); //关闭所有页面层
+    layer.closeAll('iframe'); //关闭所有的iframe层
+    layer.closeAll('loading'); //关闭加载层
+    layer.closeAll('tips'); //关闭所有的tips层 
+});
+    })
+}
+
+function download()
+{   
+    $.ajax({  
+            type: "post",  
+            url: "http://www.runjianli.com/index.php/cv/model/DownLoad?mid={modelid}",
+			dataType: "text", 			
+            success: function(data){
+                    if(data == '您还未进行登录！')
+		            {
+                            layui.use('layer', function(){
+                                var layer = layui.layer;
+                                layer.msg('请先登陆');
+                            });   
+		            }
+		            else if(data == '您未购买此模板。')
+		            {
+                         layui.use('layer', function(){
+                         var layer = layui.layer;
+                         layer.msg('您未购买此模板');    
+			             layer.open({
+                   		     type: 2,
+                      		 closeBtn: false,
+                     		 shift: 2,
+                     		 shadeClose: true,
+			                 title:'会员购买',
+			                 scrollbar: false,
+			                 area: ['400px', '200px'],
+                             content:'membership.html',
+				        }); 
+                        })
+		             }
+                     else if(data == '开始下载')
+                     {
+                        window.open("http://www.runjianli.com/index.php/cv/model/Down?mid={modelid}");
+                     }
+            },
+			error: function(jqXHR, textStatus, errorThrown){  
+                alert(jqXHR.responseText);
+				alert(jqXHR.status);
+				alert(jqXHR.readyState);
+				alert(jqXHR.statusText);
+				alert(textStatus);
+				alert(errorThrown); 
+			}
+        })   
+}
+</script>
+</body>  
+</html>

@@ -1,0 +1,666 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8"/>
+<title>简历 RJL002 详情界面</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link rel="shortcut icon" href="favicon.ico" />
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
+<link rel="stylesheet" type="text/css" href="../css/style.css"/>
+<link rel="stylesheet" href="layui-v2.2.6/layui-v2.2.6/layui/css/layui.css" type="text/css">    
+<script type="text/javascript" src="../js/jquery1.42.min.js" ></script>
+<script type="text/javascript" src="../js/jquery.SuperSlide.2.1.1.js"></script>
+<script src="layer-v3.1.1/layer-v3.1.1/layer/layer.js" type="text/javascript" charset="utf-8"></script>
+<script src="layui-v2.2.6/layui-v2.2.6/layui/layui.js" type="text/javascript" charset="utf-8"></script> 
+<script type="text/javascript" src="../js/sifang.js" ></script>   
+</head>
+<body>
+<!--div class="top">
+	<div class="cont">
+		<img src="img/i_tz.png" alt="" /><span>网站公告：</span>公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容公告内容
+		<a href="#" id="close"><img src="img/i_close.png"/></a>
+	</div>
+</div-->
+<!--neck-->
+<div class="neck">
+	<div class="cont">
+		<div class="logo">
+			<a href="http:\\www.runjianli.com"><img src="../img/logo.png"/></a>
+		</div>
+		<div class="nav">
+			<ul>
+				<li><a href="../cvedit.html">简历制作</a></li>
+				<li class="on"><a href="../viewmodel.html">模板商城</a></li>
+				<li><a href="../howtohr.html">名企导师</a></li>
+				<li><a href="../joinus.html">加入我们</a></li>
+				<li><a href="#"><img src="img/i_dhs.png" alt="" /></a>
+					<div class="nav_down">
+					<dl>
+						<dd><a href="../aboutus.html">关于我们1</a></dd>
+						<dd><a href="../aboutus.html">关于我们2</a></dd>
+						<dd><a href="../aboutus.html">关于我们3</a></dd>
+					</dl>
+					</div>
+				</li>
+				<div id="img" class="hyzx" style="display:none">
+					<div class="tx">
+					<img id="imgurl" src="?"/>
+					<div class="hy_down">
+					<dl>
+						<dd><a href="../gerenzhongxin1.html">个人中心</a></dd>
+						<dd><a href="../gerenzhongxin2.html">我的简历</a></dd>
+						<dd><a href="javascript:signout();">退出</a></dd>
+					</dl>
+					</div>
+					</div>
+				</div>
+				<span id="login" class="reg">
+					<a href="../login.html">登陆</a><img src="img/xt1.png"/>
+					<a href="../login.html">注册</a>
+				</span>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="main">
+<div class="weizhi">
+	<div class="cont">
+	<a href="http://www.runjianli.com">首页</a> > <a href="http://www.runjianli.com/sifang/viewmodel1.html">模板商城</a> > 简历编号：RJL002
+	</div>
+</div>
+<div class="cont">
+	<div class="jlb1 shadow">
+		<div class="jlb1_img">
+			<img src="http://www.runjianli.com/sifang/cvview/picture/1545380243.png" width="195" height="272"/>
+		</div>
+		<div class="jlb1_info">
+			<h3>灰色高端简历模板</h3>
+			<div class="jlb1_gs">
+				<table width="100%">
+					<tr>
+						<td width="50"><span>格式：</span></td><td width="175">Word</td>
+						<td width="50"><span>尺寸：</span></td><td>a4</td>
+						<td width="50"><span>语言：</span></td><td>中文</td>
+					</tr>
+					<tr>
+						<td><span>颜色：</span></td><td class="blue">灰色</td>
+						<td><span>编号：</span></td><td>RJL002</td>
+						<td><span>日期：</span></td><td>18-12-21</td>
+					</tr>
+				</table>
+				<div class="jlb1_gs2">
+					<div style="width:72px;float:left;color:#666">设计简介：</div>
+					<div class="txt">
+						通用简历
+					</div>
+				</div>
+				<div class="jlb1_gs3">
+					<span class="jia">
+						<font style="color:#666">价格</font>：<b>6.9</b>元
+					</span>
+					<div class="down ">
+						<a id="download" href="javascript:download();">会员免费下载</a>
+						<a href="javascript:pay();" class="buy">立即购买</a>
+					</div>
+				</div>
+					
+			</div>
+			
+		</div>
+	</div>
+<!-- 会员购买 -->
+	<div id="light3" class="white_content tcbox">
+		<div class="tc1">订单确认</div>
+		<div class="tc2">服务描述</div>
+		<div class="tc3">
+			会员购买
+			<form class="layui-form" id="tf" style="display:block">   
+				<div class="layui-form-item">
+					<label class="layui-form-label">选择天数</label>
+					<div class="layui-input-block">
+						<input type="radio" lay-filter="membershipclass" name="number" value="3" title="三个月(6.6)" checked>
+						<input type="radio" lay-filter="membershipclass" name="number" value="6" title="六个月(9.9)">
+						<input type="radio" lay-filter="membershipclass" name="number" value="12" title="十二个月(12.8)">
+						<input type="radio" lay-filter="membershipclass" name="number" value="13" title="终身(20)">
+					</div>
+				</div>  
+		  </form>
+		</div>
+		<div class="tc2">选择支付方式</div>
+		<div class="tc4">
+			<ul>
+				<!-- <li><a href="#"><img src="img/i_zfb.png"/></a></li> -->
+				<li><a href="#"><img src="img/i_wx.png"/></a></li>
+			</ul>
+		</div>
+		<div class="tc5">
+			合计：<b id="membershipprice">6.6</b>元 
+			<a href = "javascript:a()" class="pay1">支付</a>
+		</div>
+		<a href = "javascript:void(0)" onclick = "document.getElementById('light3').style.display='none';document.getElementById('fade').style.display='none'"><img src="img/i_close.png"  class="close"/></a>
+	</div> 
+	<div id="light4" class="white_content tcbox2">
+		<div class="tc1">扫码支付</div>
+		<div class="pad" style="padding:50px 0;">
+		<div class="tc6">
+			<img id="membership_buy" src="?"/>
+		</div>
+		<div class="tc7">
+			微信扫描二维码支付
+		</div>
+		<div class="tc8">金额：<b id="membershipprice1">9.9</b>元</div>
+			</div>
+			
+			<a href = "javascript:void(0)" onclick = "document.getElementById('light4').style.display='none';document.getElementById('fade').style.display='none'">
+	  <img src="img/i_close.png"  class="close"/>
+			</a></div> 
+<!--会员购买-->			
+<!--支付弹窗-->
+	<div id="light" class="white_content tcbox">
+		<div class="tc1">订单确认</div>
+		<div class="tc2">服务描述</div>
+		<div class="tc3">
+			简历模板购买
+		</div>
+		<div class="tc2">选择支付方式</div>
+		<div class="tc4">
+			<ul>
+				<!-- <li><a href="#"><img src="img/i_zfb.png"/></a></li> -->
+				<li><a href="#"><img src="img/i_wx.png"/></a></li>
+			</ul>
+		</div>
+		<div class="tc5">
+			合计：<b>6.9</b>元 
+			<a href = "javascript:void(0)" class="pay1"   onclick = "document.getElementById('light').style.display='none';document.getElementById('light2').style.display='block';document.getElementById('fade').style.display='block'">支付</a>
+		</div>
+		<a href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'"><img src="img/i_close.png"  class="close"/></a></div> 
+   
+	<div id="light2" class="white_content tcbox2">
+	<div class="tc1">扫码支付</div>
+	<div class="pad" style="padding:50px 0;">
+	<div class="tc6">
+		<img id="model_buy" src="?"/>
+	</div>
+	<div class="tc7">
+		微信扫描二维码支付
+	</div>
+	<div class="tc8">金额：<b>6.9</b>元</div>
+		</div>
+		
+		<a href = "javascript:void(0)" onclick = "document.getElementById('light2').style.display='none';document.getElementById('fade').style.display='none'">
+  <img src="img/i_close.png"  class="close"/>
+		</a></div> 
+<!--支付弹窗-->
+	   <div id="fade" class="black_overlay"></div> 
+	<div class="jlb2">
+		<h3 class="mb1">模板详情</h3>
+		<div class="mb2 shadow nopad">
+			<div id="slideBox" class="slideBox">
+			<div class="hd">
+				<ul><li>1</li><li>2</li><li>3</li></ul>
+			</div>
+			<div class="bd">
+				<ul>
+					<li><a href="#"><img src="http://www.runjianli.com/sifang/cvview/css/20181221/a6bd6a578ae8f72826b5b7df3da97642.jpg" /></a></li>
+					<!--li><a href="#"><img src="../img/mb_1.jpg" /></a></li>
+					<li><a href="#"><img src="../img/mb_1.jpg" /></a></li-->
+				</ul>
+			</div>
+
+		</div>
+
+		<script type="text/javascript">
+		jQuery(".slideBox").slide({mainCell:".bd ul",autoPlay:true});
+		</script>
+		</div>
+		<div class="mb3">
+			<a href="#">详细讲解如何使用下载后的模板</a>
+		</div>
+	</div>
+
+</div>
+</div>
+<style>
+.dfoot{background-color:#f6f9fe;margin-top:0;}
+</style>
+<div class="zybox">
+<div class="jy3">
+	<div class="cont">
+		<!-- <div class="zy_type">
+			<h3>模板商城</h3>
+			<p>更合适的模板能大大提高你的求职成功率</p>
+		</div> -->
+		<div class="list_shop">
+			<ul id="ul">
+			</ul>
+			<div class="vmore1">
+				<a href="sifang/viewmodel.html">查看更多模板</a>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+<div class="dfoot"></div>
+
+<input type="hidden" value="RJL002" id="modelid">    
+    
+<!--footer-->
+<div class="footer">
+	<div class="cont">
+		<div class="ft1">
+			<img src="../img/flogo.png"/><br />
+			<img src="../img/ewm.png" width="120"/>
+		</div>
+		<div class="ft2">
+			<dl>
+				<dt>联系我们</dt>
+<dd><a href="#">在线客服</a></dd>
+<dd><a href="#">微信</a></dd>
+<dd><a href="#">微博</a></dd>
+<dd><a href="#">知乎</a></dd>
+			</dl>
+			
+			<dl>
+				<dt>关于我们</dt>
+<dd><a href="#">首页</a></dd>
+<dd><a href="#">使用条款</a></dd>
+<dd><a href="#">隐私协议</a></dd>
+<dd><a href="#">加入我们</a></dd>
+			</dl>
+			
+			<dl>
+				<dt>快速进入</dt>
+<dd><a href="#">我的简历</a></dd>
+<dd><a href="#">简历攻略</a></dd>
+<dd><a href="#">导师辅导</a></dd>
+<dd><a href="#">职位列表</a></dd>
+<dd><a href="#">使用帮助</a></dd>
+			</dl>
+			
+			<dl>
+				<dt>简历模板</dt>
+<dd><a href="#">经典工作简历</a></dd>
+<dd><a href="#">秋招礼包</a></dd>
+<dd><a href="#">程序员简历模板</a></dd>
+			</dl>
+			
+			<dl>
+				<dt>合作伙伴</dt>
+<dd><a href="#">Linkedln</a></dd>
+<dd><a href="#">智联招聘</a></dd>
+<dd><a href="#">前程无忧</a></dd>
+<dd><a href="#">猎聘</a></dd>
+			</dl>
+			
+			<dl>
+				<dt>友情链接</dt>
+<dd><a href="#">爱思益</a></dd>
+<dd><a href="#">无界空间</a></dd>
+<dd><a href="#">inDeco</a></dd>
+<dd><a href="#">ViaX</a></dd>
+<dd><a href="#">站长之家</a></dd>
+			</dl>
+		</div>
+		<div class="copyright">
+			©2018 润简历 runjianli.com | 京ICP备17055181号
+		</div>
+	</div>
+</div>
+<script>
+$('#close').click(function(){
+$('.top').css('display','none')
+});
+
+$(function(){
+     $.ajax({  
+            type: "post",  
+            url: "http://www.runjianli.com/index.php/cv/model/GetModel2",
+			dataType: "json", 			
+            success: function(data){
+            for(var i=0;i<8;i++)
+            {   
+                var li = document.createElement('li');
+                li.innerHTML = '<div class="mb_img"><img src="'+data[i].imgurl+'" width="100%"/></div><div class="mb_txt">使用次数：<span class="blue">'+data[i].usedtimes+'</span><a href="javascript:collect(\''+data[i].modelid+'\');" class="fr"><img id="'+data[i].modelid+'"  src="../img/i_star2.png"/>收藏</a></div><div class="fdc"><h3>'+data[i].name+'</h3><div class="txt">'+data[i].brief+'</div><a href="'+data[i].notailsweb+'" class="golink">点击进入</a></div>';
+                li.setAttribute("class","shadow");
+                var ul = document.getElementById("ul");//获取body对象.
+                ul.insertBefore(li,ul.lastChild); 
+            }
+            $.ajax({
+                type:"post",
+                url:"http://www.runjianli.com/index.php/user/file/get_collection1",
+                dataType:"json",
+                success:function(data){
+                    if(data == "请先登陆")
+                    {
+                       //window.open("sifang/login.html");
+                    }
+                    else
+                    {   
+                        collection = JSON.parse(data.collection);
+                        var ul = document.getElementById("ul");
+                        var items = ul.getElementsByTagName("img");
+                        for(i=0;i<items.length;i++)
+                        {
+                            for(var key in collection)
+                            {   
+                                //alert(items[i].id);
+                                if(items[i].id == key)
+                                {    
+                                    var modelid = document.getElementById(key);
+                                    if(collection[key] == "true")
+                                    {   
+                                        modelid.src = "../img/i_star1.png";
+                                    }
+                                    else
+                                    {   
+                                        modelid.src = "../img/i_star2.png";
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                error:function(jqXHR, textStatus, errorThrown){  
+                    alert(jqXHR.responseText);
+                    alert(jqXHR.status);
+                    alert(jqXHR.readyState);
+                    alert(jqXHR.statusText);
+                    alert(textStatus);
+                    alert(errorThrown); 
+                }
+            })     
+            },
+			error: function(jqXHR, textStatus, errorThrown){  
+                alert(jqXHR.responseText);
+				alert(jqXHR.status);
+				alert(jqXHR.readyState);
+				alert(jqXHR.statusText);
+				alert(textStatus);
+				alert(errorThrown); 
+			}
+        })
+    $.ajax({  
+            type: "post",  
+            url: "http://www.runjianli.com/index.php/cv/model/judge_buy",
+			dataType: "json",
+            data:{"modelid":"RJL002"},
+            success: function(data){
+                if(data == null)
+                {    
+                    
+                }
+                else
+                {   
+                    $("#download").html("下载");
+                }
+            },
+			error: function(jqXHR, textStatus, errorThrown){  
+                alert(jqXHR.responseText);
+				alert(jqXHR.status);
+				alert(jqXHR.readyState);
+				alert(jqXHR.statusText);
+				alert(textStatus);
+				alert(errorThrown); 
+			}
+        })  
+})
+function pay()
+{       
+    $.ajax({  
+            type: "post",  
+            url: "http://www.runjianli.com/index.php/cv/model/judge_buy1?mid=RJL002",
+			dataType: "text", 			
+            success: function(data){
+                    if(data == '您还未进行登录！')
+		            {
+                            layui.use('layer', function(){
+                                var layer = layui.layer;
+                                layer.msg('请先登陆');
+                            });
+                            window.open("http://www.runjianli.com/sifang/login.html");
+		            }
+		            else if(data == '您未购买此模板。')
+		            {
+                            var modelid = document.getElementById("modelid");
+							document.getElementById('light').style.display='block';
+							document.getElementById('fade').style.display='block';
+							$("#model_buy").attr("src","http://www.runjianli.com/index.php/pay/wx_lp/model_cert_pay?modelid=RJL002");
+                            //window.open("http://www.runjianli.com/sifang/modelpay.html?modelid=RJL013"+modelid.value);
+                            /*layui.use('layer', function(){
+                            var layer = layui.layer;
+                            layer.confirm('是否完成支付?',{btn: ['支付完成', '遇到问题'] //可以无限个按钮
+                            ,btn2: function(index, layero){
+                            }
+                            }, function(index, layero){
+                                $.ajax({  
+                                    type: "post",  
+                                    url: "http://www.runjianli.com/index.php/pay/wx_lp/model_pay_judge",
+			                        dataType: "text", 			
+                                    success: function(data){
+                                        layui.use('layer', function(){
+                                            var layer = layui.layer;
+                                            layer.msg(data);
+                                        }); 
+                                    },
+			                        error: function(jqXHR, textStatus, errorThrown){  
+                                        alert(jqXHR.responseText);
+				                        alert(jqXHR.status);
+				                        alert(jqXHR.readyState);
+				                        alert(jqXHR.statusText);
+				                        alert(textStatus);
+				                        alert(errorThrown); 
+			                         }
+                                }) 
+                                layer.closeAll(); //疯狂模式，关闭所有层
+                                layer.closeAll('dialog'); //关闭信息框
+                                layer.closeAll('page'); //关闭所有页面层
+                                layer.closeAll('iframe'); //关闭所有的iframe层
+                                layer.closeAll('loading'); //关闭加载层
+                                layer.closeAll('tips'); //关闭所有的tips层 
+                        });
+                        })  */     
+		             }
+                     else if(data == '您是会员可以直接下载此模板')
+                     {
+                         layui.use('layer', function(){
+                                            var layer = layui.layer;
+                                            layer.msg(data);
+                                        }); 
+                     }
+                     else if(data == '您已购买此模板')
+                     {
+                         layui.use('layer', function(){
+                                            var layer = layui.layer;
+                                            layer.msg(data);
+                                        }); 
+                     }
+            },
+			error: function(jqXHR, textStatus, errorThrown){  
+                alert(jqXHR.responseText);
+				alert(jqXHR.status);
+				alert(jqXHR.readyState);
+				alert(jqXHR.statusText);
+				alert(textStatus);
+				alert(errorThrown); 
+			}
+        })   
+}
+
+function download()
+{   
+    $.ajax({  
+            type: "post",  
+            url: "http://www.runjianli.com/index.php/cv/model/DownLoad?mid=RJL002",
+			dataType: "text", 			
+            success: function(data){
+                    if(data == '您还未进行登录！')
+		            {
+                            layui.use('layer', function(){
+                                var layer = layui.layer;
+                                layer.msg('请先登陆');
+                            });
+                            window.open("http://www.runjianli.com/sifang/login.html");
+		            }
+		            else if(data == '您未购买此模板。')
+		            {
+                        document.getElementById('light3').style.display='block';
+						document.getElementById('fade').style.display='block';
+		             }
+                     else if(data == '开始下载')
+                     {
+                        window.open("http://www.runjianli.com/index.php/cv/model/Down?mid=RJL002");
+                     }
+            },
+			error: function(jqXHR, textStatus, errorThrown){  
+                alert(jqXHR.responseText);
+				alert(jqXHR.status);
+				alert(jqXHR.readyState);
+				alert(jqXHR.statusText);
+				alert(textStatus);
+				alert(errorThrown); 
+			}
+        })   
+}
+		//ajax支付轮询
+ 		var timeer;
+        $(document).ready(function () {
+            timeer =  setInterval("GetStatus()",1000);
+        });
+        function GetStatus(){
+            $.ajax({
+                url: "http://www.runjianli.com/index.php/pay/wx_lp/model_pay_judge",
+                async:true,
+                type:"post",
+                dataType: "text",
+                success:function(data){
+                    if (data == '支付成功') {
+						document.getElementById('light2').style.display='none';
+						document.getElementById('fade').style.display='none';
+						//document.getElementById('fade').style.display='none';
+						layui.use('layer', function(){
+                                var layer = layui.layer;
+                                layer.msg('点击会员免费下载，可下载该模板');
+                            });
+						//window.clearTimeout(weixin_set);	
+						window.clearInterval(timeer);
+                    }
+					else{
+                        //alert("请求订单状态出错");
+                    }
+
+                }
+            });
+        } 
+		var timeer1;
+        $(document).ready(function () {
+            timeer1 =  setInterval("GetStatus1()",1000);
+        });
+        function GetStatus1(){
+            $.ajax({
+                url: "http://www.runjianli.com/index.php/pay/wx_lp/member_ship_judge",
+                async:true,
+                type:"post",
+                dataType: "text",
+                success:function(data){
+                    if (data == '支付成功') {
+						document.getElementById('light4').style.display='none';
+						document.getElementById('fade').style.display='none';
+						//document.getElementById('fade').style.display='none';
+						layui.use('layer', function(){
+                                var layer = layui.layer;
+                                layer.msg('会员购买成功，可进行下载');
+                            });
+						//window.clearTimeout(weixin_set);	
+						window.clearInterval(timeer1);
+                    }
+					else{
+                        //alert("请求订单状态出错");
+                    }
+
+                }
+            });
+        }
+
+layui.use('element', function(){
+  var element = layui.element;
+});
+function a()
+{   
+	document.getElementById('light3').style.display='none';
+	document.getElementById('light4').style.display='block';
+	document.getElementById('fade').style.display='block';
+	$("#membership_buy").attr("src","http://www.runjianli.com/index.php/pay/wx_lp/member_ship?number="+$("input[type='radio']:checked").val());
+}
+layui.use('form', function(){
+  var form = layui.form;
+  form.on('radio(membershipclass)', function(data){
+	  //alert(data.value);	
+	  if(data.value == '3')
+      {
+         var price = document.getElementById("membershipprice");
+		 price.innerText = "6.6";
+		 var price = document.getElementById("membershipprice1");
+		 price.innerText = "6.6";
+      }
+      else if(data.value == '6')
+      {
+		var price = document.getElementById("membershipprice");
+		price.innerText = "9.9";
+		var price = document.getElementById("membershipprice1");
+		 price.innerText = "9.9";
+      }
+      else if(data.value == 12)
+      {
+		var price = document.getElementById("membershipprice");
+		price.innerText = "12.8";
+		var price = document.getElementById("membershipprice1");
+		price.innerText = "12.8";
+      }
+	  else if(data.value == 13)
+      {
+		var price = document.getElementById("membershipprice");
+		price.innerText = "20";
+		var price = document.getElementById("membershipprice1");
+		price.innerText = "20";
+      }
+  });  
+});	  
+    
+function collect(modelid)
+{   
+    //var changestar = document.getElementById(modelid);
+    
+    $.ajax({  
+            type: "post",  
+            url: "http://www.runjianli.com/index.php/user/file/lisen_collection1",
+			dataType: "text", 
+            data:{"modelid":modelid},
+            success: function(data){
+                var changestar = document.getElementById(modelid);
+                if(data == "添加收藏")
+                {   
+                    changestar.src = "../img/i_star1.png";   
+                }
+                else if(data == "取消收藏")
+                {
+                    changestar.src = "../img/i_star2.png";  
+                }    
+                else if(data == "请先登陆")
+                {
+                    window.open("../login.html");
+                }    
+            },
+			error: function(jqXHR, textStatus, errorThrown){  
+                alert(jqXHR.responseText);
+				alert(jqXHR.status);
+				alert(jqXHR.readyState);
+				alert(jqXHR.statusText);
+				alert(textStatus);
+				alert(errorThrown); 
+			}
+        }) 
+}    
+</script>
+</body>
+</html>

@@ -1,0 +1,310 @@
+﻿<!Doctype Html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="layui-v2.2.6/layui-v2.2.6/layui/css/layui.css">
+  <link rel="stylesheet" href="text.css">
+  <script src="jquery.js"></script> <!-- 你必须先引入jQuery1.8或以上版本 -->
+  <script src="layer-v3.1.1/layer-v3.1.1/layer/layer.js"></script>
+  <script src="layui-v2.2.6/layui-v2.2.6/layui/layui.js"></script>
+</head>
+<body>
+<form id="form1" name="form1">   
+    <br>
+	<div class="layui-row layui-col-space5">
+		<div class="layui-col-xs1"></div>
+		<div class="layui-col-xs5">
+			<p class="myfont">意向岗位: </p>
+			<input type="text" class="mytxt" placeholder="请输入意向岗位" id="demo1" name="demo1" style="width: 198px;">
+		</div>
+		<div class="layui-col-xs5">
+			<p class="myfont">职业类型: </p>
+			<select class="mytxt" id="demo2" name="demo2" style="width: 208px;">
+				<option value="0">请选择职业类型</option>
+				<option value="全职">全职</option>
+				<option value="兼职">兼职</option>
+				<option value="实习">实习</option>
+				<option value="不填写">不填写</option>
+			</select>
+			
+		</div>
+	</div>
+	<br>
+	<div class="layui-row layui-col-space5">
+		<div class="layui-col-xs1"></div>
+		<div class="layui-col-xs5">
+			<p class="myfont">省份: </p>
+			<select class="mytxt" id="demo3" style="width: 208px;" name="iprovince" onChange="set_city(this, this.form.city);">
+				<option value="">请选择省份</option>
+				<option value="" id="op1">热门城市</option>
+				<option value="安徽">安徽</option>
+				<option value="湖南">湖南</option>
+				<option value="云南">云南</option>
+				<option value="河北">河北</option>
+				<option value="江苏">江苏</option>
+				<option value="吉林">吉林</option>
+				<option value="山东">山东</option>
+				<option value="甘肃">甘肃</option>
+				<option value="福建">福建</option>
+				<option value="广东">广东</option>
+				<option value="湖北">湖北</option>
+				<option value="浙江">浙江</option>
+				<option value="海南">海南</option>
+				<option value="贵州">贵州</option>
+				<option value="辽宁">辽宁</option>
+				<option value="青海">青海</option>
+				<option value="山西">山西</option>
+				<option value="江西">江西</option>
+				<option value="四川">四川</option>
+				<option value="河南">河南</option>
+				<option value="陕西">陕西</option>
+				<option value="广西">广西</option>
+				<option value="宁夏">宁夏</option>
+				<option value="新疆">新疆</option>
+				<option value="西藏">西藏</option>
+				<option value="黑龙江">黑龙江</option>
+				<option value="内蒙古">内蒙古</option>
+			</select>
+		</div>
+		<div class="layui-col-xs5">
+		<p class="myfont">城市: </p>
+			<select class="mytxt" id="citys" style="width: 208px;" name="city">
+				<option value="">请选择城市</option>
+			</select>
+		</div>
+	</div>
+	<br>
+	<div class="layui-row layui-col-space5">
+		<div class="layui-col-xs1"></div>
+		<div class="layui-col-xs5">
+			<p class="myfont">入职时间: </p>
+			<select class="mytxt" id="demo4" name="demo4" style="width: 208px;">
+				<option value="0">请选择入职时间</option>
+				<option value="随时到岗">随时到岗</option>
+				<option value="1周内到岗">1周内到岗</option>
+				<option value="1个月内到岗">1个月内到岗</option>
+				<option value="3个月内到岗">3个月内到岗</option>
+				<option value="到岗时间另议">到岗时间另议</option>
+				<option value="不填写">不填写</option>
+			</select>
+		</div>
+		<div class="layui-col-xs5">
+			<p class="myfont">薪资要求: </p>
+			<select class="mytxt" id="demo5" name="demo5" style="width: 208px;">
+				<option value="0">请输入薪资要求</option>
+				<option value="1k~2k">1k~2k</option>
+				<option value="3k~5k">3k~5k</option>
+				<option value="5k~10k">5k~10k</option>
+				<option value="10k以上">10k以上</option>
+				<option value="面议">面议</option>
+				<option value="自定义" id="yc">自定义</option>
+			</select>
+			<input type="hidden" class="mytxt" placeholder="请输入薪资要求(?k~?k)" id="demo6" name="demo6"  style="width: 198px;">	
+		</div>
+	</div>
+	<br><br>
+	<div class="layui-row layui-col-space5">
+		<div class="layui-col-xs4"></div>
+		<div class="layui-col-xs1">
+			<input type="button" class="layui-btn layui-btn-normal layui-btn-lg" value="保存" onclick="lalala();">
+		</div>
+		<div class="layui-col-xs1"></div>
+		<div class="layui-col-xs2">
+			<Button type="button" class="layui-btn layui-btn-primary layui-btn-lg" onclick="cancel();">取消</Button>
+		</div>
+		<div class="layui-col-xs3"></div>
+	</div>
+</form>   
+	<script>
+        $(function(){
+            var _parentWin = window.parent;   
+			var bt1=_parentWin.document.getElementById("bt1");
+			var bt2=_parentWin.document.getElementById("bt2");
+			var bt3=_parentWin.document.getElementById("bt3");
+			var bt4=_parentWin.document.getElementById("bt4");
+			var bt5=_parentWin.document.getElementById("bt5");
+			var demo1=document.getElementById("demo1");
+			var demo2=document.getElementById("demo2");
+			var demo3=document.getElementById("demo3");
+			var a=document.getElementById("citys");
+			var demo4=document.getElementById("demo4");
+			var demo5=document.getElementById("demo5");
+			var demo6=document.getElementById("demo6");
+            if(bt1.innerHTML != '意向岗位')
+            {    
+                demo1.value = bt1.innerHTML;
+            }
+            if(bt2.innerHTML != '职业类型')
+            {
+                demo2.value = bt2.innerHTML;
+            }
+            if(bt4.innerHTML != '入职时间')
+            {
+                demo4.value = bt4.innerHTML;
+            }
+            if(bt5.innerHTML != '薪资要求')
+            {
+                demo5.value = bt5.innerHTML;
+            }
+        })
+		function lalala()
+		{	
+			var _parentWin = window.parent;   
+			var bt1=_parentWin.document.getElementById("bt1");
+			var bt2=_parentWin.document.getElementById("bt2");
+			var bt3=_parentWin.document.getElementById("bt3");
+			var bt4=_parentWin.document.getElementById("bt4");
+			var bt5=_parentWin.document.getElementById("bt5");
+			var demo1=document.getElementById("demo1");
+			var demo2=document.getElementById("demo2");
+			var demo3=document.getElementById("demo3");
+			var a=document.getElementById("citys");
+			var demo4=document.getElementById("demo4");
+			var demo5=document.getElementById("demo5");
+			var demo6=document.getElementById("demo6");
+			if(demo1.value == "")
+			{
+				bt1.setAttribute("style","display:none");
+			}
+			else
+			{
+				bt1.setAttribute("style","display:inline-block");
+				bt1.innerHTML = demo1.value;
+			 }
+			
+			if(demo2.value == '0'||demo2.value == '不填写')
+			{
+				bt2.setAttribute("style","display:none");
+			}
+			else
+			{
+				bt2.setAttribute("style","display:inline-block");
+				bt2.innerHTML = demo2.value;
+			}
+			
+			if(demo3.value == '0')
+			{
+				bt3.setAttribute("style","display:none");
+			}
+			else if(demo3.value == '1')
+			{
+			    if(a.value == '0')
+				{
+					bt3.setAttribute("style","display:none");
+				}
+				else
+				{
+					bt3.setAttribute("style","display:inline-block");
+					bt3.innerHTML = a.value;
+				}
+			}
+			else if(demo3.value != '0'&&demo3.value != '1')
+			{
+				if(a.value == '0')
+				{
+					bt3.setAttribute("style","display:inline-block");
+					bt3.innerHTML = demo3.value;
+				}
+				else
+				{
+					bt3.setAttribute("style","display:inline-block");
+					bt3.innerHTML = demo3.value + a.value;
+				}
+			}
+			
+			if(demo4.value == '0'||demo4.value == '不填写')
+			{
+				bt4.setAttribute("style","display:none");
+			}
+			else
+			{
+				bt4.setAttribute("style","display:inline-block");
+				bt4.innerHTML = demo4.value;
+			}
+			
+			if(demo5.value == '0')
+			{
+				bt5.setAttribute("style","display:none");
+			}
+			else if(demo5.value == '自定义')
+			{
+				if(demo6.value == null)
+				{
+					bt5.setAttribute("style","display:none");
+				}
+				else
+				{
+					bt5.setAttribute("style","display:inline-block");
+					bt5.innerHTML = demo6.value;
+				}
+			}
+			else if(demo5.value != '0'&&demo5.value != '自定义')
+			{
+				bt5.setAttribute("style","display:inline-block");
+				bt5.innerHTML = demo5.value;
+			}
+			var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+			parent.layer.close(index); //再执行关闭   	
+		}
+		cities = new Object();
+        cities['安徽']=new Array('合肥市', '芜湖市', '蚌埠市', '淮南市', '马鞍山市', '淮北市', '铜陵市', '安庆市', '黄山市', '滁州市', '阜阳市', '宿州市', '六安市', '亳州市', '池州市', '宣城市');
+        cities['湖南']=new Array('长沙市', '株洲市', '湘潭市', '衡阳市', '邵阳市', '岳阳市', '常德市', '张家界市', '益阳市', '娄底市', '郴州市', '永州市', '怀化市');
+        cities['云南']=new Array('昆明市', '曲靖市', '玉溪市', '保山市', '昭通市', '丽江市', '普洱市', '临沧市', '安宁市', '宣威市', '腾冲市', '楚雄市');       
+		cities['河北']=new Array('石家庄', '张家口市', '承德市', '秦皇岛市', '唐山市', '廊坊市', '保定市', '沧州市', '衡水市', '邢台市', '邯郸市');
+        cities['江苏']=new Array('常州市', '徐州市', '南京市', '淮安市', '南通市', '宿迁市', '无锡市', '扬州市', '盐城市', '苏州市', '泰州市', '镇江市', '连云港市', '常熟市');
+        cities['吉林']=new Array('长春市', '吉林市', '四平市', '辽源市', '通化市', '白山市', '松原市', '白城市');
+        cities['山东']=new Array('济南市', '青岛市', '淄博市', '枣庄市', '东营市', '烟台市', '潍坊市', '济宁市', '泰安市', '威海市', '日照市', '滨州市', '德州市', '聊城市', '临沂市', '菏泽市', '莱芜市');   cities['甘肃']=new Array('兰州市', '嘉峪关市', '金昌市', '白银市', '天水市', '武威市', '张掖市', '平凉市', '酒泉市', '庆阳市', '定西市', '陇南市');
+        cities['福建']=new Array('福州市', '厦门市', '莆田市', '三明市', '泉州市', '漳州市', '南平市', '龙岩市', '宁德市', '福清市', '长乐市');
+        cities['广东']=new Array('珠海市', '汕头市', '佛山市', '韶关市', '湛江市', '肇庆市', '江门市', '茂名市', '惠州市', '梅州市', '汕尾市', '河源市', '阳江市', '清远市', '东莞市', '中山市', '潮州市', '揭阳市', '云浮市');
+        cities['湖北']=new Array('武汉市', '黄石市', '襄阳市', '荆州市', '宜昌市', '十堰市', '孝感市', '荆门市', '鄂州市', '黄冈市', '咸宁市', '随州市');
+        cities['浙江']=new Array('杭州市', '湖州市', '嘉兴市', '金华市', '丽水市', '宁波市', '衢州市', '绍兴市', '台州市', '温州市', '舟山市');
+        cities['海南']=new Array('海口市', '三亚市', '三沙市', '儋州市', '五指山市', '琼海市', '文昌市');
+        cities['贵州']=new Array('贵阳市', '六盘水市', '遵义市', '安顺市', '毕节市', '铜仁市');
+        cities['辽宁']=new Array('沈阳市', '大连市', '鞍山市', '抚顺市', '本溪市', '丹东市', '锦州市', '营口市', '阜新市', '辽阳市', '盘锦市', '铁岭市', '朝阳市', '葫芦岛市');
+        cities['青海']=new Array('西宁市', '海东市');
+		cities['山西']=new Array('太原市', '大同市', '朔州市', '阳泉市', '长治市', '晋城市', '忻州地区', '吕梁地区', '晋中市', '临汾地区', '运城地区');
+        cities['江西']=new Array('南昌市', '景德镇市', '萍乡市', '九江市', '新余市', '鹰潭市', '赣州市', '吉安市', '宜春市', '抚州市', '上饶市');
+        cities['四川']=new Array('成都市', '绵阳市', '自贡市', '攀枝花市', '泸州市', '德阳市', '广元市', '遂宁市', '内江市', '乐山市', '资阳市', '宜宾市', '南充市', '达州市');
+        cities['河南']=new Array('郑州市', '开封市', '洛阳市', '平顶山市', '安阳市', '鹤壁市', '新乡市', '焦作市', '濮阳市', '许昌市', '漯河市', '三门峡市', '南阳市', '商丘市');
+        cities['陕西']=new Array('西安市', '铜川市', '宝鸡市', '咸阳市', '渭南市', '延安市', '汉中市', '榆林市', '安康市', '商洛市');
+        cities['广西']=new Array('南宁市', '柳州市', '桂林市', '梧州市', '北海市', '防城港市', '钦州市', '贵港市', '玉林市', '百色市', '贺州市', '河池市', '来宾市', '崇左市');
+        cities['宁夏']=new Array('银川市', '石嘴山市', '吴忠市', '固原市', '中卫市');
+        cities['新疆']=new Array('乌鲁木齐市', '喀什市', '伊宁市');
+        cities['西藏']=new Array('拉萨市', '日喀则市', '昌都市', '林芝市', '山南市');
+        cities['黑龙江']=new Array('哈尔滨市', '齐齐哈尔市', '牡丹江市', '佳木斯市', '七台河市', '大庆市', '黑河市', '绥化市', '伊春市', '鹤岗市', '双鸭山市', '鸡西市');
+        cities['内蒙古']=new Array('呼和浩特市', '包头市', '乌海市', '赤峰市', '通辽市', '鄂尔多斯市', '呼伦贝尔市', '巴彦淖尔市', '乌兰察布市');
+		function set_city(province, city)
+		{
+			var pv, cv;
+			var i, ii;
+			pv = province.value;
+			cv = city.value;
+			city.length = 1;
+			if(pv == '0') return;
+			if(typeof(cities[pv]) == 'undefined') return;
+			for(i=0; i<cities[pv].length; i++)
+			{
+				ii = i+1;
+				city.options[ii] = new Option();
+				city.options[ii].text = cities[pv][i];
+				city.options[ii].value = cities[pv][i];
+			}
+		}
+		
+		document.getElementById("yc").onclick=function(){
+			var demo5=document.getElementById("demo5");
+			var demo6=document.getElementById("demo6");
+			demo5.setAttribute("style","display:none");
+			demo6.setAttribute("type","text");
+		}
+		
+		<!--关闭当前iframe --!>
+	    function cancel()
+		{
+			var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+			parent.layer.close(index); //再执行关闭   
+		}
+	</script>	
+
+</body>
+</html>

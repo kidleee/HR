@@ -1,0 +1,183 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<link rel="stylesheet" href="../css/style.css" type="text/css">
+	<div class="jl2_box">
+		<div class="jl2_cat" id="jl2_cat" style="display: none;">在线编辑简历  <span>在线编辑简历</span></div>	
+		<div class="jl2_left" id="jl2_left" style="display: none;">
+			<div class="mk1"><img src="img/i_mb.png">模板管理 <a onclick="openShutManager(this,'fbox1',false,'<i></i>','<u></u>')"><i></i></a></div>
+			<div id="fbox1">
+			<div class="mk2">
+				<h3>已有模块</h3>
+				<!--div class="bt1">基本信息 <span>必填</span></div-->
+				<ul id="ulshow">
+					<li id="gerenjianjieshow" style="display:block;"><a href="javascript:hide('gerenjianjie')">个人简介</a><a href="javascript:hide('gerenjianjie')"><img src="img/i_jian.png"></a></li>
+					<li id="qiuzhiyixiangshow" style="display:block;"><a href="javascript:hide('qiuzhiyixiang')">求职意向</a><a href="javascript:hide('qiuzhiyixiang')"><img src="img/i_jian.png"></a></li>
+					<li id="gongzuojinglishow" style="display:block;"><a href="javascript:hide('gongzuojingli')">工作经历</a><a href="javascript:hide('gongzuojingli')"><img src="img/i_jian.png"></a></li>
+					<li id="jibenxinxishow" style="display:block;"><a href="javascript:hide('jibenxinxi')">基本信息</a><a href="javascript:hide('jibenxinxi')"><img src="img/i_jian.png"></a></li>
+					<li id="lianxifangshishow" style="display:block;"><a href="javascript:hide('lianxifangshi')">联系方式</a><a href="javascript:hide('lianxifangshi')"><img src="img/i_jian.png"></a></li>
+					<li id="jinengzhengshushow" style="display:block;"><a href="javascript:hide('jinengzhengshu')">技能证书</a><a href="javascript:hide('jinengzhengshu')"><img src="img/i_jian.png"></a></li>
+                    <li id="shixijingyanshow" style="display:none;"><a href="javascript:hide('shixijingyan')">实习经验</a><a href="javascript:hide('shixijingyan')"><img src="img/i_jian.png"></a></li>
+                    <li id="xiangmujingyanshow" style="display:none;"><a href="javascript:hide('xiangmujingyan')">项目经验</a><a href="javascript:hide('xiangmujingyan')"><img src="img/i_jian.png"></a></li>
+				</ul>
+			</div>
+			
+			<div class="mk2">
+				<h3>可添加模块</h3>
+				<div class="bt1">简历封面 <span><img src="img/i_suo.png"></span></div>
+				<div class="bt1">自荐信 <span><img src="img/i_suo.png"></span></div>
+				
+				<ul id="ulhide">
+                    <li style="display:block;"><a href="javascript:rightcreate()">模块添加</a><a href="javascript:rightcreate()"><img src="img/i_jia.png"></a></li>
+                    <li id="gerenjianjiehide" style="display:none;"><a href="javascript:show('gerenjianjie')">个人简介</a><a href="javascript:show('gerenjianjie')"><img src="img/i_jia.png"></a></li>
+                    <li id="qiuzhiyixianghide" style="display:none;"><a href="javascript:show('qiuzhiyixiang')">求职意向</a><a href="javascript:show('qiuzhiyixiang')"><img src="img/i_jia.png"></a></li>
+                    <li id="gongzuojinglihide" style="display:none;"><a href="javascript:show('gongzuojingli')">工作经历</a><a href="javascript:show('gongzuojingli')"><img src="img/i_jia.png"></a></li>
+                    <li id="jibenxinxihide" style="display:none;"><a href="javascript:show('jibenxinxi')">基本信息</a><a href="javascript:show('jibenxinxi')"><img src="img/i_jia.png"></a></li>
+                    <li id="lianxifangshihide" style="display:none;"><a href="javascript:show('lianxifangshi')">联系方式</a><a href="javascript:show('lianxifangshi')"><img src="img/i_jia.png"></a></li>
+                    <li id="jinengzhengshuhide" style="display:none;"><a href="javascript:show('jinengzhengshu')">技能证书</a><a href="javascript:show('jinengzhengshu')"><img src="img/i_jia.png"></a></li>
+					<li id="shixijingyanhide" style="display:block;"><a href="javascript:show('shixijingyan')">实习经验</a><a href="javascript:show('shixijingyan')"><img src="img/i_jia.png"></a></li>
+					<li id="xiangmujingyanhide" style="display:block;"><a href="javascript:show('xiangmujingyan')">项目经验</a><a href="javascript:show('xiangmujingyan')"><img src="img/i_jia.png"></a></li>
+				</ul>
+			</div>
+			</div>
+			
+			
+			
+			<div class="mk1"><img src="img/i_fg.png">模板切换<a onclick="openShutManager(this,'fbox3',false,'<i></i>','<u></u>')"><i></i></a></div>
+			<div class="mk2" id="fbox3">
+			<div class="bt1">模板S10004<span><img src="img/i_suo.png"></span></div>
+			<ul>
+				<li><a href="javascript:modelchange('S10005')">模板S10005</a></li>
+			</ul>
+			</div>
+            <div class="mk4"><a href="javascript:cv_save()" style="margin-bottom: 10px">简历保存</a></div>
+			<div class="mk4">
+			<a href="javascript:cv_input()"><img src="img/i_dc.png">简历导出</a>
+			</div>	
+		</div>
+		<div class="jl2_right ui-sortable" id="module_list">
+			<div class="jl2_main">
+				<div class="jl1">
+					<div class="jl1_name">
+                    <span id="cvname" onclick="jl1information()" class="placeholder" placeholder="润简历">润简历</span><br>
+					<p id="cvjob" onclick="jl1information()" class="placeholder" placeholder="项目经理/项目负责人">项目经理/项目负责人</p>
+					</div>
+					<div class="jl1_pic placeholder">
+					<form style="display:none;" id="tf">
+                        <input type="file" id="headimg" name="headimg" change="postheadimg();">
+                    </form>
+					<img id="headimg1" src="img/i_tx2.png" alt="" style="width:154px;height:154px" onclick="headimg.click()">
+					</div>
+					<div class="jl1_lx">
+                    <span id="cvdate" onclick="jl1information()" class="placeholder" placeholder="1991.11.06">1991.11.06</span><br>
+					<p id="cvphone" onclick="jl1information()" class="placeholder" placeholder="135 4656 4563">135 4656 4563</p>
+					</div>
+				</div>
+				<div class="jl2_wrap">
+				   <div class="zbox">
+				      <ul id="left_ul">
+				      	<li class="m_title" id="gerenjianjie" style="display:block;">
+                        <div class="jl_title"><h3 class="handle ui-sortable-handle">个人简介</h3></div>
+						<div class="info changeable placeholder" placeholder="毕业于湖北武汉职业技术学院，4年平面设计工作，我不是什么牛人我只是菜鸟，已在成长中。从事网站的建设与分析，有美丽的幻想，从学习到工作一直从事设计。" contenteditable="false">毕业于湖北武汉职业技术学院，4年平面设计工作，我不是什么牛人我只是菜鸟，已在成长中。从事网站的建设与分析，有美丽的幻想，从学习到工作一直从事设计。</div>
+						</li>
+						
+						<li class="m_title" id="qiuzhiyixiang">
+                        <div class="jl_title"><h3 class="handle ui-sortable-handle">求职意向<a class="addpartA" href="javascript:" style="display: none;"><img src="img/i_bj.png"></a></h3></div>
+						<div class="info">
+						<div class="jb1" id="qiuzhiyixiang1">
+                            <div class="m_part"><div class="inline changeable placeholder" placeholder="职位">职位</div>：<div class="inline changeable placeholder" placeholder="淘宝美工/平面设计">淘宝美工/平面设计</div><img class="deletepart" src="img/i_jian.png" style="display: none;"><br></div>
+                            <div class="m_part"><div class="inline changeable placeholder" placeholder="薪资">薪资</div>：<div class="inline changeable placeholder" placeholder="4000~5000元/月">4000~5000元/月</div><img class="deletepart" src="img/i_jian.png" style="display: none;"><br></div>
+                            <div class="m_part"><div class="inline changeable placeholder" placeholder="地点">地点</div>：<div class="inline changeable placeholder" placeholder="湖北武汉">湖北武汉</div><img class="deletepart" src="img/i_jian.png" style="display: none;"><br></div>
+						</div>
+						</div>
+						</li>
+						
+						<li class="m_title" id="gongzuojingli">
+                        <div class="jl_title"><h3 class="handle ui-sortable-handle">工作经历<a class="addpartB" href="javascript:" style="display: none;"><img src="img/i_bj.png"></a></h3></div>
+						<dl class="d3" id="gongzuojingli1">
+							<dd class="addpart">
+							<div class="changeable placeholder h3" placeholder="湖北活动科技网络公司">湖北活动科技网络公司</div><img class="deletepart" src="img/i_jian.png" style="display: none;">
+							<div class="zhi">
+                            <div class="changeable placeholder inline" placeholder="高级网页设计师">高级网页设计师</div>
+                            <div class="changeable placeholder inline" placeholder="2003.04-2007.05">2003.04-2007.05</div>
+							</div>
+							<div class="txt changeable placeholder" placeholder="主要做设计主要做设计主要做设计主要做设计主要做设计主要做设计主要做设计主要做设计主要做设计主要做设计主要做设计主要做设计主要做设计主要做设计">主要做设计主要做设计主要做设计主要做设计主要做设计主要做设计主要做设计主要做设计主要做设计主要做设计主要做设计主要做设计主要做设计主要做设计</div>
+							</dd>
+							
+							<dd class="addpart">
+							<div class="changeable placeholder h3" placeholder="湖北活动科技网络公司">湖北活动科技网络公司</div><img class="deletepart" src="img/i_jian.png" style="display: none;">
+							<div class="zhi">
+                            <div class="changeable placeholder inline" placeholder="高级网页设计师">高级网页设计师</div>
+                            <div class="changeable placeholder inline" placeholder="2003.04-2007.05">2003.04-2007.05</div>
+							</div>
+							<div class="txt changeable placeholder" placeholder="主要做设计主要做设计主要做设计主要做设计主要做设计主要做设计主要做设计主要做设计主要做设计主要做设计主要做设计主要做设计主要做设计主要做设计">主要做设计主要做设计主要做设计主要做设计主要做设计主要做设计主要做设计主要做设计主要做设计主要做设计主要做设计主要做设计主要做设计主要做设计</div>
+							</dd>
+						</dl>
+						</li>
+                        <li class="m_title" id="xiangmujingyan" style="display: none;">
+						<h3 class="handle ui-sortable-handle">项目经验</h3>
+						<div class="info changeable placeholder" placeholder="这里是项目经验这里是项目经验这里是项目经验这里是项目经验这里是项目经验这里是项目经验这里是项目经验这里是项目经验这里是项目经验" contenteditable="false">这里是项目经验这里是项目经验这里是项目经验这里是项目经验这里是项目经验这里是项目经验这里是项目经验这里是项目经验这里是项目经验</div>
+						</li>    
+				      </ul>
+					  <div class="s01"></div>
+				   </div>
+				
+				 <div class="zbox fr">
+				      <ul id="right_ul">
+				      	<li class="d4 m_title" id="jibenxinxi">
+                        <div class="jl_title"><h3 class="handle ui-sortable-handle">基本信息<a class="addpartA" href="javascript:" style="display: none;"><img src="img/i_bj.png"></a></h3></div>
+						<div class="info">
+						<div class="jb1" id="jibenxinxi1">
+                            <div class="m_part"><div class="inline changeable placeholder" placeholder="生日">生日</div>：<div class="inline changeable placeholder" placeholder="1991年11月06日">1991年11月06日</div><img class="deletepart" src="img/i_jian.png" style="display: none;"><br></div>
+                            <div class="m_part"><div class="inline changeable placeholder" placeholder="院校">院校</div>：<div class="inline changeable placeholder" placeholder="武汉职业技术学院">武汉职业技术学院</div><img class="deletepart" src="img/i_jian.png" style="display: none;"><br></div>
+                            <div class="m_part"><div class="inline changeable placeholder" placeholder="籍贯">籍贯</div>：<div class="inline changeable placeholder" placeholder="湖北孝感">湖北孝感</div><img class="deletepart" src="img/i_jian.png" style="display: none;"><br></div>
+				            <div class="m_part"><div class="inline changeable placeholder" placeholder="专业">专业</div>：<div class="inline changeable placeholder" placeholder="平面设计">平面设计</div><img class="deletepart" src="img/i_jian.png" style="display: none;"><br></div>
+				            <div class="m_part"><div class="inline changeable placeholder" placeholder="现居">现居</div>：<div class="inline changeable placeholder" placeholder="湖北武汉">湖北武汉</div><img class="deletepart" src="img/i_jian.png" style="display: none;"><br></div>
+						</div>
+						</div>
+						</li>
+						
+						<li class="d4 m_title" id="lianxifangshi">
+                        <div class="jl_title"><h3 class="handle ui-sortable-handle">联系方式<a class="addpartA" href="javascript:" style="display: none;"><img src="img/i_bj.png"></a></h3></div>
+						<div class="info">
+						<div class="jb1" id="lianxifangshi1">
+                            <div class="m_part"><div class="inline changeable placeholder" placeholder="手机">手机</div>：<div class="inline changeable placeholder" placeholder="135 4656 4563">135 4656 4563</div><img class="deletepart" src="img/i_jian.png" style="display: none;"><br></div>
+                            <div class="m_part"><div class="inline changeable placeholder" placeholder="邮箱">邮箱</div>：<div class="inline changeable placeholder" placeholder="45441654@qq.com">45441654@qq.com</div><img class="deletepart" src="img/i_jian.png" style="display: none;"><br></div>
+                            <div class="m_part"><div class="inline changeable placeholder" placeholder="Q Q">Q Q</div>：<div class="inline changeable placeholder" placeholder="546365464">546365464</div><img class="deletepart" src="img/i_jian.png" style="display: none;"><br></div>
+							<div class="m_part"><div class="inline changeable placeholder" placeholder="地址">地址</div>：<div class="inline changeable placeholder" placeholder="湖北武汉市">湖北武汉市</div><img class="deletepart" src="img/i_jian.png" style="display: none;"><br></div>
+						</div>
+						<!--div class="set">
+							<a href="#"><img src="img/i_bj.png" /></a>
+							<a href="#"><img src="img/i_pf.png" /></a>
+							<a href="#"><img src="img/i_set.png" /></a>
+						</div-->
+						</div>
+						</li>
+						
+				        <li class="d4 d5 m_title" id="jinengzhengshu">
+                        <div class="jl_title"><h3 class="handle ui-sortable-handle">技能证书<a class="addpartC" href="javascript:" style="display: none;"><img src="img/i_bj.png"></a></h3></div>
+						<div class="info">
+						<div class="jb1" id="jinengzhengshu1">
+                            <div class="addpart"><img src="img/i_zs.png">
+                            <div class="inline changeable placeholder" placeholder="CET-6，优秀的听说写能力">CET-6，优秀的听说写能力</div><img class="deletepart" src="img/i_jian.png" style="display: none;"><br>
+                            </div>
+                            <div class="addpart"><img src="img/i_zs.png">
+                            <div class="inline changeable placeholder" placeholder="计算机二级，熟悉计算机各项操作">计算机二级，熟悉计算机各项操作</div><img class="deletepart" src="img/i_jian.png" style="display: none;"><br>
+                            </div>
+                            <div class="addpart"><img src="img/i_zs.png">
+                            <div class="inline changeable placeholder" placeholder="高级营销员，国家职业资格四级">高级营销员，国家职业资格四级</div><img class="deletepart" src="img/i_jian.png" style="display: none;"><br>
+                            </div>
+						</div>
+						</div>
+						</li>
+                        <li class="m_title" id="shixijingyan" style="display: none;">
+                        <div class="jl_title"><h3 class="handle ui-sortable-handle">实习经验</h3></div>
+						<div class="info changeable placeholder" placeholder="这里是实习经验这里是实习经验这里是实习经验这里是实习经验这里是实习经验这里是实习经验这里是实习经验这里是实习经验这里是实习经验这里是实习经验这里是实习经验" contenteditable="false">这里是实习经验这里是实习经验这里是实习经验这里是实习经验这里是实习经验这里是实习经验这里是实习经验这里是实习经验这里是实习经验这里是实习经验这里是实习经验</div>
+						</li>  
+				      </ul>
+				   </div>
+				
+				
+				</div>
+			</div>
+		</div>
+	</div>
+	

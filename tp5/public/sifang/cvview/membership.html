@@ -1,0 +1,75 @@
+<!DOCTYPE html> 
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>会员购买</title>
+<link rel="stylesheet" href="layui-v2.2.6/layui-v2.2.6/layui/css/layui.css" type="text/css">
+<link rel="styl买esheet" href="mademodel.css" type="text/css">
+<script src="layer-v3.1.1/layer-v3.1.1/layer/layer.js" type="text/javascript" charset="utf-8"></script>
+<script src="layui-v2.2.6/layui-v2.2.6/layui/layui.js" type="text/javascript" charset="utf-8"></script>
+<script src="jquery.js" type="text/javascript"></script>
+<script src="jqui/jqui/jquery-ui.js"></script>
+<script src="sifang/jquery-form.js"></script> <!-- 你必须先引入jQuery1.8或以上版本 -->
+<script src="vue.js"></script>
+<script charset="utf-8" src="kindeditor/kindeditor-all.js"></script>
+<script charset="utf-8" src="kindeditor/lang/zh-CN.js"></script>
+</head>
+<body>
+    <form class="layui-form" id="tf" style="display:block">   
+          <div class="layui-form-item">
+              <label class="layui-form-label">选择天数</label>
+              <div class="layui-input-block">
+                  <input type="radio" name="number" value="3" title="三个月" checked>
+                  <input type="radio" name="number" value="6" title="六个月">
+                  <input type="radio" name="number" value="12" title="十二个月">
+              </div>
+          </div>
+          <div class="layui-form-item">
+              <div class="layui-input-block">
+                  <button type="button" class="layui-btn" onclick="javascript:a()">立即购买</button>
+                  <button type="button" class="layui-btn layui-btn-primary" onclick="javascript:b()">退出</button>
+              </div>
+          </div>    
+    </form>
+<script>
+//Demo
+layui.use('form', function(){
+  var form = layui.form;
+});
+layui.use('element', function(){
+  var element = layui.element;
+});
+function a()
+{   
+    window.open("http://www.runjianli.com/index.php/pay/wx_lp/member_ship?number="+$("input[type='radio']:checked").val());
+    layui.use('layer', function(){
+    var layer = layui.layer;
+    layer.confirm('是否完成支付?',{btn: ['支付完成', '遇到问题'] //可以无限个按钮
+        ,btn2: function(index, layero){
+      var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+      parent.layer.close(index); //再执行关闭          
+  }
+}, function(index, layero){
+    window.open("http://www.runjianli.com/index.php/pay/wx_lp/member_ship_judge");
+    var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+    parent.layer.close(index); //再执行关闭       
+    layer.closeAll(); //疯狂模式，关闭所有层
+    layer.closeAll('dialog'); //关闭信息框
+    layer.closeAll('page'); //关闭所有页面层
+    layer.closeAll('iframe'); //关闭所有的iframe层
+    layer.closeAll('loading'); //关闭加载层
+    layer.closeAll('tips'); //关闭所有的tips层 
+});
+    })
+}
+function b()
+{   
+    var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+    parent.layer.close(index); //再执行关闭    
+}
+</script>    
+    
+</body>    
+</html>    

@@ -1,0 +1,229 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<title>公告</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="imagetoolbar" content="no" />
+<link rel="stylesheet" href="styles/layout.css" type="text/css" />
+<script src="layer-v3.1.1/layer-v3.1.1/layer/layer.js" type="text/javascript" charset="utf-8"></script>
+<script src="layui-v2.2.6/layui-v2.2.6/layui/layui.js" type="text/javascript" charset="utf-8"></script>
+<script src="jquery.js" type="text/javascript"></script>
+<script src="jqui/jqui/jquery-ui.js"></script>    
+</head>
+<body id="toWp">
+<div class="wrapper col2">
+  <div id="header">
+    <div id="logo">
+      <h1><a href="#">润简历</a></h1>
+      <p>全国领先的简历创意服务平台</p>
+    </div>
+    <div id="topnav">
+      <ul>
+        <li class="active"><a href="user.html">在线制作</a></li>
+        <li><a href="viewmodel.html">模板商城</a></li>
+        <li><a href="howtohr.html">HR之旅</a></li>
+        <li><a href="mademodelindex.html">模板定制</a></li>
+        <li class="last"><a href="aboutus.html">关于我们</a></li>
+      </ul>
+    </div>
+    <br class="clear" />
+  </div>
+</div>
+<div class="wrapper col3">
+  <div id="breadcrumb">
+    <ul>
+      <li class="first">公告历史浏览</li>
+      <li>&#187;</li>
+    </ul>
+  </div>
+</div>
+<div class="wrapper col4">
+  <div id="container">
+    <div id="services">
+      <ul>
+        <li>
+          <h2><span>公告标题：</span><span id="title1"></span></h2>
+          <p><span>发布日期：</span><span id="time1"></span></p> 
+          <div class="imgholder" id="brief1"></div>    
+          <p class="more"><a id="nid1">公告详情 &raquo;</a></p>
+        </li>
+        <li id="hd1">
+          <h2><span>公告标题：</span><span id="title2"></span></h2>
+          <p><span>发布日期：</span><span id="time2"></span></p> 
+          <div class="imgholder" id="brief2"></div>    
+          <p class="more"><a id="nid2">公告详情 &raquo;</a></p>
+        </li>
+        <li class="last" id="hd2">
+          <h2><span>公告标题：</span><span id="title3"></span></h2>
+          <p><span>发布日期：</span><span id="time3"></span></p> 
+          <div class="imgholder" id="brief3"></div>    
+          <p class="more"><a id="nid3">公告详情 &raquo;</a></p>
+        </li>
+      </ul>
+      <br class="clear" />     
+    </div>
+    <span id="test1"></span>
+  </div>  
+</div>
+<div class="wrapper col6">
+  <div id="copyright">
+    <p class="fl_left">Copyright © 2016-2018 runjianli. - All Rights Reserved - <a href="#">备案号  苏 ICP备 18029764号-1</a></p>
+    <p class="fl_right">南京博晓信息科技有限公司 <a href="aboutus.html">关于我们</a></p>
+    <br class="clear" />
+  </div>
+</div>
+<script>
+function getJsonLength(jsonData){
+ var jsonLength = 0;
+ for(var item in jsonData){
+  jsonLength++;
+ }
+ return jsonLength;
+}
+var acount;
+var count;
+var hd1 = document.getElementById("hd1");
+var hd2 = document.getElementById("hd2");
+
+$(function(){     
+
+    
+    
+$.ajax({  
+            	type: "post",  
+           		url: "http://www.runjianli.com/index.php/index/super_manager/viewnotice1",
+				dataType: "json",
+			
+            	success: function(data){  
+					acount = getJsonLength(data);
+					count = acount; 
+					$("#brief1").html(data[acount-1].brief);
+					$("#time1").text(data[acount-1].date);
+                    $("#title1").html(data[acount-1].title);
+                    $("#nid1").attr("href","http://www.runjianli.com/sifang/notice.html?nid="+data[acount-1].nid);
+					$("#brief2").html(data[acount-2].brief);
+					$("#time2").text(data[acount-2].date);
+                    $("#title2").html(data[acount-2].title);
+                    $("#nid2").attr("href","http://www.runjianli.com/sifang/notice.html?nid="+data[acount-2].nid);
+					$("#brief3").html(data[acount-3].brief);
+					$("#time3").text(data[acount-3].date);
+                    $("#title3").html(data[acount-3].title);
+                    $("#nid3").attr("href","http://www.runjianli.com/sifang/notice.html?nid="+data[acount-3].nid);
+                    layui.use('laypage', function(){
+  var laypage = layui.laypage;
+  //执行一个laypage实例                  
+  laypage.render({
+    elem: 'test1' //注意，这里的 test1 是 ID，不用加 # 号
+    ,count: count //数据总数，从服务端得到
+    ,limit:3
+     ,jump: function(obj, first){
+     //obj包含了当前分页的所有参数，比如：
+      	$.ajax({  
+            	type: "post",  
+           		url: "http://www.runjianli.com/index.php/index/super_manager/viewnotice1",
+				dataType: "json",		
+            	success: function(data){
+                    acount = getJsonLength(data);
+					if(acount%3 ==0){
+					$("#brief1").html(data[acount-obj.curr*3+2].brief);
+					$("#time1").text(data[acount-obj.curr*3+2].date);
+                    $("#title1").html(data[acount-obj.curr*3+2].title);
+                    $("#nid1").attr("href","http://www.runjianli.com/sifang/notice.html?nid="+data[acount-obj.curr*3+2].nid);    
+					$("#brief2").html(data[acount-obj.curr*3+1].brief);
+					$("#time2").text(data[acount-obj.curr*3+1].date);
+                    $("#title2").html(data[acount-obj.curr*3+1].title);
+                    $("#nid2").attr("href","http://www.runjianli.com/sifang/notice.html?nid="+data[acount-obj.curr*3+1].nid);    
+					$("#brief3").html(data[acount-obj.curr*3].brief);
+					$("#time3").text(data[acount-obj.curr*3].date);
+                    $("#title3").html(data[acount-obj.curr*3].title);
+                    $("#nid3").attr("href","http://www.runjianli.com/sifang/notice.html?nid="+data[acount-obj.curr*3].nid);    
+					}
+					else if(acount%3 ==1)
+					{
+					if(obj.curr == (count-count%3)/3+1)
+					{
+					$("#brief1").html(data[0].brief);
+					$("#time1").text(data[0].date);
+                    $("#title1").html(data[0].title);
+                    $("#nid1").attr("href","http://www.runjianli.com/sifang/notice.html?nid="+data[0].nid);    
+					hd1.setAttribute("style","display:none");
+					hd2.setAttribute("style","display:none");
+					}
+					else
+					{
+					hd1.setAttribute("style","display:block");
+					hd2.setAttribute("style","display:block");
+					$("#brief1").html(data[acount-obj.curr*3+2].brief);
+					$("#time1").text(data[acount-obj.curr*3+2].date);
+                    $("#title1").html(data[acount-obj.curr*3+2].title);
+                    $("#nid1").attr("href","http://www.runjianli.com/sifang/notice.html?nid="+data[acount-obj.curr*3+2].nid);    
+					$("#brief2").html(data[acount-obj.curr*3+1].brief);
+					$("#time2").text(data[acount-obj.curr*3+1].date);
+                    $("#title2").html(data[acount-obj.curr*3+1].title);
+                    $("#nid2").attr("href","http://www.runjianli.com/sifang/notice.html?nid="+data[acount-obj.curr*3+1].nid);    
+					$("#brief3").html(data[acount-obj.curr*3].brief);
+					$("#time3").text(data[acount-obj.curr*3].date);
+                    $("#title3").html(data[acount-obj.curr*3].title);
+                    $("#nid3").attr("href","http://www.runjianli.com/sifang/notice.html?nid="+data[acount-obj.curr*3].nid);    
+					}
+					}
+					else if(acount%3 ==2)
+					{
+					if(obj.curr == (count-count%3)/3+1)
+					{
+					$("#brief1").html(data[0].brief);
+					$("#time1").text(data[0].date);
+                    $("#title1").html(data[0].title);
+                    $("#nid1").attr("href","http://www.runjianli.com/sifang/notice.html?nid="+data[0].nid);    
+					$("#brief2").html(data[1].brief);
+					$("#time2").text(data[1].date);
+                    $("#title2").html(data[1].title);
+                    $("#nid2").attr("href","http://www.runjianli.com/sifang/notice.html?nid="+data[1].nid);    
+					hd2.setAttribute("style","display:none");
+					}
+					else
+					{
+					hd2.setAttribute("style","display:block");
+					$("#brief1").html(data[acount-obj.curr*3+2].brief);
+					$("#time1").text(data[acount-obj.curr*3+2].date);
+                    $("#title1").html(data[acount-obj.curr*3+2].title);
+                    $("#nid1").attr("href","http://www.runjianli.com/sifang/notice.html?nid="+data[acount-obj.curr*3+2].nid);    
+					$("#brief2").html(data[acount-obj.curr*3+1].brief);
+					$("#time2").text(data[acount-obj.curr*3+1].date);
+                    $("#title2").html(data[acount-obj.curr*3+1].title);
+                    $("#nid2").attr("href","http://www.runjianli.com/sifang/notice.html?nid="+data[acount-obj.curr*3+1].nid);    
+					$("#brief3").html(data[acount-obj.curr*3].brief);
+					$("#time3").text(data[acount-obj.curr*3].date);
+                    $("#title3").html(data[acount-obj.curr*3].title);
+                    $("#nid3").attr("href","http://www.runjianli.com/sifang/notice.html?nid="+data[acount-obj.curr*3].nid);    
+					}
+					}
+       			},  
+				error: function(jqXHR, textStatus, errorThrown){  
+                         				alert(jqXHR.responseText);
+					alert(jqXHR.status);
+					alert(jqXHR.readyState);
+					alert(jqXHR.statusText);
+					alert(textStatus);
+					alert(errorThrown); 
+				}
+        })
+
+}
+  });
+});
+       			},  
+				error: function(jqXHR, textStatus, errorThrown){  
+                         				alert(jqXHR.responseText);
+					alert(jqXHR.status);
+					alert(jqXHR.readyState);
+					alert(jqXHR.statusText);
+					alert(textStatus);
+					alert(errorThrown); 
+				}
+        })
+
+})
+</script>
+</body>
+</html>

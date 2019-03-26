@@ -1,0 +1,147 @@
+﻿<!DOCTYPE html> 
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>公告效果</title>
+<script src="layer-v3.1.1/layer-v3.1.1/layer/layer.js" type="text/javascript" charset="utf-8"></script>
+<script src="layui-v2.2.6/layui-v2.2.6/layui/layui.js" type="text/javascript" charset="utf-8"></script>
+<script src="jquery.js" type="text/javascript"></script>
+<script src="jqui/jqui/jquery-ui.js"></script>
+<style type="text/css"> 
+</style>
+</head>
+<body>
+
+<div>
+<!--评论展示区域-->
+<div class="comment-list"> 
+	
+</div> 
+<!--end 评论展示区域-->
+
+
+<!--评论输入模块-->
+<div class="layui-form-item layui-form-text">
+    <label class="layui-form-label">公告内容</label>
+    <div class="layui-input-block">
+      <textarea name="content" placeholder="请输入内容" class="layui-textarea"></textarea>
+    </div>
+	<div>
+        <a href="javascript:addpl()">发布</a>
+    </div>
+</div>
+
+<!--评论输入模块-->
+</div>
+
+<!--评论模块-->
+
+
+  <div class="layui-form-item layui-form-text" id="answer">
+    <label class="layui-form-label">回复:</label>
+    <div class="layui-input-block">
+      <textarea name="content" placeholder="请输入内容" class="layui-textarea"></textarea>
+    </div>
+  </div>
+
+
+<script>
+$(function(){
+
+
+
+})
+
+
+
+
+
+
+//添加评论
+function getTime(){
+        var now=new Date();
+        var y=now.getFullYear();
+        var m=now.getMonth()+1;
+        m=(m<10)?'0'+m:m;
+        var d=now.getDate();
+        var h=now.getHours();
+        h=(h<10)?'0'+h:h;
+        var mi=now.getMinutes();
+        mi=(mi<10)?'0'+mi:mi;
+        return y+'-'+m+'-'+d+" "+h+':'+mi;
+    }
+
+function addpl()
+{
+		var textarea = document.getElementsByTagName('textarea')[0];
+        var list=document.getElementsByClassName('comment-list')[0];
+        var div=document.createElement('div');
+		var time = getTime();
+        div.className='comment-box clearfix';
+		$.ajax({  
+           			type: "post",  
+            			url: "http://www.runjianli.com/index.php/comment/cv_comment/save_comment",
+			dataType: "text",
+			data: {"comment":textarea.value, "time":time, "refloor":1},
+            			success: function(data){
+				alert("123");
+			},
+			error: function(jqXHR, textStatus, errorThrown){  
+                			alert(jqXHR.responseText);
+				alert(jqXHR.status);
+				alert(jqXHR.readyState);
+				alert(jqXHR.statusText);
+				alert(textStatus);
+				alert(errorThrown); 
+			}
+        })  			
+		
+		
+		
+		
+        var html='<img class="layui-nav-img" src="?" alt=""/>'+
+                        '<div class="comment-content">'+
+                            '<p class="comment-text"><span class="user">我：</span>'+textarea.value+'</p>'+
+                            '<p class="comment-time">'+
+                                getTime()+
+                                '<a href="javascript:;" class="comment-praise" total="0" my="0" style="">赞</a>'+
+                                '<a href="javascript:answerpl();" class="comment-operate">回复</a>'+
+                            '</p>';
+        div.innerHTML=html;
+        list.appendChild(div);
+        textarea.value='';//清空输入框
+        textarea.onblur();//失去焦点
+}
+
+//回复评论
+
+function answerpl()
+{
+		var textarea = document.getElementsByTagName('textarea')[1];
+        var list=document.getElementsByClassName('comment-list')[0];
+        var div=document.createElement('div');
+        div.className='comment-box clearfix';
+        var html='<img class="myhead" src="images/my.jpg" alt=""/>'+
+                        '<div class="comment-content">'+
+                            '<p class="comment-text"><span class="user">我回复我：</span>'+textarea.value+'</p>'+
+                            '<p class="comment-time">'+
+                                getTime()+
+                                '<a href="javascript:;" class="comment-praise" total="0" my="0" style="">赞</a>'+
+                                '<a href="javascript:;" class="comment-operate">删除</a>'+
+                            '</p>';
+        div.innerHTML=html;
+        list.appendChild(div);
+        textarea.value='';//清空输入框
+        textarea.onblur();//失去焦点
+}
+
+</script>
+</body>
+</html>
+
+
+
+
+

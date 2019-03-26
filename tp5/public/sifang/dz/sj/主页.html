@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>海词词典</title>
+<link rel="stylesheet" href="css/style.css" type="text/css">
+</head>
+<body>
+<div class="neck">
+    <div class="hd1">海词词典</div>
+    <div class="hd2"><input id="searchvalue" class="search" type="input" placeholder="请输入关键字词句"/><a href="javascript:search();"><img src="img/monitor.png"></a></div>
+</div>
+<div class="box">
+    <div class="shadow">
+        <div class="cat"><div class="cat-left">词汇每日学习</div><div class="cat-right"><a href="词汇分类.html">更多</a></div></div>
+    <div class="box-middle">
+        <div class="box-three"><div class="romate"><img class="img-three" src="img/lx1.png"/></div><div><a class="dayword" href="javascript:dayword();">购物</a></div></div>
+        <div class="box-three"><div class="romate"><img class="img-three" src="img/lx2.png"/></div><div><a class="dayword" href="javascript:dayword();">旅游</a></div></div>
+        <div class="box-three"><div class="romate"><img class="img-three" src="img/lx3.png"/></div><div><a class="dayword" href="javascript:dayword();">看美剧</a></div></div>
+    </div>
+    <div class="box-middle">
+        <div class="box-two"><div><img class="img-two" src="img/ds_zp.png"/></div><div><a class="dayword" href="javascript:dayword();">每日热词</a></div></div>
+        <div class="box-two"><div><img class="img-two" src="img/ds_zp1.png"/></div><div><a class="dayword" href="javascript:dayword();">每日情景学词</a></div></div>
+    </div>
+    </div>
+</div>
+<div class="box">
+    <div class="shadow">
+    <div class="cat"><div class="cat-left">每日学习</div></div>
+    <div class="box-middle">
+        <div class="box-two"><div><img class="img-two" src="img/ds_zp2.png"/></div><div><a class="dayword" href="javascript:dayword();">每日赏析</a></div></div>
+        <div class="box-two"><div><img class="img-two" src="img/ds_zp3.png"/></div><div><a class="dayword" href="javascript:dayword();">每日一句</a></div></div>
+    </div>
+    <div class="box-middle">
+        <div class="box-two"><div><img class="img-two" src="img/ds_zp4.png"/></div><div><a class="dayword" href="javascript:dayword();">每日一听</a></div></div>
+        <div class="box-two"><div><img class="img-two" src="img/ds_zp5.png"/></div><div><a class="dayword" href="javascript:dayword();">每日一练</a></div></div>
+    </div>
+    </div>
+    <div class="bottom"></div>  
+</div>        
+<div class="footer">
+    <div class="box-middle">
+        <div class="box-four"><div><img class="img-four" src="img/tags.png"/></div><div><a class="on" href="主页.html">词典</a></div></div>
+        <div class="box-four"><div><img class="img-four" src="img/compass.png"/></div><div><a class="on" href="发现.html">发现</a></div></div>
+        <div class="box-four"><div><img class="img-four" src="img/audit.png"/></div><div><a class="on" href="生词本.html">生词本</a></div></div>
+        <div class="box-four"><div><img class="img-four" src="img/user.png"/></div><div><a class="on" href="我的.html">我的</a></div></div>
+    </div>
+</div>
+<script>
+function dayword()
+{
+    alert("所有链接都进入每日热词页面");
+    window.location.href = "每日热词.html";
+}
+function search()
+{
+    var searchvalue = document.getElementById("searchvalue");
+    if(searchvalue.value == "")
+    {
+        alert("您没有输入查询的词哦");
+    }
+    else
+    {  
+        alert("您查找的词为:"+searchvalue.value+"\n正在为您查找中......");
+    }
+}    
+</script>    
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>海词词典</title>
+<link rel="stylesheet" href="css/style.css" type="text/css">
+</head>
+<body>
+<div class="neck2">
+    <div class="hd1"><div class="hd-left">同步</div>生词本<div class="hd-right">编辑</div></div> 
+</div>
+<div class="box2" id="box2">
+    <div class="bx2" onclick="recommend();"><img class="box-one" src="img/file-protect.png"/><p class="box-p">推荐生词本</p></div>
+    <div class="box-another">生词本</div>
+    <div class="bx2"><img class="box-one" src="img/file-word.png"/><p class="box-p">生词本1</p><img class="bx1-right" src="img/right-circle.png"></div> 
+</div>
+<div class="box2">
+    <div class="bx2" onclick="add();"><img class="box-one" src="img/plus.png"/><p class="box-p">添加生词本</p></div>
+    <div class="box-another1">1.点击生词本图标设置为默认，可一键添加生词本。<br/>2."同步"助手，可备份生词本至云端或恢复云端生词本。</div>
+    <div class="bottom"></div>
+</div>  
+<div class="footer">
+    <div class="box-middle">
+        <div class="box-four"><div><img class="img-four" src="img/tags.png"/></div><div><a class="on" href="主页.html">词典</a></div></div>
+        <div class="box-four"><div><img class="img-four" src="img/compass.png"/></div><div><a class="on" href="发现.html">发现</a></div></div>
+        <div class="box-four"><div><img class="img-four" src="img/audit.png"/></div><div><a class="on" href="生词本.html">生词本</a></div></div>
+        <div class="box-four"><div><img class="img-four" src="img/user.png"/></div><div><a class="on" href="我的.html">我的</a></div></div>
+    </div>
+</div>
+<script>
+function add()
+{   
+    var str = window.prompt("请给生词本取名","生词本");
+    var bx = document.getElementById("box2");
+    var div = document.createElement("div");
+    div.setAttribute("class","bx2");
+    div.innerHTML = "<img class=\"box-one\" src=\"img/file-word.png\"/><p class=\"box-p\">"+str+"</p><img class=\"bx1-right\" src=\"img/right-circle.png\">";
+    bx.insertBefore(div,bx.lastChild);
+}
+function recommend()
+{   
+    alert("想要我推荐？没门！嘿嘿！");
+}
+</script>    
+</body>
+</html>

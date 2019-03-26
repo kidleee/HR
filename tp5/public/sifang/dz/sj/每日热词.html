@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>海词词典</title>
+<link rel="stylesheet" href="css/style.css" type="text/css">
+</head>
+<body>
+<div class="neck4">
+    <div class="hd2"><a href="javascript:back();"><img class="hd-left" src="img/left.png"></a><div class="hd-right" onclick="change();">切换</div></div>
+    <div class="hd1">热词学英语</div>
+</div>
+<div class="box4">
+    <div class="box-middle">
+        <div class="bx-title" id="title">24节气之冬至，“冬至”英语怎么说</div>
+        <div class="bx-lt" id="time"></div>
+        <div class="bx-title"><img class="bx-img" src="img/ds_zp.png"/></div>
+        <div class="bx-bd" id="brief">  冬至，是我国农历中一个非常重要的节气，也是一个传统节日，至今仍有不少地方过冬至节的习俗。</div>
+        <div class="bx-red">我们来看一段相关的英文报道</div>
+        <div class="bx-en" id="content">The traditional Chinese lunar calendar divides the year into 24 solar terms.Winter Solstice(Chinese:冬至),the 22nd solar term of the year,begins this year on Dec 22 and ends on Jan4.On the first day of Winter Soolstice, the Northern Hemisphere experiences the shortest day and the longest night in the year, as the sun shines directly at the Tropic of Capricorn.From then on, the days become longer and the nights become shorter.The Winter Solstice also marks the arrival of the coldest season in the year.<br>中国传统农历把一年分为24节气。冬至，一年中的第22个节气，于今年12月22日开始，到1月4日结束。在冬至的第一天，北半球的白天最短，夜晚最长，因为太阳直射南回归线。从那时起，白天变长，夜晚变短。冬至也标志这一年中最冷的季节的到来</div>
+        <div class="bx-sign">【讲解】</div>
+        <div class="bx-en" id="explain">文中的Winter Solstice就是“冬至”的意思。中国古代有句谚语：“冬至大如年(The Winter Solsticeis as significant as the Spring Festival)”.在中国北方的冬至期间，吃饺子是这个节日必不可少的。俗话说“冬至饺子夏至面(Having dumplings on the first day of Winter Solstice and noodles on the first day of Summer Solstice)”。双语报道来源：中国日报英语点津</div>
+    </div>
+</div>
+<script>
+var changea = 0;
+var json1 = {"title":"这里是测试标题1","brief":"这里是测试简介1","content":"这里是测试内容1","explain":"这里是测试解释1"};
+var json2 = {"title":"这里是测试标题2","brief":"这里是测试简介2","content":"这里是测试内容2","explain":"这里是测试解释2"};
+var json3 = {"title":"24节气之冬至，“冬至”英语怎么说","brief":"冬至，是我国农历中一个非常重要的节气，也是一个传统节日，至今仍有不少地方过冬至节的习俗。","content":"The traditional Chinese lunar calendar divides the year into 24 solar terms.Winter Solstice(Chinese:冬至),the 22nd solar term of the year,begins this year on Dec 22 and ends on Jan4.On the first day of Winter Soolstice, the Northern Hemisphere experiences the shortest day and the longest night in the year, as the sun shines directly at the Tropic of Capricorn.From then on, the days become longer and the nights become shorter.The Winter Solstice also marks the arrival of the coldest season in the year.<br>中国传统农历把一年分为24节气。冬至，一年中的第22个节气，于今年12月22日开始，到1月4日结束。在冬至的第一天，北半球的白天最短，夜晚最长，因为太阳直射南回归线。从那时起，白天变长，夜晚变短。冬至也标志这一年中最冷的季节的到来","explain":"文中的Winter Solstice就是“冬至”的意思。中国古代有句谚语：“冬至大如年(The Winter Solsticeis as significant as the Spring Festival)”.在中国北方的冬至期间，吃饺子是这个节日必不可少的。俗话说“冬至饺子夏至面(Having dumplings on the first day of Winter Solstice and noodles on the first day of Summer Solstice)”。双语报道来源：中国日报英语点津"};    
+    
+var time = document.getElementById("time");
+var myDate = new Date();
+time.innerHTML = myDate.getFullYear()+'-'+myDate.getMonth()+'-'+myDate.getDate();
+    /*
+function oneValues()
+{
+    var result;
+    var url=window.location.search; //获取url中"?"符后的字串  
+    if(url.indexOf("?")!=-1){
+        result = url.substr(url.indexOf("=")+1);
+    }
+	return result;
+}       */
+function back()
+{   
+    window.location.href = "主页.html";
+}
+function change()
+{   
+    var title = document.getElementById("title");
+    var brief = document.getElementById("brief");
+    var content = document.getElementById("content");
+    var explain = document.getElementById("explain");
+    if(changea == 0)
+    {   
+        changea = 1;
+        title.innerHTML = json1["title"];
+        brief.innerHTML = json1["brief"];
+        content.innerHTML = json1["content"];
+        explain.innerHTML = json1["explain"];
+    }
+    else if(changea == 1)
+    {   
+        changea = 2;
+        title.innerHTML = json2["title"];
+        brief.innerHTML = json2["brief"];
+        content.innerHTML = json2["content"];
+        explain.innerHTML = json2["explain"];
+    }
+    else if(changea == 2)
+    {    
+        changea = 0;
+        title.innerHTML = json3["title"];
+        brief.innerHTML = json3["brief"];
+        content.innerHTML = json3["content"];
+        explain.innerHTML = json3["explain"];
+    }
+}
+</script>    
+</body>
+</html>

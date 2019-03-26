@@ -1,0 +1,33 @@
+/* jl2_right */
+.jl2_main{background:url(../img/jl2_bg1.jpg) no-repeat top right;}
+.jl2_main .jl1{clear:both;color:#fff;height:240px;}
+.jl2_main .jl1 .jl1_lx p{font-size:22px;}
+
+.jl2_main  .jl2_wrap .zbox{width:48%;float:left;position:relative;}
+.jl2_main  .jl2_wrap .zbox ul li{padding:10px 37px;border-radius:5px;border-top:5px solid #3dcc8d;background:#f7f7f7;border-radius:5px;margin-bottom:26px;}
+.jl2_main  .jl2_wrap .zbox ul li h3{font-size:23px;padding:15px 0;border-bottom:1px solid #b2b2b2;}
+.jl2_main  .jl2_wrap .zbox ul li .info{font-size:14px;line-height:25px;padding:15px 0;}
+.jl2_main  .jl2_wrap .zbox ul li .d2 dd{height:30px;line-height:30px;background:url(../img/i_dot3.png) no-repeat left center;padding-left:13px;}
+.jl2_main  .jl2_wrap .zbox ul li .d3 dd{background:#fff;border-radius:5px;border-top:5px solid #9dc5fb;margin-top:14px;margin-bottom:10px;}
+.jl2_main  .jl2_wrap .zbox ul li .d3 h3{padding:15px 15px 8px 15px;font-size:18px;border-bottom:0;}
+.jl2_main  .jl2_wrap .zbox ul li .d3 .zhi{padding:0px 15px 15px 15px;font-size:17px;border-bottom:2px solid #f7f7f7;}
+.jl2_main  .jl2_wrap .zbox ul li .d3 .zhi span{float:right;}
+.jl2_main  .jl2_wrap .zbox ul li .d3 .txt{font-size:14px;line-height:25px;padding:10px 15px;}
+.jl2_main  .jl2_wrap .zbox ul li.d4 .jb1{padding-left:95px;font-size:14px;line-height:30px;}
+.jl2_main  .jl2_wrap .zbox ul li.d4 .set{padding:15px 0 0 0;text-align:right}
+.jl2_main  .jl2_wrap .zbox ul li.d4 .set a{padding:0 5px;}
+.jl2_main  .jl2_wrap .zbox ul li.d4 .set a img{vertical-align:middle}
+.jl2_main  .jl2_wrap .zbox ul li:hover{-moz-box-shadow:0 6px 15px rgba(0,0,0,.2); -webkit-box-shadow:0 6px 15px rgba(0,0,0,.2); box-shadow:0 6px 15px rgba(0,0,0,.2);}
+.jl2_main  .jl2_wrap .zbox ul li.d5 .jb1 img{vertical-align:middle;margin-right:6px;margin-top:-2px;margin-right:8px;}
+.jl2_main  .jl2_wrap .zbox ul li.d5 .jb1{line-height:45px;padding-left:75px;}
+
+/* 导出简历 */
+
+.jl2_right{width:790px;float:left;margin:0;}
+.jl2_main  .jl2_wrap{padding:30px 10px 0 10px;overflow:hidden;background:#fff url(../img/ybg.png) no-repeat bottom right;margin-top:-20px;width:770px;background-size:50%}
+.jl2_main  .jl2_wrap .s01{position:absolute;right:-20px;border:5px solid #e7e7e7;border-radius:5px;height:97%;top:0;}
+
+.jl2_main .jl1 .jl1_name{font-size:31px;padding:57px 0 0 27px;text-align:center;width:170px;float:left;}
+.jl2_main .jl1 .jl1_name p{font-size:14px;}
+.jl2_main .jl1 .jl1_pic{width:155px;float:left;margin:25px 0 0 55px;}
+.jl2_main .jl1 .jl1_lx{float:right;font-size:31px;margin-right:83px;margin-top:55px;}

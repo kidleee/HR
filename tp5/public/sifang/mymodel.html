@@ -1,0 +1,112 @@
+<!Doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="layui-v2.2.6/layui-v2.2.6/layui/css/layui.css">
+  <script src="jquery.js"></script> <!-- 你必须先引入jQuery1.8或以上版本 -->
+  <script src="layer-v3.1.1/layer-v3.1.1/layer/layer.js"></script>
+  <script src="layui-v2.2.6/layui-v2.2.6/layui/layui.js"></script>
+  <style>
+   .bor1{border-style :none;width:200px;height:80px;background: transparent; }
+   .bor2{border-style :none;width:200px;height:80px;background: transparent;font-size:40px;}
+   .bor3{border-style :none;width:200px;height:80px;background: transparent;font-size:40px;}
+   a:hover{  background-color:#369;  color:#fff;}
+  </style>
+</head>
+<body>
+<br><br>
+<i class="layui-icon" style="position:relative; left:48px">&#xe65c;<a class="bor1" style="font-size:24" href="javascript:cancel()">缩起</a></i><br><br><br>
+<div class="container">
+<div class="layui-row">
+<a class="bor2" style="dispaly:block" id="lalala"  href="javascript:lalala()">求职意向</a><br>
+<a class="layui-btn" id="lalala1"  onclick="javascript:lalala1()">教育背景</a><br>
+<a class="layui-btn" id="lalala2"  onclick="javascript:lalala2()">工作经验</a><br>
+<a class="layui-btn" id="lalala3"  onclick="javascript:lalala3()">实习经验</a>
+</div>
+<div class="layui-row"><p>-------------------------------------</p></div>
+<div class="layui-row">
+<a class="bor2" style="display:none" id="alalala"  href="javascript:lalala()">求职意向</a><br>
+</div>
+</div>
+<script> 
+function lalala()
+{
+    var _parentWin = window.parent;     
+    var div1=_parentWin.document.getElementById("div1");
+	var lalala=document.getElementById("lalala");
+	var alalala=document.getElementById("alalala");
+	if(div1.style.display == "none")
+	{
+	    div1.setAttribute("style","display");
+	}
+	else
+	{
+	    div1.setAttribute("style","display:none");
+	}
+	if(lalala.style.display == "none")
+	{
+	    lalala.setAttribute("style","display");
+	}
+	else
+	{
+	    lalala.setAttribute("style","display:none");
+	}
+	if(alalala.style.display == "none")
+	{
+	    alalala.setAttribute("style","display");
+	}
+	else
+	{
+	    alalala.setAttribute("style","display:none");
+	}
+}
+
+function lalala1()
+{
+    var _parentWin = window.parent;     
+    var div1=_parentWin.document.getElementById("div1");
+	if(div1.style.display == "none")
+	{
+	    div1.setAttribute("style","display");
+	}
+	else
+	{
+	    div1.setAttribute("style","display:none");
+	}
+}
+function lalala2()
+{
+    var _parentWin = window.parent;     
+    var div2=_parentWin.document.getElementById("div2");
+	if(div2.style.display == "none")
+	{
+	    div2.setAttribute("style","display");
+	}
+	else
+	{
+	    div2.setAttribute("style","display:none");
+	}
+}
+function lalala3()
+{
+    var _parentWin = window.parent;     
+    var div3=_parentWin.document.getElementById("div3");
+	if(div3.style.display == "none")
+	{
+	    div3.setAttribute("style","display");
+	}
+	else
+	{
+	    div3.setAttribute("style","display:none");
+	}
+}
+
+function cancel()
+{
+	var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+	parent.layer.close(index); //再执行关闭   
+}
+
+</script>
+</body>
+</html>

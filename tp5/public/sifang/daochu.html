@@ -1,0 +1,96 @@
+<!Doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>在线制作</title>
+  <link rel="stylesheet" href="layui-v2.2.6/layui-v2.2.6/layui/css/layui.css" type="text/css">
+  <link href="LXXUploadPic-master/LXXUploadNeeded/LXXUploadPic.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="mycss.css" type="text/css">
+  
+  <script src="jquery.js"></script> <!-- 你必须先引入jQuery1.8或以上版本 -->
+  <script src="layer-v3.1.1/layer-v3.1.1/layer/layer.js" type="text/javascript" charset="utf-8"></script>
+  <script src="layui-v2.2.6/layui-v2.2.6/layui/layui.js" type="text/javascript" charset="utf-8"></script>
+  <script src="Sortable-master/Sortable-master/Sortable.js"></script>
+  <script src="jquery-ui.js" type="text/javascript" charset="utf-8"></script>
+  <script src="LXXUploadPic-master/LXXUploadNeeded/LXXUploadPic.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body class="layui-layout-body">
+    <!--startprint-->
+    <div id="abc">
+        <div id="div">html</div>
+    </div>
+    <!--endprint-->
+    <button class="layui-btn" onclick="a();">click</button>
+    <button class="layui-btn" onclick="b();">daochu</button>
+    <button class="layui-btn" onclick="c();">fenxiang</button>
+    <input type="hidden" id="hide_content">
+<script>
+var hd = document.getElementById("hide_content");    
+function a()
+{
+    var div =  document.getElementById("div");
+    div.innerHTML = "123";
+    var divx = document.createElement('div');
+		//divx.setAttribute("id","div1");
+		//设置div的属性
+    divx.innerHTML = '456'; //设置显示的数据，可以是标签．
+    divx.style.background = "blue";//设置css样式,s设置背景颜色\
+    var abc=document.getElementById("abc");//获取body对象.
+		//var div1 = _parentWin.document.getElementById("div1");
+		//动态插入到body中
+		abc.insertBefore(divx,abc.lastChild);
+}
+
+function b()
+{
+    bdhtml=window.document.body.innerHTML; 
+    sprnstr="<!--startprint-->"; 
+    eprnstr="<!--endprint-->"; 
+    prnhtml=bdhtml.substr(bdhtml.indexOf(sprnstr)+17); 
+    prnhtml=prnhtml.substring(0,prnhtml.indexOf(eprnstr)); 
+    //将获取的html代码添加到隐藏域中传给php文件处理
+    $.ajax({  
+            type: "get",  
+            url: "http://www.runjianli.com/index.php/index/active/daochu",
+			dataType: "text",
+            data:{"html":prnhtml},
+            success: function(data){
+                window.open(data);
+                hd.value = data;
+            },
+			error: function(jqXHR, textStatus, errorThrown){  
+                alert(jqXHR.responseText);
+				alert(jqXHR.status);
+				alert(jqXHR.readyState);
+				alert(jqXHR.statusText);
+				alert(textStatus);
+				alert(errorThrown); 
+			}
+          })
+}
+    
+function c()
+{
+    $.ajax({
+            type: "get",  
+            url: "http://www.runjianli.com/index.php/index/active/daochu",
+			dataType: "text",
+            data:{"share":hd.value},
+            success: function(data){
+                alert("success");
+            },
+			error: function(jqXHR, textStatus, errorThrown){  
+                alert(jqXHR.responseText);
+				alert(jqXHR.status);
+				alert(jqXHR.readyState);
+				alert(jqXHR.statusText);
+				alert(textStatus);
+				alert(errorThrown); 
+			}
+    })
+}
+$(function(){
+})
+</script>
+</body>
+</html>
